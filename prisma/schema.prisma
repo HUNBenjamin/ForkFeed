@@ -42,6 +42,7 @@ model Recipe {
   id               Int       @id @map("_id")
   title            String
   description      String?
+  image_url        String?
   preparation_time Int
   difficulty       String
   average_rating   Float     @default(0)
