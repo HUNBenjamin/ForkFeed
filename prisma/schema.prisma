@@ -9,14 +9,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model categories {
+model Category {
   id          Int    @id @map("_id")
   created_at  String
   description String
   name        String
+
+  @@map("categories")
 }
 
-model comments {
+model Comment {
   id         Int     @id @map("_id")
   content    String
   created_at String
@@ -24,38 +26,48 @@ model comments {
   recipe_id  Int
   updated_at String
   user_id    Int
+
+  @@map("comments")
 }
 
-model favorites {
+model Favorite {
   id         Int    @id @map("_id")
   created_at String
   recipe_id  Int
   user_id    Int
+
+  @@map("favorites")
 }
 
-model ingredients {
+model Ingredient {
   id        Int    @id @map("_id")
   name      String
   quantity  Int
   recipe_id Int
   unit      String
+
+  @@map("ingredients")
 }
 
-model ratings {
+model Rating {
   id         Int    @id @map("_id")
   created_at String
   rating     Int
   recipe_id  Int
   user_id    Int
+
+  @@map("ratings")
 }
 
-model recipe_book_recipes {
+model RecipeBookRecipe {
   id             String @id @default(auto()) @map("_id") @db.ObjectId
   recipe_book_id Int
   recipe_id      Int
+
+  @@map("recipe_book_recipes")
 }
 
-model recipe_books {
+model RecipeBook {
   id          Int     @id @map("_id")
   created_at  String
   description String
@@ -63,21 +75,27 @@ model recipe_books {
   name        String
   owner_id    Int
   updated_at  String
+
+  @@map("recipe_books")
 }
 
-model recipe_categories {
+model RecipeCategory {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   category_id Int
   recipe_id   Int
+
+  @@map("recipe_categories")
 }
 
-model recipe_tags {
+model RecipeTag {
   id        String @id @default(auto()) @map("_id") @db.ObjectId
   recipe_id Int
   tag_id    Int
+
+  @@map("recipe_tags")
 }
 
-model recipes {
+model Recipe {
   id               Int     @id @map("_id")
   author_id        Int
   average_rating   Float
@@ -89,9 +107,11 @@ model recipes {
   rating_count     Int
   title            String
   updated_at       String
+
+  @@map("recipes")
 }
 
-model reports {
+model Report {
   id          Int    @id @map("_id")
   created_at  String
   reason      String
@@ -103,22 +123,28 @@ model reports {
   status      String
   target_id   Int
   target_type String
+
+  @@map("reports")
 }
 
-model steps {
+model Step {
   id          Int    @id @map("_id")
   description String
   recipe_id   Int
   step_number Int
+
+  @@map("steps")
 }
 
-model tags {
+model Tag {
   id         Int    @id @map("_id")
   created_at String
   name       String
+
+  @@map("tags")
 }
 
-model users {
+model User {
   id                Int     @id @map("_id")
   bio               String
   created_at        String
@@ -130,4 +156,6 @@ model users {
   role              String
   updated_at        String
   username          String
+
+  @@map("users")
 }
