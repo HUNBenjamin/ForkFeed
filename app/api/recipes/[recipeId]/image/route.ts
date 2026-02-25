@@ -42,10 +42,7 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
   }
 
   if (recipe.author_id !== auth.sub && auth.role !== "admin") {
-    return NextResponse.json(
-      { error: "Not authorized to modify this recipe." },
-      { status: 403 },
-    );
+    return NextResponse.json({ error: "Not authorized to modify this recipe." }, { status: 403 });
   }
 
   const contentType = request.headers.get("content-type") ?? "";

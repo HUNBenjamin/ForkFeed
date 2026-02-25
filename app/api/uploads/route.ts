@@ -37,10 +37,7 @@ export async function POST(request: NextRequest) {
   const file = formData.get("file");
 
   if (!file || !(file instanceof File)) {
-    return NextResponse.json(
-      { error: "A file field is required." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "A file field is required." }, { status: 400 });
   }
 
   if (!ALLOWED_TYPES.includes(file.type)) {
@@ -51,10 +48,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (file.size > MAX_FILE_SIZE) {
-    return NextResponse.json(
-      { error: "File size exceeds the 5 MB limit." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "File size exceeds the 5 MB limit." }, { status: 400 });
   }
 
   const ext = file.name.split(".").pop() ?? "bin";
