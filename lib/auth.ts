@@ -50,3 +50,25 @@ export function extractBearerToken(authHeader: string | null): string | null {
   if (!authHeader?.startsWith("Bearer ")) return null;
   return authHeader.slice(7);
 }
+
+export async function authenticateRequest(
+  request: Request,
+): Promise<JwtPayload | { error: string; status: number }> {
+  const token = extractBearerToken(request.headers.get("authorization"));
+
+  if (!token) {
+    return { error: "Missing or malformed Authorization header.", status: 401 };
+  }
+
+  const payload = verifyToken(token);
+
+  if (!payload) {
+    return { error: "Invalid or expired token.", status: 401 };
+  }
+
+  if (await isTokenDenylisted(payload.jti)) {
+    return { error: "Token has been invalidated.", status: 401 };
+  }
+
+  return payload;
+}
