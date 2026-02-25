@@ -15,10 +15,12 @@
   },
   "dependencies": {
     "@prisma/client": "^6",
+    "jsonwebtoken": "^9.0.3",
     "next": "16.1.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22",
     "@types/react": "^19",
     "eslint": "^9",

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { scryptSync, timingSafeEqual } from "crypto";
 import prisma from "@/lib/prisma";
+import { signToken } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
@@ -23,7 +24,6 @@ export async function POST(request: Request) {
     );
   }
 
-  // Accept "login", "email", or "username" as the identifier field
   const identifier = (payload.login ?? payload.email ?? payload.username ?? "").trim();
   const password = payload.password ?? "";
 
@@ -74,14 +74,16 @@ export async function POST(request: Request) {
     );
   }
 
-  // Update last_login timestamp
   await prisma.user.update({
     where: { id: user.id },
     data: { last_login: new Date() },
   });
 
+  const token = signToken({ id: user.id, username: user.username, role: user.role });
+
   return NextResponse.json(
     {
+      token,
       user: {
         id: user.id,
         username: user.username,

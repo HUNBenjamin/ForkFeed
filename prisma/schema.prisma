@@ -212,3 +212,12 @@ model Report {
 
   @@map("reports")
 }
+
+model DenylistedToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  jti        String   @unique
+  expires_at DateTime
+  created_at DateTime @default(now())
+
+  @@map("denylisted_tokens")
+}

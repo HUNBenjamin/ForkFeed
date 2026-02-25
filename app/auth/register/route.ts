@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { randomBytes, scryptSync } from "crypto";
 import prisma from "@/lib/prisma";
+import { signToken } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
@@ -93,5 +94,7 @@ export async function POST(request: Request) {
     },
   });
 
-  return NextResponse.json({ user }, { status: 201 });
+  const token = signToken({ id: user.id, username: user.username, role: user.role });
+
+  return NextResponse.json({ token, user }, { status: 201 });
 }
