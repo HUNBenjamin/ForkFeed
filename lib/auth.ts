@@ -72,3 +72,19 @@ export async function authenticateRequest(
 
   return payload;
 }
+
+export async function requireAdmin(
+  request: Request,
+): Promise<JwtPayload | { error: string; status: number }> {
+  const result = await authenticateRequest(request);
+
+  if ("error" in result) {
+    return result;
+  }
+
+  if (result.role !== "admin") {
+    return { error: "Admin access required.", status: 403 };
+  }
+
+  return result;
+}
