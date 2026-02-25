@@ -29,7 +29,7 @@ export async function PATCH(
     return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
   }
 
-  const allowedRoles = ["user", "admin", "moderator"];
+  const allowedRoles = ["user", "admin"];
   const data: Record<string, unknown> = { updated_at: new Date() };
 
   if (payload.role !== undefined) {

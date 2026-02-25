@@ -9,12 +9,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  user
+  admin
+}
+
 model User {
   id                Int       @id @map("_id")
   username          String    @unique
   email             String    @unique
   password_hash     String
-  role              String    @default("user")
+  role              Role      @default(user)
   profile_image_url String?
   bio               String?
   is_active         Boolean   @default(true)
