@@ -1,16 +1,133 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
-  output   = "../app/prisma/client"
+  provider      = "prisma-client-js"
+  output        = "../app/prisma/client"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model categories {
+  id          Int    @id @map("_id")
+  created_at  String
+  description String
+  name        String
+}
+
+model comments {
+  id         Int     @id @map("_id")
+  content    String
+  created_at String
+  is_deleted Boolean
+  recipe_id  Int
+  updated_at String
+  user_id    Int
+}
+
+model favorites {
+  id         Int    @id @map("_id")
+  created_at String
+  recipe_id  Int
+  user_id    Int
+}
+
+model ingredients {
+  id        Int    @id @map("_id")
+  name      String
+  quantity  Int
+  recipe_id Int
+  unit      String
+}
+
+model ratings {
+  id         Int    @id @map("_id")
+  created_at String
+  rating     Int
+  recipe_id  Int
+  user_id    Int
+}
+
+model recipe_book_recipes {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  recipe_book_id Int
+  recipe_id      Int
+}
+
+model recipe_books {
+  id          Int     @id @map("_id")
+  created_at  String
+  description String
+  is_public   Boolean
+  name        String
+  owner_id    Int
+  updated_at  String
+}
+
+model recipe_categories {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  category_id Int
+  recipe_id   Int
+}
+
+model recipe_tags {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  recipe_id Int
+  tag_id    Int
+}
+
+model recipes {
+  id               Int     @id @map("_id")
+  author_id        Int
+  average_rating   Float
+  created_at       String
+  description      String
+  difficulty       String
+  is_deleted       Boolean
+  preparation_time Int
+  rating_count     Int
+  title            String
+  updated_at       String
+}
+
+model reports {
+  id          Int    @id @map("_id")
+  created_at  String
+  reason      String
+  reported_by Int
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  reviewed_at Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  reviewed_by Json?
+  status      String
+  target_id   Int
+  target_type String
+}
+
+model steps {
+  id          Int    @id @map("_id")
+  description String
+  recipe_id   Int
+  step_number Int
+}
+
+model tags {
+  id         Int    @id @map("_id")
+  created_at String
+  name       String
+}
+
+model users {
+  id                Int     @id @map("_id")
+  bio               String
+  created_at        String
+  email             String
+  is_active         Boolean
+  last_login        String
+  password_hash     String
+  profile_image_url String
+  role              String
+  updated_at        String
+  username          String
 }
