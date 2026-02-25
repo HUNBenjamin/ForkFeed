@@ -9,81 +9,109 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id          Int    @id @map("_id")
-  created_at  String
-  description String
-  name        String
+model User {
+  id                Int       @id @map("_id")
+  username          String    @unique
+  email             String    @unique
+  password_hash     String
+  role              String    @default("user")
+  profile_image_url String?
+  bio               String?
+  is_active         Boolean   @default(true)
+  created_at        DateTime  @default(now())
+  updated_at        DateTime?
+  last_login        DateTime?
 
-  @@map("categories")
+  recipes          Recipe[]
+  comments         Comment[]
+  ratings          Rating[]
+  favorites        Favorite[]
+  recipe_books     RecipeBook[]
+  reported_reports Report[]     @relation("ReportedBy")
+  reviewed_reports Report[]     @relation("ReviewedBy")
+
+  @@map("users")
 }
 
-model Comment {
-  id         Int     @id @map("_id")
-  content    String
-  created_at String
-  is_deleted Boolean
-  recipe_id  Int
-  updated_at String
-  user_id    Int
+model Recipe {
+  id               Int       @id @map("_id")
+  title            String
+  description      String?
+  preparation_time Int
+  difficulty       String
+  average_rating   Float     @default(0)
+  rating_count     Int       @default(0)
+  author_id        Int
+  created_at       DateTime  @default(now())
+  updated_at       DateTime?
+  is_deleted       Boolean   @default(false)
 
-  @@map("comments")
-}
+  author              User               @relation(fields: [author_id], references: [id])
+  ingredients         Ingredient[]
+  steps               Step[]
+  comments            Comment[]
+  ratings             Rating[]
+  favorites           Favorite[]
+  recipe_categories   RecipeCategory[]
+  recipe_tags         RecipeTag[]
+  recipe_book_recipes RecipeBookRecipe[]
 
-model Favorite {
-  id         Int    @id @map("_id")
-  created_at String
-  recipe_id  Int
-  user_id    Int
-
-  @@map("favorites")
+  @@map("recipes")
 }
 
 model Ingredient {
-  id        Int    @id @map("_id")
-  name      String
-  quantity  Int
+  id        Int     @id @map("_id")
   recipe_id Int
-  unit      String
+  name      String
+  quantity  Float?
+  unit      String?
+
+  recipe Recipe @relation(fields: [recipe_id], references: [id])
 
   @@map("ingredients")
 }
 
-model Rating {
-  id         Int    @id @map("_id")
-  created_at String
-  rating     Int
-  recipe_id  Int
-  user_id    Int
-
-  @@map("ratings")
-}
-
-model RecipeBookRecipe {
-  id             String @id @default(auto()) @map("_id") @db.ObjectId
-  recipe_book_id Int
-  recipe_id      Int
-
-  @@map("recipe_book_recipes")
-}
-
-model RecipeBook {
-  id          Int     @id @map("_id")
-  created_at  String
+model Step {
+  id          Int    @id @map("_id")
+  recipe_id   Int
+  step_number Int
   description String
-  is_public   Boolean
-  name        String
-  owner_id    Int
-  updated_at  String
 
-  @@map("recipe_books")
+  recipe Recipe @relation(fields: [recipe_id], references: [id])
+
+  @@map("steps")
+}
+
+model Category {
+  id          Int      @id @map("_id")
+  name        String   @unique
+  description String?
+  created_at  DateTime @default(now())
+
+  recipe_categories RecipeCategory[]
+
+  @@map("categories")
+}
+
+model Tag {
+  id         Int      @id @map("_id")
+  name       String   @unique
+  created_at DateTime @default(now())
+
+  recipe_tags RecipeTag[]
+
+  @@map("tags")
 }
 
 model RecipeCategory {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
-  category_id Int
   recipe_id   Int
+  category_id Int
 
+  recipe   Recipe   @relation(fields: [recipe_id], references: [id])
+  category Category @relation(fields: [category_id], references: [id])
+
+  @@unique([recipe_id, category_id])
   @@map("recipe_categories")
 }
 
@@ -92,70 +120,95 @@ model RecipeTag {
   recipe_id Int
   tag_id    Int
 
+  recipe Recipe @relation(fields: [recipe_id], references: [id])
+  tag    Tag    @relation(fields: [tag_id], references: [id])
+
+  @@unique([recipe_id, tag_id])
   @@map("recipe_tags")
 }
 
-model Recipe {
-  id               Int     @id @map("_id")
-  author_id        Int
-  average_rating   Float
-  created_at       String
-  description      String
-  difficulty       String
-  is_deleted       Boolean
-  preparation_time Int
-  rating_count     Int
-  title            String
-  updated_at       String
+model RecipeBook {
+  id          Int       @id @map("_id")
+  name        String
+  description String?
+  owner_id    Int
+  is_public   Boolean   @default(false)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime?
 
-  @@map("recipes")
+  owner               User               @relation(fields: [owner_id], references: [id])
+  recipe_book_recipes RecipeBookRecipe[]
+
+  @@map("recipe_books")
+}
+
+model RecipeBookRecipe {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  recipe_book_id Int
+  recipe_id      Int
+
+  recipe_book RecipeBook @relation(fields: [recipe_book_id], references: [id])
+  recipe      Recipe     @relation(fields: [recipe_id], references: [id])
+
+  @@unique([recipe_book_id, recipe_id])
+  @@map("recipe_book_recipes")
+}
+
+model Comment {
+  id         Int       @id @map("_id")
+  recipe_id  Int
+  user_id    Int
+  content    String
+  created_at DateTime  @default(now())
+  updated_at DateTime?
+  is_deleted Boolean   @default(false)
+
+  recipe Recipe @relation(fields: [recipe_id], references: [id])
+  user   User   @relation(fields: [user_id], references: [id])
+
+  @@map("comments")
+}
+
+model Rating {
+  id         Int      @id @map("_id")
+  recipe_id  Int
+  user_id    Int
+  rating     Int
+  created_at DateTime @default(now())
+
+  recipe Recipe @relation(fields: [recipe_id], references: [id])
+  user   User   @relation(fields: [user_id], references: [id])
+
+  @@unique([recipe_id, user_id])
+  @@map("ratings")
+}
+
+model Favorite {
+  id         Int      @id @map("_id")
+  user_id    Int
+  recipe_id  Int
+  created_at DateTime @default(now())
+
+  user   User   @relation(fields: [user_id], references: [id])
+  recipe Recipe @relation(fields: [recipe_id], references: [id])
+
+  @@unique([user_id, recipe_id])
+  @@map("favorites")
 }
 
 model Report {
-  id          Int    @id @map("_id")
-  created_at  String
-  reason      String
+  id          Int       @id @map("_id")
   reported_by Int
-  /// Could not determine type: the field only had null or empty values in the sample set.
-  reviewed_at Json?
-  /// Could not determine type: the field only had null or empty values in the sample set.
-  reviewed_by Json?
-  status      String
-  target_id   Int
   target_type String
+  target_id   Int
+  reason      String
+  status      String    @default("pending")
+  reviewed_by Int?
+  created_at  DateTime  @default(now())
+  reviewed_at DateTime?
+
+  reporter User  @relation("ReportedBy", fields: [reported_by], references: [id])
+  reviewer User? @relation("ReviewedBy", fields: [reviewed_by], references: [id])
 
   @@map("reports")
-}
-
-model Step {
-  id          Int    @id @map("_id")
-  description String
-  recipe_id   Int
-  step_number Int
-
-  @@map("steps")
-}
-
-model Tag {
-  id         Int    @id @map("_id")
-  created_at String
-  name       String
-
-  @@map("tags")
-}
-
-model User {
-  id                Int     @id @map("_id")
-  bio               String
-  created_at        String
-  email             String
-  is_active         Boolean
-  last_login        String
-  password_hash     String
-  profile_image_url String
-  role              String
-  updated_at        String
-  username          String
-
-  @@map("users")
 }
