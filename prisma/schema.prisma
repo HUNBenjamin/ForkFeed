@@ -27,13 +27,13 @@ model User {
   updated_at        DateTime?
   last_login        DateTime?
 
-  recipes          Recipe[]
-  comments         Comment[]
-  ratings          Rating[]
-  favorites        Favorite[]
-  recipe_books     RecipeBook[]
-  reported_reports     Report[]              @relation("ReportedBy")
-  reviewed_reports     Report[]              @relation("ReviewedBy")
+  recipes               Recipe[]
+  comments              Comment[]
+  ratings               Rating[]
+  favorites             Favorite[]
+  recipe_books          RecipeBook[]
+  reported_reports      Report[]             @relation("ReportedBy")
+  reviewed_reports      Report[]             @relation("ReviewedBy")
   password_reset_tokens PasswordResetToken[]
 
   @@map("users")
