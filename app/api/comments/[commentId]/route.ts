@@ -72,3 +72,38 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
 
   return NextResponse.json({ comment }, { status: 200 });
 }
+
+export async function DELETE(request: NextRequest, { params }: RouteContext) {
+  const auth = await authenticateRequest(request);
+
+  if ("error" in auth) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
+  const { commentId } = await params;
+  const id = parseCommentId(commentId);
+
+  if (id === null) {
+    return NextResponse.json({ error: "Invalid comment ID." }, { status: 400 });
+  }
+
+  const existing = await prisma.comment.findUnique({
+    where: { id },
+    select: { user_id: true, is_deleted: true },
+  });
+
+  if (!existing || existing.is_deleted) {
+    return NextResponse.json({ error: "Comment not found." }, { status: 404 });
+  }
+
+  if (existing.user_id !== auth.sub && auth.role !== "admin") {
+    return NextResponse.json({ error: "Not authorized to delete this comment." }, { status: 403 });
+  }
+
+  await prisma.comment.update({
+    where: { id },
+    data: { is_deleted: true, updated_at: new Date() },
+  });
+
+  return NextResponse.json({ message: "Comment deleted successfully." }, { status: 200 });
+}
