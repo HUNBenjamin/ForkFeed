@@ -7,9 +7,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("query")?.trim() ?? "";
 
-  const where = query
-    ? { name: { contains: query, mode: "insensitive" as const } }
-    : undefined;
+  const where = query ? { name: { contains: query, mode: "insensitive" as const } } : undefined;
 
   const tags = await prisma.tag.findMany({
     where,
