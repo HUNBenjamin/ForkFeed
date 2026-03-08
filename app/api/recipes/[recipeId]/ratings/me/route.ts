@@ -84,7 +84,10 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
   const value = payload.rating;
 
   if (!Number.isInteger(value) || (value as number) < 1 || (value as number) > 5) {
-    return NextResponse.json({ error: "rating must be an integer between 1 and 5." }, { status: 400 });
+    return NextResponse.json(
+      { error: "rating must be an integer between 1 and 5." },
+      { status: 400 },
+    );
   }
 
   const ratingValue = value as number;
