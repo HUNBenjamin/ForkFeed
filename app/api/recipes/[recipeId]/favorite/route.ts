@@ -11,6 +11,28 @@ function parseRecipeId(raw: string): number | null {
   return Number.isNaN(id) ? null : id;
 }
 
+export async function GET(request: NextRequest, { params }: RouteContext) {
+  const auth = await authenticateRequest(request);
+
+  if ("error" in auth) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
+  const { recipeId } = await params;
+  const rId = parseRecipeId(recipeId);
+
+  if (rId === null) {
+    return NextResponse.json({ error: "Invalid recipe ID." }, { status: 400 });
+  }
+
+  const favorite = await prisma.favorite.findUnique({
+    where: { user_id_recipe_id: { user_id: auth.sub, recipe_id: rId } },
+    select: { id: true, created_at: true },
+  });
+
+  return NextResponse.json({ favorited: favorite !== null, favorite: favorite ?? null }, { status: 200 });
+}
+
 export async function POST(request: NextRequest, { params }: RouteContext) {
   const auth = await authenticateRequest(request);
 
