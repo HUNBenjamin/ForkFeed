@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { authenticateRequest } from "@/lib/auth";
+import { authenticateRequest, optionalAuth } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
@@ -58,11 +58,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const auth = await authenticateRequest(request);
-
-  if ("error" in auth) {
-    return NextResponse.json({ error: auth.error }, { status: auth.status });
-  }
+  const auth = await optionalAuth(request);
 
   const { searchParams } = new URL(request.url);
 
@@ -78,7 +74,10 @@ export async function GET(request: NextRequest) {
 
   let where: WhereClause;
 
-  if (scope === "mine") {
+  if (!auth) {
+    // Guests always see only public books regardless of scope.
+    where = { is_public: true };
+  } else if (scope === "mine") {
     where = { owner_id: auth.sub };
   } else if (scope === "public") {
     where = { is_public: true };

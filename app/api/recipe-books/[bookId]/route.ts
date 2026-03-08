@@ -46,10 +46,10 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
     return NextResponse.json({ error: "Recipe book not found." }, { status: 404 });
   }
 
-  // Private books are only visible to their owner.
+  // Private books are only visible to their owner and admins.
   if (!recipeBook.is_public) {
     const auth = await authenticateRequest(request);
-    if ("error" in auth || auth.sub !== recipeBook.owner_id) {
+    if ("error" in auth || (auth.sub !== recipeBook.owner_id && auth.role !== "admin")) {
       return NextResponse.json({ error: "Recipe book not found." }, { status: 404 });
     }
   }
