@@ -1,0 +1,30 @@
+[
+    {
+        "_id": 1,
+        "reported_by": 5,
+        "target_type": "comment",
+        "target_id": 1,
+        "reason": "Feltételezett spam tartalom.",
+        "status": "pending",
+        "reviewed_by": null,
+        "created_at": {
+            "$date": "2026-01-22T08:00:00Z"
+        },
+        "reviewed_at": null
+    },
+    {
+        "_id": 2,
+        "reported_by": 3,
+        "target_type": "recipe",
+        "target_id": 4,
+        "reason": "Máshonnan átvett, nem eredeti recept.",
+        "status": "accepted",
+        "reviewed_by": 1,
+        "created_at": {
+            "$date": "2026-01-23T09:00:00Z"
+        },
+        "reviewed_at": {
+            "$date": "2026-01-23T14:00:00Z"
+        }
+    }
+]

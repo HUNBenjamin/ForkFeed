@@ -1,0 +1,35 @@
+[
+    {
+        "_id": 1,
+        "name": "Kedvenceim",
+        "description": "A személyes kedvenc receptjeim gyűjteménye.",
+        "owner_id": 2,
+        "is_public": true,
+        "created_at": {
+            "$date": "2026-01-25T10:00:00Z"
+        },
+        "updated_at": null
+    },
+    {
+        "_id": 2,
+        "name": "Magyar klasszikusok",
+        "description": "Hagyományos magyar ételek receptjei.",
+        "owner_id": 3,
+        "is_public": true,
+        "created_at": {
+            "$date": "2026-01-26T11:00:00Z"
+        },
+        "updated_at": null
+    },
+    {
+        "_id": 3,
+        "name": "Privát gyűjtemény",
+        "description": "Saját kísérleteim és titkos receptjeim.",
+        "owner_id": 4,
+        "is_public": false,
+        "created_at": {
+            "$date": "2026-01-27T12:00:00Z"
+        },
+        "updated_at": null
+    }
+]

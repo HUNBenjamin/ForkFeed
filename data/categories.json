@@ -1,0 +1,42 @@
+[
+    {
+        "_id": 1,
+        "name": "Leves",
+        "description": "Levesek és krémlevesek",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 2,
+        "name": "Főétel",
+        "description": "Főételek és köretek",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 3,
+        "name": "Desszert",
+        "description": "Sütemények és édességek",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 4,
+        "name": "Reggeli",
+        "description": "Reggeli fogások",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 5,
+        "name": "Saláta",
+        "description": "Friss saláták és köretek",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "_id": 1,
+        "recipe_id": 1,
+        "step_number": 1,
+        "description": "A marhahúst vágd kisebb kockákra, és forró olajon pirítsd meg minden oldalát."
+    },
+    {
+        "_id": 2,
+        "recipe_id": 1,
+        "step_number": 2,
+        "description": "Add hozzá az apróra vágott hagymát, pirítsd üvegesre, majd szórd rá a pirospaprikát."
+    },
+    {
+        "_id": 3,
+        "recipe_id": 1,
+        "step_number": 3,
+        "description": "Öntsd fel 1,5 liter vízzel, add hozzá a kockára vágott burgonyát, és főzd puhára kb. 60 percig."
+    },
+    {
+        "_id": 4,
+        "recipe_id": 2,
+        "step_number": 1,
+        "description": "A hagymát aprítsd fel és pirítsd meg olajon aranysárgára."
+    },
+    {
+        "_id": 5,
+        "recipe_id": 2,
+        "step_number": 2,
+        "description": "Add hozzá a felszeletelt paprikát és paradicsomot, dinszteld puhára, sózd, borsozd."
+    },
+    {
+        "_id": 6,
+        "recipe_id": 2,
+        "step_number": 3,
+        "description": "Üsd bele a tojásokat, és lassan keverd össze a zöldségekkel, amíg meg nem sül."
+    },
+    {
+        "_id": 7,
+        "recipe_id": 3,
+        "step_number": 1,
+        "description": "A csirkemelleket vágd egyforma filékre, sózd és borsozd be mindkét oldalát."
+    },
+    {
+        "_id": 8,
+        "recipe_id": 3,
+        "step_number": 2,
+        "description": "Forgasd meg lisztben, majd felvert tojásban, végül zsemlemorzsában."
+    },
+    {
+        "_id": 9,
+        "recipe_id": 3,
+        "step_number": 3,
+        "description": "Süsd ki bő, forró olajban mindkét oldalát aranybarnára, kb. 4-5 perc/oldal."
+    },
+    {
+        "_id": 10,
+        "recipe_id": 4,
+        "step_number": 1,
+        "description": "A tésztát főzd meg sós vízben al dentére, szűrd le és öntözd meg kevés olajjal."
+    },
+    {
+        "_id": 11,
+        "recipe_id": 4,
+        "step_number": 2,
+        "description": "A szalonnát aprítsd fel és süsd ropogósra száraz serpenyőben."
+    },
+    {
+        "_id": 12,
+        "recipe_id": 4,
+        "step_number": 3,
+        "description": "Tálaláskor rétegezd a tésztát, kend meg túróval és tejföllel, szórd rá a ropogós szalonnát."
+    },
+    {
+        "_id": 13,
+        "recipe_id": 5,
+        "step_number": 1,
+        "description": "A piskótát vágd kockákra, áztasd meg rummal, és hagyd állni 10 percig."
+    },
+    {
+        "_id": 14,
+        "recipe_id": 5,
+        "step_number": 2,
+        "description": "Az étcsokoládét vízgőz felett olvaszd meg, add hozzá a tejszín felét, és keverd simára."
+    },
+    {
+        "_id": 15,
+        "recipe_id": 5,
+        "step_number": 3,
+        "description": "Rétegezd a piskótát és a csokiszószt, a tetejére verd fel a maradék tejszínt, és hűtsd tálalás előtt."
+    }
+]

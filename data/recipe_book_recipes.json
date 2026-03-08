@@ -1,0 +1,37 @@
+[
+    {
+        "_id": {
+            "$oid": "707f1f77bcf86cd799439011"
+        },
+        "recipe_book_id": 1,
+        "recipe_id": 1
+    },
+    {
+        "_id": {
+            "$oid": "707f1f77bcf86cd799439012"
+        },
+        "recipe_book_id": 1,
+        "recipe_id": 3
+    },
+    {
+        "_id": {
+            "$oid": "707f1f77bcf86cd799439013"
+        },
+        "recipe_book_id": 2,
+        "recipe_id": 1
+    },
+    {
+        "_id": {
+            "$oid": "707f1f77bcf86cd799439014"
+        },
+        "recipe_book_id": 2,
+        "recipe_id": 2
+    },
+    {
+        "_id": {
+            "$oid": "707f1f77bcf86cd799439015"
+        },
+        "recipe_book_id": 2,
+        "recipe_id": 3
+    }
+]

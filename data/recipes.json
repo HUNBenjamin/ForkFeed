@@ -1,0 +1,82 @@
+[
+    {
+        "_id": 1,
+        "title": "Gulyásleves",
+        "description": "Klasszikus magyar gulyásleves marhahúsból, paprikával és burgonyával.",
+        "image_url": null,
+        "preparation_time": 90,
+        "difficulty": "easy",
+        "average_rating": 4.5,
+        "rating_count": 2,
+        "author_id": 2,
+        "created_at": {
+            "$date": "2026-01-10T10:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 2,
+        "title": "Lecsó",
+        "description": "Friss zöldségekből készült hagyományos lecsó tojással.",
+        "image_url": null,
+        "preparation_time": 45,
+        "difficulty": "easy",
+        "average_rating": 4.0,
+        "rating_count": 1,
+        "author_id": 2,
+        "created_at": {
+            "$date": "2026-01-12T11:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 3,
+        "title": "Rántott csirke",
+        "description": "Ropogós rántott csirkemell, a magyaros konyha egyik klasszikusa.",
+        "image_url": null,
+        "preparation_time": 60,
+        "difficulty": "medium",
+        "average_rating": 5.0,
+        "rating_count": 1,
+        "author_id": 3,
+        "created_at": {
+            "$date": "2026-01-15T09:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 4,
+        "title": "Túrós csusza",
+        "description": "Tejfölös-túrós tészta ropogós szalonnával.",
+        "image_url": null,
+        "preparation_time": 30,
+        "difficulty": "easy",
+        "average_rating": 3.0,
+        "rating_count": 1,
+        "author_id": 4,
+        "created_at": {
+            "$date": "2026-01-18T14:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 5,
+        "title": "Somlói galuska",
+        "description": "A legendás magyar desszert rum, csokoládé és tejszín hármasa.",
+        "image_url": null,
+        "preparation_time": 120,
+        "difficulty": "hard",
+        "average_rating": 4.0,
+        "rating_count": 1,
+        "author_id": 5,
+        "created_at": {
+            "$date": "2026-01-20T16:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    }
+]

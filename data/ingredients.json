@@ -1,0 +1,142 @@
+[
+    {
+        "_id": 1,
+        "recipe_id": 1,
+        "name": "marhahús",
+        "quantity": 500,
+        "unit": "g"
+    },
+    {
+        "_id": 2,
+        "recipe_id": 1,
+        "name": "hagyma",
+        "quantity": 2,
+        "unit": "db"
+    },
+    {
+        "_id": 3,
+        "recipe_id": 1,
+        "name": "pirospaprika",
+        "quantity": 2,
+        "unit": "ek"
+    },
+    {
+        "_id": 4,
+        "recipe_id": 1,
+        "name": "burgonya",
+        "quantity": 3,
+        "unit": "db"
+    },
+    {
+        "_id": 5,
+        "recipe_id": 2,
+        "name": "paradicsompaprika",
+        "quantity": 4,
+        "unit": "db"
+    },
+    {
+        "_id": 6,
+        "recipe_id": 2,
+        "name": "paradicsom",
+        "quantity": 3,
+        "unit": "db"
+    },
+    {
+        "_id": 7,
+        "recipe_id": 2,
+        "name": "hagyma",
+        "quantity": 1,
+        "unit": "db"
+    },
+    {
+        "_id": 8,
+        "recipe_id": 2,
+        "name": "tojás",
+        "quantity": 3,
+        "unit": "db"
+    },
+    {
+        "_id": 9,
+        "recipe_id": 3,
+        "name": "csirkemell",
+        "quantity": 600,
+        "unit": "g"
+    },
+    {
+        "_id": 10,
+        "recipe_id": 3,
+        "name": "tojás",
+        "quantity": 2,
+        "unit": "db"
+    },
+    {
+        "_id": 11,
+        "recipe_id": 3,
+        "name": "zsemlemorzsa",
+        "quantity": 150,
+        "unit": "g"
+    },
+    {
+        "_id": 12,
+        "recipe_id": 3,
+        "name": "étolaj",
+        "quantity": 2,
+        "unit": "dl"
+    },
+    {
+        "_id": 13,
+        "recipe_id": 4,
+        "name": "széles metélt tészta",
+        "quantity": 250,
+        "unit": "g"
+    },
+    {
+        "_id": 14,
+        "recipe_id": 4,
+        "name": "túró",
+        "quantity": 250,
+        "unit": "g"
+    },
+    {
+        "_id": 15,
+        "recipe_id": 4,
+        "name": "tejföl",
+        "quantity": 200,
+        "unit": "g"
+    },
+    {
+        "_id": 16,
+        "recipe_id": 4,
+        "name": "füstölt szalonna",
+        "quantity": 100,
+        "unit": "g"
+    },
+    {
+        "_id": 17,
+        "recipe_id": 5,
+        "name": "piskóta",
+        "quantity": 200,
+        "unit": "g"
+    },
+    {
+        "_id": 18,
+        "recipe_id": 5,
+        "name": "étcsokoládé",
+        "quantity": 100,
+        "unit": "g"
+    },
+    {
+        "_id": 19,
+        "recipe_id": 5,
+        "name": "habtejszín",
+        "quantity": 200,
+        "unit": "ml"
+    },
+    {
+        "_id": 20,
+        "recipe_id": 5,
+        "name": "rum",
+        "quantity": 2,
+        "unit": "ek"
+    }
+]

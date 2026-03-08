@@ -1,0 +1,68 @@
+[
+    {
+        "_id": 1,
+        "recipe_id": 1,
+        "user_id": 3,
+        "content": "Pontosan így csinálja a nagymamám is, remek recept!",
+        "created_at": {
+            "$date": "2026-01-11T09:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 2,
+        "recipe_id": 1,
+        "user_id": 4,
+        "content": "Kicsit több paprikával még finomabb lesz szerintem.",
+        "created_at": {
+            "$date": "2026-01-11T10:30:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 3,
+        "recipe_id": 2,
+        "user_id": 5,
+        "content": "Gyorsan elkészül és nagyon ízletes, ajánlom mindenkinek!",
+        "created_at": {
+            "$date": "2026-01-13T12:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 4,
+        "recipe_id": 3,
+        "user_id": 2,
+        "content": "Bevált recept, a gyerekek imádják!",
+        "created_at": {
+            "$date": "2026-01-16T14:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 5,
+        "recipe_id": 4,
+        "user_id": 4,
+        "content": "Nálunk ez lett a hétköznapi kedvenc.",
+        "created_at": {
+            "$date": "2026-01-19T08:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    },
+    {
+        "_id": 6,
+        "recipe_id": 5,
+        "user_id": 3,
+        "content": "Bonyolult de megéri az energiát, isteni lett!",
+        "created_at": {
+            "$date": "2026-01-21T17:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
+    }
+]

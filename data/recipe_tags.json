@@ -1,0 +1,72 @@
+[
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439011"
+        },
+        "recipe_id": 1,
+        "tag_id": 1
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439012"
+        },
+        "recipe_id": 1,
+        "tag_id": 4
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439013"
+        },
+        "recipe_id": 2,
+        "tag_id": 1
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439014"
+        },
+        "recipe_id": 2,
+        "tag_id": 2
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439015"
+        },
+        "recipe_id": 3,
+        "tag_id": 1
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439016"
+        },
+        "recipe_id": 3,
+        "tag_id": 4
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439017"
+        },
+        "recipe_id": 4,
+        "tag_id": 2
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439018"
+        },
+        "recipe_id": 4,
+        "tag_id": 5
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd799439019"
+        },
+        "recipe_id": 5,
+        "tag_id": 1
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd79943901a"
+        },
+        "recipe_id": 5,
+        "tag_id": 4
+    }
+]

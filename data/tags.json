@@ -1,0 +1,37 @@
+[
+    {
+        "_id": 1,
+        "name": "magyar",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 2,
+        "name": "vegetáriánus",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 3,
+        "name": "gyors",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 4,
+        "name": "hagyományos",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    },
+    {
+        "_id": 5,
+        "name": "sültmentes",
+        "created_at": {
+            "$date": "2026-01-01T08:00:00Z"
+        }
+    }
+]
