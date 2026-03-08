@@ -32,8 +32,9 @@ model User {
   ratings          Rating[]
   favorites        Favorite[]
   recipe_books     RecipeBook[]
-  reported_reports Report[]     @relation("ReportedBy")
-  reviewed_reports Report[]     @relation("ReviewedBy")
+  reported_reports     Report[]              @relation("ReportedBy")
+  reviewed_reports     Report[]              @relation("ReviewedBy")
+  password_reset_tokens PasswordResetToken[]
 
   @@map("users")
 }
@@ -217,6 +218,19 @@ model Report {
   reviewer User? @relation("ReviewedBy", fields: [reviewed_by], references: [id])
 
   @@map("reports")
+}
+
+model PasswordResetToken {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  user_id    Int
+  token      String    @unique
+  expires_at DateTime
+  used_at    DateTime?
+  created_at DateTime  @default(now())
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("password_reset_tokens")
 }
 
 model DenylistedToken {
