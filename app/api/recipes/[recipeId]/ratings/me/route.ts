@@ -130,3 +130,57 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
 
   return NextResponse.json({ rating }, { status: 200 });
 }
+
+export async function DELETE(request: NextRequest, { params }: RouteContext) {
+  const auth = await authenticateRequest(request);
+
+  if ("error" in auth) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
+  const { recipeId } = await params;
+  const rId = parseRecipeId(recipeId);
+
+  if (rId === null) {
+    return NextResponse.json({ error: "Invalid recipe ID." }, { status: 400 });
+  }
+
+  const recipe = await prisma.recipe.findUnique({
+    where: { id: rId },
+    select: { is_deleted: true },
+  });
+
+  if (!recipe || recipe.is_deleted) {
+    return NextResponse.json({ error: "Recipe not found." }, { status: 404 });
+  }
+
+  const existing = await prisma.rating.findUnique({
+    where: { recipe_id_user_id: { recipe_id: rId, user_id: auth.sub } },
+    select: { id: true },
+  });
+
+  if (!existing) {
+    return NextResponse.json({ error: "You have not rated this recipe." }, { status: 404 });
+  }
+
+  await prisma.rating.delete({
+    where: { recipe_id_user_id: { recipe_id: rId, user_id: auth.sub } },
+  });
+
+  // Recalculate and persist denormalized stats on the recipe.
+  const agg = await prisma.rating.aggregate({
+    where: { recipe_id: rId },
+    _avg: { rating: true },
+    _count: { rating: true },
+  });
+
+  await prisma.recipe.update({
+    where: { id: rId },
+    data: {
+      average_rating: agg._avg.rating ?? 0,
+      rating_count: agg._count.rating,
+    },
+  });
+
+  return NextResponse.json({ message: "Rating deleted successfully." }, { status: 200 });
+}
