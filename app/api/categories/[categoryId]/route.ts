@@ -118,3 +118,30 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
 
   return NextResponse.json({ category }, { status: 200 });
 }
+
+export async function DELETE(request: NextRequest, { params }: RouteContext) {
+  const auth = await requireAdmin(request);
+
+  if ("error" in auth) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
+  const { categoryId } = await params;
+  const id = parseCategoryId(categoryId);
+
+  if (id === null) {
+    return NextResponse.json({ error: "Invalid category ID." }, { status: 400 });
+  }
+
+  const existing = await prisma.category.findUnique({ where: { id }, select: { id: true } });
+
+  if (!existing) {
+    return NextResponse.json({ error: "Category not found." }, { status: 404 });
+  }
+
+  // Remove all recipe↔category links first, then hard-delete the category.
+  await prisma.recipeCategory.deleteMany({ where: { category_id: id } });
+  await prisma.category.delete({ where: { id } });
+
+  return NextResponse.json({ message: "Category deleted successfully." }, { status: 200 });
+}
