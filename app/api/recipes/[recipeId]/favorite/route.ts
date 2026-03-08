@@ -65,3 +65,33 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
 
   return NextResponse.json({ favorite }, { status: 201 });
 }
+
+export async function DELETE(request: NextRequest, { params }: RouteContext) {
+  const auth = await authenticateRequest(request);
+
+  if ("error" in auth) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
+  const { recipeId } = await params;
+  const rId = parseRecipeId(recipeId);
+
+  if (rId === null) {
+    return NextResponse.json({ error: "Invalid recipe ID." }, { status: 400 });
+  }
+
+  const existing = await prisma.favorite.findUnique({
+    where: { user_id_recipe_id: { user_id: auth.sub, recipe_id: rId } },
+    select: { id: true },
+  });
+
+  if (!existing) {
+    return NextResponse.json({ error: "Recipe is not in your favorites." }, { status: 404 });
+  }
+
+  await prisma.favorite.delete({
+    where: { user_id_recipe_id: { user_id: auth.sub, recipe_id: rId } },
+  });
+
+  return NextResponse.json({ message: "Recipe removed from favorites." }, { status: 200 });
+}
