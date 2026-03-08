@@ -35,7 +35,10 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
   }
 
   if (recipeBook.owner_id !== auth.sub && auth.role !== "admin") {
-    return NextResponse.json({ error: "Not authorized to modify this recipe book." }, { status: 403 });
+    return NextResponse.json(
+      { error: "Not authorized to modify this recipe book." },
+      { status: 403 },
+    );
   }
 
   let payload: { recipeId?: unknown; recipeIds?: unknown };
