@@ -30,7 +30,10 @@ export async function POST(request: NextRequest) {
   const existing = await prisma.category.findUnique({ where: { name } });
 
   if (existing) {
-    return NextResponse.json({ error: "A category with that name already exists." }, { status: 409 });
+    return NextResponse.json(
+      { error: "A category with that name already exists." },
+      { status: 409 },
+    );
   }
 
   const last = await prisma.category.findFirst({ orderBy: { id: "desc" }, select: { id: true } });
