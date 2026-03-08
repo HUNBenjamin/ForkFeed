@@ -30,7 +30,10 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
     select: { id: true, created_at: true },
   });
 
-  return NextResponse.json({ favorited: favorite !== null, favorite: favorite ?? null }, { status: 200 });
+  return NextResponse.json(
+    { favorited: favorite !== null, favorite: favorite ?? null },
+    { status: 200 },
+  );
 }
 
 export async function POST(request: NextRequest, { params }: RouteContext) {
