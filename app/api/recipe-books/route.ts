@@ -4,6 +4,59 @@ import { authenticateRequest } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
+export async function POST(request: NextRequest) {
+  const auth = await authenticateRequest(request);
+
+  if ("error" in auth) {
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
+  let payload: { name?: string; description?: string | null; is_public?: boolean };
+
+  try {
+    payload = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
+  }
+
+  const name = payload.name?.trim();
+
+  if (!name) {
+    return NextResponse.json({ error: "name is required." }, { status: 400 });
+  }
+
+  if (payload.is_public !== undefined && typeof payload.is_public !== "boolean") {
+    return NextResponse.json({ error: "is_public must be a boolean." }, { status: 400 });
+  }
+
+  const description = payload.description?.trim() ?? null;
+  const is_public = payload.is_public ?? false;
+
+  const last = await prisma.recipeBook.findFirst({ orderBy: { id: "desc" }, select: { id: true } });
+  const id = (last?.id ?? 0) + 1;
+
+  const recipeBook = await prisma.recipeBook.create({
+    data: { id, name, description, is_public, owner_id: auth.sub },
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      is_public: true,
+      created_at: true,
+      updated_at: true,
+      owner: {
+        select: {
+          id: true,
+          username: true,
+          profile_image_url: true,
+        },
+      },
+    },
+  });
+
+  return NextResponse.json({ recipe_book: recipeBook }, { status: 201 });
+}
+
 export async function GET(request: NextRequest) {
   const auth = await authenticateRequest(request);
 
