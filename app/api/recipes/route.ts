@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { authenticateRequest } from "@/lib/auth";
+import { authenticateRequest, optionalAuth } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
@@ -126,9 +126,12 @@ export async function POST(request: NextRequest) {
     select: {
       id: true,
       title: true,
+      image_url: true,
       description: true,
       preparation_time: true,
       difficulty: true,
+      average_rating: true,
+      rating_count: true,
       created_at: true,
       author: {
         select: { id: true, username: true },
@@ -164,6 +167,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  const auth = await optionalAuth(request);
   const { searchParams } = new URL(request.url);
 
   const page = Math.max(1, Number(searchParams.get("page")) || 1);
@@ -206,7 +210,7 @@ export async function GET(request: NextRequest) {
       select: {
         id: true,
         title: true,
-        description: true,
+        image_url: true,
         preparation_time: true,
         difficulty: true,
         average_rating: true,
@@ -216,17 +220,50 @@ export async function GET(request: NextRequest) {
           select: {
             id: true,
             username: true,
-            profile_image_url: true,
           },
+        },
+        recipe_categories: {
+          select: { category: { select: { id: true, name: true } } },
+        },
+        recipe_tags: {
+          select: { tag: { select: { id: true, name: true } } },
         },
       },
     }),
     prisma.recipe.count({ where }),
   ]);
 
+  const recipeIds = recipes.map((r) => r.id);
+  let favSet = new Set<number>();
+  let ratingMap = new Map<number, number>();
+
+  if (auth) {
+    const [favs, myRatings] = await Promise.all([
+      prisma.favorite.findMany({
+        where: { user_id: auth.sub, recipe_id: { in: recipeIds } },
+        select: { recipe_id: true },
+      }),
+      prisma.rating.findMany({
+        where: { user_id: auth.sub, recipe_id: { in: recipeIds } },
+        select: { recipe_id: true, rating: true },
+      }),
+    ]);
+    favSet = new Set(favs.map((f) => f.recipe_id));
+    ratingMap = new Map(myRatings.map((r) => [r.recipe_id, r.rating]));
+  }
+
+  const mapped = recipes.map(({ recipe_categories, recipe_tags, ...r }) => ({
+    ...r,
+    categories: recipe_categories.map((rc) => rc.category),
+    tags: recipe_tags.map((rt) => rt.tag),
+    ...(auth !== null
+      ? { is_favorite: favSet.has(r.id), my_rating: ratingMap.get(r.id) ?? null }
+      : {}),
+  }));
+
   return NextResponse.json(
     {
-      recipes,
+      recipes: mapped,
       pagination: {
         page,
         limit,

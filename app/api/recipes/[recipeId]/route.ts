@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { authenticateRequest } from "@/lib/auth";
+import { authenticateRequest, optionalAuth } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
@@ -25,7 +25,7 @@ function parseRecipeId(raw: string): number | null {
   return Number.isNaN(id) ? null : id;
 }
 
-export async function GET(_request: NextRequest, { params }: RouteContext) {
+export async function GET(request: NextRequest, { params }: RouteContext) {
   const { recipeId } = await params;
   const id = parseRecipeId(recipeId);
 
@@ -38,6 +38,7 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
     select: {
       id: true,
       title: true,
+      image_url: true,
       description: true,
       preparation_time: true,
       difficulty: true,
@@ -93,12 +94,34 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { is_deleted, recipe_categories, recipe_tags, ...rest } = recipe;
 
+  let is_favorite = false;
+  let my_rating: number | null = null;
+
+  const auth = await optionalAuth(request);
+
+  if (auth) {
+    const [fav, myRating] = await Promise.all([
+      prisma.favorite.findUnique({
+        where: { user_id_recipe_id: { user_id: auth.sub, recipe_id: id } },
+        select: { id: true },
+      }),
+      prisma.rating.findUnique({
+        where: { recipe_id_user_id: { recipe_id: id, user_id: auth.sub } },
+        select: { rating: true },
+      }),
+    ]);
+    is_favorite = fav !== null;
+    my_rating = myRating?.rating ?? null;
+  }
+
   return NextResponse.json(
     {
       recipe: {
         ...rest,
         categories: recipe_categories.map((rc) => rc.category),
         tags: recipe_tags.map((rt) => rt.tag),
+        is_favorite,
+        my_rating,
       },
     },
     { status: 200 },
@@ -228,6 +251,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     select: {
       id: true,
       title: true,
+      image_url: true,
       description: true,
       preparation_time: true,
       difficulty: true,

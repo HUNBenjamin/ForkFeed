@@ -88,3 +88,12 @@ export async function requireAdmin(
 
   return result;
 }
+
+export async function optionalAuth(request: Request): Promise<JwtPayload | null> {
+  const token = extractBearerToken(request.headers.get("authorization"));
+  if (!token) return null;
+  const payload = verifyToken(token);
+  if (!payload) return null;
+  if (await isTokenDenylisted(payload.jti)) return null;
+  return payload;
+}
