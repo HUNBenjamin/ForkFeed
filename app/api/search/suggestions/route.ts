@@ -10,10 +10,7 @@ export async function GET(request: NextRequest) {
   const q = searchParams.get("q")?.trim() ?? "";
 
   if (q.length < 1) {
-    return NextResponse.json(
-      { recipes: [], categories: [], tags: [] },
-      { status: 200 },
-    );
+    return NextResponse.json({ recipes: [], categories: [], tags: [] }, { status: 200 });
   }
 
   const filter = { contains: q, mode: "insensitive" as const };
