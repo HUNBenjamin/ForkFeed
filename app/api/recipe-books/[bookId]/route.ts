@@ -92,7 +92,10 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
   }
 
   if (existing.owner_id !== auth.sub && auth.role !== "admin") {
-    return NextResponse.json({ error: "Not authorized to edit this recipe book." }, { status: 403 });
+    return NextResponse.json(
+      { error: "Not authorized to edit this recipe book." },
+      { status: 403 },
+    );
   }
 
   let payload: { name?: string; description?: string | null; is_public?: boolean };
@@ -175,7 +178,10 @@ export async function DELETE(request: NextRequest, { params }: RouteContext) {
   }
 
   if (existing.owner_id !== auth.sub && auth.role !== "admin") {
-    return NextResponse.json({ error: "Not authorized to delete this recipe book." }, { status: 403 });
+    return NextResponse.json(
+      { error: "Not authorized to delete this recipe book." },
+      { status: 403 },
+    );
   }
 
   // Remove all recipe entries first, then delete the book.
