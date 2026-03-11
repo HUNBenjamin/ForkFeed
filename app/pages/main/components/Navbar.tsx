@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
 
 type User = {
   id: number;
@@ -45,6 +48,7 @@ export default function Navbar() {
       </div>
 
       <div className="flex-none flex items-center gap-3">
+        <ThemeToggle />
         {user ? (
           <>
             <span className="text-sm">
