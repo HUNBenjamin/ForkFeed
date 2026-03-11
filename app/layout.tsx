@@ -1,4 +1,5 @@
 import React from 'react'
+import './globals.css'
 
 export const metadata = {
   title: 'ForkFeed',
@@ -7,8 +8,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hu">
-      <body style={{ margin: 0, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+    <html lang="hu" data-theme="light">
+      <body>
         {children}
       </body>
     </html>
