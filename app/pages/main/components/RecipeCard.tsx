@@ -36,7 +36,6 @@ const difficultyStrip: Record<string, string> = {
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
     <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-      {/* Color strip based on difficulty */}
       <div className={`h-1.5 w-full ${difficultyStrip[recipe.difficulty] ?? "bg-base-300"}`} />
 
       <div className="card-body p-4 flex flex-col gap-2">

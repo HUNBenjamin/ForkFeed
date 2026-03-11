@@ -67,7 +67,6 @@ export default function RecipeList() {
 
   return (
     <div>
-      {/* Filters */}
       <form onSubmit={handleSearch} className="flex flex-wrap gap-3 mb-6 items-center">
         <input
           type="text"
@@ -108,7 +107,6 @@ export default function RecipeList() {
         </select>
       </form>
 
-      {/* Content */}
       {loading && (
         <div className="flex justify-center py-16">
           <span className="loading loading-spinner loading-lg" />
@@ -133,7 +131,6 @@ export default function RecipeList() {
             ))}
           </div>
 
-          {/* Pagination */}
           {pagination && pagination.total_pages > 1 && (
             <div className="flex justify-center items-center gap-4 mt-8">
               <button
