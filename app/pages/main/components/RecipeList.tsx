@@ -1,104 +1,92 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import RecipeCard from './RecipeCard'
+"use client";
+import React, { useEffect, useState } from "react";
+import RecipeCard from "./RecipeCard";
 
 type Recipe = {
-  id: number
-  title: string
-  description: string | null
-  preparation_time: number
-  difficulty: string
-  average_rating: number
-  rating_count: number
+  id: number;
+  title: string;
+  description: string | null;
+  preparation_time: number;
+  difficulty: string;
+  average_rating: number;
+  rating_count: number;
   author: {
-    id: number
-    username: string
-    profile_image_url: string | null
-  }
-}
+    id: number;
+    username: string;
+    profile_image_url: string | null;
+  };
+};
 
 type Pagination = {
-  page: number
-  limit: number
-  total: number
-  total_pages: number
-}
+  page: number;
+  limit: number;
+  total: number;
+  total_pages: number;
+};
 
 export default function RecipeList() {
-  const [recipes, setRecipes] = useState<Recipe[]>([])
-  const [pagination, setPagination] = useState<Pagination | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [page, setPage] = useState(1)
-  const [query, setQuery] = useState('')
-  const [difficulty, setDifficulty] = useState('')
-  const [sort, setSort] = useState('created_at')
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [pagination, setPagination] = useState<Pagination | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [sort, setSort] = useState("created_at");
 
   useEffect(() => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
 
     const params = new URLSearchParams({
       page: String(page),
-      limit: '12',
+      limit: "12",
       sort,
-      order: 'desc',
-    })
-    if (query) params.set('query', query)
-    if (difficulty) params.set('difficulty', difficulty)
+      order: "desc",
+    });
+    if (query) params.set("query", query);
+    if (difficulty) params.set("difficulty", difficulty);
 
     fetch(`/api/recipes?${params}`)
       .then((res) => {
-        if (!res.ok) throw new Error('Nem sikerült betölteni a recepteket')
-        return res.json()
+        if (!res.ok) throw new Error("Nem sikerült betölteni a recepteket");
+        return res.json();
       })
       .then((data) => {
-        setRecipes(data.recipes)
-        setPagination(data.pagination)
+        setRecipes(data.recipes);
+        setPagination(data.pagination);
       })
       .catch((err) => setError(err.message))
-      .finally(() => setLoading(false))
-  }, [page, query, difficulty, sort])
+      .finally(() => setLoading(false));
+  }, [page, query, difficulty, sort]);
 
   function handleSearch(e: React.FormEvent) {
-    e.preventDefault()
-    setPage(1)
+    e.preventDefault();
+    setPage(1);
   }
 
   return (
     <div>
       {/* Filters */}
-      <form onSubmit={handleSearch} style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 10,
-        marginBottom: 24,
-        alignItems: 'center',
-      }}>
+      <form onSubmit={handleSearch} className="flex flex-wrap gap-3 mb-6 items-center">
         <input
           type="text"
           placeholder="Keresés receptek között..."
           value={query}
-          onChange={(e) => { setQuery(e.target.value); setPage(1) }}
-          style={{
-            flex: 1,
-            minWidth: 200,
-            padding: '8px 12px',
-            borderRadius: 6,
-            border: '1px solid #ddd',
-            fontSize: 14,
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setPage(1);
           }}
+          className="input input-bordered flex-1 min-w-48"
         />
 
         <select
           value={difficulty}
-          onChange={(e) => { setDifficulty(e.target.value); setPage(1) }}
-          style={{
-            padding: '8px 12px',
-            borderRadius: 6,
-            border: '1px solid #ddd',
-            fontSize: 14,
+          onChange={(e) => {
+            setDifficulty(e.target.value);
+            setPage(1);
           }}
+          className="select select-bordered"
         >
           <option value="">Minden nehézség</option>
           <option value="easy">Könnyű</option>
@@ -108,13 +96,11 @@ export default function RecipeList() {
 
         <select
           value={sort}
-          onChange={(e) => { setSort(e.target.value); setPage(1) }}
-          style={{
-            padding: '8px 12px',
-            borderRadius: 6,
-            border: '1px solid #ddd',
-            fontSize: 14,
+          onChange={(e) => {
+            setSort(e.target.value);
+            setPage(1);
           }}
+          className="select select-bordered"
         >
           <option value="created_at">Legújabb</option>
           <option value="average_rating">Legjobb értékelés</option>
@@ -123,21 +109,25 @@ export default function RecipeList() {
       </form>
 
       {/* Content */}
-      {loading && <p style={{ textAlign: 'center', color: '#888' }}>Betöltés...</p>}
+      {loading && (
+        <div className="flex justify-center py-16">
+          <span className="loading loading-spinner loading-lg" />
+        </div>
+      )}
 
-      {error && <p style={{ textAlign: 'center', color: 'crimson' }}>{error}</p>}
+      {error && (
+        <div className="alert alert-error max-w-md mx-auto">
+          <span>{error}</span>
+        </div>
+      )}
 
       {!loading && !error && recipes.length === 0 && (
-        <p style={{ textAlign: 'center', color: '#888' }}>Nem található recept.</p>
+        <p className="text-center text-base-content/50">Nem található recept.</p>
       )}
 
       {!loading && !error && recipes.length > 0 && (
         <>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: 20,
-          }}>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
             {recipes.map((recipe) => (
               <RecipeCard key={recipe.id} recipe={recipe} />
             ))}
@@ -145,41 +135,21 @@ export default function RecipeList() {
 
           {/* Pagination */}
           {pagination && pagination.total_pages > 1 && (
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 12,
-              marginTop: 32,
-            }}>
+            <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => p - 1)}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: 6,
-                  border: '1px solid #ddd',
-                  background: page <= 1 ? '#f5f5f5' : '#fff',
-                  cursor: page <= 1 ? 'default' : 'pointer',
-                  fontSize: 14,
-                }}
+                className="btn btn-sm btn-outline"
               >
                 ← Előző
               </button>
-              <span style={{ fontSize: 14, color: '#666' }}>
+              <span className="text-sm text-base-content/60">
                 {page} / {pagination.total_pages}
               </span>
               <button
                 disabled={page >= pagination.total_pages}
                 onClick={() => setPage((p) => p + 1)}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: 6,
-                  border: '1px solid #ddd',
-                  background: page >= pagination.total_pages ? '#f5f5f5' : '#fff',
-                  cursor: page >= pagination.total_pages ? 'default' : 'pointer',
-                  fontSize: 14,
-                }}
+                className="btn btn-sm btn-outline"
               >
                 Következő →
               </button>
@@ -188,5 +158,5 @@ export default function RecipeList() {
         </>
       )}
     </div>
-  )
+  );
 }
