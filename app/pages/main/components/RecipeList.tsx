@@ -31,6 +31,7 @@ export default function RecipeList() {
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+  const [searchMode, setSearchMode] = useState<"recipe" | "username">("recipe");
   const [difficulty, setDifficulty] = useState("");
   const [sort, setSort] = useState("created_at");
 
@@ -44,7 +45,7 @@ export default function RecipeList() {
       sort,
       order: "desc",
     });
-    if (query) params.set("query", query);
+    if (query && searchMode === "recipe") params.set("query", query);
     if (difficulty) params.set("difficulty", difficulty);
 
     fetch(`/api/recipes?${params}`)
@@ -58,26 +59,49 @@ export default function RecipeList() {
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [page, query, difficulty, sort]);
+  }, [page, query, searchMode, difficulty, sort]);
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setPage(1);
   }
 
+  const visibleRecipes =
+    searchMode === "username" && query
+      ? recipes.filter((r) => r.author.username.toLowerCase().includes(query.toLowerCase()))
+      : recipes;
+
   return (
     <div>
       <form onSubmit={handleSearch} className="flex flex-wrap gap-3 mb-6 items-center">
-        <input
-          type="text"
-          placeholder="Keresés receptek között..."
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setPage(1);
-          }}
-          className="input input-bordered flex-1 min-w-48"
-        />
+        <div className="join flex-1 min-w-64">
+          <select
+            value={searchMode}
+            onChange={(e) => {
+              setSearchMode(e.target.value as "recipe" | "username");
+              setQuery("");
+              setPage(1);
+            }}
+            className="select select-bordered join-item w-40"
+          >
+            <option value="recipe">Recept neve</option>
+            <option value="username">Felhasználónév</option>
+          </select>
+          <input
+            type="text"
+            placeholder={
+              searchMode === "username"
+                ? "Felhasználónév keresése..."
+                : "Keresés receptek között..."
+            }
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPage(1);
+            }}
+            className="input input-bordered join-item flex-1"
+          />
+        </div>
 
         <select
           value={difficulty}
@@ -125,11 +149,15 @@ export default function RecipeList() {
 
       {!loading && !error && recipes.length > 0 && (
         <>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
-            {recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
-            ))}
-          </div>
+          {visibleRecipes.length === 0 ? (
+            <p className="text-center text-base-content/50">Nem található recept.</p>
+          ) : (
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
+              {visibleRecipes.map((recipe) => (
+                <RecipeCard key={recipe.id} recipe={recipe} />
+              ))}
+            </div>
+          )}
 
           {pagination && pagination.total_pages > 1 && (
             <div className="flex justify-center items-center gap-4 mt-8">
