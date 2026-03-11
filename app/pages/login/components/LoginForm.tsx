@@ -39,6 +39,9 @@ export default function LoginForm() {
 
   return (
     <>
+      <Link href="/pages/main" className="btn btn-ghost btn-sm mb-4 -ml-2 text-base-content/60">
+        ← Vissza a főoldalra
+      </Link>
       <h2 className="card-title text-2xl mb-1">Bejelentkezés</h2>
       <p className="text-base-content/60 mb-4">Lépj be a fiókodba</p>
       <form onSubmit={onSubmit}>
