@@ -51,6 +51,9 @@ export default function Navbar() {
         <ThemeToggle />
         {user ? (
           <>
+            <Link href="/pages/profile" className="btn btn-sm btn-ghost">
+              Profilom
+            </Link>
             <span className="text-sm">
               Szia, <strong>{user.username}</strong>!
             </span>
