@@ -8,7 +8,8 @@ export const runtime = "nodejs";
 type RouteContext = { params: Promise<{ recipeId: string }> };
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
-const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const ALLOWED_TYPES_LABEL = "image/jpeg, image/png, image/webp";
 
 function parseRecipeId(raw: string): number | null {
   const id = Number(raw);
@@ -61,13 +62,17 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
 
     if (!ALLOWED_TYPES.includes(file.type)) {
       return NextResponse.json(
-        { error: `Invalid file type. Allowed: ${ALLOWED_TYPES.join(", ")}` },
-        { status: 400 },
+        { error: `Invalid file type: "${file.type}". Allowed: ${ALLOWED_TYPES_LABEL}` },
+        { status: 415 },
       );
     }
 
+    const fileSizeMB = (file.size / 1024 / 1024).toFixed(1);
     if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json({ error: "File size exceeds the 5 MB limit." }, { status: 400 });
+      return NextResponse.json(
+        { error: `File too large: ${fileSizeMB} MB. Maximum allowed size is 5 MB.` },
+        { status: 413 },
+      );
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
@@ -89,7 +94,8 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
       image_url = result.url;
     } catch (err) {
       console.error("[recipe/image] Cloudinary error:", err);
-      return NextResponse.json({ error: "Image upload failed." }, { status: 500 });
+      const message = err instanceof Error ? err.message : "Unknown error";
+      return NextResponse.json({ error: "Image upload failed.", detail: message }, { status: 500 });
     }
 
     const updated = await prisma.recipe.update({
