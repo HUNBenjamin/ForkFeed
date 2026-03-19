@@ -61,11 +61,7 @@ export default function ImageUpload({ type, currentUrl, onUpload, label }: Props
           <div
             className={`shrink-0 overflow-hidden bg-base-300 ${isAvatar ? "rounded-full w-16 h-16" : "rounded-lg w-24 h-16"}`}
           >
-            <img
-              src={preview}
-              alt="Preview"
-              className="w-full h-full object-cover"
-            />
+            <img src={preview} alt="Preview" className="w-full h-full object-cover" />
           </div>
         ) : (
           <div
@@ -77,9 +73,7 @@ export default function ImageUpload({ type, currentUrl, onUpload, label }: Props
 
         {/* Input + state */}
         <div className="flex flex-col gap-1 flex-1">
-          <label
-            className={`btn btn-outline btn-sm w-full ${isUploading ? "btn-disabled" : ""}`}
-          >
+          <label className={`btn btn-outline btn-sm w-full ${isUploading ? "btn-disabled" : ""}`}>
             {isUploading ? (
               <>
                 <span className="loading loading-spinner loading-xs" />
