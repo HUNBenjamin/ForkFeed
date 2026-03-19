@@ -68,5 +68,12 @@
         },
         "recipe_id": 5,
         "tag_id": 4
+    },
+    {
+        "_id": {
+            "$oid": "607f1f77bcf86cd79943901b"
+        },
+        "recipe_id": 6,
+        "tag_id": 4
     }
 ]

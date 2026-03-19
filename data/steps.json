@@ -88,5 +88,95 @@
         "recipe_id": 5,
         "step_number": 3,
         "description": "Rétegezd a piskótát és a csokiszószt, a tetejére verd fel a maradék tejszínt, és hűtsd tálalás előtt."
+    },
+    {
+        "_id": 16,
+        "recipe_id": 6,
+        "step_number": 1,
+        "description": "Kezdjük a bolognai ragu elkészítésével. A vöröshagymát, fokhagymát, sárgarépát és szárzellert apróra vágjuk. Egy nagy, vastag aljú lábasban felhevítjük az olívaolajat közepes lángon, majd rádobjuk az apróra vágott zöldségeket. Körülbelül 8-10 percig dinszteljük, amíg a hagyma üveges és a répa megpuhul. Fontos, hogy ne kapjon színt a zöldség, csak szépen megfonnyasszuk."
+    },
+    {
+        "_id": 17,
+        "recipe_id": 6,
+        "step_number": 2,
+        "description": "A dinsztelt zöldségekhez adjuk a darált marhahúst és sertéshúst. Erős lángon, folyamatosan keverve pirítjuk a húst, amíg mindenhol megváltozik a színe és morzsalékossá válik. Ez nagyon fontos lépés, mert ha a hús nem kap elég hőt, akkor párolódik pirulás helyett, és nem lesz megfelelő az íze. Ez a lépés kb. 8-10 percet vesz igénybe."
+    },
+    {
+        "_id": 18,
+        "recipe_id": 6,
+        "step_number": 3,
+        "description": "Miután a hús megpirult, öntsük hozzá a vörösbort, és hagyjuk, hogy teljesen elfőjön. A bor hozzáadásakor kaparjuk le a lábas aljáról a ráragadt pirított darabkákat, mert ezek rengeteg ízt adnak a ragunak. A bor elfőzése kb. 3-5 percig tart közepes lángon."
+    },
+    {
+        "_id": 19,
+        "recipe_id": 6,
+        "step_number": 4,
+        "description": "Adjuk hozzá az aprított paradicsomkonzervet, a paradicsomsűrítményt, a babérleveleket és az oregánót. Keverjük össze az egészet alaposan, majd ízesítsük sóval és borssal. Ha van a közelben, egy kis cukor (fél teáskanálnyi) is csodákat tesz, mert kiegyensúlyozza a paradicsom savasságát."
+    },
+    {
+        "_id": 20,
+        "recipe_id": 6,
+        "step_number": 5,
+        "description": "Fedjük le a lábast, és lassú tűzön főzzük a ragut legalább 45-60 percig, időnként megkeverve. Minél tovább fő, annál mélyebb és gazdagabb lesz az íze. Ha szükséges, adjunk hozzá egy kevés vizet, ha túlságosan besűrűsödne. A főzés végén vegyük ki a babérleveleket."
+    },
+    {
+        "_id": 21,
+        "recipe_id": 6,
+        "step_number": 6,
+        "description": "Miközben a ragu fő, készítsük el a besamel mártást. Egy közepes méretű lábasban olvasztjuk meg a vajat alacsony-közepes lángon. A vajnak teljesen meg kell olvadnia, de nem szabad színt fognia, nem szabad megbarnulnia. Ez egy alap roux készítésének a kezdete."
+    },
+    {
+        "_id": 22,
+        "recipe_id": 6,
+        "step_number": 7,
+        "description": "Az olvadt vajhoz szórjuk hozzá a finomlisztet egy mozdulattal, és fakanállal vagy habverővel azonnal elkezdjük keverni. A roux-t 2-3 percig pirítjuk folyamatos keverés mellett, amíg enyhén aranysárgás színűvé válik és egy kicsit diós illata lesz. Fontos, hogy nem szabad abbahagyni a keverést, mert a liszt odaéghet."
+    },
+    {
+        "_id": 23,
+        "recipe_id": 6,
+        "step_number": 8,
+        "description": "A tejet fokozatosan, kis adagokban adjuk a roux-hoz, folyamatosan keverve habverővel, hogy ne legyen csomós. Eleinte nagyon sűrű lesz, de ahogy egyre több tejet adunk hozzá, fokozatosan hígul és selymessé válik. Kb. 3-4 adagban adjuk hozzá az összes tejet, minden adag után alaposan elkeverve. Türelem kell, de megéri!"
+    },
+    {
+        "_id": 24,
+        "recipe_id": 6,
+        "step_number": 9,
+        "description": "Miután az összes tejet hozzáadtuk, közepes lángon tovább főzzük a besamelt, amíg besűrűsödik és szépen bevonja a kanál hátát. Ez kb. 5-7 perc. Ezután vegyük le a tűzről, ízesítsük sóval, borssal és őrölt szerecsendióval. Keverjünk bele a reszelt parmezánból kb. 50 grammot. A besamel kész!"
+    },
+    {
+        "_id": 25,
+        "recipe_id": 6,
+        "step_number": 10,
+        "description": "Melegítsük elő a sütőt 180°C-ra (légkeveréses sütőben 160°C-ra). Készítsünk elő egy nagyobb tepsit vagy tűzálló tálat (kb. 25x35 cm-es). A tepsi alját kenjük be egy vékony réteg olívaolajjal vagy vajjal, hogy ne ragadjon oda a tészta."
+    },
+    {
+        "_id": 26,
+        "recipe_id": 6,
+        "step_number": 11,
+        "description": "Kezdjük el a rétegezést: a tepsi aljára kanalazzunk egy vékony réteg besamel mártást, hogy a tésztalapok ne ragadjanak oda. Erre helyezzük az első réteg lasagne tésztalapot. A lapokat szorosan egymás mellé tesszük, és ha szükséges, töréssel igazítjuk a formához. Ne fedjék egymást a lapok."
+    },
+    {
+        "_id": 27,
+        "recipe_id": 6,
+        "step_number": 12,
+        "description": "A tésztalapokra kanalazzunk egy bőséges réteg bolognai ragut, egyenletesen elosztva. Erre jöjjön egy réteg besamel mártás, amit szintén egyenletesen szétkenünk. Szórjunk rá reszelt parmezánt és tépdessünk rá mozzarellát. Ezt a rétegsort ismételjük meg még háromszor – tehát összesen 4 réteg tészta, 4 réteg ragu és 4 réteg besamel legyen."
+    },
+    {
+        "_id": 28,
+        "recipe_id": 6,
+        "step_number": 13,
+        "description": "A legfelső réteg a következő legyen: az utolsó tésztalapra bőségesen kanalazzunk besamel mártást (a tetejét a besamel védi a kiszáradástól), szórjuk meg a maradék reszelt parmezánnal és a maradék mozzarellával. A sajt tetejére cseppentsünk néhány csepp olívaolajat, ez segíti az egyenletes barnulást."
+    },
+    {
+        "_id": 29,
+        "recipe_id": 6,
+        "step_number": 14,
+        "description": "Fedjük le a tepsit alufóliával és tegyük az előmelegített sütőbe. Süssük lefedve 25 percig. Ezután vegyük le a fóliát és süssük tovább még 20-25 percig, amíg a teteje szép aranybarnára pirul és a szélein bugyogni kezd a szósz. Ha a teteje nem barnul eléggé, az utolsó 5 percben kapcsoljunk grillre."
+    },
+    {
+        "_id": 30,
+        "recipe_id": 6,
+        "step_number": 15,
+        "description": "Vegyük ki a sütőből és hagyjuk pihenni legalább 15-20 percig vágás előtt! Ez nagyon fontos, mert frissen a sütőből szétfolyik a lasagne. A pihentetés alatt a rétegek összeállnak, és szépen szeletelhető lesz. Tálaljuk friss bazsalikomlevéllel és egy kis extra reszelt parmezánnal. Jó étvágyat!"
     }
 ]

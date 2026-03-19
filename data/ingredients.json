@@ -138,5 +138,145 @@
         "name": "rum",
         "quantity": 2,
         "unit": "ek"
+    },
+    {
+        "_id": 21,
+        "recipe_id": 6,
+        "name": "lasagne tésztalap (szárított)",
+        "quantity": 500,
+        "unit": "g"
+    },
+    {
+        "_id": 22,
+        "recipe_id": 6,
+        "name": "darált marhahús",
+        "quantity": 500,
+        "unit": "g"
+    },
+    {
+        "_id": 23,
+        "recipe_id": 6,
+        "name": "darált sertéshús",
+        "quantity": 300,
+        "unit": "g"
+    },
+    {
+        "_id": 24,
+        "recipe_id": 6,
+        "name": "vöröshagyma",
+        "quantity": 2,
+        "unit": "db"
+    },
+    {
+        "_id": 25,
+        "recipe_id": 6,
+        "name": "fokhagyma gerezd",
+        "quantity": 4,
+        "unit": "db"
+    },
+    {
+        "_id": 26,
+        "recipe_id": 6,
+        "name": "sárgarépa",
+        "quantity": 2,
+        "unit": "db"
+    },
+    {
+        "_id": 27,
+        "recipe_id": 6,
+        "name": "szárzeller",
+        "quantity": 2,
+        "unit": "szál"
+    },
+    {
+        "_id": 28,
+        "recipe_id": 6,
+        "name": "paradicsomkonzerv (aprított)",
+        "quantity": 800,
+        "unit": "g"
+    },
+    {
+        "_id": 29,
+        "recipe_id": 6,
+        "name": "paradicsomsűrítmény",
+        "quantity": 3,
+        "unit": "ek"
+    },
+    {
+        "_id": 30,
+        "recipe_id": 6,
+        "name": "vörösbor",
+        "quantity": 200,
+        "unit": "ml"
+    },
+    {
+        "_id": 31,
+        "recipe_id": 6,
+        "name": "olívaolaj",
+        "quantity": 4,
+        "unit": "ek"
+    },
+    {
+        "_id": 32,
+        "recipe_id": 6,
+        "name": "vaj",
+        "quantity": 80,
+        "unit": "g"
+    },
+    {
+        "_id": 33,
+        "recipe_id": 6,
+        "name": "finomliszt",
+        "quantity": 80,
+        "unit": "g"
+    },
+    {
+        "_id": 34,
+        "recipe_id": 6,
+        "name": "tej",
+        "quantity": 1000,
+        "unit": "ml"
+    },
+    {
+        "_id": 35,
+        "recipe_id": 6,
+        "name": "szerecsendió (őrölt)",
+        "quantity": 0.5,
+        "unit": "tk"
+    },
+    {
+        "_id": 36,
+        "recipe_id": 6,
+        "name": "parmezán (reszelt)",
+        "quantity": 200,
+        "unit": "g"
+    },
+    {
+        "_id": 37,
+        "recipe_id": 6,
+        "name": "mozzarella",
+        "quantity": 250,
+        "unit": "g"
+    },
+    {
+        "_id": 38,
+        "recipe_id": 6,
+        "name": "babérlevél",
+        "quantity": 2,
+        "unit": "db"
+    },
+    {
+        "_id": 39,
+        "recipe_id": 6,
+        "name": "oregánó (szárított)",
+        "quantity": 1,
+        "unit": "tk"
+    },
+    {
+        "_id": 40,
+        "recipe_id": 6,
+        "name": "só és bors",
+        "quantity": null,
+        "unit": null
     }
 ]

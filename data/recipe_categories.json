@@ -40,5 +40,12 @@
         },
         "recipe_id": 5,
         "category_id": 3
+    },
+    {
+        "_id": {
+            "$oid": "507f1f77bcf86cd799439017"
+        },
+        "recipe_id": 6,
+        "category_id": 2
     }
 ]

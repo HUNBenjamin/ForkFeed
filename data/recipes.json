@@ -78,5 +78,21 @@
         },
         "updated_at": null,
         "is_deleted": false
+    },
+    {
+        "_id": 6,
+        "title": "Házi lasagne bolognai raguval",
+        "description": "Többrétegű, gazdagon töltött házi lasagne, amely a klasszikus olasz bolognai ragut párosítja krémes besamel mártással és házi készítésű tésztalapokkal. Ez a recept időigényes, de az eredmény egy igazi kulináris remekmű, ami garantáltan lenyűgözi a vendégeket. A lassú főzésnek köszönhetően a ragu mélyen aromás, a rétegek selymesen egybeolvadnak, és a tetején aranybarnára sült sajtkéreg koronázza meg az egészet. Tökéletes vasárnapi ebédnek vagy ünnepi alkalomra.",
+        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+        "preparation_time": 180,
+        "difficulty": "hard",
+        "average_rating": 0,
+        "rating_count": 0,
+        "author_id": 2,
+        "created_at": {
+            "$date": "2026-03-19T10:00:00Z"
+        },
+        "updated_at": null,
+        "is_deleted": false
     }
 ]
