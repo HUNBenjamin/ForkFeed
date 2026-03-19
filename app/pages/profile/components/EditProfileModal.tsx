@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 type User = {
   id: number;
@@ -25,7 +25,7 @@ export default function EditProfileModal({ user, onClose, onSave }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError(null);

@@ -1,5 +1,5 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 
-export default function RegisterLayout({ children }: { children: React.ReactNode }) {
+export default function RegisterLayout({ children }: { children: ReactNode }) {
   return <>{children}</>
 }

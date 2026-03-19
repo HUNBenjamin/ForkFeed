@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import Input from './Input'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -35,7 +35,7 @@ export default function LoginForm() {
     return Object.keys(errors).length === 0
   }
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
     if (!validate()) return
