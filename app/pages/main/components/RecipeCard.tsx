@@ -4,6 +4,7 @@ type Recipe = {
   id: number;
   title: string;
   description: string | null;
+  image_url: string | null;
   preparation_time: number;
   difficulty: string;
   average_rating: number;
@@ -37,6 +38,20 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
     <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden">
       <div className={`h-1.5 w-full ${difficultyStrip[recipe.difficulty] ?? "bg-base-300"}`} />
+
+      {recipe.image_url ? (
+        <figure className="h-40 overflow-hidden">
+          <img
+            src={recipe.image_url}
+            alt={recipe.title}
+            className="w-full h-full object-cover"
+          />
+        </figure>
+      ) : (
+        <div className="h-40 bg-base-300 flex items-center justify-center text-4xl text-base-content/20">
+          🍽️
+        </div>
+      )}
 
       <div className="card-body p-4 flex flex-col gap-2">
         <h3 className="card-title text-base">{recipe.title}</h3>
