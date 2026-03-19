@@ -12,7 +12,6 @@ import StepList from "./components/StepList";
 import StarRating from "./components/StarRating";
 import ShareButton from "./components/ShareButton";
 import PrintButton from "./components/PrintButton";
-import SectionNav from "./components/SectionNav";
 import ScrollToTop from "./components/ScrollToTop";
 
 type Recipe = {
@@ -139,7 +138,7 @@ export default function RecipePage() {
     return (
       <div className="min-h-screen bg-base-200">
         <Navbar />
-        <div className="max-w-2xl mx-auto px-5 py-16 text-center">
+        <div className="max-w-4xl mx-auto px-5 py-16 text-center">
           <div className="alert alert-error">
             <span>{error ?? "Ismeretlen hiba történt."}</span>
           </div>
@@ -155,7 +154,7 @@ export default function RecipePage() {
     <div className="min-h-screen bg-base-200">
       <Navbar />
 
-      <div className="max-w-2xl mx-auto px-5 py-8 flex flex-col gap-6">
+      <div className="max-w-4xl mx-auto px-5 py-8 flex flex-col gap-6">
         <Link href="/pages/main" className="btn btn-ghost btn-sm self-start gap-1">
           ← Vissza
         </Link>
@@ -183,9 +182,13 @@ export default function RecipePage() {
           {recipe.ingredients.length > 0 && (
             <span>🧾 {recipe.ingredients.length} hozzávaló</span>
           )}
-          {recipe.rating_count > 0 && (
+          {recipe.rating_count > 0 ? (
             <span className="text-warning font-medium">
               ⭐ {recipe.average_rating.toFixed(1)} ({recipe.rating_count} értékelés)
+            </span>
+          ) : (
+            <span className="text-base-content/30">
+              ★ Még nincs értékelés
             </span>
           )}
         </div>
@@ -198,20 +201,10 @@ export default function RecipePage() {
         />
 
         {recipe.description && (
-          <p className="text-base-content/80 leading-relaxed">{recipe.description}</p>
+          <p className="text-base-content/80 leading-relaxed text-lg">{recipe.description}</p>
         )}
 
-        <SectionNav
-          sections={[
-            ...(recipe.ingredients.length > 0
-              ? [{ id: "ingredients-section", label: "🧾 Hozzávalók" }]
-              : []),
-            ...(recipe.steps.length > 0
-              ? [{ id: "steps-section", label: "📝 Elkészítés" }]
-              : []),
-            { id: "rating-section", label: "🏅 Értékelés" },
-          ]}
-        />
+        <StarRating myRating={myRating} onRate={rateRecipe} onDelete={deleteRating} />
 
         <div className="divider" />
 
@@ -225,15 +218,14 @@ export default function RecipePage() {
           </div>
         )}
 
-        <IngredientList ingredients={recipe.ingredients} />
-
-        <div className="divider" />
-
-        <StepList steps={recipe.steps} />
-
-        <div className="divider" />
-
-        <StarRating myRating={myRating} onRate={rateRecipe} onDelete={deleteRating} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:col-span-1">
+            <IngredientList ingredients={recipe.ingredients} />
+          </div>
+          <div className="md:col-span-2">
+            <StepList steps={recipe.steps} />
+          </div>
+        </div>
 
         <div className="h-8" />
       </div>

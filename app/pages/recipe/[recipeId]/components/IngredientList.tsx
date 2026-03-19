@@ -13,7 +13,7 @@ export default function IngredientList({ ingredients }: Props) {
   if (ingredients.length === 0) return null;
 
   return (
-    <section id="ingredients-section" className="scroll-mt-4">
+    <section id="ingredients-section" className="scroll-mt-4 bg-base-200 rounded-xl p-5">
       <h2 className="text-xl font-bold mb-3">🧾 Hozzávalók</h2>
       <ul className="space-y-2">
         {ingredients.map((ing) => (

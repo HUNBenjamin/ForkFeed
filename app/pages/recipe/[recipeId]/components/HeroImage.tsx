@@ -7,7 +7,7 @@ export default function HeroImage({ imageUrl, title }: Props) {
   if (imageUrl) {
     return (
       <figure className="rounded-2xl overflow-hidden shadow-lg">
-        <img src={imageUrl} alt={title} className="w-full max-h-[420px] object-cover" />
+        <img src={imageUrl} alt={title} className="w-full max-h-[500px] object-cover" />
       </figure>
     );
   }
