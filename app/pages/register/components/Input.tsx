@@ -8,9 +8,10 @@ type Props = {
   value: string
   onChange: (v: string) => void
   placeholder?: string
+  error?: string
 }
 
-export default function Input({ label, name, type = 'text', value, onChange, placeholder }: Props) {
+export default function Input({ label, name, type = 'text', value, onChange, placeholder, error }: Props) {
   return (
     <div className="form-control mb-3">
       <label htmlFor={name} className="label">
@@ -23,8 +24,9 @@ export default function Input({ label, name, type = 'text', value, onChange, pla
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="input input-bordered w-full"
+        className={`input input-bordered w-full ${error ? 'input-error' : ''}`}
       />
+      {error && <span className="text-error text-xs mt-1">{error}</span>}
     </div>
   )
 }
