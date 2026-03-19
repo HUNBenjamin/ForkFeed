@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import RecipeCard from "./RecipeCard";
 
 type Recipe = {
@@ -25,15 +26,55 @@ type Pagination = {
 };
 
 export default function RecipeList() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [searchMode, setSearchMode] = useState<"recipe" | "username">("recipe");
-  const [difficulty, setDifficulty] = useState("");
-  const [sort, setSort] = useState("created_at");
+  const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
+  const [searchMode, setSearchMode] = useState<"recipe" | "username">(
+    () => (searchParams.get("mode") === "username" ? "username" : "recipe")
+  );
+  const [difficulty, setDifficulty] = useState(() => searchParams.get("difficulty") ?? "");
+  const [sort, setSort] = useState(() => searchParams.get("sort") ?? "created_at");
+  const [order, setOrder] = useState<"asc" | "desc">(
+    () => (searchParams.get("order") === "asc" ? "asc" : "desc")
+  );
+  const [sortOpen, setSortOpen] = useState(false);
+
+  const routerRef = useRef(router);
+  routerRef.current = router;
+
+  useEffect(() => {
+    const p = new URLSearchParams();
+    if (page > 1) p.set("page", String(page));
+    if (query) p.set("q", query);
+    if (searchMode === "username") p.set("mode", "username");
+    if (difficulty) p.set("difficulty", difficulty);
+    if (sort !== "created_at") p.set("sort", sort);
+    if (order !== "desc") p.set("order", order);
+    routerRef.current.replace(`?${p.toString()}`, { scroll: false });
+  }, [page, query, searchMode, difficulty, sort, order]);
+
+  const sortOptions = [
+    { value: "created_at", label: "Dátum" },
+    { value: "average_rating", label: "Értékelés" },
+    { value: "preparation_time", label: "Elkészítési idő" },
+  ] as const;
+
+  const currentSortLabel = sortOptions.find((o) => o.value === sort)?.label ?? "Rendezés";
+  const sortLabelRef = useRef<HTMLSpanElement>(null);
+  const [labelOverflows, setLabelOverflows] = useState(false);
+
+  useEffect(() => {
+    const el = sortLabelRef.current;
+    if (el) {
+      setLabelOverflows(el.scrollWidth > el.parentElement!.clientWidth);
+    }
+  }, [sort]);
 
   useEffect(() => {
     setLoading(true);
@@ -43,7 +84,7 @@ export default function RecipeList() {
       page: String(page),
       limit: "12",
       sort,
-      order: "desc",
+      order,
     });
     if (query && searchMode === "recipe") params.set("query", query);
     if (difficulty) params.set("difficulty", difficulty);
@@ -59,10 +100,21 @@ export default function RecipeList() {
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [page, query, searchMode, difficulty, sort]);
+  }, [page, query, searchMode, difficulty, sort, order]);
 
-  function handleSearch(e: React.FormEvent) {
+  function handleSearch(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setPage(1);
+  }
+
+  const hasActiveFilters = query !== "" || searchMode !== "recipe" || difficulty !== "" || sort !== "created_at" || order !== "desc";
+
+  function handleReset() {
+    setQuery("");
+    setSearchMode("recipe");
+    setDifficulty("");
+    setSort("created_at");
+    setOrder("desc");
     setPage(1);
   }
 
@@ -117,18 +169,76 @@ export default function RecipeList() {
           <option value="hard">Nehéz</option>
         </select>
 
-        <select
-          value={sort}
-          onChange={(e) => {
-            setSort(e.target.value);
-            setPage(1);
-          }}
-          className="select select-bordered"
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setSortOpen((o) => !o)}
+            className="btn btn-outline gap-1 max-w-36"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M3 3a1 1 0 011-1h2a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm6 2a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 01-1 1h-2a1 1 0 01-1-1V5zm6 4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2a1 1 0 01-1-1V9z" />
+            </svg>
+            <span className="overflow-hidden max-w-16">
+              <span
+                ref={sortLabelRef}
+                key={sort}
+                className={`inline-block whitespace-nowrap ${labelOverflows ? 'sort-label-slide' : ''}`}
+              >
+                {currentSortLabel}
+              </span>
+            </span>
+            <span className="text-xs opacity-60 shrink-0">{order === "desc" ? "↓" : "↑"}</span>
+          </button>
+
+          {sortOpen && (
+            <>
+              <div className="fixed inset-0 z-10" onClick={() => setSortOpen(false)} />
+              <div className="absolute right-0 mt-2 z-20 bg-base-100 border border-base-300 rounded-box shadow-lg p-2 min-w-48">
+                <p className="text-xs font-semibold text-base-content/50 px-3 py-1">Rendezés</p>
+                {sortOptions.map((opt) => (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => {
+                      setSort(opt.value);
+                      setPage(1);
+                      setSortOpen(false);
+                    }}
+                    className={`w-full text-left px-3 py-1.5 rounded text-sm hover:bg-base-200 ${sort === opt.value ? "font-bold text-primary" : ""}`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+                <div className="divider my-1" />
+                <p className="text-xs font-semibold text-base-content/50 px-3 py-1">Sorrend</p>
+                <button
+                  type="button"
+                  onClick={() => { setOrder("desc"); setPage(1); setSortOpen(false); }}
+                  className={`w-full text-left px-3 py-1.5 rounded text-sm hover:bg-base-200 ${order === "desc" ? "font-bold text-primary" : ""}`}
+                >
+                  ↓ Csökkenő
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setOrder("asc"); setPage(1); setSortOpen(false); }}
+                  className={`w-full text-left px-3 py-1.5 rounded text-sm hover:bg-base-200 ${order === "asc" ? "font-bold text-primary" : ""}`}
+                >
+                  ↑ Növekvő
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={handleReset}
+          disabled={!hasActiveFilters}
+          className={`btn btn-ghost btn-sm ${hasActiveFilters ? "text-error" : "text-base-content/30"}`}
+          title="Szűrők törlése"
         >
-          <option value="created_at">Legújabb</option>
-          <option value="average_rating">Legjobb értékelés</option>
-          <option value="preparation_time">Elkészítési idő</option>
-        </select>
+          ✕
+        </button>
       </form>
 
       {loading && (
@@ -163,7 +273,7 @@ export default function RecipeList() {
             <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 disabled={page <= 1}
-                onClick={() => setPage((p) => p - 1)}
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
                 className="btn btn-sm btn-outline"
               >
                 ← Előző
