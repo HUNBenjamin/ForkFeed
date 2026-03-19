@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 type Recipe = {
   id: number;
@@ -36,7 +37,7 @@ const difficultyStrip: Record<string, string> = {
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
-    <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+    <Link href={`/pages/recipe/${recipe.id}`} className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden cursor-pointer">
       <div className={`h-1.5 w-full ${difficultyStrip[recipe.difficulty] ?? "bg-base-300"}`} />
 
       {recipe.image_url ? (
@@ -78,6 +79,6 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
 
         <div className="text-xs text-base-content/40">{recipe.author.username}</div>
       </div>
-    </div>
+    </Link>
   );
 }
