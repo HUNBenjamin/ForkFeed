@@ -2,3 +2,19 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
+
+@keyframes slideText {
+  0%, 25% {
+    transform: translateX(0);
+  }
+  50%, 75% {
+    transform: translateX(calc(-100% + 4rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.sort-label-slide {
+  animation: slideText 4s ease-in-out infinite;
+}

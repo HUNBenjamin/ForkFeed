@@ -1,4 +1,4 @@
-import React from "react";
+import { Suspense } from "react";
 import Navbar from "./components/Navbar";
 import RecipeList from "./components/RecipeList";
 
@@ -15,7 +15,9 @@ export default function Page() {
       </div>
 
       <div className="max-w-6xl mx-auto px-5 pb-12">
-        <RecipeList />
+        <Suspense fallback={<div className="flex justify-center py-16"><span className="loading loading-spinner loading-lg" /></div>}>
+          <RecipeList />
+        </Suspense>
       </div>
     </div>
   );
