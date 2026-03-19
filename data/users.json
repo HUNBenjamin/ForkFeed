@@ -20,7 +20,7 @@
     "email": "mari@example.com",
     "password_hash": "scrypt$f45555576da819399e54dadb3caeb515$35e0dd4a2d155cb9cbb7191c93530ab67b64600676ac6c332622b4dd576c17db61547fe333f5f42a22b0dfc3422a62636058e91e636464b03e73258ff503f383",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/people/chefmari.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/people/cld-sample.jpg",
     "bio": "Szenvedélyes házi szakács.",
     "is_active": true,
     "created_at": {
