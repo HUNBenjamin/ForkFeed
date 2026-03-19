@@ -92,26 +92,27 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
 
   const ratingValue = value as number;
 
-  const isNew = !(await prisma.rating.findUnique({
+  const existing = await prisma.rating.findUnique({
     where: { recipe_id_user_id: { recipe_id: rId, user_id: auth.sub } },
     select: { id: true },
-  }));
-
-  const last = isNew
-    ? await prisma.rating.findFirst({ orderBy: { id: "desc" }, select: { id: true } })
-    : null;
-  const newId = isNew ? (last?.id ?? 0) + 1 : undefined;
-
-  const rating = await prisma.rating.upsert({
-    where: { recipe_id_user_id: { recipe_id: rId, user_id: auth.sub } },
-    create: { id: newId!, recipe_id: rId, user_id: auth.sub, rating: ratingValue },
-    update: { rating: ratingValue },
-    select: {
-      id: true,
-      rating: true,
-      created_at: true,
-    },
   });
+
+  let newId: number | undefined;
+  if (!existing) {
+    const last = await prisma.rating.findFirst({ orderBy: { id: "desc" }, select: { id: true } });
+    newId = (last?.id ?? 0) + 1;
+  }
+
+  const rating = existing
+    ? await prisma.rating.update({
+        where: { recipe_id_user_id: { recipe_id: rId, user_id: auth.sub } },
+        data: { rating: ratingValue },
+        select: { id: true, rating: true, created_at: true },
+      })
+    : await prisma.rating.create({
+        data: { id: newId!, recipe_id: rId, user_id: auth.sub, rating: ratingValue },
+        select: { id: true, rating: true, created_at: true },
+      });
 
   // Recalculate and persist denormalized stats on the recipe.
   const agg = await prisma.rating.aggregate({
