@@ -26,7 +26,12 @@ export default function StarRating({ myRating, onRate, onDelete }: Props) {
 
   return (
     <section id="rating-section" className="scroll-mt-4">
-      <h2 className="text-xl font-bold mb-3">🏅 Értékelés</h2>
+      <h2 className="text-xl font-bold mb-1">🏅 Az én értékelésem</h2>
+      <p className="text-sm text-base-content/50 mb-3">
+        {myRating != null
+          ? "Kattints a csillagokra az értékelésed módosításához."
+          : "Kattints a csillagokra az értékeléshez."}
+      </p>
       <div className="flex items-center gap-1 flex-wrap">
         {[1, 2, 3, 4, 5].map((star) => (
           <button
