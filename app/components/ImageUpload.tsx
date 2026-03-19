@@ -15,9 +15,28 @@ export default function ImageUpload({ type, currentUrl, onUpload, label }: Props
 
   const isAvatar = type === "avatar";
 
+  const MAX_SIZE_MB = 5;
+  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
+  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+  const ALLOWED_EXT = "JPG, PNG, WEBP";
+
   async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // --- Client-side pre-validation (no network request wasted) ---
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      setError(
+        `Nem támogatott formátum: ${file.type || "ismeretlen"}. Engedélyezett: ${ALLOWED_EXT}`,
+      );
+      return;
+    }
+
+    if (file.size > MAX_SIZE_BYTES) {
+      const sizeMB = (file.size / 1024 / 1024).toFixed(1);
+      setError(`A fájl túl nagy: ${sizeMB} MB. Maximum méret: ${MAX_SIZE_MB} MB.`);
+      return;
+    }
 
     setPreview(URL.createObjectURL(file));
     setIsUploading(true);
@@ -39,15 +58,29 @@ export default function ImageUpload({ type, currentUrl, onUpload, label }: Props
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(data?.error || "Feltöltés sikertelen");
+        // Map backend error codes to friendly messages
+        const msg: string = data?.error ?? "";
+        if (msg.includes("5 MB") || msg.includes("size")) {
+          throw new Error(`A fájl túl nagy. Maximum méret: ${MAX_SIZE_MB} MB.`);
+        } else if (msg.includes("file type") || msg.includes("Invalid")) {
+          throw new Error(`Nem támogatott formátum. Engedélyezett: ${ALLOWED_EXT}`);
+        } else if (msg.includes("Unauthorized") || msg.includes("401")) {
+          throw new Error("Nincs jogosultságod a feltöltéshez. Jelentkezz be újra.");
+        } else if (msg.includes("upload failed") || msg.includes("500")) {
+          throw new Error("A szerver nem tudta feldolgozni a képet. Próbáld újra.");
+        } else {
+          throw new Error(msg || "Feltöltés sikertelen. Próbáld újra.");
+        }
       }
 
       onUpload(data.url);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Feltöltés sikertelen");
+      setError(err instanceof Error ? err.message : "Feltöltés sikertelen. Próbáld újra.");
       setPreview(currentUrl ?? null);
     } finally {
       setIsUploading(false);
+      // Reset the input so the same file can be retried if needed
+      e.target.value = "";
     }
   }
 
