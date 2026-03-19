@@ -5,7 +5,7 @@
     "email": "admin@forkfeed.com",
     "password_hash": "scrypt$0d7a01200a68f94d2f0012cca90481c0$c61b9786499f1a8cdf6e8f2515be5ea2523365d0529f14d873b660aec58f0fd6c5ddef86094eb7cd294cca344b0c94cc259fee503251749c860cb8347b6b4c4f",
     "role": "admin",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/forkfeed/avatars/kitchen-bar",
     "bio": "A ForkFeed adminisztrátora.",
     "is_active": true,
     "created_at": {
@@ -20,7 +20,7 @@
     "email": "mari@example.com",
     "password_hash": "scrypt$f45555576da819399e54dadb3caeb515$35e0dd4a2d155cb9cbb7191c93530ab67b64600676ac6c332622b4dd576c17db61547fe333f5f42a22b0dfc3422a62636058e91e636464b03e73258ff503f383",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/forkfeed/avatars/cld-sample",
     "bio": "Szenvedélyes házi szakács.",
     "is_active": true,
     "created_at": {
@@ -35,7 +35,7 @@
     "email": "kovacs.istvan@example.com",
     "password_hash": "scrypt$d4085fcdc84e4123f2bda972c93599de$dc2ee2735ddfbf05238cf0af790a94f1f2e3d000a4c7d0bc670a5ad91bd719135c3eda5f906466c29107dd3ca2e187f76e51c71219a874f98b52dcc466b81555",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/forkfeed/avatars/man-portrait",
     "bio": "Grill és BBQ rajongó.",
     "is_active": true,
     "created_at": {
@@ -50,7 +50,7 @@
     "email": "nagy.aniko@example.com",
     "password_hash": "scrypt$8003dff36fe5b41cd2bfa90a7c511b2c$c3cc2ac8120e8886e501ab80e5ac407b595b1cf75bd2df66010a7654219775bc91f915773b3cce5d1b6566d0a655c6682f9d68a2199b6392c1d0e72345684c98",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/forkfeed/avatars/outdoor-woman",
     "bio": "Három gyerek anyukája, imád sütni.",
     "is_active": true,
     "created_at": {
@@ -65,7 +65,7 @@
     "email": "tamas.bp@example.com",
     "password_hash": "scrypt$9b48f73ba96e8908944a1a8131c3e248$5f23c18e78f80d8dbce142d25977c2766afedb644e7ac48d97d7c0a8f2ba73ad5bb1c1cf1223c7bc79c84a4686d2683d079436a55edd994cecf4e651d9a7aa96",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/forkfeed/avatars/smile",
     "bio": "Foodie és utazó.",
     "is_active": true,
     "created_at": {
