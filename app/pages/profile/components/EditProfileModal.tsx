@@ -1,5 +1,6 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
+import ImageUpload, { ImageUploadHandle } from "@/app/components/ImageUpload";
 
 type User = {
   id: number;
@@ -24,11 +25,26 @@ export default function EditProfileModal({ user, onClose, onSave }: Props) {
   const [imageUrl, setImageUrl] = useState(user.profile_image_url ?? "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const imageUploadRef = useRef<ImageUploadHandle>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    let finalImageUrl = imageUrl;
+
+    // Upload to Cloudinary only now, when the user clicks Save
+    if (imageUploadRef.current?.hasPendingFile) {
+      const uploaded = await imageUploadRef.current.upload();
+      if (uploaded === null) {
+        // upload() already set the error inside ImageUpload
+        setLoading(false);
+        return;
+      }
+      finalImageUrl = uploaded;
+    }
+
     const token = localStorage.getItem("token");
     try {
       const res = await fetch("/api/users/me", {
@@ -40,7 +56,7 @@ export default function EditProfileModal({ user, onClose, onSave }: Props) {
         body: JSON.stringify({
           username,
           bio: bio || null,
-          profile_image_url: imageUrl || null,
+          profile_image_url: finalImageUrl || null,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -81,12 +97,12 @@ export default function EditProfileModal({ user, onClose, onSave }: Props) {
             />
           </fieldset>
           <fieldset className="fieldset">
-            <legend className="fieldset-legend">Profilkép URL</legend>
-            <input
-              className="input input-bordered w-full"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="https://..."
+            <ImageUpload
+              ref={imageUploadRef}
+              type="avatar"
+              currentUrl={imageUrl || null}
+              label="Profilkép"
+              onUpload={(url) => setImageUrl(url)}
             />
           </fieldset>
           {error && (
