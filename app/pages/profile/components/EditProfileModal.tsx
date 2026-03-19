@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import ImageUpload from "@/app/components/ImageUpload";
 
 type User = {
   id: number;
@@ -81,12 +82,11 @@ export default function EditProfileModal({ user, onClose, onSave }: Props) {
             />
           </fieldset>
           <fieldset className="fieldset">
-            <legend className="fieldset-legend">Profilkép URL</legend>
-            <input
-              className="input input-bordered w-full"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="https://..."
+            <ImageUpload
+              type="avatar"
+              currentUrl={imageUrl || null}
+              label="Profilkép"
+              onUpload={(url) => setImageUrl(url)}
             />
           </fieldset>
           {error && (
