@@ -16,6 +16,7 @@
   "dependencies": {
     "@prisma/client": "^6",
     "@tailwindcss/postcss": "^4.2.1",
+    "cloudinary": "^2.9.0",
     "daisyui": "^5.5.19",
     "jsonwebtoken": "^9.0.3",
     "next": "16.1.6",

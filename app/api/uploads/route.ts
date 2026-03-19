@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authenticateRequest } from "@/lib/auth";
-import { writeFile, mkdir } from "fs/promises";
-import { randomUUID } from "crypto";
-import path from "path";
+import { uploadToCloudinary, UploadFolder } from "@/lib/cloudinary";
 
 export const runtime = "nodejs";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
@@ -35,6 +32,8 @@ export async function POST(request: NextRequest) {
   }
 
   const file = formData.get("file");
+  // Optional: "recipe" | "avatar" — defaults to recipe
+  const type = (formData.get("type") as string | null) ?? "recipe";
 
   if (!file || !(file instanceof File)) {
     return NextResponse.json({ error: "A file field is required." }, { status: 400 });
@@ -51,15 +50,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "File size exceeds the 5 MB limit." }, { status: 400 });
   }
 
-  const ext = file.name.split(".").pop() ?? "bin";
-  const filename = `${randomUUID()}.${ext}`;
-
-  await mkdir(UPLOAD_DIR, { recursive: true });
-
   const buffer = Buffer.from(await file.arrayBuffer());
-  await writeFile(path.join(UPLOAD_DIR, filename), buffer);
+  const folder: UploadFolder = type === "avatar" ? "forkfeed/avatars" : "forkfeed/recipes";
 
-  const url = `/uploads/${filename}`;
-
-  return NextResponse.json({ url }, { status: 201 });
+  try {
+    const { url, public_id } = await uploadToCloudinary(buffer, folder);
+    return NextResponse.json({ url, public_id }, { status: 201 });
+  } catch (err) {
+    console.error("[upload] Cloudinary error:", err);
+    return NextResponse.json({ error: "Image upload failed." }, { status: 500 });
+  }
 }

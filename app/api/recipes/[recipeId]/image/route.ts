@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { authenticateRequest } from "@/lib/auth";
-import { writeFile, mkdir } from "fs/promises";
-import { randomUUID } from "crypto";
-import path from "path";
+import { uploadToCloudinary, deleteFromCloudinary } from "@/lib/cloudinary";
 
 export const runtime = "nodejs";
 
 type RouteContext = { params: Promise<{ recipeId: string }> };
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
@@ -73,15 +70,27 @@ export async function POST(request: NextRequest, { params }: RouteContext) {
       return NextResponse.json({ error: "File size exceeds the 5 MB limit." }, { status: 400 });
     }
 
-    const ext = file.name.split(".").pop() ?? "bin";
-    const filename = `${randomUUID()}.${ext}`;
-
-    await mkdir(UPLOAD_DIR, { recursive: true });
-
     const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(path.join(UPLOAD_DIR, filename), buffer);
 
-    const image_url = `/uploads/${filename}`;
+    // Delete old image from Cloudinary if one exists
+    if (recipe) {
+      const existing = await prisma.recipe.findUnique({
+        where: { id: rId },
+        select: { image_url: true },
+      });
+      if (existing?.image_url) {
+        await deleteFromCloudinary(existing.image_url);
+      }
+    }
+
+    let image_url: string;
+    try {
+      const result = await uploadToCloudinary(buffer, "forkfeed/recipes");
+      image_url = result.url;
+    } catch (err) {
+      console.error("[recipe/image] Cloudinary error:", err);
+      return NextResponse.json({ error: "Image upload failed." }, { status: 500 });
+    }
 
     const updated = await prisma.recipe.update({
       where: { id: rId },
