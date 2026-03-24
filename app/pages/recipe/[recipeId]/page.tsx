@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
 import HeroImage from "./components/HeroImage";
@@ -13,6 +13,7 @@ import StarRating from "./components/StarRating";
 import ShareButton from "./components/ShareButton";
 import PrintButton from "./components/PrintButton";
 import ScrollToTop from "./components/ScrollToTop";
+import CommentSection from "./components/CommentSection";
 
 type Recipe = {
   id: number;
@@ -42,11 +43,27 @@ function getAuthHeaders(): HeadersInit {
 export default function RecipePage() {
   const { recipeId } = useParams<{ recipeId: string }>();
 
+  const router = useRouter();
+
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [myRating, setMyRating] = useState<number | null>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [deletingRecipe, setDeletingRecipe] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    fetch("/api/auth/me", { headers: { Authorization: `Bearer ${token}` } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.user?.role) setUserRole(data.user.role);
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!recipeId) return;
@@ -123,6 +140,32 @@ export default function RecipePage() {
     }
   }, [recipeId]);
 
+  const deleteRecipe = useCallback(async () => {
+    const token = localStorage.getItem("token");
+    if (!token || !recipeId) return;
+
+    const confirmed = window.confirm("Biztosan törölni szeretnéd ezt a receptet?");
+    if (!confirmed) return;
+
+    setDeletingRecipe(true);
+    try {
+      const res = await fetch(`/api/recipes/${recipeId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        router.push("/pages/main");
+      } else {
+        const data = await res.json().catch(() => null);
+        setError(data?.error ?? "Nem sikerült törölni a receptet.");
+      }
+    } catch {
+      setError("Hálózati hiba történt.");
+    } finally {
+      setDeletingRecipe(false);
+    }
+  }, [recipeId, router]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-base-200">
@@ -173,23 +216,34 @@ export default function RecipePage() {
           </button>
           <ShareButton />
           <PrintButton title={recipe.title} />
+
+          {userRole === "admin" && (
+            <button
+              onClick={deleteRecipe}
+              disabled={deletingRecipe}
+              className="btn btn-sm btn-error ml-auto gap-1"
+              title="Recept törlése (admin)"
+            >
+              {deletingRecipe ? (
+                <span className="loading loading-spinner loading-xs" />
+              ) : (
+                "🗑️ Recept törlése"
+              )}
+            </button>
+          )}
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight">{recipe.title}</h1>
 
         <div className="flex flex-wrap items-center gap-4 text-sm text-base-content/60">
           <span>⏱ {recipe.preparation_time} perc</span>
-          {recipe.ingredients.length > 0 && (
-            <span>🧾 {recipe.ingredients.length} hozzávaló</span>
-          )}
+          {recipe.ingredients.length > 0 && <span>🧾 {recipe.ingredients.length} hozzávaló</span>}
           {recipe.rating_count > 0 ? (
             <span className="text-warning font-medium">
               ⭐ {recipe.average_rating.toFixed(1)} ({recipe.rating_count} értékelés)
             </span>
           ) : (
-            <span className="text-base-content/30">
-              ★ Még nincs értékelés
-            </span>
+            <span className="text-base-content/30">★ Még nincs értékelés</span>
           )}
         </div>
 
@@ -226,6 +280,10 @@ export default function RecipePage() {
             <StepList steps={recipe.steps} />
           </div>
         </div>
+
+        <div className="divider" />
+
+        <CommentSection recipeId={recipeId} />
 
         <div className="h-8" />
       </div>
