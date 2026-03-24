@@ -7,7 +7,12 @@ type Props = {
 export default function PrintButton({ title }: Props) {
   function handlePrint() {
     const printWindow = window.open("", "_blank");
-    if (!printWindow) return;
+    if (!printWindow) {
+      alert(
+        "Nem sikerült megnyitni a nyomtatási ablakot. Kérjük, zárd be a korábbi nyomtatási ablakot, vagy engedélyezd a felugró ablakokat.",
+      );
+      return;
+    }
 
     const ingredients = document.getElementById("ingredients-section");
     const steps = document.getElementById("steps-section");
