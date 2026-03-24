@@ -6,14 +6,6 @@ type Props = {
 
 export default function PrintButton({ title }: Props) {
   function handlePrint() {
-    const printWindow = window.open("", "_blank");
-    if (!printWindow) {
-      alert(
-        "Nem sikerült megnyitni a nyomtatási ablakot. Kérjük, zárd be a korábbi nyomtatási ablakot, vagy engedélyezd a felugró ablakokat.",
-      );
-      return;
-    }
-
     const ingredients = document.getElementById("ingredients-section");
     const steps = document.getElementById("steps-section");
 
@@ -24,31 +16,50 @@ export default function PrintButton({ title }: Props) {
       return clone.innerHTML;
     };
 
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html lang="hu">
-        <head>
-          <meta charset="UTF-8" />
-          <title>${title} — ForkFeed</title>
-          <style>
-            body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #222; }
-            h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
-            h2 { font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 0.25rem; }
-            ul, ol { padding-left: 1.25rem; }
-            li { margin-bottom: 0.35rem; line-height: 1.5; }
-            .meta { color: #666; font-size: 0.85rem; margin-bottom: 1rem; }
-            @media print { body { margin: 0; } }
-          </style>
-        </head>
-        <body>
-          <h1>${title}</h1>
-          ${getCleanHTML(ingredients)}
-          ${getCleanHTML(steps)}
-        </body>
-      </html>
-    `);
-    printWindow.document.close();
-    printWindow.print();
+    const content = `
+      <h1>${title}</h1>
+      ${getCleanHTML(ingredients)}
+      ${getCleanHTML(steps)}
+    `;
+
+    let container = document.getElementById("print-only-content");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "print-only-content";
+      document.body.appendChild(container);
+    }
+    container.innerHTML = content;
+
+    let style = document.getElementById("print-only-style");
+    if (!style) {
+      style = document.createElement("style");
+      style.id = "print-only-style";
+      style.textContent = `
+        #print-only-content {
+          display: none;
+        }
+        @media print {
+          body > *:not(#print-only-content) {
+            display: none !important;
+          }
+          #print-only-content {
+            display: block !important;
+            font-family: system-ui, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            color: #222;
+          }
+          #print-only-content h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+          #print-only-content h2 { font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 0.25rem; }
+          #print-only-content ul, #print-only-content ol { padding-left: 1.25rem; }
+          #print-only-content li { margin-bottom: 0.35rem; line-height: 1.5; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    window.print();
   }
 
   return (
