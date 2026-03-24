@@ -33,7 +33,7 @@ export default function CommentedRecipeCard({ recipe }: Props) {
       <div className="card-body p-4 flex flex-col gap-2">
         <div className="flex items-start justify-between gap-2">
           <Link
-            href={`/pages/recipe/${recipe.id}`}
+            href={`/pages/recipe/${recipe.id}#my-comment`}
             className="card-title text-base hover:text-primary transition-colors"
           >
             {recipe.title}
@@ -61,7 +61,7 @@ export default function CommentedRecipeCard({ recipe }: Props) {
 
         <div className="mt-2">
           <Link
-            href={`/pages/recipe/${recipe.id}`}
+            href={`/pages/recipe/${recipe.id}#my-comment`}
             className="btn btn-sm btn-outline btn-primary w-full"
           >
             💬 Megtekintés
