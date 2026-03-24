@@ -66,7 +66,7 @@ export default function StatsCard({ stats }: { stats: Stats }) {
             href="/pages/profile/comments"
           />
           <ClickableStat
-            label="Értékelések"
+            label="Értékelt receptek"
             value={stats.ratings_given_count}
             href="/pages/profile/ratings"
           />
