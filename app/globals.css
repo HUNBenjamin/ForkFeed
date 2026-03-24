@@ -27,3 +27,13 @@
 .animate-fade-in {
   animation: fadeIn 0.2s ease-out;
 }
+
+@keyframes highlightComment {
+  0% { box-shadow: 0 0 0 0 oklch(0.623 0.214 259.815 / 0.6); }
+  30% { box-shadow: 0 0 0 4px oklch(0.623 0.214 259.815 / 0.4); }
+  100% { box-shadow: 0 0 0 0 oklch(0.623 0.214 259.815 / 0); }
+}
+
+.animate-highlight-comment {
+  animation: highlightComment 2s ease-out;
+}
