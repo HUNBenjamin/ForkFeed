@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Comment, CurrentUser } from "./comments/commentTypes";
 import { getToken, authHeaders } from "./comments/commentTypes";
 import CommentForm from "./comments/CommentForm";
@@ -20,6 +20,8 @@ export default function CommentSection({ recipeId }: Props) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [showForm, setShowForm] = useState(false);
+  const [highlightOwn, setHighlightOwn] = useState(false);
+  const scrolledRef = useRef(false);
 
   useEffect(() => {
     const token = getToken();
@@ -67,6 +69,23 @@ export default function CommentSection({ recipeId }: Props) {
   }, [recipeId]);
 
   const hasCommented = comments.some((c) => c.user.id === currentUser?.id);
+
+  useEffect(() => {
+    if (scrolledRef.current) return;
+    if (loading || !currentUser || comments.length === 0) return;
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== "#my-comment") return;
+
+    const el = document.getElementById("my-comment");
+    if (!el) return;
+
+    scrolledRef.current = true;
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setHighlightOwn(true);
+      setTimeout(() => setHighlightOwn(false), 2000);
+    }, 100);
+  }, [loading, currentUser, comments]);
 
   const handleSubmit = async (content: string) => {
     const token = getToken();
@@ -202,6 +221,7 @@ export default function CommentSection({ recipeId }: Props) {
               comment={c}
               currentUser={currentUser}
               submitting={submitting}
+              highlight={highlightOwn && c.user.id === currentUser?.id}
               onEdit={handleEdit}
               onDelete={handleDelete}
             />
