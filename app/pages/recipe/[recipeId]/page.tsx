@@ -207,13 +207,24 @@ export default function RecipePage() {
         <BadgeRow difficulty={recipe.difficulty} categories={recipe.categories} />
 
         <div className="flex gap-3 items-center">
-          <button
-            onClick={toggleFavorite}
-            className={`btn btn-circle btn-sm ${isFavorite ? "btn-error" : "btn-ghost"}`}
-            title={isFavorite ? "Eltávolítás a kedvencekből" : "Hozzáadás a kedvencekhez"}
+          <div
+            className={!userRole ? "tooltip tooltip-bottom" : ""}
+            data-tip={!userRole ? "Jelentkezz be a kedvencekhez adáshoz" : undefined}
           >
-            {isFavorite ? "❤️" : "🤍"}
-          </button>
+            <button
+              onClick={toggleFavorite}
+              className={`btn btn-circle btn-sm ${isFavorite ? "btn-error" : "btn-ghost"} ${!userRole ? "btn-disabled" : ""}`}
+              title={
+                userRole
+                  ? isFavorite
+                    ? "Eltávolítás a kedvencekből"
+                    : "Hozzáadás a kedvencekhez"
+                  : undefined
+              }
+            >
+              {isFavorite ? "❤️" : "🤍"}
+            </button>
+          </div>
           <ShareButton />
           <PrintButton title={recipe.title} />
 
@@ -258,7 +269,12 @@ export default function RecipePage() {
           <p className="text-base-content/80 leading-relaxed text-lg">{recipe.description}</p>
         )}
 
-        <StarRating myRating={myRating} onRate={rateRecipe} onDelete={deleteRating} />
+        <StarRating
+          myRating={myRating}
+          onRate={rateRecipe}
+          onDelete={deleteRating}
+          isLoggedIn={!!userRole}
+        />
 
         <div className="divider" />
 
