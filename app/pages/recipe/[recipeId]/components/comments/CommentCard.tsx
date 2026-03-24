@@ -9,11 +9,12 @@ type Props = {
   comment: Comment;
   currentUser: CurrentUser;
   submitting: boolean;
+  highlight?: boolean;
   onEdit: (commentId: number, content: string) => void;
   onDelete: (commentId: number) => void;
 };
 
-export default function CommentCard({ comment, currentUser, submitting, onEdit, onDelete }: Props) {
+export default function CommentCard({ comment, currentUser, submitting, highlight, onEdit, onDelete }: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState("");
 
@@ -38,7 +39,10 @@ export default function CommentCard({ comment, currentUser, submitting, onEdit, 
   };
 
   return (
-    <div className={`card bg-base-100 shadow-sm ${isOwn ? "ring-1 ring-primary/20" : ""}`}>
+    <div
+      id={isOwn ? "my-comment" : undefined}
+      className={`card bg-base-100 shadow-sm ${isOwn ? "ring-1 ring-primary/20" : ""} ${highlight ? "animate-highlight-comment" : ""}`}
+    >
       <div className="card-body p-4 gap-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -58,8 +62,8 @@ export default function CommentCard({ comment, currentUser, submitting, onEdit, 
 
           {(isOwn || isAdmin) && !isEditing && (
             <div className="flex gap-1">
-              {isOwn && (
-                <button className="btn btn-ghost btn-xs" title="Szerkesztés" onClick={startEditing}>
+              {(isOwn || isAdmin) && (
+                <button className="btn btn-ghost btn-xs" title={isAdmin && !isOwn ? "Szerkesztés (admin)" : "Szerkesztés"} onClick={startEditing}>
                   ✏️
                 </button>
               )}
