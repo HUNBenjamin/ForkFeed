@@ -12,6 +12,13 @@ export default function PrintButton({ title }: Props) {
     const ingredients = document.getElementById("ingredients-section");
     const steps = document.getElementById("steps-section");
 
+    const getCleanHTML = (el: HTMLElement | null) => {
+      if (!el) return "";
+      const clone = el.cloneNode(true) as HTMLElement;
+      clone.querySelectorAll(".badge").forEach((b) => b.remove());
+      return clone.innerHTML;
+    };
+
     printWindow.document.write(`
       <!DOCTYPE html>
       <html lang="hu">
@@ -30,8 +37,8 @@ export default function PrintButton({ title }: Props) {
         </head>
         <body>
           <h1>${title}</h1>
-          ${ingredients?.innerHTML ? `<h2>🧾 Hozzávalók</h2>${ingredients.innerHTML}` : ""}
-          ${steps?.innerHTML ? `<h2>📝 Elkészítés</h2>${steps.innerHTML}` : ""}
+          ${getCleanHTML(ingredients)}
+          ${getCleanHTML(steps)}
         </body>
       </html>
     `);
