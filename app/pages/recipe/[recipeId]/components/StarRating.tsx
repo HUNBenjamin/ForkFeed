@@ -6,9 +6,10 @@ type Props = {
   myRating: number | null;
   onRate: (value: number) => void;
   onDelete: () => void;
+  isLoggedIn: boolean;
 };
 
-export default function StarRating({ myRating, onRate, onDelete }: Props) {
+export default function StarRating({ myRating, onRate, onDelete, isLoggedIn }: Props) {
   const [hoverRating, setHoverRating] = useState(0);
 
   function starColor(star: number) {
@@ -28,30 +29,29 @@ export default function StarRating({ myRating, onRate, onDelete }: Props) {
     <section id="rating-section" className="scroll-mt-4">
       <h2 className="text-xl font-bold mb-1">🏅 Az én értékelésem</h2>
       <p className="text-sm text-base-content/50 mb-3">
-        {myRating != null
-          ? "Kattints a csillagokra az értékelésed módosításához."
-          : "Kattints a csillagokra az értékeléshez."}
+        {!isLoggedIn
+          ? "Jelentkezz be az értékeléshez."
+          : myRating != null
+            ? "Kattints a csillagokra az értékelésed módosításához."
+            : "Kattints a csillagokra az értékeléshez."}
       </p>
       <div className="flex items-center gap-1 flex-wrap">
         {[1, 2, 3, 4, 5].map((star) => (
           <button
             key={star}
             type="button"
-            onMouseEnter={() => setHoverRating(star)}
-            onMouseLeave={() => setHoverRating(0)}
-            onClick={() => onRate(star)}
-            className="text-3xl transition-transform hover:scale-110 leading-none"
+            disabled={!isLoggedIn}
+            onMouseEnter={() => isLoggedIn && setHoverRating(star)}
+            onMouseLeave={() => isLoggedIn && setHoverRating(0)}
+            onClick={() => isLoggedIn && onRate(star)}
+            className={`text-3xl leading-none ${isLoggedIn ? "transition-transform hover:scale-110 cursor-pointer" : "cursor-not-allowed opacity-50"}`}
           >
-            <span className={`transition-colors ${starColor(star)}`}>
-              ★
-            </span>
+            <span className={`transition-colors ${starColor(star)}`}>★</span>
           </button>
         ))}
         {myRating != null && (
           <>
-            <span className="ml-3 text-sm text-base-content/50">
-              Az értékelésed: {myRating}/5
-            </span>
+            <span className="ml-3 text-sm text-base-content/50">Az értékelésed: {myRating}/5</span>
             <button
               type="button"
               onClick={onDelete}
