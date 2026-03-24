@@ -120,7 +120,7 @@ export default function EditRecipePage() {
 
       if (res.ok) {
         setSuccess(true);
-        setTimeout(() => setSuccess(false), 3000);
+        router.push("/pages/profile/recipes");
       } else {
         const data = await res.json().catch(() => null);
         setError(data?.error ?? "Nem sikerült menteni a módosításokat.");
