@@ -60,7 +60,11 @@ export default function StatsCard({ stats }: { stats: Stats }) {
             value={stats.recipes_count}
             href="/pages/profile/recipes"
           />
-          <Stat label="Kommentek" value={stats.comments_count} />
+          <ClickableStat
+            label="Kommentek"
+            value={stats.comments_count}
+            href="/pages/profile/comments"
+          />
           <Stat label="Értékelések" value={stats.ratings_given_count} />
           <Stat label="Kedvencek" value={stats.favorites_count} />
           <Stat label="Receptfüzetek" value={stats.recipe_books_count} />
