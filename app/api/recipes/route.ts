@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
       rating_count: true,
       created_at: true,
       author: {
-        select: { id: true, username: true },
+        select: { id: true, username: true, profile_image_url: true },
       },
       ingredients: {
         select: { id: true, name: true, quantity: true, unit: true },
@@ -220,6 +220,7 @@ export async function GET(request: NextRequest) {
           select: {
             id: true,
             username: true,
+            profile_image_url: true,
           },
         },
         recipe_categories: {
