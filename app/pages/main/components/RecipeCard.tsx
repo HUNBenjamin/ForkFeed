@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Recipe = {
   id: number;
@@ -36,8 +39,13 @@ const difficultyStrip: Record<string, string> = {
 };
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
+  const router = useRouter();
+
   return (
-    <Link href={`/pages/recipe/${recipe.id}`} className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden cursor-pointer">
+    <div
+      onClick={() => router.push(`/pages/recipe/${recipe.id}`)}
+      className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden cursor-pointer"
+    >
       <div className={`h-1.5 w-full ${difficultyStrip[recipe.difficulty] ?? "bg-base-300"}`} />
 
       {recipe.image_url ? (
@@ -77,8 +85,23 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
           )}
         </div>
 
-        <div className="text-xs text-base-content/40">{recipe.author.username}</div>
+        <Link
+          href={`/pages/user/${recipe.author.id}`}
+          className="flex items-center gap-1.5 text-xs text-base-content/40 hover:text-primary transition-colors w-fit"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="avatar placeholder">
+            <div className="w-5 h-5 rounded-full bg-primary text-primary-content flex items-center justify-center text-[10px]">
+              {recipe.author.profile_image_url ? (
+                <img src={recipe.author.profile_image_url} alt={recipe.author.username} className="rounded-full" />
+              ) : (
+                recipe.author.username.charAt(0).toUpperCase()
+              )}
+            </div>
+          </div>
+          {recipe.author.username}
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }
