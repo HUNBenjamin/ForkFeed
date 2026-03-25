@@ -1,6 +1,8 @@
+import Link from "next/link";
 import UserAvatar from "./UserAvatar";
 
 type Props = {
+  authorId: number;
   username: string;
   profileImageUrl: string | null;
   createdAt: string;
@@ -15,17 +17,20 @@ function formatDate(iso: string) {
   });
 }
 
-export default function AuthorCard({ username, profileImageUrl, createdAt, updatedAt }: Props) {
+export default function AuthorCard({ authorId, username, profileImageUrl, createdAt, updatedAt }: Props) {
   return (
-    <div className="flex items-center gap-3">
+    <Link
+      href={`/pages/user/${authorId}`}
+      className="flex items-center gap-3 hover:opacity-80 transition-opacity w-fit"
+    >
       <UserAvatar username={username} imageUrl={profileImageUrl} />
       <div>
-        <p className="font-semibold text-sm">{username}</p>
+        <p className="font-semibold text-sm hover:text-primary transition-colors">{username}</p>
         <p className="text-xs text-base-content/40">
           {formatDate(createdAt)}
           {updatedAt && ` · Frissítve: ${formatDate(updatedAt)}`}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
