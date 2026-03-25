@@ -259,6 +259,7 @@ export default function RecipePage() {
         </div>
 
         <AuthorCard
+          authorId={recipe.author.id}
           username={recipe.author.username}
           profileImageUrl={recipe.author.profile_image_url}
           createdAt={recipe.created_at}
