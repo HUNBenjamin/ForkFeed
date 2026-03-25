@@ -68,8 +68,8 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
 
           {(isOwn || isAdmin) && !isEditing && (
             <div className="flex gap-1">
-              {(isOwn || isAdmin) && (
-                <button className="btn btn-ghost btn-xs" title={isAdmin && !isOwn ? "Szerkesztés (admin)" : "Szerkesztés"} onClick={startEditing}>
+              {isOwn && (
+                <button className="btn btn-ghost btn-xs" title="Szerkesztés" onClick={startEditing}>
                   ✏️
                 </button>
               )}
