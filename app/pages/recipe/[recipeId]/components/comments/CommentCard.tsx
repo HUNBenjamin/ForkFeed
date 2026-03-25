@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import UserAvatar from "../UserAvatar";
 import type { Comment, CurrentUser } from "./commentTypes";
 import { formatDate } from "./commentTypes";
@@ -46,18 +47,23 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
       <div className="card-body p-4 gap-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <UserAvatar
-              username={comment.user.username}
-              imageUrl={comment.user.profile_image_url}
-              size="sm"
-            />
-            <div>
-              <span className="font-semibold text-sm">{comment.user.username}</span>
-              <span className="text-xs text-base-content/40 ml-2">
-                {formatDate(comment.created_at)}
-                {comment.updated_at && " (szerkesztve)"}
+            <Link
+              href={`/pages/user/${comment.user.id}`}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            >
+              <UserAvatar
+                username={comment.user.username}
+                imageUrl={comment.user.profile_image_url}
+                size="sm"
+              />
+              <span className="font-semibold text-sm hover:text-primary transition-colors">
+                {comment.user.username}
               </span>
-            </div>
+            </Link>
+            <span className="text-xs text-base-content/40">
+              {formatDate(comment.created_at)}
+              {comment.updated_at && " (szerkesztve)"}
+            </span>
           </div>
 
           {(isOwn || isAdmin) && !isEditing && (
