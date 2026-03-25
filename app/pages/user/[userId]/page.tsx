@@ -67,6 +67,19 @@ export default function UserProfilePage() {
   const [bookTotalPages, setBookTotalPages] = useState(1);
 
   const [tab, setTab] = useState<"recipes" | "books">("recipes");
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    fetch("/api/auth/me", { headers: { Authorization: `Bearer ${token}` } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.user) setCurrentUserId(data.user.id);
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!userId) return;
@@ -181,6 +194,17 @@ export default function UserProfilePage() {
                 Csatlakozott: {new Date(user.created_at).toLocaleDateString("hu-HU")}
               </p>
             </div>
+
+            {/* Report button */}
+            {currentUserId && currentUserId !== user.id && (
+              <button
+                className="btn btn-ghost btn-sm gap-1 text-base-content/50 hover:text-error"
+                title="Felhasználó jelentése"
+                onClick={() => alert("Jelentés funkció hamarosan elérhető.")}
+              >
+                🚩 Jelentés
+              </button>
+            )}
           </div>
         </div>
 
