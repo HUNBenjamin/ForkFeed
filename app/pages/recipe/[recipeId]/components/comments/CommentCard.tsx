@@ -66,22 +66,34 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
             </span>
           </div>
 
-          {(isOwn || isAdmin) && !isEditing && (
-            <div className="flex gap-1">
-              {isOwn && (
-                <button className="btn btn-ghost btn-xs" title="Szerkesztés" onClick={startEditing}>
-                  ✏️
-                </button>
-              )}
+          <div className="flex gap-1">
+            {!isOwn && currentUser && !isEditing && (
               <button
-                className="btn btn-ghost btn-xs text-error"
-                title={isAdmin && !isOwn ? "Törlés (admin)" : "Törlés"}
-                onClick={() => onDelete(comment.id)}
+                className="btn btn-ghost btn-xs"
+                title="Jelentés"
+                onClick={() => alert("Jelentés funkció hamarosan elérhető.")}
               >
-                🗑️
+                🚩
               </button>
-            </div>
-          )}
+            )}
+
+            {(isOwn || isAdmin) && !isEditing && (
+              <>
+                {isOwn && (
+                  <button className="btn btn-ghost btn-xs" title="Szerkesztés" onClick={startEditing}>
+                    ✏️
+                  </button>
+                )}
+                <button
+                  className="btn btn-ghost btn-xs text-error"
+                  title={isAdmin && !isOwn ? "Törlés (admin)" : "Törlés"}
+                  onClick={() => onDelete(comment.id)}
+                >
+                  🗑️
+                </button>
+              </>
+            )}
+          </div>
         </div>
 
         {isEditing ? (
