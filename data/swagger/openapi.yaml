@@ -1,0 +1,2042 @@
+openapi: 3.0.3
+info:
+  title: ForkFeed API
+  version: 1.0.0
+  description: |
+    Swagger/OpenAPI documentation generated from the current `app/api/**/route.ts` handlers.
+    This spec documents every discovered API endpoint in the repository.
+servers:
+  - url: https://forkfeed.vercel.app
+    description: Production
+  - url: http://localhost:8080
+    description: Local development
+
+tags:
+  - name: Auth
+  - name: Health
+  - name: Meta
+  - name: Search
+  - name: Uploads
+  - name: Categories
+  - name: Tags
+  - name: Users
+  - name: Recipe Books
+  - name: Recipes
+  - name: Comments
+  - name: Ratings
+  - name: Reports
+  - name: Admin
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    CategoryId:
+      name: categoryId
+      in: path
+      required: true
+      schema:
+        type: integer
+    TagId:
+      name: tagId
+      in: path
+      required: true
+      schema:
+        type: integer
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+    BookId:
+      name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+    RecipeId:
+      name: recipeId
+      in: path
+      required: true
+      schema:
+        type: integer
+    CommentId:
+      name: commentId
+      in: path
+      required: true
+      schema:
+        type: integer
+    IngredientId:
+      name: ingredientId
+      in: path
+      required: true
+      schema:
+        type: integer
+    StepId:
+      name: stepId
+      in: path
+      required: true
+      schema:
+        type: integer
+    ReportId:
+      name: reportId
+      in: path
+      required: true
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  schemas:
+    LooseObject:
+      type: object
+      additionalProperties: true
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+    LoginRequest:
+      type: object
+      required: [login, password]
+      properties:
+        login:
+          type: string
+          description: Username or email.
+        password:
+          type: string
+    RegisterRequest:
+      type: object
+      required: [username, email, password]
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+    ChangePasswordRequest:
+      type: object
+      required: [current_password, new_password]
+      properties:
+        current_password:
+          type: string
+        new_password:
+          type: string
+          minLength: 8
+    ForgotPasswordRequest:
+      type: object
+      required: [email]
+      properties:
+        email:
+          type: string
+          format: email
+    ResetPasswordRequest:
+      type: object
+      required: [token, new_password]
+      properties:
+        token:
+          type: string
+        new_password:
+          type: string
+          minLength: 8
+    CategoryCreateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+    CategoryUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+    TagCreateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+    TagUpdateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+    UserMeUpdateRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        profile_image_url:
+          type: string
+          nullable: true
+        bio:
+          type: string
+          nullable: true
+    RecipeBookCreateRequest:
+      type: object
+      required: [title]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        is_public:
+          type: boolean
+    RecipeBookUpdateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        is_public:
+          type: boolean
+    RecipeBookRecipesAddRequest:
+      type: object
+      description: Accepts either a single `recipe_id` or an array of `recipe_ids`.
+      properties:
+        recipe_id:
+          type: integer
+        recipe_ids:
+          type: array
+          items:
+            type: integer
+    RecipeCreateRequest:
+      type: object
+      required: [title, description, difficulty]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        cooking_time_minutes:
+          type: integer
+        servings:
+          type: integer
+        image_url:
+          type: string
+          nullable: true
+        categories:
+          type: array
+          items:
+            type: integer
+        tags:
+          type: array
+          items:
+            type: integer
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/LooseObject'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/LooseObject'
+    RecipeUpdateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        cooking_time_minutes:
+          type: integer
+        servings:
+          type: integer
+        image_url:
+          type: string
+          nullable: true
+        is_deleted:
+          type: boolean
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CommentCreateRequest:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+    CommentUpdateRequest:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+    RatingUpsertRequest:
+      type: object
+      required: [value]
+      properties:
+        value:
+          type: integer
+          minimum: 1
+          maximum: 5
+    IngredientCreateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        quantity:
+          type: string
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+    IngredientUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        quantity:
+          type: string
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+    StepCreateRequest:
+      type: object
+      required: [description]
+      properties:
+        description:
+          type: string
+        step_number:
+          type: integer
+          minimum: 1
+    StepUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        step_number:
+          type: integer
+          minimum: 1
+    StepReorderRequest:
+      type: object
+      required: [step_ids]
+      properties:
+        step_ids:
+          type: array
+          minItems: 1
+          items:
+            type: integer
+    ReplaceIdsRequest:
+      type: object
+      required: [ids]
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+      description: Wrapper schema; some handlers accept a bare array in the JSON body instead.
+    ReportCreateRequest:
+      type: object
+      required: [target_type, target_id, reason]
+      properties:
+        target_type:
+          type: string
+          enum: [recipe, comment]
+        target_id:
+          type: integer
+        reason:
+          type: string
+    AdminUserUpdateRequest:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [user, admin]
+        is_active:
+          type: boolean
+    AdminReportReviewRequest:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [pending, accepted, rejected]
+    AdminReportActionRequest:
+      type: object
+      required: [action]
+      properties:
+        action:
+          type: string
+          enum: [delete_target, warn_user]
+    UploadMultipartRequest:
+      type: object
+      required: [file]
+      properties:
+        file:
+          type: string
+          format: binary
+        folder:
+          type: string
+          default: recipe
+    RecipeImageMultipartRequest:
+      type: object
+      required: [file]
+      properties:
+        file:
+          type: string
+          format: binary
+    RecipeImageJsonRequest:
+      type: object
+      required: [image_url]
+      properties:
+        image_url:
+          type: string
+
+paths:
+  /api/auth/login:
+    post:
+      tags: [Auth]
+      summary: Log in with username/email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful; returns JWT and user payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Invalid JSON or missing fields.
+        '401':
+          description: Invalid credentials.
+        '403':
+          description: Account is deactivated.
+
+  /api/auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Validation or JSON error.
+        '409':
+          description: Username or email already exists.
+
+  /api/auth/logout:
+    post:
+      tags: [Auth]
+      summary: Log out the current user
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Token invalidated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Missing, malformed, expired, or denylisted token.
+
+  /api/auth/me:
+    get:
+      tags: [Auth]
+      summary: Get current authenticated user profile
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Current user profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '401':
+          description: Authentication failed.
+        '404':
+          description: User not found or deactivated.
+
+  /api/auth/change-password:
+    post:
+      tags: [Auth]
+      summary: Change current user's password
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+      responses:
+        '200':
+          description: Password changed.
+        '400':
+          description: Validation error or current password mismatch.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: User not found.
+
+  /api/auth/forgot-password:
+    post:
+      tags: [Auth]
+      summary: Request a password reset email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
+      responses:
+        '200':
+          description: Generic success message whether or not the email exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Invalid JSON or missing email.
+
+  /api/auth/reset-password:
+    post:
+      tags: [Auth]
+      summary: Reset a password using a reset token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+      responses:
+        '200':
+          description: Password reset successful.
+        '400':
+          description: Invalid JSON, invalid token, already used token, or expired token.
+
+  /api/health:
+    get:
+      tags: [Health]
+      summary: Health check and database ping
+      responses:
+        '200':
+          description: Service and database are healthy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '503':
+          description: Database unavailable.
+
+  /api/search/suggestions:
+    get:
+      tags: [Search]
+      summary: Search suggestions for recipes, tags, and categories
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Search text.
+      responses:
+        '200':
+          description: Up to five suggestions grouped by entity type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+
+  /api/uploads:
+    post:
+      tags: [Uploads]
+      summary: Upload a file to Cloudinary
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadMultipartRequest'
+      responses:
+        '201':
+          description: File uploaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Bad content type, invalid multipart payload, or missing file.
+        '401':
+          description: Authentication failed.
+        '413':
+          description: File too large.
+        '415':
+          description: Unsupported mime type.
+        '500':
+          description: Cloudinary upload failure.
+
+  /api/meta/difficulties:
+    get:
+      tags: [Meta]
+      summary: List supported recipe difficulties
+      responses:
+        '200':
+          description: Difficulty enum values.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  enum: [easy, medium, hard]
+
+  /api/meta/roles:
+    get:
+      tags: [Meta]
+      summary: List supported user roles
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Role enum values.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+
+  /api/categories:
+    get:
+      tags: [Categories]
+      summary: List categories
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+          description: Optional case-insensitive category name filter.
+      responses:
+        '200':
+          description: Category list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+    post:
+      tags: [Categories]
+      summary: Create a category
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateRequest'
+      responses:
+        '201':
+          description: Category created.
+        '400':
+          description: Invalid JSON or validation error.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '409':
+          description: Category name already exists.
+
+  /api/categories/{categoryId}:
+    parameters:
+      - $ref: '#/components/parameters/CategoryId'
+    get:
+      tags: [Categories]
+      summary: Get a category by id
+      responses:
+        '200':
+          description: Category found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Invalid category id.
+        '404':
+          description: Category not found.
+    patch:
+      tags: [Categories]
+      summary: Update a category
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdateRequest'
+      responses:
+        '200':
+          description: Category updated.
+        '400':
+          description: Invalid id, invalid JSON, or no valid fields.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Category not found.
+        '409':
+          description: Duplicate category name.
+    delete:
+      tags: [Categories]
+      summary: Delete a category
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Category deleted.
+        '400':
+          description: Invalid category id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Category not found.
+
+  /api/tags:
+    get:
+      tags: [Tags]
+      summary: List tags
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+          description: Optional case-insensitive tag name filter.
+      responses:
+        '200':
+          description: Tag list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+    post:
+      tags: [Tags]
+      summary: Create a tag
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagCreateRequest'
+      responses:
+        '201':
+          description: Tag created.
+        '400':
+          description: Invalid JSON or validation error.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '409':
+          description: Tag already exists.
+
+  /api/tags/{tagId}:
+    parameters:
+      - $ref: '#/components/parameters/TagId'
+    get:
+      tags: [Tags]
+      summary: Get a tag by id
+      responses:
+        '200':
+          description: Tag found.
+        '400':
+          description: Invalid tag id.
+        '404':
+          description: Tag not found.
+    patch:
+      tags: [Tags]
+      summary: Update a tag
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagUpdateRequest'
+      responses:
+        '200':
+          description: Tag updated.
+        '400':
+          description: Invalid id, invalid JSON, or invalid name.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Tag not found.
+        '409':
+          description: Duplicate tag name.
+    delete:
+      tags: [Tags]
+      summary: Delete a tag
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Tag deleted.
+        '400':
+          description: Invalid tag id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Tag not found.
+
+  /api/users/{userId}:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      tags: [Users]
+      summary: Get a public user profile
+      responses:
+        '200':
+          description: Public profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Invalid user id.
+        '404':
+          description: User not found or inactive.
+
+  /api/users/{userId}/recipes:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Users]
+      summary: List a user's non-deleted recipes
+      responses:
+        '200':
+          description: Paginated recipe list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Invalid user id.
+        '404':
+          description: User not found.
+
+  /api/users/{userId}/comments:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Users]
+      summary: List recipes the user has commented on
+      responses:
+        '200':
+          description: Paginated recipe list derived from comments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LooseObject'
+        '400':
+          description: Invalid user id.
+        '404':
+          description: User not found.
+
+  /api/users/{userId}/ratings:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Users]
+      summary: List recipes rated by the user
+      responses:
+        '200':
+          description: Paginated rated recipe list.
+        '400':
+          description: Invalid user id.
+        '404':
+          description: User not found.
+
+  /api/users/{userId}/recipe-books:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Users]
+      summary: List a user's public recipe books
+      responses:
+        '200':
+          description: Paginated public recipe books.
+        '400':
+          description: Invalid user id.
+        '404':
+          description: User not found.
+
+  /api/users/{userId}/stats:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      tags: [Users]
+      summary: Get public aggregate stats for a user
+      responses:
+        '200':
+          description: Recipe/book/rating summary counts.
+        '400':
+          description: Invalid user id.
+        '404':
+          description: User not found.
+
+  /api/users/me:
+    get:
+      tags: [Users]
+      summary: Get the current user profile
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Current user.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: User not found or inactive.
+    patch:
+      tags: [Users]
+      summary: Update the current user profile
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserMeUpdateRequest'
+      responses:
+        '200':
+          description: User updated.
+        '400':
+          description: Invalid JSON, validation error, or no valid fields.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: User not found or inactive.
+        '409':
+          description: Username already taken.
+
+  /api/users/me/favorites:
+    get:
+      tags: [Users]
+      summary: List the current user's favorites
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: Optional favorite grouping/filter implemented by the handler.
+      responses:
+        '200':
+          description: Paginated favorites.
+        '401':
+          description: Authentication failed.
+
+  /api/users/me/stats:
+    get:
+      tags: [Users]
+      summary: Get aggregate stats for the current user
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Favorites/comments/ratings/books statistics.
+        '401':
+          description: Authentication failed.
+
+  /api/users/me/deactivate:
+    post:
+      tags: [Users]
+      summary: Deactivate the current user account
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Account deactivated.
+        '400':
+          description: Account already deactivated.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: User not found.
+
+  /api/recipe-books:
+    get:
+      tags: [Recipe Books]
+      summary: List recipe books
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+        - name: userId
+          in: query
+          schema:
+            type: integer
+        - name: includePrivate
+          in: query
+          schema:
+            type: boolean
+          description: Only meaningful with valid auth where allowed by handler.
+      responses:
+        '200':
+          description: Paginated recipe book list.
+    post:
+      tags: [Recipe Books]
+      summary: Create a recipe book
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeBookCreateRequest'
+      responses:
+        '201':
+          description: Recipe book created.
+        '400':
+          description: Invalid JSON or validation error.
+        '401':
+          description: Authentication failed.
+
+  /api/recipe-books/{bookId}:
+    parameters:
+      - $ref: '#/components/parameters/BookId'
+    get:
+      tags: [Recipe Books]
+      summary: Get a recipe book by id
+      responses:
+        '200':
+          description: Recipe book found.
+        '400':
+          description: Invalid book id.
+        '401':
+          description: Authentication may be required for private books.
+        '403':
+          description: Private book is not accessible to caller.
+        '404':
+          description: Book not found or hidden.
+    patch:
+      tags: [Recipe Books]
+      summary: Update a recipe book
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeBookUpdateRequest'
+      responses:
+        '200':
+          description: Recipe book updated.
+        '400':
+          description: Invalid id, invalid JSON, or no valid fields.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Owner or admin required.
+        '404':
+          description: Book not found.
+    delete:
+      tags: [Recipe Books]
+      summary: Delete a recipe book
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Recipe book deleted.
+        '400':
+          description: Invalid book id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Owner or admin required.
+        '404':
+          description: Book not found.
+
+  /api/recipe-books/{bookId}/clone:
+    parameters:
+      - $ref: '#/components/parameters/BookId'
+    post:
+      tags: [Recipe Books]
+      summary: Clone a recipe book into the current user's collection
+      security:
+        - BearerAuth: []
+      responses:
+        '201':
+          description: Book cloned.
+        '400':
+          description: Invalid id or attempt to clone own book.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Book not found or not accessible.
+
+  /api/recipe-books/{bookId}/recipes:
+    parameters:
+      - $ref: '#/components/parameters/BookId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Recipe Books]
+      summary: List recipes in a recipe book
+      responses:
+        '200':
+          description: Paginated recipe list from the book.
+        '400':
+          description: Invalid book id.
+        '401':
+          description: Authentication may be required.
+        '403':
+          description: Owner or admin required for private books.
+        '404':
+          description: Book not found.
+    post:
+      tags: [Recipe Books]
+      summary: Add one or more recipes to a recipe book
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeBookRecipesAddRequest'
+      responses:
+        '200':
+          description: Recipes added to the book.
+        '400':
+          description: Invalid id, invalid JSON, invalid recipe ids, or empty request.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Owner or admin required.
+        '404':
+          description: Book not found.
+
+  /api/recipe-books/{bookId}/recipes/{recipeId}:
+    parameters:
+      - $ref: '#/components/parameters/BookId'
+      - $ref: '#/components/parameters/RecipeId'
+    delete:
+      tags: [Recipe Books]
+      summary: Remove a recipe from a recipe book
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Recipe removed from the book.
+        '400':
+          description: Invalid ids.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Owner or admin required.
+        '404':
+          description: Book not found or recipe not in book.
+
+  /api/recipes:
+    get:
+      tags: [Recipes]
+      summary: List recipes
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: difficulty
+          in: query
+          schema:
+            type: string
+            enum: [easy, medium, hard]
+        - name: categoryId
+          in: query
+          schema:
+            type: integer
+        - name: tagId
+          in: query
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          schema:
+            type: string
+          description: Sort option supported by the handler.
+        - name: userId
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Paginated recipe list.
+    post:
+      tags: [Recipes]
+      summary: Create a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeCreateRequest'
+      responses:
+        '201':
+          description: Recipe created.
+        '400':
+          description: Invalid JSON or validation error.
+        '401':
+          description: Authentication failed.
+
+  /api/recipes/{recipeId}:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    get:
+      tags: [Recipes]
+      summary: Get a recipe by id
+      responses:
+        '200':
+          description: Recipe detail.
+        '400':
+          description: Invalid recipe id.
+        '404':
+          description: Recipe not found or deleted.
+    patch:
+      tags: [Recipes]
+      summary: Update a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeUpdateRequest'
+      responses:
+        '200':
+          description: Recipe updated.
+        '400':
+          description: Invalid id, invalid JSON, or validation error.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Author or admin required.
+        '404':
+          description: Recipe not found.
+    delete:
+      tags: [Recipes]
+      summary: Soft-delete a recipe
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Recipe soft-deleted.
+        '400':
+          description: Invalid recipe id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Author or admin required.
+        '404':
+          description: Recipe not found.
+
+  /api/recipes/{recipeId}/summary:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    get:
+      tags: [Recipes]
+      summary: Get a condensed recipe summary
+      responses:
+        '200':
+          description: Summary payload.
+        '400':
+          description: Invalid recipe id.
+        '404':
+          description: Recipe not found or deleted.
+
+  /api/recipes/{recipeId}/image:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    post:
+      tags: [Recipes]
+      summary: Update a recipe image
+      description: Accepts either multipart upload with `file` or JSON with `image_url`.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecipeImageMultipartRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeImageJsonRequest'
+      responses:
+        '200':
+          description: Recipe image updated.
+        '400':
+          description: Invalid id, unsupported content type, invalid JSON, or missing image.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Author or admin required.
+        '404':
+          description: Recipe not found.
+        '413':
+          description: File too large.
+        '415':
+          description: Unsupported mime type.
+        '500':
+          description: Cloudinary upload failure.
+
+  /api/recipes/{recipeId}/favorite:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    get:
+      tags: [Recipes]
+      summary: Check whether the current user has favorited the recipe
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Favorite status for current user.
+        '400':
+          description: Invalid recipe id.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Recipe not found.
+    post:
+      tags: [Recipes]
+      summary: Favorite a recipe
+      security:
+        - BearerAuth: []
+      responses:
+        '201':
+          description: Favorite created.
+        '400':
+          description: Invalid recipe id.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Recipe not found.
+        '409':
+          description: Recipe already favorited.
+    delete:
+      tags: [Recipes]
+      summary: Remove a favorite from a recipe
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Favorite removed.
+        '400':
+          description: Invalid recipe id.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Favorite or recipe not found.
+
+  /api/recipes/{recipeId}/comments:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Comments]
+      summary: List comments for a recipe
+      responses:
+        '200':
+          description: Paginated comments.
+        '400':
+          description: Invalid recipe id.
+        '404':
+          description: Recipe not found.
+    post:
+      tags: [Comments]
+      summary: Create a comment for a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentCreateRequest'
+      responses:
+        '201':
+          description: Comment created.
+        '400':
+          description: Invalid id, invalid JSON, or missing content.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Recipe not found.
+
+  /api/comments/{commentId}:
+    parameters:
+      - $ref: '#/components/parameters/CommentId'
+    patch:
+      tags: [Comments]
+      summary: Update a comment
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentUpdateRequest'
+      responses:
+        '200':
+          description: Comment updated.
+        '400':
+          description: Invalid id, invalid JSON, or missing content.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Comment owner or admin required.
+        '404':
+          description: Comment not found or deleted.
+    delete:
+      tags: [Comments]
+      summary: Soft-delete a comment
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Comment soft-deleted.
+        '400':
+          description: Invalid comment id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Comment owner or admin required.
+        '404':
+          description: Comment not found or deleted.
+
+  /api/recipes/{recipeId}/ratings:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+    get:
+      tags: [Ratings]
+      summary: List ratings for a recipe
+      responses:
+        '200':
+          description: Paginated ratings plus aggregate summary.
+        '400':
+          description: Invalid recipe id.
+        '404':
+          description: Recipe not found.
+
+  /api/recipes/{recipeId}/ratings/me:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    get:
+      tags: [Ratings]
+      summary: Get the current user's rating for a recipe
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Existing rating or null.
+        '400':
+          description: Invalid recipe id.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Recipe not found.
+    post:
+      tags: [Ratings]
+      summary: Create or update the current user's rating for a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RatingUpsertRequest'
+      responses:
+        '200':
+          description: Rating upserted.
+        '400':
+          description: Invalid id, invalid JSON, or rating outside 1..5.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Recipe not found.
+    delete:
+      tags: [Ratings]
+      summary: Delete the current user's rating for a recipe
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Rating removed.
+        '400':
+          description: Invalid recipe id.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Recipe not found or no rating exists.
+
+  /api/recipes/{recipeId}/ingredients:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    get:
+      tags: [Recipes]
+      summary: List ingredients for a recipe
+      responses:
+        '200':
+          description: Ingredient list.
+        '400':
+          description: Invalid recipe id.
+        '404':
+          description: Recipe not found.
+    post:
+      tags: [Recipes]
+      summary: Add an ingredient to a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngredientCreateRequest'
+      responses:
+        '201':
+          description: Ingredient created.
+        '400':
+          description: Invalid id, invalid JSON, or missing ingredient name.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe not found.
+
+  /api/recipes/{recipeId}/ingredients/{ingredientId}:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+      - $ref: '#/components/parameters/IngredientId'
+    patch:
+      tags: [Recipes]
+      summary: Update a recipe ingredient
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngredientUpdateRequest'
+      responses:
+        '200':
+          description: Ingredient updated.
+        '400':
+          description: Invalid ids, invalid JSON, or no valid fields.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe or ingredient not found.
+    delete:
+      tags: [Recipes]
+      summary: Delete a recipe ingredient
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Ingredient deleted.
+        '400':
+          description: Invalid ids.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe or ingredient not found.
+
+  /api/recipes/{recipeId}/steps:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    get:
+      tags: [Recipes]
+      summary: List recipe steps
+      responses:
+        '200':
+          description: Step list.
+        '400':
+          description: Invalid recipe id.
+        '404':
+          description: Recipe not found.
+    post:
+      tags: [Recipes]
+      summary: Add a step to a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepCreateRequest'
+      responses:
+        '201':
+          description: Step created.
+        '400':
+          description: Invalid id, invalid JSON, or missing description.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe not found.
+
+  /api/recipes/{recipeId}/steps/{stepId}:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+      - $ref: '#/components/parameters/StepId'
+    patch:
+      tags: [Recipes]
+      summary: Update a recipe step
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepUpdateRequest'
+      responses:
+        '200':
+          description: Step updated.
+        '400':
+          description: Invalid ids, invalid JSON, or no valid fields.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe or step not found.
+    delete:
+      tags: [Recipes]
+      summary: Delete a recipe step
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Step deleted.
+        '400':
+          description: Invalid ids.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe or step not found.
+
+  /api/recipes/{recipeId}/steps/reorder:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    post:
+      tags: [Recipes]
+      summary: Reorder all steps of a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepReorderRequest'
+      responses:
+        '200':
+          description: Steps reordered.
+        '400':
+          description: Invalid id, invalid JSON, incomplete set of step ids, or foreign step ids.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe not found.
+
+  /api/recipes/{recipeId}/categories:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    post:
+      tags: [Recipes]
+      summary: Replace the categories assigned to a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+      responses:
+        '200':
+          description: Category assignments replaced.
+        '400':
+          description: Invalid id, invalid JSON, non-array body, or invalid category ids.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe not found.
+
+  /api/recipes/{recipeId}/tags:
+    parameters:
+      - $ref: '#/components/parameters/RecipeId'
+    post:
+      tags: [Recipes]
+      summary: Replace the tags assigned to a recipe
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+      responses:
+        '200':
+          description: Tag assignments replaced.
+        '400':
+          description: Invalid id, invalid JSON, non-array body, or invalid tag ids.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Recipe author or admin required.
+        '404':
+          description: Recipe not found.
+
+  /api/reports:
+    get:
+      tags: [Reports]
+      summary: List the current user's reports
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated current-user reports.
+        '401':
+          description: Authentication failed.
+    post:
+      tags: [Reports]
+      summary: Create a moderation report
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportCreateRequest'
+      responses:
+        '201':
+          description: Report created.
+        '400':
+          description: Invalid JSON or validation error.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Target not found.
+
+  /api/admin/users:
+    get:
+      tags: [Admin]
+      summary: List users for admin moderation
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: role
+          in: query
+          schema:
+            type: string
+        - name: isActive
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Paginated admin user list.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+
+  /api/admin/users/{userId}:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    patch:
+      tags: [Admin]
+      summary: Update a user's admin-managed fields
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminUserUpdateRequest'
+      responses:
+        '200':
+          description: User updated.
+        '400':
+          description: Invalid id, invalid JSON, validation error, self-deactivation, or no valid fields.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: User not found.
+
+  /api/admin/users/{userId}/audit:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      tags: [Admin]
+      summary: Get audit-related information for a user
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User plus comments, reports, and related moderation data.
+        '400':
+          description: Invalid user id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: User not found.
+
+  /api/admin/reports:
+    get:
+      tags: [Admin]
+      summary: List reports for moderation
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, accepted, rejected]
+        - name: target_type
+          in: query
+          schema:
+            type: string
+            enum: [recipe, comment]
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated admin report list.
+        '400':
+          description: Invalid filter values.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+
+  /api/admin/reports/{reportId}:
+    parameters:
+      - $ref: '#/components/parameters/ReportId'
+    get:
+      tags: [Admin]
+      summary: Get a report by id
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Report detail.
+        '400':
+          description: Invalid report id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Report not found.
+    patch:
+      tags: [Admin]
+      summary: Update a report review status
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminReportReviewRequest'
+      responses:
+        '200':
+          description: Report review state updated.
+        '400':
+          description: Invalid id, invalid JSON, or invalid status.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Report not found.
+
+  /api/admin/reports/{reportId}/actions:
+    parameters:
+      - $ref: '#/components/parameters/ReportId'
+    post:
+      tags: [Admin]
+      summary: Execute a moderation action on a report target
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminReportActionRequest'
+      responses:
+        '200':
+          description: Action executed and report accepted.
+        '400':
+          description: Invalid id, invalid JSON, or invalid action.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Report or target not found.
+        '422':
+          description: Unsupported target type for selected action.
+
+  /api/admin/comments/{commentId}/hard:
+    parameters:
+      - $ref: '#/components/parameters/CommentId'
+    delete:
+      tags: [Admin]
+      summary: Permanently delete a comment
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Comment permanently deleted.
+        '400':
+          description: Invalid comment id.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: Admin role required.
+        '404':
+          description: Comment not found.
