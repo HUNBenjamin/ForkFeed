@@ -19,6 +19,11 @@ type Recipe = {
   };
 };
 
+type Category = {
+  id: number;
+  name: string;
+};
+
 type Pagination = {
   page: number;
   limit: number;
@@ -36,18 +41,30 @@ export default function RecipeList() {
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
-  const [searchMode, setSearchMode] = useState<"recipe" | "username">(
-    () => (searchParams.get("mode") === "username" ? "username" : "recipe")
+  const [searchMode, setSearchMode] = useState<"recipe" | "username">(() =>
+    searchParams.get("mode") === "username" ? "username" : "recipe",
   );
   const [difficulty, setDifficulty] = useState(() => searchParams.get("difficulty") ?? "");
   const [sort, setSort] = useState(() => searchParams.get("sort") ?? "created_at");
-  const [order, setOrder] = useState<"asc" | "desc">(
-    () => (searchParams.get("order") === "asc" ? "asc" : "desc")
+  const [order, setOrder] = useState<"asc" | "desc">(() =>
+    searchParams.get("order") === "asc" ? "asc" : "desc",
   );
   const [sortOpen, setSortOpen] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(() => {
+    const v = searchParams.get("category_id");
+    return v ? Number(v) : null;
+  });
 
   const routerRef = useRef(router);
   routerRef.current = router;
+
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((r) => r.json())
+      .then((data) => setCategories(data.categories ?? []))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const p = new URLSearchParams();
@@ -57,8 +74,9 @@ export default function RecipeList() {
     if (difficulty) p.set("difficulty", difficulty);
     if (sort !== "created_at") p.set("sort", sort);
     if (order !== "desc") p.set("order", order);
+    if (selectedCategoryId) p.set("category_id", String(selectedCategoryId));
     routerRef.current.replace(`?${p.toString()}`, { scroll: false });
-  }, [page, query, searchMode, difficulty, sort, order]);
+  }, [page, query, searchMode, difficulty, sort, order, selectedCategoryId]);
 
   const sortOptions = [
     { value: "created_at", label: "Dátum" },
@@ -89,6 +107,7 @@ export default function RecipeList() {
     });
     if (query && searchMode === "recipe") params.set("query", query);
     if (difficulty) params.set("difficulty", difficulty);
+    if (selectedCategoryId) params.set("category_id", String(selectedCategoryId));
 
     fetch(`/api/recipes?${params}`)
       .then((res) => {
@@ -108,7 +127,13 @@ export default function RecipeList() {
     setPage(1);
   }
 
-  const hasActiveFilters = query !== "" || searchMode !== "recipe" || difficulty !== "" || sort !== "created_at" || order !== "desc";
+  const hasActiveFilters =
+    query !== "" ||
+    searchMode !== "recipe" ||
+    difficulty !== "" ||
+    sort !== "created_at" ||
+    order !== "desc" ||
+    selectedCategoryId !== null;
 
   function handleReset() {
     setQuery("");
@@ -116,6 +141,7 @@ export default function RecipeList() {
     setDifficulty("");
     setSort("created_at");
     setOrder("desc");
+    setSelectedCategoryId(null);
     setPage(1);
   }
 
@@ -126,7 +152,7 @@ export default function RecipeList() {
 
   return (
     <div>
-      <form onSubmit={handleSearch} className="flex flex-wrap gap-3 mb-6 items-center">
+      <form onSubmit={handleSearch} className="flex flex-wrap gap-3 mb-4 items-center">
         <div className="join flex-1 min-w-64">
           <select
             value={searchMode}
@@ -176,14 +202,19 @@ export default function RecipeList() {
             onClick={() => setSortOpen((o) => !o)}
             className="btn btn-outline gap-1 max-w-36"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 shrink-0"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
               <path d="M3 3a1 1 0 011-1h2a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm6 2a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 01-1 1h-2a1 1 0 01-1-1V5zm6 4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2a1 1 0 01-1-1V9z" />
             </svg>
             <span className="overflow-hidden max-w-16">
               <span
                 ref={sortLabelRef}
                 key={sort}
-                className={`inline-block whitespace-nowrap ${labelOverflows ? 'sort-label-slide' : ''}`}
+                className={`inline-block whitespace-nowrap ${labelOverflows ? "sort-label-slide" : ""}`}
               >
                 {currentSortLabel}
               </span>
@@ -214,14 +245,22 @@ export default function RecipeList() {
                 <p className="text-xs font-semibold text-base-content/50 px-3 py-1">Sorrend</p>
                 <button
                   type="button"
-                  onClick={() => { setOrder("desc"); setPage(1); setSortOpen(false); }}
+                  onClick={() => {
+                    setOrder("desc");
+                    setPage(1);
+                    setSortOpen(false);
+                  }}
                   className={`w-full text-left px-3 py-1.5 rounded text-sm hover:bg-base-200 ${order === "desc" ? "font-bold text-primary" : ""}`}
                 >
                   ↓ Csökkenő
                 </button>
                 <button
                   type="button"
-                  onClick={() => { setOrder("asc"); setPage(1); setSortOpen(false); }}
+                  onClick={() => {
+                    setOrder("asc");
+                    setPage(1);
+                    setSortOpen(false);
+                  }}
                   className={`w-full text-left px-3 py-1.5 rounded text-sm hover:bg-base-200 ${order === "asc" ? "font-bold text-primary" : ""}`}
                 >
                   ↑ Növekvő
@@ -241,6 +280,28 @@ export default function RecipeList() {
           ✕
         </button>
       </form>
+
+      {/* Category filter buttons */}
+      {categories.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mb-6">
+          <span className="text-sm font-semibold text-base-content/60 mr-1">Kategóriák</span>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => {
+                setSelectedCategoryId((prev) => (prev === cat.id ? null : cat.id));
+                setPage(1);
+              }}
+              className={`btn btn-sm btn-outline ${
+                selectedCategoryId === cat.id ? "btn-primary" : ""
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      )}
 
       {loading && (
         <div className="flex justify-center py-16">
