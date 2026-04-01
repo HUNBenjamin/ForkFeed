@@ -70,7 +70,11 @@ export default function StatsCard({ stats }: { stats: Stats }) {
             value={stats.ratings_given_count}
             href="/pages/profile/ratings"
           />
-          <Stat label="Kedvencek" value={stats.favorites_count} />
+          <ClickableStat
+            label="Kedvencek"
+            value={stats.favorites_count}
+            href="/pages/profile/favorites"
+          />
           <Stat label="Receptfüzetek" value={stats.recipe_books_count} />
           <Stat
             label="Átlag értékelés"
