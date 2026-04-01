@@ -180,6 +180,8 @@ export async function GET(request: NextRequest) {
   const difficulty = searchParams.get("difficulty")?.trim() ?? "";
   const sortBy = searchParams.get("sort") ?? "created_at";
   const order = searchParams.get("order") === "asc" ? "asc" : "desc";
+  const categoryIdRaw = searchParams.get("category_id");
+  const categoryId = categoryIdRaw ? Number(categoryIdRaw) : null;
 
   const where: Record<string, unknown> = { is_deleted: false };
 
@@ -192,6 +194,10 @@ export async function GET(request: NextRequest) {
 
   if (difficulty) {
     where.difficulty = difficulty;
+  }
+
+  if (categoryId) {
+    where.recipe_categories = { some: { category_id: categoryId } };
   }
 
   const allowedSortFields: Record<string, string> = {
