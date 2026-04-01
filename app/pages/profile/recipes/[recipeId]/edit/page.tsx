@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../../../main/components/Navbar";
@@ -8,12 +8,14 @@ import BasicFields from "./components/BasicFields";
 import IngredientsEditor from "./components/IngredientsEditor";
 import StepsEditor from "./components/StepsEditor";
 import TagCategoryPicker from "./components/TagCategoryPicker";
+import ImageUpload, { type ImageUploadHandle } from "../../../../../components/ImageUpload";
 import type { RecipeForm, Ingredient, Step } from "./types";
 
 type RecipeData = {
   id: number;
   title: string;
   description: string | null;
+  image_url: string | null;
   preparation_time: number;
   difficulty: string;
   ingredients: { id: number; name: string; quantity: number | null; unit: string | null }[];
@@ -30,12 +32,14 @@ export default function EditRecipePage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const imageUploadRef = useRef<ImageUploadHandle>(null);
 
   const [form, setForm] = useState<RecipeForm>({
     title: "",
     description: "",
     preparation_time: 30,
     difficulty: "easy",
+    image_url: null,
     ingredients: [],
     steps: [],
     category_ids: [],
@@ -63,6 +67,7 @@ export default function EditRecipePage() {
           description: r.description ?? "",
           preparation_time: r.preparation_time,
           difficulty: r.difficulty,
+          image_url: r.image_url ?? null,
           ingredients: r.ingredients.map((ing) => ({
             name: ing.name,
             quantity: ing.quantity,
@@ -98,6 +103,12 @@ export default function EditRecipePage() {
     setSuccess(false);
 
     try {
+      let imageUrl = form.image_url;
+      if (imageUploadRef.current?.hasPendingFile) {
+        const uploaded = await imageUploadRef.current.upload();
+        if (uploaded) imageUrl = uploaded;
+      }
+
       const res = await fetch(`/api/recipes/${recipeId}`, {
         method: "PATCH",
         headers: {
@@ -109,6 +120,7 @@ export default function EditRecipePage() {
           description: form.description.trim() || null,
           preparation_time: Math.round(form.preparation_time),
           difficulty: form.difficulty,
+          image_url: imageUrl,
           ingredients: form.ingredients.filter((ing) => ing.name.trim()),
           steps: form.steps
             .filter((s) => s.description.trim())
@@ -194,6 +206,16 @@ export default function EditRecipePage() {
               onChangeDescription={(v) => setForm((f) => ({ ...f, description: v }))}
               onChangePrepTime={(v) => setForm((f) => ({ ...f, preparation_time: v }))}
               onChangeDifficulty={(v) => setForm((f) => ({ ...f, difficulty: v }))}
+            />
+
+            <div className="divider" />
+
+            <ImageUpload
+              ref={imageUploadRef}
+              type="recipe"
+              currentUrl={form.image_url}
+              label="Recept képe"
+              onUpload={(url) => setForm((f) => ({ ...f, image_url: url || null }))}
             />
 
             <div className="divider" />

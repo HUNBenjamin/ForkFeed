@@ -160,6 +160,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     description?: string | null;
     preparation_time?: number;
     difficulty?: string;
+    image_url?: string | null;
     ingredients?: { name: string; quantity?: number | null; unit?: string | null }[];
     steps?: { step_number: number; description: string }[];
     category_ids?: number[];
@@ -204,6 +205,10 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
       );
     }
     data.difficulty = payload.difficulty;
+  }
+
+  if ("image_url" in payload) {
+    data.image_url = payload.image_url ?? null;
   }
 
   if (payload.ingredients !== undefined) {

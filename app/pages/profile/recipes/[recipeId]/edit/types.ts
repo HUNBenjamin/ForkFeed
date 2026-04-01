@@ -17,6 +17,7 @@ export type RecipeForm = {
   description: string;
   preparation_time: number;
   difficulty: string;
+  image_url: string | null;
   ingredients: Ingredient[];
   steps: Step[];
   category_ids: number[];

@@ -20,6 +20,7 @@ interface RecipePayload {
   description?: string | null;
   preparation_time?: number;
   difficulty?: string;
+  image_url?: string | null;
   ingredients?: IngredientInput[];
   steps?: StepInput[];
   category_ids?: number[];
@@ -117,6 +118,7 @@ export async function POST(request: NextRequest) {
       description,
       preparation_time,
       difficulty,
+      image_url: payload.image_url ?? null,
       author_id: auth.sub,
       ingredients: { create: ingredientData },
       steps: { create: stepData },

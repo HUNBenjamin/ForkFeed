@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
@@ -8,6 +8,7 @@ import BasicFields from "../../profile/recipes/[recipeId]/edit/components/BasicF
 import IngredientsEditor from "../../profile/recipes/[recipeId]/edit/components/IngredientsEditor";
 import StepsEditor from "../../profile/recipes/[recipeId]/edit/components/StepsEditor";
 import TagCategoryPicker from "../../profile/recipes/[recipeId]/edit/components/TagCategoryPicker";
+import ImageUpload, { type ImageUploadHandle } from "../../../components/ImageUpload";
 import type { RecipeForm, Ingredient, Step } from "../../profile/recipes/[recipeId]/edit/types";
 
 export default function NewRecipePage() {
@@ -15,12 +16,14 @@ export default function NewRecipePage() {
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const imageUploadRef = useRef<ImageUploadHandle>(null);
 
   const [form, setForm] = useState<RecipeForm>({
     title: "",
     description: "",
     preparation_time: 30,
     difficulty: "easy",
+    image_url: null,
     ingredients: [],
     steps: [],
     category_ids: [],
@@ -47,6 +50,12 @@ export default function NewRecipePage() {
     setError(null);
 
     try {
+      let imageUrl = form.image_url;
+      if (imageUploadRef.current?.hasPendingFile) {
+        const uploaded = await imageUploadRef.current.upload();
+        if (uploaded) imageUrl = uploaded;
+      }
+
       const res = await fetch("/api/recipes", {
         method: "POST",
         headers: {
@@ -58,6 +67,7 @@ export default function NewRecipePage() {
           description: form.description.trim() || null,
           preparation_time: Math.round(form.preparation_time),
           difficulty: form.difficulty,
+          image_url: imageUrl || null,
           ingredients: form.ingredients.filter((ing) => ing.name.trim()),
           steps: form.steps
             .filter((s) => s.description.trim())
@@ -110,6 +120,16 @@ export default function NewRecipePage() {
               onChangeDescription={(v) => setForm((f) => ({ ...f, description: v }))}
               onChangePrepTime={(v) => setForm((f) => ({ ...f, preparation_time: v }))}
               onChangeDifficulty={(v) => setForm((f) => ({ ...f, difficulty: v }))}
+            />
+
+            <div className="divider" />
+
+            <ImageUpload
+              ref={imageUploadRef}
+              type="recipe"
+              currentUrl={form.image_url}
+              label="Recept képe"
+              onUpload={(url) => setForm((f) => ({ ...f, image_url: url || null }))}
             />
 
             <div className="divider" />
