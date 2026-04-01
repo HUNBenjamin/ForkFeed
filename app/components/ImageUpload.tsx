@@ -1,15 +1,14 @@
-"use client";
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+﻿"use client";
+import React, { useState, useRef, forwardRef, useImperativeHandle } from "react";
+import ImageCropModal from "./ImageCropModal";
 
 interface Props {
   type: "recipe" | "avatar";
   currentUrl?: string | null;
-  /** Called after a successful cloud upload with the final URL. */
   onUpload: (url: string) => void;
   label?: string;
 }
 
-/** Call `ref.upload()` from the parent form's submit handler to trigger the actual cloud upload. */
 export interface ImageUploadHandle {
   upload(): Promise<string | null>;
   hasPendingFile: boolean;
@@ -28,8 +27,11 @@ const ImageUpload = forwardRef<ImageUploadHandle, Props>(function ImageUpload(
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [cropSrc, setCropSrc] = useState<string | null>(null);
+  const cropSrcRef = useRef<string | null>(null);
 
   const isAvatar = type === "avatar";
+  const cropAspect = isAvatar ? 1 : 16 / 9;
 
   useImperativeHandle(ref, () => ({
     hasPendingFile: pendingFile !== null,
@@ -96,79 +98,111 @@ const ImageUpload = forwardRef<ImageUploadHandle, Props>(function ImageUpload(
     }
 
     setError(null);
-    setPendingFile(file);
-    setPreview(URL.createObjectURL(file));
     e.target.value = "";
+    const objectUrl = URL.createObjectURL(file);
+    cropSrcRef.current = objectUrl;
+    setCropSrc(objectUrl);
+  }
+
+  function handleCropConfirm(blob: Blob) {
+    if (cropSrcRef.current) {
+      URL.revokeObjectURL(cropSrcRef.current);
+      cropSrcRef.current = null;
+    }
+    setCropSrc(null);
+    if (preview?.startsWith("blob:")) URL.revokeObjectURL(preview);
+    const croppedFile = new File([blob], "image.jpg", { type: "image/jpeg" });
+    const previewUrl = URL.createObjectURL(blob);
+    setPendingFile(croppedFile);
+    setPreview(previewUrl);
+  }
+
+  function handleCropCancel() {
+    if (cropSrcRef.current) {
+      URL.revokeObjectURL(cropSrcRef.current);
+      cropSrcRef.current = null;
+    }
+    setCropSrc(null);
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      {label && <span className="fieldset-legend">{label}</span>}
+    <>
+      {cropSrc && (
+        <ImageCropModal
+          src={cropSrc}
+          aspect={cropAspect}
+          onConfirm={handleCropConfirm}
+          onCancel={handleCropCancel}
+        />
+      )}
 
-      <div className="flex items-center gap-4">
-        {/* Preview */}
-        {preview ? (
-          <div
-            className={`shrink-0 overflow-hidden bg-base-300 ${isAvatar ? "rounded-full w-16 h-16" : "rounded-lg w-24 h-16"}`}
-          >
-            <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+      <div className="flex flex-col gap-2">
+        {label && <span className="fieldset-legend">{label}</span>}
+
+        <div className="flex items-center gap-4">
+          {preview ? (
+            <div
+              className={`shrink-0 overflow-hidden bg-base-300 ${isAvatar ? "rounded-full w-16 h-16" : "rounded-lg w-24 h-16"}`}
+            >
+              <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+            </div>
+          ) : (
+            <div
+              className={`shrink-0 flex items-center justify-center bg-base-300 text-base-content/30 text-2xl ${isAvatar ? "rounded-full w-16 h-16" : "rounded-lg w-24 h-16"}`}
+            >
+              {isAvatar ? "👤" : "🖼️"}
+            </div>
+          )}
+
+          <div className="flex flex-col gap-1 flex-1">
+            <label className={`btn btn-outline btn-sm w-full ${isUploading ? "btn-disabled" : ""}`}>
+              {isUploading ? (
+                <>
+                  <span className="loading loading-spinner loading-xs" />
+                  Feltöltés...
+                </>
+              ) : pendingFile ? (
+                "✅ Kész a mentésre"
+              ) : (
+                "📁 Kép kiválasztása"
+              )}
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                className="hidden"
+                onChange={handleChange}
+                disabled={isUploading}
+              />
+            </label>
+
+            {preview && !isUploading && (
+              <button
+                type="button"
+                className="btn btn-ghost btn-xs text-error"
+                onClick={() => {
+                  if (preview?.startsWith("blob:")) URL.revokeObjectURL(preview);
+                  setPreview(null);
+                  setPendingFile(null);
+                  onUpload("");
+                }}
+              >
+                Eltávolítás
+              </button>
+            )}
           </div>
-        ) : (
-          <div
-            className={`shrink-0 flex items-center justify-center bg-base-300 text-base-content/30 text-2xl ${isAvatar ? "rounded-full w-16 h-16" : "rounded-lg w-24 h-16"}`}
-          >
-            {isAvatar ? "👤" : "🖼️"}
-          </div>
+        </div>
+
+        {pendingFile && !isUploading && (
+          <p className="text-xs text-warning">⚠️ A kép mentéskor töltődik fel.</p>
         )}
 
-        {/* Input + state */}
-        <div className="flex flex-col gap-1 flex-1">
-          <label className={`btn btn-outline btn-sm w-full ${isUploading ? "btn-disabled" : ""}`}>
-            {isUploading ? (
-              <>
-                <span className="loading loading-spinner loading-xs" />
-                Feltöltés...
-              </>
-            ) : pendingFile ? (
-              "✅ Kész a mentésre"
-            ) : (
-              "📁 Kép kiválasztása"
-            )}
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              className="hidden"
-              onChange={handleChange}
-              disabled={isUploading}
-            />
-          </label>
-
-          {preview && !isUploading && (
-            <button
-              type="button"
-              className="btn btn-ghost btn-xs text-error"
-              onClick={() => {
-                setPreview(null);
-                setPendingFile(null);
-                onUpload("");
-              }}
-            >
-              Eltávolítás
-            </button>
-          )}
-        </div>
+        {error && (
+          <div className="alert alert-error py-1 text-xs">
+            <span>{error}</span>
+          </div>
+        )}
       </div>
-
-      {pendingFile && !isUploading && (
-        <p className="text-xs text-warning">⚠️ A kép mentéskor töltődik fel.</p>
-      )}
-
-      {error && (
-        <div className="alert alert-error py-1 text-xs">
-          <span>{error}</span>
-        </div>
-      )}
-    </div>
+    </>
   );
 });
 
