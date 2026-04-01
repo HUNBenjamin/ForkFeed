@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Navbar from "./components/Navbar";
 import RecipeList from "./components/RecipeList";
+import NewRecipeButton from "./components/NewRecipeButton";
 
 export default function Page() {
   return (
@@ -12,10 +13,17 @@ export default function Page() {
         <p className="mt-2 text-base-content/60 text-base">
           Fedezd fel a közösség legjobb receptjeit
         </p>
+        <NewRecipeButton />
       </div>
 
       <div className="max-w-6xl mx-auto px-5 pb-12">
-        <Suspense fallback={<div className="flex justify-center py-16"><span className="loading loading-spinner loading-lg" /></div>}>
+        <Suspense
+          fallback={
+            <div className="flex justify-center py-16">
+              <span className="loading loading-spinner loading-lg" />
+            </div>
+          }
+        >
           <RecipeList />
         </Suspense>
       </div>
