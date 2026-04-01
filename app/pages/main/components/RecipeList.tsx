@@ -51,9 +51,9 @@ export default function RecipeList() {
   );
   const [sortOpen, setSortOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(() => {
-    const v = searchParams.get("category_id");
-    return v ? Number(v) : null;
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<number[]>(() => {
+    const v = searchParams.get("category_ids");
+    return v ? v.split(",").map(Number).filter(Boolean) : [];
   });
 
   const routerRef = useRef(router);
@@ -74,9 +74,9 @@ export default function RecipeList() {
     if (difficulty) p.set("difficulty", difficulty);
     if (sort !== "created_at") p.set("sort", sort);
     if (order !== "desc") p.set("order", order);
-    if (selectedCategoryId) p.set("category_id", String(selectedCategoryId));
+    if (selectedCategoryIds.length > 0) p.set("category_ids", selectedCategoryIds.join(","));
     routerRef.current.replace(`?${p.toString()}`, { scroll: false });
-  }, [page, query, searchMode, difficulty, sort, order, selectedCategoryId]);
+  }, [page, query, searchMode, difficulty, sort, order, selectedCategoryIds]);
 
   const sortOptions = [
     { value: "created_at", label: "Dátum" },
@@ -107,7 +107,7 @@ export default function RecipeList() {
     });
     if (query && searchMode === "recipe") params.set("query", query);
     if (difficulty) params.set("difficulty", difficulty);
-    if (selectedCategoryId) params.set("category_id", String(selectedCategoryId));
+    if (selectedCategoryIds.length > 0) params.set("category_ids", selectedCategoryIds.join(","));
 
     fetch(`/api/recipes?${params}`)
       .then((res) => {
@@ -120,7 +120,7 @@ export default function RecipeList() {
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [page, query, searchMode, difficulty, sort, order]);
+  }, [page, query, searchMode, difficulty, sort, order, selectedCategoryIds]);
 
   function handleSearch(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -133,7 +133,7 @@ export default function RecipeList() {
     difficulty !== "" ||
     sort !== "created_at" ||
     order !== "desc" ||
-    selectedCategoryId !== null;
+    selectedCategoryIds.length > 0;
 
   function handleReset() {
     setQuery("");
@@ -141,7 +141,7 @@ export default function RecipeList() {
     setDifficulty("");
     setSort("created_at");
     setOrder("desc");
-    setSelectedCategoryId(null);
+    setSelectedCategoryIds([]);
     setPage(1);
   }
 
@@ -283,18 +283,19 @@ export default function RecipeList() {
 
       {/* Category filter buttons */}
       {categories.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 mb-6">
-          <span className="text-sm font-semibold text-base-content/60 mr-1">Kategóriák</span>
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
           {categories.map((cat) => (
             <button
               key={cat.id}
               type="button"
               onClick={() => {
-                setSelectedCategoryId((prev) => (prev === cat.id ? null : cat.id));
+                setSelectedCategoryIds((prev) =>
+                  prev.includes(cat.id) ? prev.filter((id) => id !== cat.id) : [...prev, cat.id],
+                );
                 setPage(1);
               }}
               className={`btn btn-sm btn-outline ${
-                selectedCategoryId === cat.id ? "btn-primary" : ""
+                selectedCategoryIds.includes(cat.id) ? "btn-primary" : ""
               }`}
             >
               {cat.name}

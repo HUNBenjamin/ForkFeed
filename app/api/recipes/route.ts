@@ -180,8 +180,8 @@ export async function GET(request: NextRequest) {
   const difficulty = searchParams.get("difficulty")?.trim() ?? "";
   const sortBy = searchParams.get("sort") ?? "created_at";
   const order = searchParams.get("order") === "asc" ? "asc" : "desc";
-  const categoryIdRaw = searchParams.get("category_id");
-  const categoryId = categoryIdRaw ? Number(categoryIdRaw) : null;
+  const categoryIdRaw = searchParams.get("category_ids");
+  const categoryIds = categoryIdRaw ? categoryIdRaw.split(",").map(Number).filter(Boolean) : [];
 
   const where: Record<string, unknown> = { is_deleted: false };
 
@@ -196,8 +196,8 @@ export async function GET(request: NextRequest) {
     where.difficulty = difficulty;
   }
 
-  if (categoryId) {
-    where.recipe_categories = { some: { category_id: categoryId } };
+  if (categoryIds.length > 0) {
+    where.recipe_categories = { some: { category_id: { in: categoryIds } } };
   }
 
   const allowedSortFields: Record<string, string> = {
