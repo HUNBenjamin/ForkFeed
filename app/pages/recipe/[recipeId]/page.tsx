@@ -15,6 +15,7 @@ import PrintButton from "./components/PrintButton";
 import ScrollToTop from "./components/ScrollToTop";
 import CommentSection from "./components/CommentSection";
 import SaveToBookButton from "./components/SaveToBookButton";
+import ReportModal from "@/app/components/ReportModal";
 
 type Recipe = {
   id: number;
@@ -52,7 +53,9 @@ export default function RecipePage() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [myRating, setMyRating] = useState<number | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
   const [deletingRecipe, setDeletingRecipe] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -61,7 +64,10 @@ export default function RecipePage() {
     fetch("/api/auth/me", { headers: { Authorization: `Bearer ${token}` } })
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (data?.user?.role) setUserRole(data.user.role);
+        if (data?.user) {
+          setUserRole(data.user.role);
+          setCurrentUserId(data.user.id);
+        }
       })
       .catch(() => {});
   }, []);
@@ -230,6 +236,16 @@ export default function RecipePage() {
           <ShareButton />
           <PrintButton title={recipe.title} />
 
+          {currentUserId && recipe.author.id !== currentUserId && (
+            <button
+              className="btn btn-circle btn-sm btn-ghost"
+              title="Recept jelentése"
+              onClick={() => setReportOpen(true)}
+            >
+              🚩
+            </button>
+          )}
+
           {userRole === "admin" && (
             <button
               onClick={deleteRecipe}
@@ -308,6 +324,16 @@ export default function RecipePage() {
       </div>
 
       <ScrollToTop />
+
+      {recipe && (
+        <ReportModal
+          open={reportOpen}
+          onClose={() => setReportOpen(false)}
+          targetType="recipe"
+          targetId={recipe.id}
+          targetLabel={recipe.title}
+        />
+      )}
     </div>
   );
 }
