@@ -24,6 +24,7 @@ type Recipe = {
   id: number;
   title: string;
   description: string | null;
+  image_url: string | null;
   preparation_time: number;
   difficulty: string;
   average_rating: number;
@@ -274,8 +275,21 @@ export default function UserProfilePage() {
                   <Link
                     key={r.id}
                     href={`/pages/recipe/${r.id}`}
-                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow cursor-pointer overflow-hidden"
                   >
+                    {r.image_url ? (
+                      <figure className="h-36 overflow-hidden">
+                        <img
+                          src={r.image_url}
+                          alt={r.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </figure>
+                    ) : (
+                      <div className="h-36 bg-base-300 flex items-center justify-center text-4xl text-base-content/20">
+                        🍽️
+                      </div>
+                    )}
                     <div className="card-body p-4 flex flex-col gap-2">
                       <h3 className="card-title text-base">{r.title}</h3>
                       {r.description && (
