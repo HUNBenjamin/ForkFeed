@@ -38,6 +38,7 @@ export async function GET(
         id: true,
         title: true,
         description: true,
+        image_url: true,
         preparation_time: true,
         difficulty: true,
         average_rating: true,
