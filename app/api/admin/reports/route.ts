@@ -5,7 +5,7 @@ import { requireAdmin } from "@/lib/auth";
 export const runtime = "nodejs";
 
 const ALLOWED_STATUSES = ["pending", "accepted", "rejected"];
-const ALLOWED_TARGET_TYPES = ["recipe", "comment"];
+const ALLOWED_TARGET_TYPES = ["recipe", "comment", "user"];
 
 export async function GET(request: NextRequest) {
   const auth = await requireAdmin(request);
