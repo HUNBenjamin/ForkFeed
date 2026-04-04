@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import UserAvatar from "../UserAvatar";
 import type { Comment, CurrentUser } from "./commentTypes";
-import { formatDate } from "./commentTypes";
+import { formatDate, getToken } from "./commentTypes";
 
 type Props = {
   comment: Comment;
@@ -15,9 +15,21 @@ type Props = {
   onDelete: (commentId: number) => void;
 };
 
-export default function CommentCard({ comment, currentUser, submitting, highlight, onEdit, onDelete }: Props) {
+export default function CommentCard({
+  comment,
+  currentUser,
+  submitting,
+  highlight,
+  onEdit,
+  onDelete,
+}: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState("");
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportReason, setReportReason] = useState("");
+  const [reportLoading, setReportLoading] = useState(false);
+  const [reportResult, setReportResult] = useState<"success" | "error" | null>(null);
+  const [reportError, setReportError] = useState<string | null>(null);
 
   const isOwn = currentUser?.id === comment.user.id;
   const isAdmin = currentUser?.role === "admin";
@@ -37,6 +49,49 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
     onEdit(comment.id, editContent.trim());
     setIsEditing(false);
     setEditContent("");
+  };
+
+  const handleReport = async () => {
+    const token = getToken();
+    if (!token || !reportReason.trim()) return;
+
+    setReportLoading(true);
+    setReportError(null);
+
+    try {
+      const res = await fetch("/api/reports", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          target_type: "comment",
+          target_id: comment.id,
+          reason: reportReason.trim(),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error ?? "Nem sikerült elküldeni a jelentést.");
+      }
+
+      setReportResult("success");
+      setReportReason("");
+    } catch (e) {
+      setReportError(e instanceof Error ? e.message : "Ismeretlen hiba.");
+      setReportResult("error");
+    } finally {
+      setReportLoading(false);
+    }
+  };
+
+  const closeReport = () => {
+    setReportOpen(false);
+    setReportReason("");
+    setReportResult(null);
+    setReportError(null);
   };
 
   return (
@@ -71,7 +126,7 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
               <button
                 className="btn btn-ghost btn-xs"
                 title="Jelentés"
-                onClick={() => alert("Jelentés funkció hamarosan elérhető.")}
+                onClick={() => setReportOpen(true)}
               >
                 🚩
               </button>
@@ -80,7 +135,11 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
             {(isOwn || isAdmin) && !isEditing && (
               <>
                 {isOwn && (
-                  <button className="btn btn-ghost btn-xs" title="Szerkesztés" onClick={startEditing}>
+                  <button
+                    className="btn btn-ghost btn-xs"
+                    title="Szerkesztés"
+                    onClick={startEditing}
+                  >
                     ✏️
                   </button>
                 )}
@@ -122,6 +181,67 @@ export default function CommentCard({ comment, currentUser, submitting, highligh
           <p className="text-sm whitespace-pre-wrap">{comment.content}</p>
         )}
       </div>
+
+      {reportOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg mb-2">Komment jelentése</h3>
+            <p className="text-sm text-base-content/60 mb-4">
+              Miért szeretnéd jelenteni{" "}
+              <span className="font-semibold">{comment.user.username}</span> kommentjét?
+            </p>
+
+            {reportResult === "success" ? (
+              <div className="flex flex-col gap-4">
+                <div className="alert alert-success text-sm">
+                  <span>Jelentés sikeresen elküldve. Köszönjük!</span>
+                </div>
+                <div className="modal-action">
+                  <button className="btn btn-ghost" onClick={closeReport}>
+                    Bezárás
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                {reportError && (
+                  <div className="alert alert-error text-sm mb-3">
+                    <span>{reportError}</span>
+                  </div>
+                )}
+                <textarea
+                  className="textarea textarea-bordered w-full"
+                  rows={3}
+                  maxLength={500}
+                  placeholder="Írd le az okot... (kötelező)"
+                  value={reportReason}
+                  onChange={(e) => setReportReason(e.target.value)}
+                />
+                <div className="text-xs text-base-content/40 mt-1 text-right">
+                  {reportReason.length}/500
+                </div>
+                <div className="modal-action">
+                  <button className="btn btn-ghost" onClick={closeReport} disabled={reportLoading}>
+                    Mégse
+                  </button>
+                  <button
+                    className="btn btn-error"
+                    disabled={reportLoading || !reportReason.trim()}
+                    onClick={handleReport}
+                  >
+                    {reportLoading ? (
+                      <span className="loading loading-spinner loading-sm" />
+                    ) : (
+                      "🚩 Jelentés küldése"
+                    )}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+          <div className="modal-backdrop" onClick={closeReport} />
+        </div>
+      )}
     </div>
   );
 }
