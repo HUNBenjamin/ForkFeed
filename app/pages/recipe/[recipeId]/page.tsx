@@ -14,6 +14,7 @@ import ShareButton from "./components/ShareButton";
 import PrintButton from "./components/PrintButton";
 import ScrollToTop from "./components/ScrollToTop";
 import CommentSection from "./components/CommentSection";
+import SaveToBookButton from "./components/SaveToBookButton";
 
 type Recipe = {
   id: number;
@@ -225,6 +226,7 @@ export default function RecipePage() {
               {isFavorite ? "❤️" : "🤍"}
             </button>
           </div>
+          <SaveToBookButton recipeId={recipeId} isLoggedIn={!!userRole} />
           <ShareButton />
           <PrintButton title={recipe.title} />
 
