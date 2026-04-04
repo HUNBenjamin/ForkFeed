@@ -4,13 +4,17 @@ import { authenticateRequest } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
-const ALLOWED_TARGET_TYPES = ["recipe", "comment"] as const;
+const ALLOWED_TARGET_TYPES = ["recipe", "comment", "user"] as const;
 type TargetType = (typeof ALLOWED_TARGET_TYPES)[number];
 
 async function targetExists(type: TargetType, id: number): Promise<boolean> {
   if (type === "recipe") {
     const r = await prisma.recipe.findUnique({ where: { id }, select: { is_deleted: true } });
     return r !== null && !r.is_deleted;
+  }
+  if (type === "user") {
+    const u = await prisma.user.findUnique({ where: { id }, select: { is_active: true } });
+    return u !== null && u.is_active;
   }
   const c = await prisma.comment.findUnique({ where: { id }, select: { is_deleted: true } });
   return c !== null && !c.is_deleted;
