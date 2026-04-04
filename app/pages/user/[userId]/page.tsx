@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
+import ReportModal from "@/app/components/ReportModal";
 
 type User = {
   id: number;
@@ -68,6 +69,7 @@ export default function UserProfilePage() {
 
   const [tab, setTab] = useState<"recipes" | "books">("recipes");
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+  const [reportOpen, setReportOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -86,10 +88,18 @@ export default function UserProfilePage() {
     setLoading(true);
 
     Promise.all([
-      fetch(`/api/users/${userId}`).then((r) => (r.ok ? r.json() : Promise.reject("User not found"))),
-      fetch(`/api/users/${userId}/stats`).then((r) => (r.ok ? r.json() : Promise.reject("Stats not found"))),
-      fetch(`/api/users/${userId}/recipes?page=1&limit=12`).then((r) => (r.ok ? r.json() : Promise.reject("Recipes not found"))),
-      fetch(`/api/users/${userId}/recipe-books?page=1&limit=12`).then((r) => (r.ok ? r.json() : Promise.reject("Books not found"))),
+      fetch(`/api/users/${userId}`).then((r) =>
+        r.ok ? r.json() : Promise.reject("User not found"),
+      ),
+      fetch(`/api/users/${userId}/stats`).then((r) =>
+        r.ok ? r.json() : Promise.reject("Stats not found"),
+      ),
+      fetch(`/api/users/${userId}/recipes?page=1&limit=12`).then((r) =>
+        r.ok ? r.json() : Promise.reject("Recipes not found"),
+      ),
+      fetch(`/api/users/${userId}/recipe-books?page=1&limit=12`).then((r) =>
+        r.ok ? r.json() : Promise.reject("Books not found"),
+      ),
     ])
       .then(([userData, statsData, recipesData, booksData]) => {
         setUser(userData.user);
@@ -200,7 +210,7 @@ export default function UserProfilePage() {
               <button
                 className="btn btn-ghost btn-sm gap-1 text-base-content/50 hover:text-error"
                 title="Felhasználó jelentése"
-                onClick={() => alert("Jelentés funkció hamarosan elérhető.")}
+                onClick={() => setReportOpen(true)}
               >
                 🚩 Jelentés
               </button>
@@ -328,15 +338,11 @@ export default function UserProfilePage() {
                     <div className="card-body p-4 flex flex-col gap-2">
                       <h3 className="card-title text-base">📖 {b.name}</h3>
                       {b.description && (
-                        <p className="text-sm text-base-content/60 line-clamp-2">
-                          {b.description}
-                        </p>
+                        <p className="text-sm text-base-content/60 line-clamp-2">{b.description}</p>
                       )}
                       <div className="mt-auto flex flex-wrap gap-2 items-center text-sm text-base-content/50">
                         <span>📝 {b.recipe_count} recept</span>
-                        <span>
-                          {new Date(b.created_at).toLocaleDateString("hu-HU")}
-                        </span>
+                        <span>{new Date(b.created_at).toLocaleDateString("hu-HU")}</span>
                       </div>
                     </div>
                   </div>
@@ -370,6 +376,16 @@ export default function UserProfilePage() {
 
         <div className="h-8" />
       </div>
+
+      {user && (
+        <ReportModal
+          open={reportOpen}
+          onClose={() => setReportOpen(false)}
+          targetType="user"
+          targetId={user.id}
+          targetLabel={user.username}
+        />
+      )}
     </div>
   );
 }
