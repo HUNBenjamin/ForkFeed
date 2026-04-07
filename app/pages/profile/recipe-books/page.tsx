@@ -6,6 +6,7 @@ import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
 import RecipeBookCard from "./components/RecipeBookCard";
 import CreateBookModal from "./components/CreateBookModal";
+import Pagination from "@/app/components/Pagination";
 
 type RecipeBook = {
   id: number;
@@ -125,25 +126,7 @@ export default function MyRecipeBooksPage() {
             </div>
 
             {totalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={page <= 1}
-                  onClick={() => fetchBooks(page - 1)}
-                >
-                  ← Előző
-                </button>
-                <span className="text-sm flex items-center text-base-content/60">
-                  {page} / {totalPages}
-                </span>
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={page >= totalPages}
-                  onClick={() => fetchBooks(page + 1)}
-                >
-                  Következő →
-                </button>
-              </div>
+              <Pagination page={page} totalPages={totalPages} onPageChange={fetchBooks} />
             )}
           </>
         )}
