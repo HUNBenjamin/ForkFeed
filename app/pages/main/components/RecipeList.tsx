@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import RecipeCard from "./RecipeCard";
+import Pagination from "@/app/components/Pagination";
 
 type Recipe = {
   id: number;
@@ -292,18 +293,6 @@ export default function RecipeList() {
           r.author.username.toLowerCase().includes(debouncedQuery.toLowerCase()),
         )
       : recipes;
-
-  function getPageNumbers(current: number, total: number): (number | "...")[] {
-    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-    const pages: (number | "...")[] = [1];
-    if (current > 3) pages.push("...");
-    const start = Math.max(2, current - 1);
-    const end = Math.min(total - 1, current + 1);
-    for (let i = start; i <= end; i++) pages.push(i);
-    if (current < total - 2) pages.push("...");
-    pages.push(total);
-    return pages;
-  }
 
   return (
     <div>
@@ -652,38 +641,8 @@ export default function RecipeList() {
             </div>
           )}
 
-          {pagination && pagination.total_pages > 1 && (
-            <div className="flex justify-center items-center gap-1 mt-8 flex-wrap">
-              <button
-                disabled={page <= 1}
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                className="btn btn-sm btn-outline"
-              >
-                ← Előző
-              </button>
-              {getPageNumbers(page, pagination.total_pages).map((p, i) =>
-                p === "..." ? (
-                  <span key={`dots-${i}`} className="px-1 text-base-content/40">
-                    …
-                  </span>
-                ) : (
-                  <button
-                    key={p}
-                    onClick={() => setPage(p)}
-                    className={`btn btn-sm ${p === page ? "btn-primary" : "btn-outline"}`}
-                  >
-                    {p}
-                  </button>
-                ),
-              )}
-              <button
-                disabled={page >= pagination.total_pages}
-                onClick={() => setPage((p) => p + 1)}
-                className="btn btn-sm btn-outline"
-              >
-                Következő →
-              </button>
-            </div>
+          {pagination && (
+            <Pagination page={page} totalPages={pagination.total_pages} onPageChange={setPage} />
           )}
         </>
       )}
