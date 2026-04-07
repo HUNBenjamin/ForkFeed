@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
 import ReportModal from "@/app/components/ReportModal";
+import Pagination from "@/app/components/Pagination";
 
 type User = {
   id: number;
@@ -315,25 +316,11 @@ export default function UserProfilePage() {
             )}
 
             {recipeTotalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={recipePage <= 1}
-                  onClick={() => fetchRecipes(recipePage - 1)}
-                >
-                  ← Előző
-                </button>
-                <span className="text-sm flex items-center text-base-content/60">
-                  {recipePage} / {recipeTotalPages}
-                </span>
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={recipePage >= recipeTotalPages}
-                  onClick={() => fetchRecipes(recipePage + 1)}
-                >
-                  Következő →
-                </button>
-              </div>
+              <Pagination
+                page={recipePage}
+                totalPages={recipeTotalPages}
+                onPageChange={fetchRecipes}
+              />
             )}
           </>
         )}
@@ -365,25 +352,7 @@ export default function UserProfilePage() {
             )}
 
             {bookTotalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={bookPage <= 1}
-                  onClick={() => fetchBooks(bookPage - 1)}
-                >
-                  ← Előző
-                </button>
-                <span className="text-sm flex items-center text-base-content/60">
-                  {bookPage} / {bookTotalPages}
-                </span>
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={bookPage >= bookTotalPages}
-                  onClick={() => fetchBooks(bookPage + 1)}
-                >
-                  Következő →
-                </button>
-              </div>
+              <Pagination page={bookPage} totalPages={bookTotalPages} onPageChange={fetchBooks} />
             )}
           </>
         )}
