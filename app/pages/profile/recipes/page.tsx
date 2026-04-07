@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
 import MyRecipeCard from "./components/MyRecipeCard";
+import Pagination from "@/app/components/Pagination";
 
 type Recipe = {
   id: number;
@@ -123,25 +124,7 @@ export default function MyRecipesPage() {
             </div>
 
             {totalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={page <= 1}
-                  onClick={() => fetchRecipes(page - 1)}
-                >
-                  ← Előző
-                </button>
-                <span className="text-sm flex items-center text-base-content/60">
-                  {page} / {totalPages}
-                </span>
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={page >= totalPages}
-                  onClick={() => fetchRecipes(page + 1)}
-                >
-                  Következő →
-                </button>
-              </div>
+              <Pagination page={page} totalPages={totalPages} onPageChange={fetchRecipes} />
             )}
           </>
         )}
