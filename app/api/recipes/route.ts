@@ -182,6 +182,30 @@ export async function GET(request: NextRequest) {
   const order = searchParams.get("order") === "asc" ? "asc" : "desc";
   const categoryIdRaw = searchParams.get("category_ids");
   const categoryIds = categoryIdRaw ? categoryIdRaw.split(",").map(Number).filter(Boolean) : [];
+  const excludeCategoryIdRaw = searchParams.get("exclude_category_ids");
+  const excludeCategoryIds = excludeCategoryIdRaw
+    ? excludeCategoryIdRaw.split(",").map(Number).filter(Boolean)
+    : [];
+  const tagIdRaw = searchParams.get("tag_ids");
+  const tagIds = tagIdRaw ? tagIdRaw.split(",").map(Number).filter(Boolean) : [];
+  const excludeTagIdRaw = searchParams.get("exclude_tag_ids");
+  const excludeTagIds = excludeTagIdRaw
+    ? excludeTagIdRaw.split(",").map(Number).filter(Boolean)
+    : [];
+  const ingredientsRaw = searchParams.get("ingredients");
+  const ingredientTerms = ingredientsRaw
+    ? ingredientsRaw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : [];
+  const excludeIngredientsRaw = searchParams.get("exclude_ingredients");
+  const excludeIngredientTerms = excludeIngredientsRaw
+    ? excludeIngredientsRaw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : [];
 
   const where: Record<string, unknown> = { is_deleted: false };
 
@@ -198,6 +222,47 @@ export async function GET(request: NextRequest) {
 
   if (categoryIds.length > 0) {
     where.recipe_categories = { some: { category_id: { in: categoryIds } } };
+  }
+
+  if (tagIds.length > 0) {
+    where.recipe_tags = { some: { tag_id: { in: tagIds } } };
+  }
+
+  const andConditions: Record<string, unknown>[] = [];
+  const notConditions: Record<string, unknown>[] = [];
+
+  if (excludeCategoryIds.length > 0) {
+    notConditions.push({
+      recipe_categories: { some: { category_id: { in: excludeCategoryIds } } },
+    });
+  }
+
+  if (excludeTagIds.length > 0) {
+    notConditions.push({ recipe_tags: { some: { tag_id: { in: excludeTagIds } } } });
+  }
+
+  if (ingredientTerms.length > 0) {
+    for (const term of ingredientTerms) {
+      andConditions.push({
+        ingredients: { some: { name: { contains: term, mode: "insensitive" } } },
+      });
+    }
+  }
+
+  if (excludeIngredientTerms.length > 0) {
+    for (const term of excludeIngredientTerms) {
+      notConditions.push({
+        ingredients: { some: { name: { contains: term, mode: "insensitive" } } },
+      });
+    }
+  }
+
+  if (andConditions.length > 0) {
+    where.AND = andConditions;
+  }
+
+  if (notConditions.length > 0) {
+    where.NOT = notConditions;
   }
 
   const allowedSortFields: Record<string, string> = {
