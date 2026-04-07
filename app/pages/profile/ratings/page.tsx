@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
 import RatedRecipeCard from "./components/RatedRecipeCard";
+import Pagination from "@/app/components/Pagination";
 
 type Recipe = {
   id: number;
@@ -87,7 +88,9 @@ export default function MyRatingsPage() {
           </div>
         ) : recipes.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-base-content/50 text-lg">Még nem értékeltél egyetlen receptet sem.</p>
+            <p className="text-base-content/50 text-lg">
+              Még nem értékeltél egyetlen receptet sem.
+            </p>
             <Link href="/pages/main" className="btn btn-primary mt-4">
               Fedezd fel a recepteket
             </Link>
@@ -101,25 +104,7 @@ export default function MyRatingsPage() {
             </div>
 
             {totalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={page <= 1}
-                  onClick={() => fetchRecipes(page - 1)}
-                >
-                  ← Előző
-                </button>
-                <span className="text-sm flex items-center text-base-content/60">
-                  {page} / {totalPages}
-                </span>
-                <button
-                  className="btn btn-sm btn-ghost"
-                  disabled={page >= totalPages}
-                  onClick={() => fetchRecipes(page + 1)}
-                >
-                  Következő →
-                </button>
-              </div>
+              <Pagination page={page} totalPages={totalPages} onPageChange={fetchRecipes} />
             )}
           </>
         )}
