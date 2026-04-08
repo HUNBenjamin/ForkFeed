@@ -13,6 +13,12 @@ type Report = {
   reviewed_at: string | null;
   reporter: { id: number; username: string };
   reviewer: { id: number; username: string } | null;
+  comment?: {
+    content: string;
+    user: { id: number; username: string };
+    recipe_id: number;
+    is_deleted: boolean;
+  };
 };
 
 const targetTypeLabels: Record<string, string> = {
@@ -197,11 +203,30 @@ export default function AdminReportsPage() {
                           </Link>
                         )}
                         {r.target_type === "comment" && (
-                          <span className="text-xs text-base-content/40">
-                            Komment #{r.target_id}
-                          </span>
+                          <Link
+                            href={r.comment ? `/pages/recipe/${r.comment.recipe_id}` : "#"}
+                            className="text-xs link link-primary"
+                            target="_blank"
+                          >
+                            Komment #{r.target_id} megtekintése ↗
+                          </Link>
                         )}
                       </div>
+
+                      {/* Comment content preview */}
+                      {r.target_type === "comment" && r.comment && (
+                        <div className={`mt-2 p-3 rounded-lg text-sm ${r.comment.is_deleted ? "bg-error/10 border border-error/20" : "bg-base-200"}`}>
+                          <div className="flex items-center gap-1.5 text-xs text-base-content/50 mb-1">
+                            <Link href={`/pages/user/${r.comment.user.id}`} className="link link-hover font-medium">
+                              {r.comment.user.username}
+                            </Link>
+                            {r.comment.is_deleted && (
+                              <span className="badge badge-xs badge-error">Törölve</span>
+                            )}
+                          </div>
+                          <p className="text-base-content/70 italic">&ldquo;{r.comment.content}&rdquo;</p>
+                        </div>
+                      )}
                       <p className="text-sm mt-1.5">{r.reason}</p>
                       <div className="flex flex-wrap gap-3 mt-2 text-xs text-base-content/40">
                         <span>

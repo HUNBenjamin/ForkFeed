@@ -79,9 +79,35 @@ export async function GET(request: NextRequest) {
     prisma.report.count({ where }),
   ]);
 
+  // Enrich comment reports with comment content
+  const commentReports = reports.filter((r) => r.target_type === "comment");
+  let commentMap: Record<number, { content: string; user: { id: number; username: string }; recipe_id: number; is_deleted: boolean }> = {};
+
+  if (commentReports.length > 0) {
+    const commentIds = commentReports.map((r) => r.target_id);
+    const comments = await prisma.comment.findMany({
+      where: { id: { in: commentIds } },
+      select: {
+        id: true,
+        content: true,
+        is_deleted: true,
+        recipe_id: true,
+        user: { select: { id: true, username: true } },
+      },
+    });
+    commentMap = Object.fromEntries(comments.map((c) => [c.id, { content: c.content, user: c.user, recipe_id: c.recipe_id, is_deleted: c.is_deleted }]));
+  }
+
+  const enrichedReports = reports.map((r) => {
+    if (r.target_type === "comment" && commentMap[r.target_id]) {
+      return { ...r, comment: commentMap[r.target_id] };
+    }
+    return r;
+  });
+
   return NextResponse.json(
     {
-      reports,
+      reports: enrichedReports,
       pagination: {
         page,
         limit,
