@@ -30,7 +30,7 @@ const difficultyBadge: Record<string, string> = {
 
 type Props = {
   recipe: Recipe;
-  onRemove: (recipeId: number) => void;
+  onRemove?: (recipeId: number) => void;
 };
 
 export default function BookRecipeCard({ recipe, onRemove }: Props) {
@@ -99,12 +99,14 @@ export default function BookRecipeCard({ recipe, onRemove }: Props) {
           {recipe.author.username}
         </Link>
 
-        <button
-          className="btn btn-sm btn-outline btn-error mt-1"
-          onClick={() => onRemove(recipe.id)}
-        >
-          Eltávolítás
-        </button>
+        {onRemove && (
+          <button
+            className="btn btn-sm btn-outline btn-error mt-1"
+            onClick={() => onRemove(recipe.id)}
+          >
+            Eltávolítás
+          </button>
+        )}
       </div>
     </div>
   );

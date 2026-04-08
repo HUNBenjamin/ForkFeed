@@ -41,6 +41,7 @@ export default function RecipeBookDetailPage() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [editOpen, setEditOpen] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
   const getHeaders = (): HeadersInit => {
     const token = localStorage.getItem("token");
@@ -78,6 +79,15 @@ export default function RecipeBookDetailPage() {
 
   useEffect(() => {
     setLoading(true);
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("/api/auth/me", { headers: { Authorization: `Bearer ${token}` } })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (data?.user) setCurrentUserId(data.user.id);
+        })
+        .catch(() => {});
+    }
     Promise.all([fetchBook(), fetchRecipes(1)]).finally(() => setLoading(false));
   }, [fetchBook, fetchRecipes]);
 
@@ -129,15 +139,23 @@ export default function RecipeBookDetailPage() {
     );
   }
 
+  const isOwner = book != null && currentUserId != null && book.owner.id === currentUserId;
+
   return (
     <div className="min-h-screen bg-base-200">
       <Navbar />
 
       <div className="max-w-5xl mx-auto px-5 py-8 flex flex-col gap-6">
         <div className="flex items-center gap-3">
-          <Link href="/pages/profile/recipe-books" className="btn btn-ghost btn-sm">
-            ← Receptfüzetek
-          </Link>
+          {isOwner ? (
+            <Link href="/pages/profile/recipe-books" className="btn btn-ghost btn-sm">
+              ← Receptkönyvek
+            </Link>
+          ) : (
+            <Link href={`/pages/user/${book.owner.id}`} className="btn btn-ghost btn-sm">
+              ← {book.owner.username} profilja
+            </Link>
+          )}
         </div>
 
         <div className="card bg-base-100 shadow-md">
@@ -148,17 +166,36 @@ export default function RecipeBookDetailPage() {
                 {book.description && (
                   <p className="text-base-content/60 mt-1">{book.description}</p>
                 )}
+                {!isOwner && (
+                  <Link
+                    href={`/pages/user/${book.owner.id}`}
+                    className="flex items-center gap-1.5 text-sm text-base-content/50 hover:text-primary transition-colors mt-2 w-fit"
+                  >
+                    <div className="avatar placeholder">
+                      <div className="w-5 h-5 rounded-full bg-primary text-primary-content flex items-center justify-center text-[10px]">
+                        {book.owner.profile_image_url ? (
+                          <img src={book.owner.profile_image_url} alt={book.owner.username} className="rounded-full" />
+                        ) : (
+                          book.owner.username.charAt(0).toUpperCase()
+                        )}
+                      </div>
+                    </div>
+                    {book.owner.username}
+                  </Link>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <span className={`badge ${book.is_public ? "badge-success" : "badge-ghost"}`}>
                   {book.is_public ? "Publikus" : "Privát"}
                 </span>
-                <button
-                  className="btn btn-sm btn-outline btn-primary"
-                  onClick={() => setEditOpen(true)}
-                >
-                  ✏️ Szerkesztés
-                </button>
+                {isOwner && (
+                  <button
+                    className="btn btn-sm btn-outline btn-primary"
+                    onClick={() => setEditOpen(true)}
+                  >
+                    ✏️ Szerkesztés
+                  </button>
+                )}
               </div>
             </div>
             <div className="text-sm text-base-content/50 mt-2">
@@ -179,7 +216,11 @@ export default function RecipeBookDetailPage() {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {recipes.map((r) => (
-                <BookRecipeCard key={r.id} recipe={r} onRemove={handleRemoveRecipe} />
+                <BookRecipeCard
+                  key={r.id}
+                  recipe={r}
+                  onRemove={isOwner ? handleRemoveRecipe : undefined}
+                />
               ))}
             </div>
 
@@ -190,7 +231,7 @@ export default function RecipeBookDetailPage() {
         )}
       </div>
 
-      {editOpen && (
+      {isOwner && editOpen && (
         <EditBookModal
           book={book}
           bookId={book.id}
