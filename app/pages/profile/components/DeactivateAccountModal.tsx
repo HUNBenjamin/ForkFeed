@@ -76,9 +76,7 @@ export default function DeactivateAccountModal({ onClose, onDeactivated }: Props
             </span>
           </div>
 
-          <p className="text-sm text-base-content/70">
-            A megerősítéshez add meg a jelszavad:
-          </p>
+          <p className="text-sm text-base-content/70">A megerősítéshez add meg a jelszavad:</p>
 
           <input
             type="password"
