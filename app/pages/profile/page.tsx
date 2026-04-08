@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import Navbar from "../main/components/Navbar";
+import ProfileTabs from "./components/ProfileTabs";
 import ProfileCard from "./components/ProfileCard";
 import StatsCard from "./components/StatsCard";
 import EditProfileModal from "./components/EditProfileModal";
+import DeactivateAccountModal from "./components/DeactivateAccountModal";
 
 type User = {
   id: number;
@@ -33,6 +35,7 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [editOpen, setEditOpen] = useState(false);
+  const [deactivateOpen, setDeactivateOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -75,18 +78,21 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-base-200">
-      {/* Top bar */}
-      <div className="navbar bg-base-100 shadow-sm px-4">
-        <div className="flex-1">
-          <Link href="/pages/main" className="btn btn-ghost btn-sm -ml-2 text-base-content/60">
-            ← Főoldal
-          </Link>
-        </div>
-      </div>
+      <Navbar />
+      <ProfileTabs />
 
       <div className="max-w-2xl mx-auto px-4 py-10 flex flex-col gap-6">
         <ProfileCard user={user} onEdit={() => setEditOpen(true)} />
         {stats && <StatsCard stats={stats} />}
+
+        <div className="flex justify-center">
+          <button
+            className="btn btn-ghost btn-sm text-error/60 hover:text-error"
+            onClick={() => setDeactivateOpen(true)}
+          >
+            Fiók deaktiválása
+          </button>
+        </div>
       </div>
 
       {editOpen && (
@@ -97,6 +103,13 @@ export default function ProfilePage() {
             setUser(updated);
             setEditOpen(false);
           }}
+        />
+      )}
+
+      {deactivateOpen && (
+        <DeactivateAccountModal
+          onClose={() => setDeactivateOpen(false)}
+          onDeactivated={() => router.replace("/pages/login")}
         />
       )}
     </div>

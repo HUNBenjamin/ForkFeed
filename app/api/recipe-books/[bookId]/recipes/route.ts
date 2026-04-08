@@ -157,6 +157,14 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
             average_rating: true,
             rating_count: true,
             created_at: true,
+            ingredients: {
+              select: {
+                id: true,
+                name: true,
+                quantity: true,
+                unit: true,
+              },
+            },
             author: {
               select: {
                 id: true,

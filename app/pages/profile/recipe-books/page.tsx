@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
+import ProfileTabs from "../components/ProfileTabs";
 import RecipeBookCard from "./components/RecipeBookCard";
 import CreateBookModal from "./components/CreateBookModal";
 import Pagination from "@/app/components/Pagination";
@@ -86,17 +86,12 @@ export default function MyRecipeBooksPage() {
   return (
     <div className="min-h-screen bg-base-200">
       <Navbar />
+      <ProfileTabs />
 
       <div className="max-w-5xl mx-auto px-5 py-8 flex flex-col gap-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link href="/pages/profile" className="btn btn-ghost btn-sm">
-              ← Profil
-            </Link>
-            <h1 className="text-2xl font-bold">Receptfüzeteim</h1>
-          </div>
+        <div className="flex items-center justify-end">
           <button className="btn btn-primary btn-sm" onClick={() => setCreateOpen(true)}>
-            + Új receptfüzet
+            + Új receptkönyv
           </button>
         </div>
 

@@ -335,7 +335,11 @@ export default function UserProfilePage() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {recipeBooks.map((b) => (
-                  <div key={b.id} className="card bg-base-100 shadow-md">
+                  <Link
+                    key={b.id}
+                    href={`/pages/profile/recipe-books/${b.id}`}
+                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                  >
                     <div className="card-body p-4 flex flex-col gap-2">
                       <h3 className="card-title text-base">📖 {b.name}</h3>
                       {b.description && (
@@ -346,7 +350,7 @@ export default function UserProfilePage() {
                         <span>{new Date(b.created_at).toLocaleDateString("hu-HU")}</span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}

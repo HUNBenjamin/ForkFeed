@@ -73,7 +73,7 @@ export default function CreateBookModal({ open, onClose, onCreated }: Props) {
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="form-control">
+          <div className="form-control flex flex-row gap-x-2">
             <label className="label">
               <span className="label-text">Név *</span>
             </label>
@@ -87,7 +87,7 @@ export default function CreateBookModal({ open, onClose, onCreated }: Props) {
             />
           </div>
 
-          <div className="form-control">
+          <div className="form-control flex flex-row gap-x-2">
             <label className="label">
               <span className="label-text">Leírás</span>
             </label>
