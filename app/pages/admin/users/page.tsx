@@ -256,7 +256,13 @@ export default function AdminUsersPage() {
                           {/* Toggle active */}
                           <button
                             className={`btn btn-ghost btn-xs ${!u.is_active ? "text-success" : "text-error"}`}
-                            title={isSelf ? "Nem tilthatod le magadat" : u.is_active ? "Felhasználó tiltása" : "Felhasználó aktiválása"}
+                            title={
+                              isSelf
+                                ? "Nem tilthatod le magadat"
+                                : u.is_active
+                                  ? "Felhasználó tiltása"
+                                  : "Felhasználó aktiválása"
+                            }
                             disabled={isLoading || isSelf}
                             onClick={() => {
                               const action = u.is_active ? "tiltod" : "aktiválod";

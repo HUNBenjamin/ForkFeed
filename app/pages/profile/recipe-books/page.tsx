@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Navbar from "../../main/components/Navbar";
 import ProfileTabs from "../components/ProfileTabs";
 import RecipeBookCard from "./components/RecipeBookCard";

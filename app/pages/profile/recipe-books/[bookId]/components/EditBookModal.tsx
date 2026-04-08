@@ -72,7 +72,7 @@ export default function EditBookModal({ book, open, onClose, onSaved, bookId }: 
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="form-control">
+          <div className="form-control flex flex-row gap-x-2">
             <label className="label">
               <span className="label-text">Név *</span>
             </label>
@@ -85,7 +85,7 @@ export default function EditBookModal({ book, open, onClose, onSaved, bookId }: 
             />
           </div>
 
-          <div className="form-control">
+          <div className="form-control flex flex-row gap-x-2">
             <label className="label">
               <span className="label-text">Leírás</span>
             </label>
