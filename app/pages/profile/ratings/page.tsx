@@ -69,7 +69,6 @@ export default function MyRatingsPage() {
       <ProfileTabs />
 
       <div className="max-w-5xl mx-auto px-5 py-8 flex flex-col gap-6">
-
         {error && (
           <div className="alert alert-error text-sm">
             <span>{error}</span>
