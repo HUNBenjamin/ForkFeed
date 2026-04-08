@@ -23,6 +23,7 @@
 ## Features
 
 ### For Users
+
 - **Authentication** — Register, log in, log out, change password, and reset forgotten passwords via email
 - **Recipe Management** — Create, edit, and delete your own recipes with ingredients, steps, categories, and tags
 - **Image Uploads** — Upload recipe and avatar images (stored on Cloudinary with automatic resizing)
@@ -34,6 +35,7 @@
 - **Account Management** — Update profile info (username, bio, avatar), deactivate account
 
 ### For Admins
+
 - **User Management** — List, filter, activate/deactivate users, promote/demote roles
 - **Report System** — Review user-submitted reports on recipes/comments, take action (delete content, warn users)
 - **Content Moderation** — Hard-delete comments, manage categories and tags
@@ -42,18 +44,18 @@
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Framework** | [Next.js 16](https://nextjs.org/) (App Router) |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
-| **Database** | [MongoDB](https://www.mongodb.com/) |
-| **ORM** | [Prisma 6](https://www.prisma.io/) |
-| **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) + [DaisyUI 5](https://daisyui.com/) |
-| **Image Storage** | [Cloudinary](https://cloudinary.com/) |
-| **Auth** | JWT (jsonwebtoken) with token denylist |
-| **Email** | [Nodemailer](https://nodemailer.com/) (SMTP) |
-| **Linting** | ESLint 9 + typescript-eslint |
-| **Formatting** | Prettier 3 |
+| Layer             | Technology                                                                     |
+| ----------------- | ------------------------------------------------------------------------------ |
+| **Framework**     | [Next.js 16](https://nextjs.org/) (App Router)                                 |
+| **Language**      | [TypeScript 5](https://www.typescriptlang.org/)                                |
+| **Database**      | [MongoDB](https://www.mongodb.com/)                                            |
+| **ORM**           | [Prisma 6](https://www.prisma.io/)                                             |
+| **Styling**       | [Tailwind CSS 4](https://tailwindcss.com/) + [DaisyUI 5](https://daisyui.com/) |
+| **Image Storage** | [Cloudinary](https://cloudinary.com/)                                          |
+| **Auth**          | JWT (jsonwebtoken) with token denylist                                         |
+| **Email**         | [Nodemailer](https://nodemailer.com/) (SMTP)                                   |
+| **Linting**       | ESLint 9 + typescript-eslint                                                   |
+| **Formatting**    | Prettier 3                                                                     |
 
 ---
 
@@ -173,15 +175,15 @@ NEXT_PUBLIC_APP_URL="http://localhost:8080"
 
 ## Available Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| **dev** | `npm run dev` | Start dev server on port 8080 |
-| **build** | `npm run build` | Generate Prisma client + build for production |
-| **start** | `npm start` | Start production server |
-| **lint** | `npm run lint` | Run ESLint |
-| **format** | `npm run format` | Check formatting with Prettier |
-| **format:fix** | `npm run format:fix` | Auto-fix formatting |
-| **postinstall** | _(automatic)_ | Generates Prisma client after `npm install` |
+| Script          | Command              | Description                                   |
+| --------------- | -------------------- | --------------------------------------------- |
+| **dev**         | `npm run dev`        | Start dev server on port 8080                 |
+| **build**       | `npm run build`      | Generate Prisma client + build for production |
+| **start**       | `npm start`          | Start production server                       |
+| **lint**        | `npm run lint`       | Run ESLint                                    |
+| **format**      | `npm run format`     | Check formatting with Prettier                |
+| **format:fix**  | `npm run format:fix` | Auto-fix formatting                           |
+| **postinstall** | _(automatic)_        | Generates Prisma client after `npm install`   |
 
 ---
 
@@ -189,24 +191,24 @@ NEXT_PUBLIC_APP_URL="http://localhost:8080"
 
 ForkFeed uses **MongoDB** with **Prisma ORM**. The schema defines 14 models:
 
-| Model | Description |
-|-------|-------------|
-| `User` | User accounts with roles (user/admin) |
-| `Recipe` | Recipes with soft-delete support |
-| `Ingredient` | Recipe ingredients (name, quantity, unit) |
-| `Step` | Ordered preparation steps |
-| `Category` | Recipe categories |
-| `Tag` | Recipe tags |
-| `RecipeCategory` | Many-to-many: Recipe ↔ Category |
-| `RecipeTag` | Many-to-many: Recipe ↔ Tag |
-| `RecipeBook` | User-created recipe collections |
-| `RecipeBookRecipe` | Many-to-many: RecipeBook ↔ Recipe |
-| `Comment` | Recipe comments with soft-delete |
-| `Rating` | User ratings (1–5, one per user per recipe) |
-| `Favorite` | User favorites (one per user per recipe) |
-| `Report` | Content reports (recipe/comment) |
-| `PasswordResetToken` | Time-limited password reset tokens |
-| `DenylistedToken` | Invalidated JWT tokens |
+| Model                | Description                                 |
+| -------------------- | ------------------------------------------- |
+| `User`               | User accounts with roles (user/admin)       |
+| `Recipe`             | Recipes with soft-delete support            |
+| `Ingredient`         | Recipe ingredients (name, quantity, unit)   |
+| `Step`               | Ordered preparation steps                   |
+| `Category`           | Recipe categories                           |
+| `Tag`                | Recipe tags                                 |
+| `RecipeCategory`     | Many-to-many: Recipe ↔ Category             |
+| `RecipeTag`          | Many-to-many: Recipe ↔ Tag                  |
+| `RecipeBook`         | User-created recipe collections             |
+| `RecipeBookRecipe`   | Many-to-many: RecipeBook ↔ Recipe           |
+| `Comment`            | Recipe comments with soft-delete            |
+| `Rating`             | User ratings (1–5, one per user per recipe) |
+| `Favorite`           | User favorites (one per user per recipe)    |
+| `Report`             | Content reports (recipe/comment)            |
+| `PasswordResetToken` | Time-limited password reset tokens          |
+| `DenylistedToken`    | Invalidated JWT tokens                      |
 
 ---
 
@@ -214,22 +216,22 @@ ForkFeed uses **MongoDB** with **Prisma ORM**. The schema defines 14 models:
 
 The backend exposes **54 API endpoints** organized as Next.js Route Handlers under `/app/api/`. All endpoints return JSON.
 
-| Domain | Base Path | Endpoints |
-|--------|-----------|-----------|
-| Authentication | `/api/auth/*` | Login, register, logout, me, change/reset password |
-| Recipes | `/api/recipes/*` | Full CRUD + ratings, comments, steps, ingredients, favorites, image, categories, tags |
-| Categories | `/api/categories/*` | List, create, update, delete |
-| Tags | `/api/tags/*` | List, create, update, delete |
-| Comments | `/api/comments/*` | Edit, delete |
-| Users | `/api/users/*` | Public profiles, stats, activity |
-| Current User | `/api/users/me/*` | Profile, stats, favorites, deactivation |
-| Recipe Books | `/api/recipe-books/*` | CRUD, clone, manage recipes |
-| Reports | `/api/reports/*` | Create and list own reports |
-| Admin | `/api/admin/*` | User management, report review, content moderation |
-| Uploads | `/api/uploads` | Image upload to Cloudinary |
-| Search | `/api/search/*` | Autocomplete suggestions |
-| Meta | `/api/meta/*` | Difficulty levels, user roles |
-| Health | `/api/health` | Database health check |
+| Domain         | Base Path             | Endpoints                                                                             |
+| -------------- | --------------------- | ------------------------------------------------------------------------------------- |
+| Authentication | `/api/auth/*`         | Login, register, logout, me, change/reset password                                    |
+| Recipes        | `/api/recipes/*`      | Full CRUD + ratings, comments, steps, ingredients, favorites, image, categories, tags |
+| Categories     | `/api/categories/*`   | List, create, update, delete                                                          |
+| Tags           | `/api/tags/*`         | List, create, update, delete                                                          |
+| Comments       | `/api/comments/*`     | Edit, delete                                                                          |
+| Users          | `/api/users/*`        | Public profiles, stats, activity                                                      |
+| Current User   | `/api/users/me/*`     | Profile, stats, favorites, deactivation                                               |
+| Recipe Books   | `/api/recipe-books/*` | CRUD, clone, manage recipes                                                           |
+| Reports        | `/api/reports/*`      | Create and list own reports                                                           |
+| Admin          | `/api/admin/*`        | User management, report review, content moderation                                    |
+| Uploads        | `/api/uploads`        | Image upload to Cloudinary                                                            |
+| Search         | `/api/search/*`       | Autocomplete suggestions                                                              |
+| Meta           | `/api/meta/*`         | Difficulty levels, user roles                                                         |
+| Health         | `/api/health`         | Database health check                                                                 |
 
 > **For the complete API reference with request/response details, see [documentation/BACKEND.md](documentation/BACKEND.md).**
 

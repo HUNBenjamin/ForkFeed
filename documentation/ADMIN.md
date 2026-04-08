@@ -29,11 +29,11 @@ This document provides a comprehensive reference for the ForkFeed admin panel, c
 
 The ForkFeed admin panel is a dedicated interface for platform administrators to moderate content and manage users. It is accessible at `/pages/admin` and provides three main sections:
 
-| Section | Route | Purpose |
-|---------|-------|---------|
-| Dashboard | `/pages/admin` | Overview statistics and recent activity |
-| Reports | `/pages/admin/reports` | Review and act on user-submitted reports |
-| Users | `/pages/admin/users` | Search, filter, and manage user accounts |
+| Section   | Route                  | Purpose                                  |
+| --------- | ---------------------- | ---------------------------------------- |
+| Dashboard | `/pages/admin`         | Overview statistics and recent activity  |
+| Reports   | `/pages/admin/reports` | Review and act on user-submitted reports |
+| Users     | `/pages/admin/users`   | Search, filter, and manage user accounts |
 
 The admin panel uses a **separate layout** from the main application, with its own sidebar navigation and mobile drawer — completely independent from the main navbar.
 
@@ -58,6 +58,7 @@ A loading spinner is shown while the auth check is in progress.
 ### Server-Side Enforcement
 
 All admin API endpoints use the `requireAdmin()` helper from `lib/auth.ts`, which:
+
 1. Validates the JWT token
 2. Checks that the token is not deny-listed
 3. Verifies that the user's role is `"admin"`
@@ -106,11 +107,11 @@ Admin roles are managed through the admin users page. The first admin must be as
 
 ### Sidebar Navigation Links
 
-| Icon | Label | Route | Active Matching |
-|------|-------|-------|-----------------|
-| Grid | Áttekintés | `/pages/admin` | Exact match only |
-| Flag | Jelentések | `/pages/admin/reports` | Prefix match |
-| Users | Felhasználók | `/pages/admin/users` | Prefix match |
+| Icon  | Label        | Route                  | Active Matching  |
+| ----- | ------------ | ---------------------- | ---------------- |
+| Grid  | Áttekintés   | `/pages/admin`         | Exact match only |
+| Flag  | Jelentések   | `/pages/admin/reports` | Prefix match     |
+| Users | Felhasználók | `/pages/admin/users`   | Prefix match     |
 
 ### Sidebar Footer
 
@@ -130,12 +131,12 @@ The dashboard provides a quick overview of platform activity.
 
 Four stat cards displayed in a 2×2 grid (4 columns on large screens):
 
-| Card | Color | Value Source | Clickable |
-|------|-------|-------------|-----------|
+| Card                               | Color            | Value Source                                                         | Clickable                                   |
+| ---------------------------------- | ---------------- | -------------------------------------------------------------------- | ------------------------------------------- |
 | Függő jelentések (Pending reports) | Warning (yellow) | `GET /api/admin/reports?status=pending&limit=1` → `pagination.total` | Yes → `/pages/admin/reports?status=pending` |
-| Összes jelentés (Total reports) | Primary (blue) | `GET /api/admin/reports?limit=1` → `pagination.total` | No |
-| Összes felhasználó (Total users) | Primary (blue) | `GET /api/admin/users?limit=1` → `pagination.total` | No |
-| Aktív felhasználó (Active users) | Success (green) | `GET /api/admin/users?is_active=true&limit=1` → `pagination.total` | No |
+| Összes jelentés (Total reports)    | Primary (blue)   | `GET /api/admin/reports?limit=1` → `pagination.total`                | No                                          |
+| Összes felhasználó (Total users)   | Primary (blue)   | `GET /api/admin/users?limit=1` → `pagination.total`                  | No                                          |
+| Aktív felhasználó (Active users)   | Success (green)  | `GET /api/admin/users?is_active=true&limit=1` → `pagination.total`   | No                                          |
 
 > **Note**: The dashboard uses `limit=1` requests intentionally — it only needs the `pagination.total` count from each response, not the actual data.
 
@@ -143,14 +144,14 @@ Four stat cards displayed in a 2×2 grid (4 columns on large screens):
 
 A table showing the 5 most recent reports with columns:
 
-| Column | Description |
-|--------|-------------|
-| ID | Report ID (links to reports page) |
-| Típus | Target type badge (Recept/Komment/Felhasználó) |
-| Indok | Report reason text (truncated) |
-| Bejelentő | Reporter username (links to reports page) |
-| Státusz | Color-coded status badge |
-| Dátum | Submission date (Hungarian locale) |
+| Column    | Description                                    |
+| --------- | ---------------------------------------------- |
+| ID        | Report ID (links to reports page)              |
+| Típus     | Target type badge (Recept/Komment/Felhasználó) |
+| Indok     | Report reason text (truncated)                 |
+| Bejelentő | Reporter username (links to reports page)      |
+| Státusz   | Color-coded status badge                       |
+| Dátum     | Submission date (Hungarian locale)             |
 
 If no reports exist, a "Nincsenek jelentések." empty state is shown.
 
@@ -166,10 +167,10 @@ The reports page is the primary moderation interface for reviewing user-submitte
 
 Two filter dropdowns at the top:
 
-| Filter | Options | Default |
-|--------|---------|---------|
+| Filter | Options                                         | Default            |
+| ------ | ----------------------------------------------- | ------------------ |
 | Status | Minden státusz, Függőben, Elfogadva, Elutasítva | Függőben (pending) |
-| Type | Minden típus, Recept, Komment, Felhasználó | All types |
+| Type   | Minden típus, Recept, Komment, Felhasználó      | All types          |
 
 Changing filters immediately refreshes the list (resets to page 1).
 
@@ -177,11 +178,11 @@ Changing filters immediately refreshes the list (resets to page 1).
 
 Each report is rendered as a card with a color-coded left border:
 
-| Status | Border Color |
-|--------|-------------|
-| Pending | Warning (yellow) |
-| Accepted | Success (green) |
-| Rejected | Base-300 (gray) |
+| Status   | Border Color     |
+| -------- | ---------------- |
+| Pending  | Warning (yellow) |
+| Accepted | Success (green)  |
+| Rejected | Base-300 (gray)  |
 
 #### Card Header Content
 
@@ -234,13 +235,13 @@ Any closed report can be reopened back to "Pending" status.
 
 The action panel is revealed by clicking the expand chevron on each report card.
 
-| Action | Button | Availability | Description |
-|--------|--------|-------------|-------------|
-| Elfogadás (Accept) | ✓ green | Pending only | Sets status to `accepted` |
-| Elutasítás (Reject) | ✕ ghost | Pending only | Sets status to `rejected` |
-| Tartalom törlése (Delete content) | 🗑️ red outline | Recipe & Comment reports | Soft-deletes the target (sets `is_deleted: true`) |
-| Felhasználó kezelése (Manage user) | 👤 outline | User reports | Links to `/pages/admin/users?highlight={userId}` |
-| Újranyitás (Reopen) | ↩ ghost | Accepted/Rejected only | Resets status to `pending` |
+| Action                             | Button         | Availability             | Description                                       |
+| ---------------------------------- | -------------- | ------------------------ | ------------------------------------------------- |
+| Elfogadás (Accept)                 | ✓ green        | Pending only             | Sets status to `accepted`                         |
+| Elutasítás (Reject)                | ✕ ghost        | Pending only             | Sets status to `rejected`                         |
+| Tartalom törlése (Delete content)  | 🗑️ red outline | Recipe & Comment reports | Soft-deletes the target (sets `is_deleted: true`) |
+| Felhasználó kezelése (Manage user) | 👤 outline     | User reports             | Links to `/pages/admin/users?highlight={userId}`  |
+| Újranyitás (Reopen)                | ↩ ghost        | Accepted/Rejected only   | Resets status to `pending`                        |
 
 #### Content Deletion Flow
 
@@ -262,25 +263,25 @@ The users page provides a searchable, filterable table of all registered users.
 
 Three filter controls:
 
-| Control | Type | Options |
-|---------|------|---------|
-| Search | Text input | Searches username and email (case-insensitive) |
-| Role | Dropdown | Minden szerep, Felhasználó (user), Admin |
-| Status | Dropdown | Minden státusz, Aktív, Inaktív |
+| Control | Type       | Options                                        |
+| ------- | ---------- | ---------------------------------------------- |
+| Search  | Text input | Searches username and email (case-insensitive) |
+| Role    | Dropdown   | Minden szerep, Felhasználó (user), Admin       |
+| Status  | Dropdown   | Minden státusz, Aktív, Inaktív                 |
 
 Changing any filter resets to page 1 and refreshes the list.
 
 ### User Table
 
-| Column | Content |
-|--------|---------|
-| Felhasználó | Avatar (image or initial letter) + username + `#id` |
-| Email | Email address |
-| Szerep | Role badge — `admin` (primary color) or `user` (ghost) |
-| Státusz | Active badge (success = "Aktív") or inactive badge (error = "Inaktív") |
-| Regisztráció | Registration date (Hungarian locale) |
-| Utolsó belépés | Last login date or "—" if never logged in |
-| Műveletek | Action controls (see below) |
+| Column         | Content                                                                |
+| -------------- | ---------------------------------------------------------------------- |
+| Felhasználó    | Avatar (image or initial letter) + username + `#id`                    |
+| Email          | Email address                                                          |
+| Szerep         | Role badge — `admin` (primary color) or `user` (ghost)                 |
+| Státusz        | Active badge (success = "Aktív") or inactive badge (error = "Inaktív") |
+| Regisztráció   | Registration date (Hungarian locale)                                   |
+| Utolsó belépés | Last login date or "—" if never logged in                              |
+| Műveletek      | Action controls (see below)                                            |
 
 ### User Actions
 
@@ -304,11 +305,11 @@ Each user row has two action controls:
 
 The admin panel implements safeguards to prevent administrators from accidentally locking themselves out:
 
-| Protection | Implementation |
-|-----------|---------------|
-| Cannot change own role | Role dropdown is **disabled** for the current admin's row |
-| Cannot ban self | Ban button is **disabled** for the current admin's row |
-| Server-side check | API returns `400: "Cannot deactivate your own account."` if attempted |
+| Protection             | Implementation                                                        |
+| ---------------------- | --------------------------------------------------------------------- |
+| Cannot change own role | Role dropdown is **disabled** for the current admin's row             |
+| Cannot ban self        | Ban button is **disabled** for the current admin's row                |
+| Server-side check      | API returns `400: "Cannot deactivate your own account."` if attempted |
 
 The current admin's user ID is fetched on mount via `GET /api/auth/me` and compared against each row's ID. Matching rows show disabled controls with reduced opacity.
 
@@ -326,13 +327,13 @@ GET /api/admin/reports
 
 **Query Parameters**:
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `page` | integer | 1 | Page number |
-| `limit` | integer | 20 | Items per page (max 50) |
-| `status` | string | — | Filter by status: `pending`, `accepted`, `rejected` |
-| `target_type` | string | — | Filter by type: `recipe`, `comment`, `user` |
-| `reported_by` | integer | — | Filter by reporter user ID |
+| Parameter     | Type    | Default | Description                                         |
+| ------------- | ------- | ------- | --------------------------------------------------- |
+| `page`        | integer | 1       | Page number                                         |
+| `limit`       | integer | 20      | Items per page (max 50)                             |
+| `status`      | string  | —       | Filter by status: `pending`, `accepted`, `rejected` |
+| `target_type` | string  | —       | Filter by type: `recipe`, `comment`, `user`         |
+| `reported_by` | integer | —       | Filter by reporter user ID                          |
 
 **Response**:
 
@@ -381,7 +382,7 @@ PATCH /api/admin/reports/{reportId}
 
 ```json
 {
-  "status": "accepted"  // "pending" | "accepted" | "rejected"
+  "status": "accepted" // "pending" | "accepted" | "rejected"
 }
 ```
 
@@ -397,18 +398,18 @@ POST /api/admin/reports/{reportId}/actions
 
 ```json
 {
-  "action": "delete_target"  // "delete_target" | "warn_user"
+  "action": "delete_target" // "delete_target" | "warn_user"
 }
 ```
 
 **Actions**:
 
-| Action | `target_type` | Effect |
-|--------|--------------|--------|
-| `delete_target` | `comment` | Sets `is_deleted: true` on the comment |
-| `delete_target` | `recipe` | Sets `is_deleted: true` on the recipe |
-| `delete_target` | `user` | Not supported (returns 422) |
-| `warn_user` | any | Placeholder — acknowledged but no action taken |
+| Action          | `target_type` | Effect                                         |
+| --------------- | ------------- | ---------------------------------------------- |
+| `delete_target` | `comment`     | Sets `is_deleted: true` on the comment         |
+| `delete_target` | `recipe`      | Sets `is_deleted: true` on the recipe          |
+| `delete_target` | `user`        | Not supported (returns 422)                    |
+| `warn_user`     | any           | Placeholder — acknowledged but no action taken |
 
 ### Users API
 
@@ -420,13 +421,13 @@ GET /api/admin/users
 
 **Query Parameters**:
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `page` | integer | 1 | Page number |
-| `limit` | integer | 20 | Items per page (max 50) |
-| `query` | string | — | Search in username and email (case-insensitive) |
-| `role` | string | — | Filter by role: `user`, `admin` |
-| `is_active` | string | — | Filter by status: `true`, `false` |
+| Parameter   | Type    | Default | Description                                     |
+| ----------- | ------- | ------- | ----------------------------------------------- |
+| `page`      | integer | 1       | Page number                                     |
+| `limit`     | integer | 20      | Items per page (max 50)                         |
+| `query`     | string  | —       | Search in username and email (case-insensitive) |
+| `role`      | string  | —       | Filter by role: `user`, `admin`                 |
+| `is_active` | string  | —       | Filter by status: `true`, `false`               |
 
 **Response**:
 
@@ -460,12 +461,13 @@ PATCH /api/admin/users/{userId}
 
 ```json
 {
-  "role": "admin",       // "user" | "admin"
-  "is_active": false     // true | false
+  "role": "admin", // "user" | "admin"
+  "is_active": false // true | false
 }
 ```
 
 **Server-side protections**:
+
 - Cannot set `is_active: false` on your own account (returns 400)
 - Invalid roles return 400
 - Non-boolean `is_active` returns 400

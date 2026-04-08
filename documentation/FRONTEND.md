@@ -67,16 +67,16 @@ app/layout.tsx          → Root HTML shell (server-rendered)
 
 ## Technology Stack
 
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| Framework | Next.js 16 (App Router) | Routing, SSR shell, API routes |
-| Language | TypeScript 5 | Type-safe development |
-| UI Library | React 19 | Component architecture |
-| CSS Framework | Tailwind CSS 4 | Utility-first styling |
-| Component Library | DaisyUI 5 | Pre-built UI components (cards, modals, badges, etc.) |
-| Theming | DaisyUI themes | Light/dark mode with `data-theme` attribute |
-| Icons | Heroicons (inline SVG) | All icons are inlined as SVG paths |
-| Image Cropping | Custom canvas-based | Built-in `ImageCropModal` component |
+| Component         | Technology              | Purpose                                               |
+| ----------------- | ----------------------- | ----------------------------------------------------- |
+| Framework         | Next.js 16 (App Router) | Routing, SSR shell, API routes                        |
+| Language          | TypeScript 5            | Type-safe development                                 |
+| UI Library        | React 19                | Component architecture                                |
+| CSS Framework     | Tailwind CSS 4          | Utility-first styling                                 |
+| Component Library | DaisyUI 5               | Pre-built UI components (cards, modals, badges, etc.) |
+| Theming           | DaisyUI themes          | Light/dark mode with `data-theme` attribute           |
+| Icons             | Heroicons (inline SVG)  | All icons are inlined as SVG paths                    |
+| Image Cropping    | Custom canvas-based     | Built-in `ImageCropModal` component                   |
 
 ---
 
@@ -223,12 +223,13 @@ Description: "Receptmegosztó közösség" (Recipe-sharing community)
 
 DaisyUI is configured with two themes:
 
-| Theme | Activation |
-|-------|-----------|
-| `light` | Default theme |
-| `dark` | Applied when `prefers-color-scheme: dark` or manually toggled |
+| Theme   | Activation                                                    |
+| ------- | ------------------------------------------------------------- |
+| `light` | Default theme                                                 |
+| `dark`  | Applied when `prefers-color-scheme: dark` or manually toggled |
 
 The `ThemeToggle` component:
+
 - Toggles the `data-theme` attribute on `<html>` between `light` and `dark`
 - Persists the choice in `localStorage.theme`
 - Respects system preference on first load (if no stored preference)
@@ -236,10 +237,10 @@ The `ThemeToggle` component:
 
 ### Custom CSS Animations
 
-| Animation | Purpose |
-|-----------|---------|
-| `slideText` | Sort label transition in recipe list |
-| `fadeIn` | Tooltip fade-in effect |
+| Animation          | Purpose                                   |
+| ------------------ | ----------------------------------------- |
+| `slideText`        | Sort label transition in recipe list      |
+| `fadeIn`           | Tooltip fade-in effect                    |
 | `highlightComment` | Pulsing glow effect on user's own comment |
 
 ---
@@ -266,13 +267,13 @@ The navbar is the primary navigation component, used on all pages except the adm
 
 #### User Dropdown Menu
 
-| Item | Link | Condition |
-|------|------|-----------|
-| Profilom | `/pages/profile` | Always |
-| Receptjeim | `/pages/profile/recipes` | Always |
-| Receptkönyvek | `/pages/profile/recipe-books` | Always |
-| Admin panel | `/pages/admin` | `role === "admin"` only |
-| Kijelentkezés | Logout action | Always |
+| Item          | Link                          | Condition               |
+| ------------- | ----------------------------- | ----------------------- |
+| Profilom      | `/pages/profile`              | Always                  |
+| Receptjeim    | `/pages/profile/recipes`      | Always                  |
+| Receptkönyvek | `/pages/profile/recipe-books` | Always                  |
+| Admin panel   | `/pages/admin`                | `role === "admin"` only |
+| Kijelentkezés | Logout action                 | Always                  |
 
 #### Mobile Layout
 
@@ -293,11 +294,11 @@ The navbar is the primary navigation component, used on all pages except the adm
 
 ### Page-Level Auth Guards
 
-| Pattern | Implementation |
-|---------|---------------|
+| Pattern           | Implementation                                                                  |
+| ----------------- | ------------------------------------------------------------------------------- |
 | **Required auth** | `useEffect` checks `localStorage.token`, redirects to `/pages/login` if missing |
-| **Optional auth** | Fetches `/api/auth/me`, shows extra features if authenticated |
-| **Admin guard** | Fetches `/api/auth/me`, checks `role === "admin"`, redirects if not |
+| **Optional auth** | Fetches `/api/auth/me`, shows extra features if authenticated                   |
+| **Admin guard**   | Fetches `/api/auth/me`, checks `role === "admin"`, redirects if not             |
 
 ### Password Reset Flow
 
@@ -318,6 +319,7 @@ The navbar is the primary navigation component, used on all pages except the adm
 The landing page and primary recipe discovery interface.
 
 #### Hero Section
+
 - Emoji-decorated heading with app name and tagline
 - "Recept feltöltése" CTA button (links to `/pages/recipe/new` if logged in, shows tooltip if not)
 
@@ -326,6 +328,7 @@ The landing page and primary recipe discovery interface.
 The recipe list is a complex filtering component with URL query parameter synchronization.
 
 **Search**:
+
 - Text search by recipe title (default) or author username (togglable)
 - 400ms debounce on keystroke
 - Autocomplete suggestions from `/api/search/suggestions`
@@ -350,6 +353,7 @@ The recipe list is a complex filtering component with URL query parameter synchr
 #### Recipe Card (`RecipeCard`)
 
 Each recipe displays:
+
 - Color-coded difficulty strip (green = easy, yellow = medium, red = hard)
 - Recipe image (or placeholder)
 - Title, description (2-line clamp)
@@ -403,27 +407,27 @@ The most feature-rich page in the application.
 
 #### Content Sections
 
-| Section | Description |
-|---------|-------------|
-| Hero Image | Full-width recipe image with gradient overlay |
-| Badge Row | Difficulty badge + category badges |
+| Section     | Description                                    |
+| ----------- | ---------------------------------------------- |
+| Hero Image  | Full-width recipe image with gradient overlay  |
+| Badge Row   | Difficulty badge + category badges             |
 | Author Card | Avatar, username (link), creation/update dates |
-| Description | Recipe description text |
-| Ingredients | Bulleted list with quantities and units |
-| Steps | Numbered preparation steps |
-| Tags | Tag badges at the bottom |
+| Description | Recipe description text                        |
+| Ingredients | Bulleted list with quantities and units        |
+| Steps       | Numbered preparation steps                     |
+| Tags        | Tag badges at the bottom                       |
 
 #### Interactive Features (Authenticated Users)
 
-| Feature | Component | Description |
-|---------|-----------|-------------|
-| Favorite | Heart toggle | `POST`/`DELETE /api/recipes/{id}/favorite` |
-| Save to Book | `SaveToBookButton` | Modal to add recipe to a recipe book (with inline book creation) |
-| Rate | `StarRating` | 1-5 star rating with hover preview, click to set, option to delete |
-| Comment | `CommentSection` | Full comment CRUD (see [Comment System](#comment-system)) |
-| Report | `ReportModal` | Report recipe for moderation |
-| Share | `ShareButton` | Copies recipe URL to clipboard |
-| Print | `PrintButton` | Generates print-friendly HTML and triggers browser print |
+| Feature      | Component          | Description                                                        |
+| ------------ | ------------------ | ------------------------------------------------------------------ |
+| Favorite     | Heart toggle       | `POST`/`DELETE /api/recipes/{id}/favorite`                         |
+| Save to Book | `SaveToBookButton` | Modal to add recipe to a recipe book (with inline book creation)   |
+| Rate         | `StarRating`       | 1-5 star rating with hover preview, click to set, option to delete |
+| Comment      | `CommentSection`   | Full comment CRUD (see [Comment System](#comment-system))          |
+| Report       | `ReportModal`      | Report recipe for moderation                                       |
+| Share        | `ShareButton`      | Copies recipe URL to clipboard                                     |
+| Print        | `PrintButton`      | Generates print-friendly HTML and triggers browser print           |
 
 #### Admin Features
 
@@ -474,14 +478,14 @@ Displays avatar (uploaded image or initial letter), username, email, role badge,
 
 #### Statistics Card
 
-| Stat | Description | Clickable |
-|------|-------------|-----------|
-| Recipes | Total recipes created | Yes → `/pages/profile/recipes` |
-| Comments | Total comments | Yes → `/pages/profile/comments` |
-| Ratings | Ratings given | Yes → `/pages/profile/ratings` |
-| Favorites | Saved favorites | Yes → `/pages/profile/favorites` |
-| Recipe Books | Created collections | Yes → `/pages/profile/recipe-books` |
-| Avg. Rating | Average rating received | No |
+| Stat         | Description             | Clickable                           |
+| ------------ | ----------------------- | ----------------------------------- |
+| Recipes      | Total recipes created   | Yes → `/pages/profile/recipes`      |
+| Comments     | Total comments          | Yes → `/pages/profile/comments`     |
+| Ratings      | Ratings given           | Yes → `/pages/profile/ratings`      |
+| Favorites    | Saved favorites         | Yes → `/pages/profile/favorites`    |
+| Recipe Books | Created collections     | Yes → `/pages/profile/recipe-books` |
+| Avg. Rating  | Average rating received | No                                  |
 
 #### Edit Profile Modal
 
@@ -490,6 +494,7 @@ Update username, bio, and profile image (with crop support).
 #### Account Deactivation
 
 "Fiók deaktiválása" button at the bottom → opens modal with:
+
 - Warning alert explaining consequences
 - Password confirmation field
 - Deactivates account → clears token → redirects to login
@@ -529,13 +534,13 @@ Active tab is highlighted based on current `pathname`.
 
 Same editor UI as the new recipe page, pre-populated with existing data. Uses shared components:
 
-| Component | Purpose |
-|-----------|---------|
-| `BasicFields` | Title, description, prep time, difficulty selector |
-| `IngredientsEditor` | Dynamic ingredient list (add/remove/reorder) |
-| `StepsEditor` | Ordered step list (add/remove/reorder) |
-| `TagCategoryPicker` | Multi-select from available categories and tags |
-| `ImageUpload` | Image upload with crop (deferred until save) |
+| Component           | Purpose                                            |
+| ------------------- | -------------------------------------------------- |
+| `BasicFields`       | Title, description, prep time, difficulty selector |
+| `IngredientsEditor` | Dynamic ingredient list (add/remove/reorder)       |
+| `StepsEditor`       | Ordered step list (add/remove/reorder)             |
+| `TagCategoryPicker` | Multi-select from available categories and tags    |
+| `ImageUpload`       | Image upload with crop (deferred until save)       |
 
 ---
 
@@ -581,6 +586,7 @@ Recipes are displayed in a vertically stacked layout where cards overlap each ot
 #### Card Content
 
 Each `BookRecipeCard` shows:
+
 - Background image with dark gradient overlay
 - Title, difficulty badge, preparation time, rating (top area — always visible)
 - Ingredient badges (up to 8, with "+N" overflow indicator)
@@ -589,12 +595,12 @@ Each `BookRecipeCard` shows:
 
 #### Owner vs. Visitor
 
-| Feature | Owner | Visitor |
-|---------|-------|---------|
-| Edit book | ✅ | ❌ |
-| Remove recipes | ✅ | ❌ |
-| Back link | → Recipe books list | → Owner's profile |
-| Owner info | Hidden | Shown (avatar + username) |
+| Feature        | Owner               | Visitor                   |
+| -------------- | ------------------- | ------------------------- |
+| Edit book      | ✅                  | ❌                        |
+| Remove recipes | ✅                  | ❌                        |
+| Back link      | → Recipe books list | → Owner's profile         |
+| Owner info     | Hidden              | Shown (avatar + username) |
 
 ---
 
@@ -698,13 +704,13 @@ This ensures images are only uploaded when the user commits to saving, avoiding 
 
 The comment system is built from several components located in `app/pages/recipe/[recipeId]/components/comments/`:
 
-| Component | Purpose |
-|-----------|---------|
-| `CommentSection` | Container: loads comments, manages state, handles CRUD |
-| `CommentForm` | Textarea + submit button for new comments |
-| `CommentCard` | Individual comment display with edit/delete/report actions |
-| `CommentPagination` | Pagination specific to comments |
-| `commentTypes.ts` | Shared TypeScript types and helper functions |
+| Component           | Purpose                                                    |
+| ------------------- | ---------------------------------------------------------- |
+| `CommentSection`    | Container: loads comments, manages state, handles CRUD     |
+| `CommentForm`       | Textarea + submit button for new comments                  |
+| `CommentCard`       | Individual comment display with edit/delete/report actions |
+| `CommentPagination` | Pagination specific to comments                            |
+| `commentTypes.ts`   | Shared TypeScript types and helper functions               |
 
 ### Features
 
@@ -732,9 +738,9 @@ The `SaveToBookButton` on the recipe detail page provides a YouTube playlist-sty
 
 ### Book Visibility
 
-| Type | Visible to |
-|------|-----------|
-| Public (`is_public: true`) | Everyone |
+| Type                         | Visible to |
+| ---------------------------- | ---------- |
+| Public (`is_public: true`)   | Everyone   |
 | Private (`is_public: false`) | Owner only |
 
 Books on other users' profiles show only public books. The API enforces visibility rules — private books return 404 for non-owners.
@@ -745,11 +751,11 @@ Books on other users' profiles show only public books. The API enforces visibili
 
 Users can report three types of content:
 
-| Target | Reported from | Link provided |
-|--------|--------------|---------------|
-| Recipe | Recipe detail page | Recipe page link |
+| Target  | Reported from            | Link provided                   |
+| ------- | ------------------------ | ------------------------------- |
+| Recipe  | Recipe detail page       | Recipe page link                |
 | Comment | Comment card (in recipe) | Recipe page with comment anchor |
-| User | Public user profile | User profile link |
+| User    | Public user profile      | User profile link               |
 
 Reports are submitted via `POST /api/reports` with a reason text (max 500 chars). The admin panel provides the review interface (see [ADMIN.md](ADMIN.md)).
 
@@ -759,12 +765,12 @@ Reports are submitted via `POST /api/reports` with a reason text (max 500 chars)
 
 The application uses Tailwind CSS responsive prefixes throughout:
 
-| Breakpoint | Prefix | Typical Behavior |
-|------------|--------|-----------------|
-| Mobile | (default) | Single column, hamburger menu, full-width cards |
-| Tablet | `sm:` | 2-column grids |
-| Desktop | `md:` | Desktop navbar visible, hamburger hidden |
-| Large desktop | `lg:` | 3-column grids, admin sidebar visible |
+| Breakpoint    | Prefix    | Typical Behavior                                |
+| ------------- | --------- | ----------------------------------------------- |
+| Mobile        | (default) | Single column, hamburger menu, full-width cards |
+| Tablet        | `sm:`     | 2-column grids                                  |
+| Desktop       | `md:`     | Desktop navbar visible, hamburger hidden        |
+| Large desktop | `lg:`     | 3-column grids, admin sidebar visible           |
 
 ### Key Responsive Patterns
 
@@ -782,81 +788,81 @@ Every API endpoint consumed by the frontend, organized by feature area.
 
 ### Authentication
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/auth/me` | GET | Navbar, Profile, Recipe Detail, Admin, many pages |
-| `/api/auth/login` | POST | Login page |
-| `/api/auth/register` | POST | Register page |
-| `/api/auth/logout` | POST | Navbar |
-| `/api/auth/forgot-password` | POST | Login page (forgot flow) |
-| `/api/auth/reset-password` | POST | Reset Password page |
+| Endpoint                    | Method | Used by                                           |
+| --------------------------- | ------ | ------------------------------------------------- |
+| `/api/auth/me`              | GET    | Navbar, Profile, Recipe Detail, Admin, many pages |
+| `/api/auth/login`           | POST   | Login page                                        |
+| `/api/auth/register`        | POST   | Register page                                     |
+| `/api/auth/logout`          | POST   | Navbar                                            |
+| `/api/auth/forgot-password` | POST   | Login page (forgot flow)                          |
+| `/api/auth/reset-password`  | POST   | Reset Password page                               |
 
 ### Recipes
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/recipes` | GET | Main page (recipe list) |
-| `/api/recipes` | POST | New Recipe page |
-| `/api/recipes/{id}` | GET | Recipe Detail page |
-| `/api/recipes/{id}` | PATCH | Recipe Edit page |
-| `/api/recipes/{id}` | DELETE | My Recipes page, Recipe Detail (admin) |
-| `/api/recipes/{id}/favorite` | POST, DELETE | Recipe Detail page |
-| `/api/recipes/{id}/ratings/me` | PUT, DELETE | Recipe Detail page |
-| `/api/recipes/{id}/comments` | GET, POST | Comment Section |
+| Endpoint                       | Method       | Used by                                |
+| ------------------------------ | ------------ | -------------------------------------- |
+| `/api/recipes`                 | GET          | Main page (recipe list)                |
+| `/api/recipes`                 | POST         | New Recipe page                        |
+| `/api/recipes/{id}`            | GET          | Recipe Detail page                     |
+| `/api/recipes/{id}`            | PATCH        | Recipe Edit page                       |
+| `/api/recipes/{id}`            | DELETE       | My Recipes page, Recipe Detail (admin) |
+| `/api/recipes/{id}/favorite`   | POST, DELETE | Recipe Detail page                     |
+| `/api/recipes/{id}/ratings/me` | PUT, DELETE  | Recipe Detail page                     |
+| `/api/recipes/{id}/comments`   | GET, POST    | Comment Section                        |
 
 ### Comments
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/comments/{id}` | PATCH | Comment editing (inline) |
-| `/api/comments/{id}` | DELETE | Comment deletion |
+| Endpoint             | Method | Used by                  |
+| -------------------- | ------ | ------------------------ |
+| `/api/comments/{id}` | PATCH  | Comment editing (inline) |
+| `/api/comments/{id}` | DELETE | Comment deletion         |
 
 ### Categories & Tags
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/categories` | GET | RecipeList filters, TagCategoryPicker |
-| `/api/tags` | GET | RecipeList filters, TagCategoryPicker |
+| Endpoint          | Method | Used by                               |
+| ----------------- | ------ | ------------------------------------- |
+| `/api/categories` | GET    | RecipeList filters, TagCategoryPicker |
+| `/api/tags`       | GET    | RecipeList filters, TagCategoryPicker |
 
 ### Users
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/users/{id}` | GET | Public User Profile |
-| `/api/users/{id}/stats` | GET | Public User Profile |
-| `/api/users/{id}/recipes` | GET | Public User Profile, My Recipes |
-| `/api/users/{id}/recipe-books` | GET | Public User Profile |
-| `/api/users/{id}/comments` | GET | My Comments |
-| `/api/users/{id}/ratings` | GET | My Ratings |
-| `/api/users/me` | GET, PATCH | Profile page |
-| `/api/users/me/stats` | GET | Profile page |
-| `/api/users/me/favorites` | GET | Favorites page |
-| `/api/users/me/deactivate` | PATCH | DeactivateAccountModal |
+| Endpoint                       | Method     | Used by                         |
+| ------------------------------ | ---------- | ------------------------------- |
+| `/api/users/{id}`              | GET        | Public User Profile             |
+| `/api/users/{id}/stats`        | GET        | Public User Profile             |
+| `/api/users/{id}/recipes`      | GET        | Public User Profile, My Recipes |
+| `/api/users/{id}/recipe-books` | GET        | Public User Profile             |
+| `/api/users/{id}/comments`     | GET        | My Comments                     |
+| `/api/users/{id}/ratings`      | GET        | My Ratings                      |
+| `/api/users/me`                | GET, PATCH | Profile page                    |
+| `/api/users/me/stats`          | GET        | Profile page                    |
+| `/api/users/me/favorites`      | GET        | Favorites page                  |
+| `/api/users/me/deactivate`     | PATCH      | DeactivateAccountModal          |
 
 ### Recipe Books
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/recipe-books` | GET | Recipe Books page |
-| `/api/recipe-books` | POST | CreateBookModal, SaveToBookButton |
-| `/api/recipe-books/{id}` | GET, PATCH, DELETE | Book Detail page |
-| `/api/recipe-books/{id}/recipes` | GET, POST | Book Detail, SaveToBookButton |
-| `/api/recipe-books/{id}/recipes/{recipeId}` | DELETE | Book Detail (remove recipe) |
+| Endpoint                                    | Method             | Used by                           |
+| ------------------------------------------- | ------------------ | --------------------------------- |
+| `/api/recipe-books`                         | GET                | Recipe Books page                 |
+| `/api/recipe-books`                         | POST               | CreateBookModal, SaveToBookButton |
+| `/api/recipe-books/{id}`                    | GET, PATCH, DELETE | Book Detail page                  |
+| `/api/recipe-books/{id}/recipes`            | GET, POST          | Book Detail, SaveToBookButton     |
+| `/api/recipe-books/{id}/recipes/{recipeId}` | DELETE             | Book Detail (remove recipe)       |
 
 ### Reports & Uploads
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/reports` | POST | ReportModal |
-| `/api/uploads` | POST | ImageUpload |
-| `/api/search/suggestions` | GET | RecipeList search autocomplete |
+| Endpoint                  | Method | Used by                        |
+| ------------------------- | ------ | ------------------------------ |
+| `/api/reports`            | POST   | ReportModal                    |
+| `/api/uploads`            | POST   | ImageUpload                    |
+| `/api/search/suggestions` | GET    | RecipeList search autocomplete |
 
 ### Admin
 
-| Endpoint | Method | Used by |
-|----------|--------|---------|
-| `/api/admin/reports` | GET | Admin Dashboard, Admin Reports |
-| `/api/admin/reports/{id}` | PATCH | Admin Reports |
-| `/api/admin/reports/{id}/actions` | POST | Admin Reports |
-| `/api/admin/users` | GET | Admin Dashboard, Admin Users |
-| `/api/admin/users/{id}` | PATCH | Admin Users |
+| Endpoint                          | Method | Used by                        |
+| --------------------------------- | ------ | ------------------------------ |
+| `/api/admin/reports`              | GET    | Admin Dashboard, Admin Reports |
+| `/api/admin/reports/{id}`         | PATCH  | Admin Reports                  |
+| `/api/admin/reports/{id}/actions` | POST   | Admin Reports                  |
+| `/api/admin/users`                | GET    | Admin Dashboard, Admin Users   |
+| `/api/admin/users/{id}`           | PATCH  | Admin Users                    |
