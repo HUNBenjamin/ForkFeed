@@ -42,6 +42,7 @@ export default function RecipeBookDetailPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [editOpen, setEditOpen] = useState(false);
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const getHeaders = (): HeadersInit => {
     const token = localStorage.getItem("token");
@@ -218,13 +219,33 @@ export default function RecipeBookDetailPage() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {recipes.map((r) => (
-                <BookRecipeCard
+            <div
+              className="flex flex-col"
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {recipes.map((r, i) => (
+                <div
                   key={r.id}
-                  recipe={r}
-                  onRemove={isOwner ? handleRemoveRecipe : undefined}
-                />
+                  className={`transition-all duration-300 ease-out ${
+                    hoveredIndex === i ? "drop-shadow-2xl z-30" : ""
+                  }`}
+                  style={{
+                    marginTop:
+                      i === 0
+                        ? 0
+                        : hoveredIndex !== null && i === hoveredIndex + 1
+                          ? 0
+                          : "-10rem",
+                    zIndex:
+                      hoveredIndex === i ? 30 : recipes.length - i,
+                  }}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                >
+                  <BookRecipeCard
+                    recipe={r}
+                    onRemove={isOwner ? handleRemoveRecipe : undefined}
+                  />
+                </div>
               ))}
             </div>
 
