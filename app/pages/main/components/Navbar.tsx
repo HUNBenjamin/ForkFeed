@@ -296,7 +296,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile hamburger */}
-      <div className="flex-none md:hidden flex items-center gap-2">
+      <div className="flex-none md:hidden flex items-center gap-2 ml-auto">
         <ThemeToggle />
         <button
           type="button"
