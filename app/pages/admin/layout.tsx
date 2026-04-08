@@ -12,6 +12,7 @@ type User = {
   id: number;
   username: string;
   role: string;
+  profile_image_url?: string | null;
 };
 
 const sidebarLinks = [
@@ -121,9 +122,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           >
             <div className="avatar placeholder">
               <div className="bg-primary text-primary-content rounded-full w-6 h-6">
-                <span className="text-[10px] font-bold">
-                  {user.username.charAt(0).toUpperCase()}
-                </span>
+                {user.profile_image_url ? (
+                  <img
+                    src={user.profile_image_url}
+                    alt={user.username}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <span className="text-[10px] font-bold">
+                    {user.username.charAt(0).toUpperCase()}
+                  </span>
+                )}
               </div>
             </div>
             <span className="truncate">{user.username}</span>
