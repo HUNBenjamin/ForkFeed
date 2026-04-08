@@ -215,16 +215,23 @@ export default function AdminReportsPage() {
 
                       {/* Comment content preview */}
                       {r.target_type === "comment" && r.comment && (
-                        <div className={`mt-2 p-3 rounded-lg text-sm ${r.comment.is_deleted ? "bg-error/10 border border-error/20" : "bg-base-200"}`}>
+                        <div
+                          className={`mt-2 p-3 rounded-lg text-sm ${r.comment.is_deleted ? "bg-error/10 border border-error/20" : "bg-base-200"}`}
+                        >
                           <div className="flex items-center gap-1.5 text-xs text-base-content/50 mb-1">
-                            <Link href={`/pages/user/${r.comment.user.id}`} className="link link-hover font-medium">
+                            <Link
+                              href={`/pages/user/${r.comment.user.id}`}
+                              className="link link-hover font-medium"
+                            >
                               {r.comment.user.username}
                             </Link>
                             {r.comment.is_deleted && (
                               <span className="badge badge-xs badge-error">Törölve</span>
                             )}
                           </div>
-                          <p className="text-base-content/70 italic">&ldquo;{r.comment.content}&rdquo;</p>
+                          <p className="text-base-content/70 italic">
+                            &ldquo;{r.comment.content}&rdquo;
+                          </p>
                         </div>
                       )}
                       <p className="text-sm mt-1.5">{r.reason}</p>
