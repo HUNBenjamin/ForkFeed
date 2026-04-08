@@ -15,6 +15,8 @@
 - [Database](#database)
 - [API Overview](#api-overview)
 - [Backend Documentation](#backend-documentation)
+- [Frontend Documentation](#frontend-documentation)
+- [Admin Panel Documentation](#admin-panel-documentation)
 
 ---
 
@@ -238,3 +240,19 @@ The backend exposes **54 API endpoints** organized as Next.js Route Handlers und
 The full backend documentation — including every endpoint's method, URL, request body, query parameters, response format, authentication requirements, and error codes — is available in:
 
 📄 **[documentation/BACKEND.md](documentation/BACKEND.md)**
+
+---
+
+## Frontend Documentation
+
+The full frontend documentation — covering page structure, components, navigation, theming, authentication flow, image upload system, comment system, recipe books, and responsive design — is available in:
+
+📄 **[documentation/FRONTEND.md](documentation/FRONTEND.md)**
+
+---
+
+## Admin Panel Documentation
+
+The admin panel documentation — covering the dashboard, report management, user management, moderation workflows, self-protection mechanisms, and all admin API endpoints — is available in:
+
+📄 **[documentation/ADMIN.md](documentation/ADMIN.md)**
