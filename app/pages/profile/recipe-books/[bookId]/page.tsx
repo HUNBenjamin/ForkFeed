@@ -174,7 +174,11 @@ export default function RecipeBookDetailPage() {
                     <div className="avatar placeholder">
                       <div className="w-5 h-5 rounded-full bg-primary text-primary-content flex items-center justify-center text-[10px]">
                         {book.owner.profile_image_url ? (
-                          <img src={book.owner.profile_image_url} alt={book.owner.username} className="rounded-full" />
+                          <img
+                            src={book.owner.profile_image_url}
+                            alt={book.owner.username}
+                            className="rounded-full"
+                          />
                         ) : (
                           book.owner.username.charAt(0).toUpperCase()
                         )}

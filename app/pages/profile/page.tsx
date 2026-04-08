@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../main/components/Navbar";
+import ProfileTabs from "./components/ProfileTabs";
 import ProfileCard from "./components/ProfileCard";
 import StatsCard from "./components/StatsCard";
 import EditProfileModal from "./components/EditProfileModal";
@@ -76,6 +77,7 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-base-200">
       <Navbar />
+      <ProfileTabs />
 
       <div className="max-w-2xl mx-auto px-4 py-10 flex flex-col gap-6">
         <ProfileCard user={user} onEdit={() => setEditOpen(true)} />
