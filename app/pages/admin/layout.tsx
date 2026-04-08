@@ -123,11 +123,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="avatar placeholder">
               <div className="bg-primary text-primary-content rounded-full w-6 h-6">
                 {user.profile_image_url ? (
-                  <img
-                    src={user.profile_image_url}
-                    alt={user.username}
-                    className="rounded-full"
-                  />
+                  <img src={user.profile_image_url} alt={user.username} className="rounded-full" />
                 ) : (
                   <span className="text-[10px] font-bold">
                     {user.username.charAt(0).toUpperCase()}
