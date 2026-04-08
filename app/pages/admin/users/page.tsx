@@ -23,6 +23,7 @@ export default function AdminUsersPage() {
   const [roleFilter, setRoleFilter] = useState("");
   const [activeFilter, setActiveFilter] = useState("");
   const [actionLoading, setActionLoading] = useState<number | null>(null);
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
   const getHeaders = (): Record<string, string> => {
     const token = localStorage.getItem("token");
@@ -52,6 +53,15 @@ export default function AdminUsersPage() {
   );
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("/api/auth/me", { headers: { Authorization: `Bearer ${token}` } })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (data?.user) setCurrentUserId(data.user.id);
+        })
+        .catch(() => {});
+    }
     fetchUsers(1);
   }, [fetchUsers]);
 
@@ -113,9 +123,7 @@ export default function AdminUsersPage() {
           <span className="loading loading-spinner loading-lg" />
         </div>
       ) : users.length === 0 ? (
-        <div className="text-center py-16 text-base-content/50">
-          Nincs találat.
-        </div>
+        <div className="text-center py-16 text-base-content/50">Nincs találat.</div>
       ) : (
         <>
           <div className="overflow-x-auto">
@@ -134,6 +142,7 @@ export default function AdminUsersPage() {
               <tbody>
                 {users.map((u) => {
                   const isLoading = actionLoading === u.id;
+                  const isSelf = currentUserId === u.id;
 
                   return (
                     <tr key={u.id} className="hover">
@@ -184,9 +193,7 @@ export default function AdminUsersPage() {
                         {new Date(u.created_at).toLocaleDateString("hu-HU")}
                       </td>
                       <td className="text-xs text-base-content/50">
-                        {u.last_login
-                          ? new Date(u.last_login).toLocaleDateString("hu-HU")
-                          : "–"}
+                        {u.last_login ? new Date(u.last_login).toLocaleDateString("hu-HU") : "–"}
                       </td>
                       <td>
                         <div className="flex items-center gap-1">
@@ -223,7 +230,7 @@ export default function AdminUsersPage() {
                             >
                               <li>
                                 <button
-                                  disabled={isLoading || u.role === "user"}
+                                  disabled={isLoading || u.role === "user" || isSelf}
                                   onClick={() => updateUser(u.id, { role: "user" })}
                                   className="text-sm"
                                 >
@@ -249,8 +256,8 @@ export default function AdminUsersPage() {
                           {/* Toggle active */}
                           <button
                             className={`btn btn-ghost btn-xs ${!u.is_active ? "text-success" : "text-error"}`}
-                            title={u.is_active ? "Felhasználó tiltása" : "Felhasználó aktiválása"}
-                            disabled={isLoading}
+                            title={isSelf ? "Nem tilthatod le magadat" : u.is_active ? "Felhasználó tiltása" : "Felhasználó aktiválása"}
+                            disabled={isLoading || isSelf}
                             onClick={() => {
                               const action = u.is_active ? "tiltod" : "aktiválod";
                               if (confirm(`Biztosan ${action} ${u.username}-t?`)) {

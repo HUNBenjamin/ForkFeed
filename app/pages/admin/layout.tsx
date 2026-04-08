@@ -4,10 +4,9 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-const ThemeToggle = dynamic(
-  () => import("../../pages/main/components/ThemeToggle"),
-  { ssr: false },
-);
+const ThemeToggle = dynamic(() => import("../../pages/main/components/ThemeToggle"), {
+  ssr: false,
+});
 
 type User = {
   id: number;
@@ -79,7 +78,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar - desktop */}
       <aside className="hidden lg:flex flex-col w-64 bg-base-100 border-r border-base-300 min-h-screen sticky top-0">
         <div className="p-5 border-b border-base-300">
-          <Link href="/pages/main" className="text-xl font-bold text-primary flex items-center gap-2">
+          <Link
+            href="/pages/main"
+            className="text-xl font-bold text-primary flex items-center gap-2"
+          >
             🍴 ForkFeed
           </Link>
           <div className="text-xs text-base-content/40 mt-1">Admin panel</div>
@@ -96,7 +98,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
               }`}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-5 h-5 shrink-0"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d={link.icon} />
               </svg>
               {link.label}
@@ -106,10 +115,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         <div className="p-3 border-t border-base-300 flex items-center gap-2">
           <ThemeToggle />
-          <Link href="/pages/profile" className="btn btn-ghost btn-sm flex-1 justify-start gap-2 text-xs">
+          <Link
+            href="/pages/profile"
+            className="btn btn-ghost btn-sm flex-1 justify-start gap-2 text-xs"
+          >
             <div className="avatar placeholder">
               <div className="bg-primary text-primary-content rounded-full w-6 h-6">
-                <span className="text-[10px] font-bold">{user.username.charAt(0).toUpperCase()}</span>
+                <span className="text-[10px] font-bold">
+                  {user.username.charAt(0).toUpperCase()}
+                </span>
               </div>
             </div>
             <span className="truncate">{user.username}</span>
@@ -120,8 +134,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-base-100 border-b border-base-300 px-4 h-14 flex items-center justify-between">
         <button onClick={() => setSidebarOpen(true)} className="btn btn-ghost btn-sm btn-square">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
           </svg>
         </button>
         <span className="font-bold text-primary">🍴 Admin</span>
@@ -131,15 +156,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <>
-          <div className="lg:hidden fixed inset-0 bg-black/40 z-40" onClick={() => setSidebarOpen(false)} />
+          <div
+            className="lg:hidden fixed inset-0 bg-black/40 z-40"
+            onClick={() => setSidebarOpen(false)}
+          />
           <aside className="lg:hidden fixed left-0 top-0 bottom-0 w-64 bg-base-100 z-50 flex flex-col shadow-xl">
             <div className="p-5 border-b border-base-300 flex items-center justify-between">
               <div>
                 <div className="text-xl font-bold text-primary">🍴 ForkFeed</div>
                 <div className="text-xs text-base-content/40 mt-0.5">Admin panel</div>
               </div>
-              <button onClick={() => setSidebarOpen(false)} className="btn btn-ghost btn-sm btn-square">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="btn btn-ghost btn-sm btn-square"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -156,7 +194,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
                   }`}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-5 h-5 shrink-0"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" d={link.icon} />
                   </svg>
                   {link.label}
@@ -168,9 +213,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}
 
       {/* Main content */}
-      <main className="flex-1 min-w-0 lg:pt-0 pt-14">
-        {children}
-      </main>
+      <main className="flex-1 min-w-0 lg:pt-0 pt-14">{children}</main>
     </div>
   );
 }

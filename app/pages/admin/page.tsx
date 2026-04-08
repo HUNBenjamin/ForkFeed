@@ -129,9 +129,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {recentReports.length === 0 ? (
-            <p className="text-base-content/50 text-sm py-4 text-center">
-              Nincsenek jelentések.
-            </p>
+            <p className="text-base-content/50 text-sm py-4 text-center">Nincsenek jelentések.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="table table-sm">
@@ -164,7 +162,9 @@ export default function AdminDashboardPage() {
                       <td className="max-w-[200px] truncate text-sm">{r.reason}</td>
                       <td className="text-sm">{r.reporter.username}</td>
                       <td>
-                        <span className={`badge badge-sm ${statusBadge[r.status] ?? "badge-ghost"}`}>
+                        <span
+                          className={`badge badge-sm ${statusBadge[r.status] ?? "badge-ghost"}`}
+                        >
                           {statusLabels[r.status] ?? r.status}
                         </span>
                       </td>

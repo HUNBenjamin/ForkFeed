@@ -168,7 +168,11 @@ export default function AdminReportsPage() {
               <div
                 key={r.id}
                 className={`card bg-base-100 shadow-sm border-l-4 ${
-                  isPending ? "border-l-warning" : r.status === "accepted" ? "border-l-success" : "border-l-base-300"
+                  isPending
+                    ? "border-l-warning"
+                    : r.status === "accepted"
+                      ? "border-l-success"
+                      : "border-l-base-300"
                 }`}
               >
                 <div className="card-body p-4">
@@ -202,17 +206,12 @@ export default function AdminReportsPage() {
                       <div className="flex flex-wrap gap-3 mt-2 text-xs text-base-content/40">
                         <span>
                           Bejelentő:{" "}
-                          <Link
-                            href={`/pages/user/${r.reporter.id}`}
-                            className="link link-hover"
-                          >
+                          <Link href={`/pages/user/${r.reporter.id}`} className="link link-hover">
                             {r.reporter.username}
                           </Link>
                         </span>
                         <span>{new Date(r.created_at).toLocaleString("hu-HU")}</span>
-                        {r.reviewer && (
-                          <span>Elbírálta: {r.reviewer.username}</span>
-                        )}
+                        {r.reviewer && <span>Elbírálta: {r.reviewer.username}</span>}
                       </div>
                     </div>
 
@@ -229,7 +228,11 @@ export default function AdminReportsPage() {
                         stroke="currentColor"
                         className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        />
                       </svg>
                     </button>
                   </div>
@@ -244,7 +247,11 @@ export default function AdminReportsPage() {
                             disabled={isLoading}
                             onClick={() => updateStatus(r.id, "accepted")}
                           >
-                            {isLoading ? <span className="loading loading-spinner loading-xs" /> : "✓"}
+                            {isLoading ? (
+                              <span className="loading loading-spinner loading-xs" />
+                            ) : (
+                              "✓"
+                            )}
                             Elfogadás
                           </button>
                           <button
