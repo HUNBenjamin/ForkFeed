@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+type Ingredient = {
+  id: number;
+  name: string;
+  quantity: number | null;
+  unit: string | null;
+};
+
 type Recipe = {
   id: number;
   title: string;
@@ -9,6 +16,7 @@ type Recipe = {
   difficulty: string;
   average_rating: number;
   rating_count: number;
+  ingredients?: Ingredient[];
   author: {
     id: number;
     username: string;
@@ -77,10 +85,26 @@ export default function BookRecipeCard({ recipe, onRemove }: Props) {
         </span>
       </div>
 
-      {/* Bottom: description + author (revealed when card expands) */}
+      {/* Bottom: description + ingredients + author (revealed when card expands) */}
       <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-2">
-        {recipe.description && (
-          <p className="text-white/80 text-sm line-clamp-2 drop-shadow">{recipe.description}</p>
+        {recipe.ingredients && recipe.ingredients.length > 0 && (
+          <div className="flex flex-wrap gap-1.5">
+            {recipe.ingredients.slice(0, 8).map((ing) => (
+              <span
+                key={ing.id}
+                className="badge badge-sm bg-white/15 border-white/20 text-white/90 backdrop-blur-sm"
+              >
+                {ing.quantity != null && ing.unit
+                  ? `${ing.quantity} ${ing.unit} ${ing.name}`
+                  : ing.name}
+              </span>
+            ))}
+            {recipe.ingredients.length > 8 && (
+              <span className="badge badge-sm bg-white/10 border-white/15 text-white/60">
+                +{recipe.ingredients.length - 8}
+              </span>
+            )}
+          </div>
         )}
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5 text-xs text-white/60">

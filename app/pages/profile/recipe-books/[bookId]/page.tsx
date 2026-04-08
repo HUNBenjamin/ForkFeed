@@ -28,6 +28,7 @@ type Recipe = {
   difficulty: string;
   average_rating: number;
   rating_count: number;
+  ingredients?: { id: number; name: string; quantity: number | null; unit: string | null }[];
   author: { id: number; username: string; profile_image_url: string | null };
 };
 
@@ -219,10 +220,7 @@ export default function RecipeBookDetailPage() {
           </div>
         ) : (
           <>
-            <div
-              className="flex flex-col"
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
+            <div className="flex flex-col" onMouseLeave={() => setHoveredIndex(null)}>
               {recipes.map((r, i) => (
                 <div
                   key={r.id}
@@ -231,20 +229,12 @@ export default function RecipeBookDetailPage() {
                   }`}
                   style={{
                     marginTop:
-                      i === 0
-                        ? 0
-                        : hoveredIndex !== null && i === hoveredIndex + 1
-                          ? 0
-                          : "-10rem",
-                    zIndex:
-                      hoveredIndex === i ? 30 : recipes.length - i,
+                      i === 0 ? 0 : hoveredIndex !== null && i === hoveredIndex + 1 ? 0 : "-10rem",
+                    zIndex: hoveredIndex === i ? 30 : recipes.length - i,
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
                 >
-                  <BookRecipeCard
-                    recipe={r}
-                    onRemove={isOwner ? handleRemoveRecipe : undefined}
-                  />
+                  <BookRecipeCard recipe={r} onRemove={isOwner ? handleRemoveRecipe : undefined} />
                 </div>
               ))}
             </div>
