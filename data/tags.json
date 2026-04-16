@@ -1,37 +1,107 @@
 [
-    {
-        "_id": 1,
-        "name": "magyar",
-        "created_at": {
-            "$date": "2026-01-01T08:00:00Z"
-        }
-    },
-    {
-        "_id": 2,
-        "name": "vegetáriánus",
-        "created_at": {
-            "$date": "2026-01-01T08:00:00Z"
-        }
-    },
-    {
-        "_id": 3,
-        "name": "gyors",
-        "created_at": {
-            "$date": "2026-01-01T08:00:00Z"
-        }
-    },
-    {
-        "_id": 4,
-        "name": "hagyományos",
-        "created_at": {
-            "$date": "2026-01-01T08:00:00Z"
-        }
-    },
-    {
-        "_id": 5,
-        "name": "sültmentes",
-        "created_at": {
-            "$date": "2026-01-01T08:00:00Z"
-        }
+  {
+    "_id": 1,
+    "name": "magyar",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
     }
+  },
+  {
+    "_id": 2,
+    "name": "vegetáriánus",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 3,
+    "name": "gyors",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 4,
+    "name": "hagyományos",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 5,
+    "name": "sültmentes",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 6,
+    "name": "olasz",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 7,
+    "name": "gluténmentes",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 8,
+    "name": "laktózmentes",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 9,
+    "name": "fűszeres",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 10,
+    "name": "könnyű",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 11,
+    "name": "street food",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 12,
+    "name": "fitness",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 13,
+    "name": "húsmentes",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 14,
+    "name": "ünnepi",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  },
+  {
+    "_id": 15,
+    "name": "nyári",
+    "created_at": {
+      "$date": "2026-01-01T08:00:00Z"
+    }
+  }
 ]

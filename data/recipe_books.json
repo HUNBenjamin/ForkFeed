@@ -1,35 +1,167 @@
 [
-    {
-        "_id": 1,
-        "name": "Kedvenceim",
-        "description": "A személyes kedvenc receptjeim gyűjteménye.",
-        "owner_id": 2,
-        "is_public": true,
-        "created_at": {
-            "$date": "2026-01-25T10:00:00Z"
-        },
-        "updated_at": null
+  {
+    "_id": 1,
+    "name": "Kedvenceim",
+    "description": "A személyes kedvenc receptjeim gyűjteménye.",
+    "owner_id": 2,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-24T23:00:00.000Z"
     },
-    {
-        "_id": 2,
-        "name": "Magyar klasszikusok",
-        "description": "Hagyományos magyar ételek receptjei.",
-        "owner_id": 3,
-        "is_public": true,
-        "created_at": {
-            "$date": "2026-01-26T11:00:00Z"
-        },
-        "updated_at": null
+    "updated_at": null
+  },
+  {
+    "_id": 2,
+    "name": "Magyar klasszikusok",
+    "description": "Hagyományos magyar ételek receptjei.",
+    "owner_id": 3,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-25T23:00:00.000Z"
     },
-    {
-        "_id": 3,
-        "name": "Privát gyűjtemény",
-        "description": "Saját kísérleteim és titkos receptjeim.",
-        "owner_id": 4,
-        "is_public": false,
-        "created_at": {
-            "$date": "2026-01-27T12:00:00Z"
-        },
-        "updated_at": null
-    }
+    "updated_at": null
+  },
+  {
+    "_id": 3,
+    "name": "Privát gyűjtemény",
+    "description": "Saját kísérleteim és titkos receptjeim.",
+    "owner_id": 4,
+    "is_public": false,
+    "created_at": {
+      "$date": "2026-01-26T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 4,
+    "name": "Hétvégi sütés",
+    "description": "Hétvégi sütemények és desszertek.",
+    "owner_id": 9,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-27T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 5,
+    "name": "Gyors vacsorák",
+    "description": "30 perc alatti receptek.",
+    "owner_id": 6,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-28T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 6,
+    "name": "Grillszezon",
+    "description": "Nyári grillezéshez való receptek.",
+    "owner_id": 8,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-29T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 7,
+    "name": "Vegán válogatás",
+    "description": "100% növényi receptek.",
+    "owner_id": 10,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-30T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 8,
+    "name": "Fitness ételek",
+    "description": "Magas fehérje receptek.",
+    "owner_id": 18,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-01-31T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 9,
+    "name": "Családi ebédek",
+    "description": "A család kedvenc ebédjei.",
+    "owner_id": 4,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-02-01T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 10,
+    "name": "Ünnepi menü",
+    "description": "Karácsonyi és húsvéti receptek.",
+    "owner_id": 19,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-02-02T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 11,
+    "name": "Street food otthon",
+    "description": "Utcai kaják házilag.",
+    "owner_id": 5,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-02-03T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 12,
+    "name": "Levesek gyűjteménye",
+    "description": "A legjobb levesek egy helyen.",
+    "owner_id": 7,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-02-04T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 13,
+    "name": "Péksarok",
+    "description": "Házi kenyerek és péksütemények.",
+    "owner_id": 20,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-02-05T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 14,
+    "name": "Olasz ízek",
+    "description": "Olasz ihletésű receptek.",
+    "owner_id": 14,
+    "is_public": false,
+    "created_at": {
+      "$date": "2026-02-06T23:00:00.000Z"
+    },
+    "updated_at": null
+  },
+  {
+    "_id": 15,
+    "name": "Diétás menü",
+    "description": "Kalóriaszegény receptek.",
+    "owner_id": 13,
+    "is_public": true,
+    "created_at": {
+      "$date": "2026-02-07T23:00:00.000Z"
+    },
+    "updated_at": null
+  }
 ]

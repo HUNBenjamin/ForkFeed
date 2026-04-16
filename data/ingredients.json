@@ -1,282 +1,4384 @@
 [
-    {
-        "_id": 1,
-        "recipe_id": 1,
-        "name": "marhahús",
-        "quantity": 500,
-        "unit": "g"
-    },
-    {
-        "_id": 2,
-        "recipe_id": 1,
-        "name": "hagyma",
-        "quantity": 2,
-        "unit": "db"
-    },
-    {
-        "_id": 3,
-        "recipe_id": 1,
-        "name": "pirospaprika",
-        "quantity": 2,
-        "unit": "ek"
-    },
-    {
-        "_id": 4,
-        "recipe_id": 1,
-        "name": "burgonya",
-        "quantity": 3,
-        "unit": "db"
-    },
-    {
-        "_id": 5,
-        "recipe_id": 2,
-        "name": "paradicsompaprika",
-        "quantity": 4,
-        "unit": "db"
-    },
-    {
-        "_id": 6,
-        "recipe_id": 2,
-        "name": "paradicsom",
-        "quantity": 3,
-        "unit": "db"
-    },
-    {
-        "_id": 7,
-        "recipe_id": 2,
-        "name": "hagyma",
-        "quantity": 1,
-        "unit": "db"
-    },
-    {
-        "_id": 8,
-        "recipe_id": 2,
-        "name": "tojás",
-        "quantity": 3,
-        "unit": "db"
-    },
-    {
-        "_id": 9,
-        "recipe_id": 3,
-        "name": "csirkemell",
-        "quantity": 600,
-        "unit": "g"
-    },
-    {
-        "_id": 10,
-        "recipe_id": 3,
-        "name": "tojás",
-        "quantity": 2,
-        "unit": "db"
-    },
-    {
-        "_id": 11,
-        "recipe_id": 3,
-        "name": "zsemlemorzsa",
-        "quantity": 150,
-        "unit": "g"
-    },
-    {
-        "_id": 12,
-        "recipe_id": 3,
-        "name": "étolaj",
-        "quantity": 2,
-        "unit": "dl"
-    },
-    {
-        "_id": 13,
-        "recipe_id": 4,
-        "name": "széles metélt tészta",
-        "quantity": 250,
-        "unit": "g"
-    },
-    {
-        "_id": 14,
-        "recipe_id": 4,
-        "name": "túró",
-        "quantity": 250,
-        "unit": "g"
-    },
-    {
-        "_id": 15,
-        "recipe_id": 4,
-        "name": "tejföl",
-        "quantity": 200,
-        "unit": "g"
-    },
-    {
-        "_id": 16,
-        "recipe_id": 4,
-        "name": "füstölt szalonna",
-        "quantity": 100,
-        "unit": "g"
-    },
-    {
-        "_id": 17,
-        "recipe_id": 5,
-        "name": "piskóta",
-        "quantity": 200,
-        "unit": "g"
-    },
-    {
-        "_id": 18,
-        "recipe_id": 5,
-        "name": "étcsokoládé",
-        "quantity": 100,
-        "unit": "g"
-    },
-    {
-        "_id": 19,
-        "recipe_id": 5,
-        "name": "habtejszín",
-        "quantity": 200,
-        "unit": "ml"
-    },
-    {
-        "_id": 20,
-        "recipe_id": 5,
-        "name": "rum",
-        "quantity": 2,
-        "unit": "ek"
-    },
-    {
-        "_id": 21,
-        "recipe_id": 6,
-        "name": "lasagne tésztalap (szárított)",
-        "quantity": 500,
-        "unit": "g"
-    },
-    {
-        "_id": 22,
-        "recipe_id": 6,
-        "name": "darált marhahús",
-        "quantity": 500,
-        "unit": "g"
-    },
-    {
-        "_id": 23,
-        "recipe_id": 6,
-        "name": "darált sertéshús",
-        "quantity": 300,
-        "unit": "g"
-    },
-    {
-        "_id": 24,
-        "recipe_id": 6,
-        "name": "vöröshagyma",
-        "quantity": 2,
-        "unit": "db"
-    },
-    {
-        "_id": 25,
-        "recipe_id": 6,
-        "name": "fokhagyma gerezd",
-        "quantity": 4,
-        "unit": "db"
-    },
-    {
-        "_id": 26,
-        "recipe_id": 6,
-        "name": "sárgarépa",
-        "quantity": 2,
-        "unit": "db"
-    },
-    {
-        "_id": 27,
-        "recipe_id": 6,
-        "name": "szárzeller",
-        "quantity": 2,
-        "unit": "szál"
-    },
-    {
-        "_id": 28,
-        "recipe_id": 6,
-        "name": "paradicsomkonzerv (aprított)",
-        "quantity": 800,
-        "unit": "g"
-    },
-    {
-        "_id": 29,
-        "recipe_id": 6,
-        "name": "paradicsomsűrítmény",
-        "quantity": 3,
-        "unit": "ek"
-    },
-    {
-        "_id": 30,
-        "recipe_id": 6,
-        "name": "vörösbor",
-        "quantity": 200,
-        "unit": "ml"
-    },
-    {
-        "_id": 31,
-        "recipe_id": 6,
-        "name": "olívaolaj",
-        "quantity": 4,
-        "unit": "ek"
-    },
-    {
-        "_id": 32,
-        "recipe_id": 6,
-        "name": "vaj",
-        "quantity": 80,
-        "unit": "g"
-    },
-    {
-        "_id": 33,
-        "recipe_id": 6,
-        "name": "finomliszt",
-        "quantity": 80,
-        "unit": "g"
-    },
-    {
-        "_id": 34,
-        "recipe_id": 6,
-        "name": "tej",
-        "quantity": 1000,
-        "unit": "ml"
-    },
-    {
-        "_id": 35,
-        "recipe_id": 6,
-        "name": "szerecsendió (őrölt)",
-        "quantity": 0.5,
-        "unit": "tk"
-    },
-    {
-        "_id": 36,
-        "recipe_id": 6,
-        "name": "parmezán (reszelt)",
-        "quantity": 200,
-        "unit": "g"
-    },
-    {
-        "_id": 37,
-        "recipe_id": 6,
-        "name": "mozzarella",
-        "quantity": 250,
-        "unit": "g"
-    },
-    {
-        "_id": 38,
-        "recipe_id": 6,
-        "name": "babérlevél",
-        "quantity": 2,
-        "unit": "db"
-    },
-    {
-        "_id": 39,
-        "recipe_id": 6,
-        "name": "oregánó (szárított)",
-        "quantity": 1,
-        "unit": "tk"
-    },
-    {
-        "_id": 40,
-        "recipe_id": 6,
-        "name": "só és bors",
-        "quantity": null,
-        "unit": null
-    }
+  {
+    "_id": 1,
+    "recipe_id": 1,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 2,
+    "recipe_id": 1,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 3,
+    "recipe_id": 1,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 4,
+    "recipe_id": 1,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 5,
+    "recipe_id": 1,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 6,
+    "recipe_id": 1,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 7,
+    "recipe_id": 1,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 8,
+    "recipe_id": 2,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 9,
+    "recipe_id": 2,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 10,
+    "recipe_id": 2,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 11,
+    "recipe_id": 2,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 12,
+    "recipe_id": 2,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 13,
+    "recipe_id": 2,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 14,
+    "recipe_id": 2,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 15,
+    "recipe_id": 3,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 16,
+    "recipe_id": 3,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 17,
+    "recipe_id": 3,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 18,
+    "recipe_id": 3,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 19,
+    "recipe_id": 3,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 20,
+    "recipe_id": 3,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 21,
+    "recipe_id": 3,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 22,
+    "recipe_id": 4,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 23,
+    "recipe_id": 4,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 24,
+    "recipe_id": 4,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 25,
+    "recipe_id": 4,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 26,
+    "recipe_id": 5,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 27,
+    "recipe_id": 5,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 28,
+    "recipe_id": 5,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 29,
+    "recipe_id": 5,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 30,
+    "recipe_id": 5,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 31,
+    "recipe_id": 6,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 32,
+    "recipe_id": 6,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 33,
+    "recipe_id": 6,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 34,
+    "recipe_id": 6,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 35,
+    "recipe_id": 6,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 36,
+    "recipe_id": 6,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 37,
+    "recipe_id": 6,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 38,
+    "recipe_id": 7,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 39,
+    "recipe_id": 7,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 40,
+    "recipe_id": 7,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 41,
+    "recipe_id": 7,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 42,
+    "recipe_id": 7,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 43,
+    "recipe_id": 8,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 44,
+    "recipe_id": 8,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 45,
+    "recipe_id": 8,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 46,
+    "recipe_id": 8,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 47,
+    "recipe_id": 8,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 48,
+    "recipe_id": 8,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 49,
+    "recipe_id": 9,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 50,
+    "recipe_id": 9,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 51,
+    "recipe_id": 9,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 52,
+    "recipe_id": 9,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 53,
+    "recipe_id": 9,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 54,
+    "recipe_id": 9,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 55,
+    "recipe_id": 9,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 56,
+    "recipe_id": 10,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 57,
+    "recipe_id": 10,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 58,
+    "recipe_id": 10,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 59,
+    "recipe_id": 10,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 60,
+    "recipe_id": 11,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 61,
+    "recipe_id": 11,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 62,
+    "recipe_id": 11,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 63,
+    "recipe_id": 11,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 64,
+    "recipe_id": 11,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 65,
+    "recipe_id": 12,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 66,
+    "recipe_id": 12,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 67,
+    "recipe_id": 12,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 68,
+    "recipe_id": 12,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 69,
+    "recipe_id": 12,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 70,
+    "recipe_id": 12,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 71,
+    "recipe_id": 13,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 72,
+    "recipe_id": 13,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 73,
+    "recipe_id": 13,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 74,
+    "recipe_id": 13,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 75,
+    "recipe_id": 13,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 76,
+    "recipe_id": 13,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 77,
+    "recipe_id": 13,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 78,
+    "recipe_id": 14,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 79,
+    "recipe_id": 14,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 80,
+    "recipe_id": 14,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 81,
+    "recipe_id": 14,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 82,
+    "recipe_id": 15,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 83,
+    "recipe_id": 15,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 84,
+    "recipe_id": 15,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 85,
+    "recipe_id": 15,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 86,
+    "recipe_id": 15,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 87,
+    "recipe_id": 16,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 88,
+    "recipe_id": 16,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 89,
+    "recipe_id": 16,
+    "name": "hal filé",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 90,
+    "recipe_id": 16,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 91,
+    "recipe_id": 16,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 92,
+    "recipe_id": 16,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 93,
+    "recipe_id": 17,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 94,
+    "recipe_id": 17,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 95,
+    "recipe_id": 17,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 96,
+    "recipe_id": 17,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 97,
+    "recipe_id": 17,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 98,
+    "recipe_id": 17,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 99,
+    "recipe_id": 17,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 100,
+    "recipe_id": 18,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 101,
+    "recipe_id": 18,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 102,
+    "recipe_id": 18,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 103,
+    "recipe_id": 18,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 104,
+    "recipe_id": 18,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 105,
+    "recipe_id": 18,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 106,
+    "recipe_id": 19,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 107,
+    "recipe_id": 19,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 108,
+    "recipe_id": 19,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 109,
+    "recipe_id": 19,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 110,
+    "recipe_id": 19,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 111,
+    "recipe_id": 19,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 112,
+    "recipe_id": 19,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 113,
+    "recipe_id": 20,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 114,
+    "recipe_id": 20,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 115,
+    "recipe_id": 20,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 116,
+    "recipe_id": 20,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 117,
+    "recipe_id": 20,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 118,
+    "recipe_id": 20,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 119,
+    "recipe_id": 20,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 120,
+    "recipe_id": 21,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 121,
+    "recipe_id": 21,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 122,
+    "recipe_id": 21,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 123,
+    "recipe_id": 21,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 124,
+    "recipe_id": 21,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 125,
+    "recipe_id": 22,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 126,
+    "recipe_id": 22,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 127,
+    "recipe_id": 22,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 128,
+    "recipe_id": 22,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 129,
+    "recipe_id": 22,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 130,
+    "recipe_id": 22,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 131,
+    "recipe_id": 23,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 132,
+    "recipe_id": 23,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 133,
+    "recipe_id": 23,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 134,
+    "recipe_id": 23,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 135,
+    "recipe_id": 23,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 136,
+    "recipe_id": 23,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 137,
+    "recipe_id": 24,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 138,
+    "recipe_id": 24,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 139,
+    "recipe_id": 24,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 140,
+    "recipe_id": 24,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 141,
+    "recipe_id": 24,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 142,
+    "recipe_id": 25,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 143,
+    "recipe_id": 25,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 144,
+    "recipe_id": 25,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 145,
+    "recipe_id": 25,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 146,
+    "recipe_id": 25,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 147,
+    "recipe_id": 25,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 148,
+    "recipe_id": 25,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 149,
+    "recipe_id": 26,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 150,
+    "recipe_id": 26,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 151,
+    "recipe_id": 26,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 152,
+    "recipe_id": 26,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 153,
+    "recipe_id": 26,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 154,
+    "recipe_id": 26,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 155,
+    "recipe_id": 27,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 156,
+    "recipe_id": 27,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 157,
+    "recipe_id": 27,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 158,
+    "recipe_id": 27,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 159,
+    "recipe_id": 27,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 160,
+    "recipe_id": 27,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 161,
+    "recipe_id": 28,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 162,
+    "recipe_id": 28,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 163,
+    "recipe_id": 28,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 164,
+    "recipe_id": 28,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 165,
+    "recipe_id": 28,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 166,
+    "recipe_id": 28,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 167,
+    "recipe_id": 29,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 168,
+    "recipe_id": 29,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 169,
+    "recipe_id": 29,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 170,
+    "recipe_id": 29,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 171,
+    "recipe_id": 29,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 172,
+    "recipe_id": 29,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 173,
+    "recipe_id": 29,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 174,
+    "recipe_id": 30,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 175,
+    "recipe_id": 30,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 176,
+    "recipe_id": 30,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 177,
+    "recipe_id": 30,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 178,
+    "recipe_id": 31,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 179,
+    "recipe_id": 31,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 180,
+    "recipe_id": 31,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 181,
+    "recipe_id": 31,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 182,
+    "recipe_id": 32,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 183,
+    "recipe_id": 32,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 184,
+    "recipe_id": 32,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 185,
+    "recipe_id": 32,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 186,
+    "recipe_id": 32,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 187,
+    "recipe_id": 32,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 188,
+    "recipe_id": 32,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 189,
+    "recipe_id": 33,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 190,
+    "recipe_id": 33,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 191,
+    "recipe_id": 33,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 192,
+    "recipe_id": 33,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 193,
+    "recipe_id": 33,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 194,
+    "recipe_id": 33,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 195,
+    "recipe_id": 33,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 196,
+    "recipe_id": 34,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 197,
+    "recipe_id": 34,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 198,
+    "recipe_id": 34,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 199,
+    "recipe_id": 34,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 200,
+    "recipe_id": 34,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 201,
+    "recipe_id": 34,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 202,
+    "recipe_id": 35,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 203,
+    "recipe_id": 35,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 204,
+    "recipe_id": 35,
+    "name": "hal filé",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 205,
+    "recipe_id": 35,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 206,
+    "recipe_id": 36,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 207,
+    "recipe_id": 36,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 208,
+    "recipe_id": 36,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 209,
+    "recipe_id": 36,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 210,
+    "recipe_id": 37,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 211,
+    "recipe_id": 37,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 212,
+    "recipe_id": 37,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 213,
+    "recipe_id": 37,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 214,
+    "recipe_id": 38,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 215,
+    "recipe_id": 38,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 216,
+    "recipe_id": 38,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 217,
+    "recipe_id": 39,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 218,
+    "recipe_id": 39,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 219,
+    "recipe_id": 39,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 220,
+    "recipe_id": 39,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 221,
+    "recipe_id": 39,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 222,
+    "recipe_id": 39,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 223,
+    "recipe_id": 39,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 224,
+    "recipe_id": 40,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 225,
+    "recipe_id": 40,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 226,
+    "recipe_id": 40,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 227,
+    "recipe_id": 40,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 228,
+    "recipe_id": 40,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 229,
+    "recipe_id": 40,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 230,
+    "recipe_id": 40,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 231,
+    "recipe_id": 41,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 232,
+    "recipe_id": 41,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 233,
+    "recipe_id": 41,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 234,
+    "recipe_id": 42,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 235,
+    "recipe_id": 42,
+    "name": "hal filé",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 236,
+    "recipe_id": 42,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 237,
+    "recipe_id": 42,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 238,
+    "recipe_id": 42,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 239,
+    "recipe_id": 42,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 240,
+    "recipe_id": 43,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 241,
+    "recipe_id": 43,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 242,
+    "recipe_id": 43,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 243,
+    "recipe_id": 43,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 244,
+    "recipe_id": 44,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 245,
+    "recipe_id": 44,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 246,
+    "recipe_id": 44,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 247,
+    "recipe_id": 44,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 248,
+    "recipe_id": 44,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 249,
+    "recipe_id": 44,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 250,
+    "recipe_id": 45,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 251,
+    "recipe_id": 45,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 252,
+    "recipe_id": 45,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 253,
+    "recipe_id": 45,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 254,
+    "recipe_id": 45,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 255,
+    "recipe_id": 45,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 256,
+    "recipe_id": 45,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 257,
+    "recipe_id": 46,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 258,
+    "recipe_id": 46,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 259,
+    "recipe_id": 46,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 260,
+    "recipe_id": 47,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 261,
+    "recipe_id": 47,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 262,
+    "recipe_id": 47,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 263,
+    "recipe_id": 48,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 264,
+    "recipe_id": 48,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 265,
+    "recipe_id": 48,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 266,
+    "recipe_id": 49,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 267,
+    "recipe_id": 49,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 268,
+    "recipe_id": 49,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 269,
+    "recipe_id": 49,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 270,
+    "recipe_id": 49,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 271,
+    "recipe_id": 50,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 272,
+    "recipe_id": 50,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 273,
+    "recipe_id": 50,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 274,
+    "recipe_id": 50,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 275,
+    "recipe_id": 50,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 276,
+    "recipe_id": 50,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 277,
+    "recipe_id": 51,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 278,
+    "recipe_id": 51,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 279,
+    "recipe_id": 51,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 280,
+    "recipe_id": 51,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 281,
+    "recipe_id": 51,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 282,
+    "recipe_id": 51,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 283,
+    "recipe_id": 52,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 284,
+    "recipe_id": 52,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 285,
+    "recipe_id": 52,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 286,
+    "recipe_id": 53,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 287,
+    "recipe_id": 53,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 288,
+    "recipe_id": 53,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 289,
+    "recipe_id": 53,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 290,
+    "recipe_id": 53,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 291,
+    "recipe_id": 53,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 292,
+    "recipe_id": 54,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 293,
+    "recipe_id": 54,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 294,
+    "recipe_id": 54,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 295,
+    "recipe_id": 54,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 296,
+    "recipe_id": 54,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 297,
+    "recipe_id": 55,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 298,
+    "recipe_id": 55,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 299,
+    "recipe_id": 55,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 300,
+    "recipe_id": 55,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 301,
+    "recipe_id": 55,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 302,
+    "recipe_id": 55,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 303,
+    "recipe_id": 56,
+    "name": "hal filé",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 304,
+    "recipe_id": 56,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 305,
+    "recipe_id": 56,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 306,
+    "recipe_id": 57,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 307,
+    "recipe_id": 57,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 308,
+    "recipe_id": 57,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 309,
+    "recipe_id": 57,
+    "name": "hal filé",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 310,
+    "recipe_id": 57,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 311,
+    "recipe_id": 57,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 312,
+    "recipe_id": 58,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 313,
+    "recipe_id": 58,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 314,
+    "recipe_id": 58,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 315,
+    "recipe_id": 58,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 316,
+    "recipe_id": 58,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 317,
+    "recipe_id": 58,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 318,
+    "recipe_id": 59,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 319,
+    "recipe_id": 59,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 320,
+    "recipe_id": 59,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 321,
+    "recipe_id": 60,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 322,
+    "recipe_id": 60,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 323,
+    "recipe_id": 60,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 324,
+    "recipe_id": 60,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 325,
+    "recipe_id": 60,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 326,
+    "recipe_id": 60,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 327,
+    "recipe_id": 61,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 328,
+    "recipe_id": 61,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 329,
+    "recipe_id": 61,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 330,
+    "recipe_id": 61,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 331,
+    "recipe_id": 62,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 332,
+    "recipe_id": 62,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 333,
+    "recipe_id": 62,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 334,
+    "recipe_id": 62,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 335,
+    "recipe_id": 63,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 336,
+    "recipe_id": 63,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 337,
+    "recipe_id": 63,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 338,
+    "recipe_id": 64,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 339,
+    "recipe_id": 64,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 340,
+    "recipe_id": 64,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 341,
+    "recipe_id": 64,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 342,
+    "recipe_id": 64,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 343,
+    "recipe_id": 64,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 344,
+    "recipe_id": 64,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 345,
+    "recipe_id": 65,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 346,
+    "recipe_id": 65,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 347,
+    "recipe_id": 65,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 348,
+    "recipe_id": 65,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 349,
+    "recipe_id": 65,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 350,
+    "recipe_id": 65,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 351,
+    "recipe_id": 66,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 352,
+    "recipe_id": 66,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 353,
+    "recipe_id": 66,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 354,
+    "recipe_id": 66,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 355,
+    "recipe_id": 66,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 356,
+    "recipe_id": 66,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 357,
+    "recipe_id": 66,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 358,
+    "recipe_id": 67,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 359,
+    "recipe_id": 67,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 360,
+    "recipe_id": 67,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 361,
+    "recipe_id": 68,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 362,
+    "recipe_id": 68,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 363,
+    "recipe_id": 68,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 364,
+    "recipe_id": 69,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 365,
+    "recipe_id": 69,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 366,
+    "recipe_id": 69,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 367,
+    "recipe_id": 69,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 368,
+    "recipe_id": 69,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 369,
+    "recipe_id": 69,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 370,
+    "recipe_id": 69,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 371,
+    "recipe_id": 70,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 372,
+    "recipe_id": 70,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 373,
+    "recipe_id": 70,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 374,
+    "recipe_id": 70,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 375,
+    "recipe_id": 71,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 376,
+    "recipe_id": 71,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 377,
+    "recipe_id": 71,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 378,
+    "recipe_id": 71,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 379,
+    "recipe_id": 71,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 380,
+    "recipe_id": 71,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 381,
+    "recipe_id": 72,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 382,
+    "recipe_id": 72,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 383,
+    "recipe_id": 72,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 384,
+    "recipe_id": 72,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 385,
+    "recipe_id": 72,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 386,
+    "recipe_id": 72,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 387,
+    "recipe_id": 73,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 388,
+    "recipe_id": 73,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 389,
+    "recipe_id": 73,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 390,
+    "recipe_id": 73,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 391,
+    "recipe_id": 74,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 392,
+    "recipe_id": 74,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 393,
+    "recipe_id": 74,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 394,
+    "recipe_id": 74,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 395,
+    "recipe_id": 74,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 396,
+    "recipe_id": 74,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 397,
+    "recipe_id": 75,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 398,
+    "recipe_id": 75,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 399,
+    "recipe_id": 75,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 400,
+    "recipe_id": 75,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 401,
+    "recipe_id": 75,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 402,
+    "recipe_id": 75,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 403,
+    "recipe_id": 76,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 404,
+    "recipe_id": 76,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 405,
+    "recipe_id": 76,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 406,
+    "recipe_id": 77,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 407,
+    "recipe_id": 77,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 408,
+    "recipe_id": 77,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 409,
+    "recipe_id": 77,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 410,
+    "recipe_id": 77,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 411,
+    "recipe_id": 77,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 412,
+    "recipe_id": 78,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 413,
+    "recipe_id": 78,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 414,
+    "recipe_id": 78,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 415,
+    "recipe_id": 78,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 416,
+    "recipe_id": 78,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 417,
+    "recipe_id": 78,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 418,
+    "recipe_id": 79,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 419,
+    "recipe_id": 79,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 420,
+    "recipe_id": 79,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 421,
+    "recipe_id": 79,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 422,
+    "recipe_id": 80,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 423,
+    "recipe_id": 80,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 424,
+    "recipe_id": 80,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 425,
+    "recipe_id": 81,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 426,
+    "recipe_id": 81,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 427,
+    "recipe_id": 81,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 428,
+    "recipe_id": 81,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 429,
+    "recipe_id": 82,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 430,
+    "recipe_id": 82,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 431,
+    "recipe_id": 82,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 432,
+    "recipe_id": 82,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 433,
+    "recipe_id": 82,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 434,
+    "recipe_id": 83,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 435,
+    "recipe_id": 83,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 436,
+    "recipe_id": 83,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 437,
+    "recipe_id": 84,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 438,
+    "recipe_id": 84,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 439,
+    "recipe_id": 84,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 440,
+    "recipe_id": 84,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 441,
+    "recipe_id": 84,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 442,
+    "recipe_id": 84,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 443,
+    "recipe_id": 85,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 444,
+    "recipe_id": 85,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 445,
+    "recipe_id": 85,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 446,
+    "recipe_id": 85,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 447,
+    "recipe_id": 86,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 448,
+    "recipe_id": 86,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 449,
+    "recipe_id": 86,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 450,
+    "recipe_id": 86,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 451,
+    "recipe_id": 86,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 452,
+    "recipe_id": 86,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 453,
+    "recipe_id": 87,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 454,
+    "recipe_id": 87,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 455,
+    "recipe_id": 87,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 456,
+    "recipe_id": 87,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 457,
+    "recipe_id": 87,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 458,
+    "recipe_id": 87,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 459,
+    "recipe_id": 88,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 460,
+    "recipe_id": 88,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 461,
+    "recipe_id": 88,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 462,
+    "recipe_id": 88,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 463,
+    "recipe_id": 88,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 464,
+    "recipe_id": 88,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 465,
+    "recipe_id": 89,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 466,
+    "recipe_id": 89,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 467,
+    "recipe_id": 89,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 468,
+    "recipe_id": 90,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 469,
+    "recipe_id": 90,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 470,
+    "recipe_id": 90,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 471,
+    "recipe_id": 90,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 472,
+    "recipe_id": 91,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 473,
+    "recipe_id": 91,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 474,
+    "recipe_id": 91,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 475,
+    "recipe_id": 92,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 476,
+    "recipe_id": 92,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 477,
+    "recipe_id": 92,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 478,
+    "recipe_id": 93,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 479,
+    "recipe_id": 93,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 480,
+    "recipe_id": 93,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 481,
+    "recipe_id": 94,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 482,
+    "recipe_id": 94,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 483,
+    "recipe_id": 94,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 484,
+    "recipe_id": 94,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 485,
+    "recipe_id": 94,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 486,
+    "recipe_id": 94,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 487,
+    "recipe_id": 95,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 488,
+    "recipe_id": 95,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 489,
+    "recipe_id": 95,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 490,
+    "recipe_id": 95,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 491,
+    "recipe_id": 95,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 492,
+    "recipe_id": 95,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 493,
+    "recipe_id": 96,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 494,
+    "recipe_id": 96,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 495,
+    "recipe_id": 96,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 496,
+    "recipe_id": 96,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 497,
+    "recipe_id": 96,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 498,
+    "recipe_id": 96,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 499,
+    "recipe_id": 96,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 500,
+    "recipe_id": 97,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 501,
+    "recipe_id": 97,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 502,
+    "recipe_id": 97,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 503,
+    "recipe_id": 97,
+    "name": "avokádó",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 504,
+    "recipe_id": 97,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 505,
+    "recipe_id": 97,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 506,
+    "recipe_id": 98,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 507,
+    "recipe_id": 98,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 508,
+    "recipe_id": 98,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 509,
+    "recipe_id": 98,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 510,
+    "recipe_id": 98,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 511,
+    "recipe_id": 98,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 512,
+    "recipe_id": 99,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 513,
+    "recipe_id": 99,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 514,
+    "recipe_id": 99,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 515,
+    "recipe_id": 99,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 516,
+    "recipe_id": 99,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 517,
+    "recipe_id": 99,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 518,
+    "recipe_id": 99,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 519,
+    "recipe_id": 100,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 520,
+    "recipe_id": 100,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 521,
+    "recipe_id": 100,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 522,
+    "recipe_id": 100,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 523,
+    "recipe_id": 100,
+    "name": "pirospaprika",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 524,
+    "recipe_id": 100,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 525,
+    "recipe_id": 100,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 526,
+    "recipe_id": 101,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 527,
+    "recipe_id": 101,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 528,
+    "recipe_id": 101,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 529,
+    "recipe_id": 102,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 530,
+    "recipe_id": 102,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 531,
+    "recipe_id": 102,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 532,
+    "recipe_id": 102,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 533,
+    "recipe_id": 102,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 534,
+    "recipe_id": 102,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 535,
+    "recipe_id": 102,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 536,
+    "recipe_id": 103,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 537,
+    "recipe_id": 103,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 538,
+    "recipe_id": 103,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 539,
+    "recipe_id": 103,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 540,
+    "recipe_id": 103,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 541,
+    "recipe_id": 103,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 542,
+    "recipe_id": 103,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 543,
+    "recipe_id": 104,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 544,
+    "recipe_id": 104,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 545,
+    "recipe_id": 104,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 546,
+    "recipe_id": 104,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 547,
+    "recipe_id": 104,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 548,
+    "recipe_id": 105,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 549,
+    "recipe_id": 105,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 550,
+    "recipe_id": 105,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 551,
+    "recipe_id": 105,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 552,
+    "recipe_id": 105,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 553,
+    "recipe_id": 106,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 554,
+    "recipe_id": 106,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 555,
+    "recipe_id": 106,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 556,
+    "recipe_id": 106,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 557,
+    "recipe_id": 106,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 558,
+    "recipe_id": 106,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 559,
+    "recipe_id": 106,
+    "name": "kapor",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 560,
+    "recipe_id": 107,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 561,
+    "recipe_id": 107,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 562,
+    "recipe_id": 107,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 563,
+    "recipe_id": 107,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 564,
+    "recipe_id": 107,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 565,
+    "recipe_id": 107,
+    "name": "paprika",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 566,
+    "recipe_id": 107,
+    "name": "méz",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 567,
+    "recipe_id": 108,
+    "name": "szójaszósz",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 568,
+    "recipe_id": 108,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 569,
+    "recipe_id": 108,
+    "name": "tojás",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 570,
+    "recipe_id": 108,
+    "name": "hal filé",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 571,
+    "recipe_id": 108,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 572,
+    "recipe_id": 108,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 573,
+    "recipe_id": 108,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 574,
+    "recipe_id": 109,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 575,
+    "recipe_id": 109,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 576,
+    "recipe_id": 109,
+    "name": "rizs",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 577,
+    "recipe_id": 109,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 578,
+    "recipe_id": 109,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 579,
+    "recipe_id": 110,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 580,
+    "recipe_id": 110,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 581,
+    "recipe_id": 110,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 582,
+    "recipe_id": 110,
+    "name": "marhahús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 583,
+    "recipe_id": 111,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 584,
+    "recipe_id": 111,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 585,
+    "recipe_id": 111,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 586,
+    "recipe_id": 112,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 587,
+    "recipe_id": 112,
+    "name": "brokkoli",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 588,
+    "recipe_id": 112,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 589,
+    "recipe_id": 112,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 590,
+    "recipe_id": 113,
+    "name": "burgonya",
+    "quantity": 4,
+    "unit": "db"
+  },
+  {
+    "_id": 591,
+    "recipe_id": 113,
+    "name": "só",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 592,
+    "recipe_id": 113,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 593,
+    "recipe_id": 113,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 594,
+    "recipe_id": 113,
+    "name": "citrom",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 595,
+    "recipe_id": 114,
+    "name": "mustár",
+    "quantity": 1,
+    "unit": "ek"
+  },
+  {
+    "_id": 596,
+    "recipe_id": 114,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 597,
+    "recipe_id": 114,
+    "name": "padlizsán",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 598,
+    "recipe_id": 114,
+    "name": "liszt",
+    "quantity": 300,
+    "unit": "g"
+  },
+  {
+    "_id": 599,
+    "recipe_id": 115,
+    "name": "bors",
+    "quantity": 1,
+    "unit": "tk"
+  },
+  {
+    "_id": 600,
+    "recipe_id": 115,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 601,
+    "recipe_id": 115,
+    "name": "cukkini",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 602,
+    "recipe_id": 115,
+    "name": "bor",
+    "quantity": 100,
+    "unit": "ml"
+  },
+  {
+    "_id": 603,
+    "recipe_id": 115,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 604,
+    "recipe_id": 116,
+    "name": "tészta",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 605,
+    "recipe_id": 116,
+    "name": "kolbász",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 606,
+    "recipe_id": 116,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  },
+  {
+    "_id": 607,
+    "recipe_id": 116,
+    "name": "gomba",
+    "quantity": 200,
+    "unit": "g"
+  },
+  {
+    "_id": 608,
+    "recipe_id": 116,
+    "name": "tejföl",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 609,
+    "recipe_id": 116,
+    "name": "cukor",
+    "quantity": 100,
+    "unit": "g"
+  },
+  {
+    "_id": 610,
+    "recipe_id": 117,
+    "name": "sárgarépa",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 611,
+    "recipe_id": 117,
+    "name": "hagyma",
+    "quantity": 2,
+    "unit": "db"
+  },
+  {
+    "_id": 612,
+    "recipe_id": 117,
+    "name": "vaj",
+    "quantity": 50,
+    "unit": "g"
+  },
+  {
+    "_id": 613,
+    "recipe_id": 118,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 614,
+    "recipe_id": 118,
+    "name": "sertéshús",
+    "quantity": 400,
+    "unit": "g"
+  },
+  {
+    "_id": 615,
+    "recipe_id": 118,
+    "name": "ecet",
+    "quantity": 2,
+    "unit": "ek"
+  },
+  {
+    "_id": 616,
+    "recipe_id": 118,
+    "name": "tejszín",
+    "quantity": 200,
+    "unit": "ml"
+  },
+  {
+    "_id": 617,
+    "recipe_id": 118,
+    "name": "paradicsom",
+    "quantity": 3,
+    "unit": "db"
+  },
+  {
+    "_id": 618,
+    "recipe_id": 118,
+    "name": "sajt",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 619,
+    "recipe_id": 119,
+    "name": "olívaolaj",
+    "quantity": 3,
+    "unit": "ek"
+  },
+  {
+    "_id": 620,
+    "recipe_id": 119,
+    "name": "csirkemell",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 621,
+    "recipe_id": 119,
+    "name": "darált hús",
+    "quantity": 500,
+    "unit": "g"
+  },
+  {
+    "_id": 622,
+    "recipe_id": 119,
+    "name": "petrezselyem",
+    "quantity": 1,
+    "unit": "csokor"
+  },
+  {
+    "_id": 623,
+    "recipe_id": 119,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 624,
+    "recipe_id": 120,
+    "name": "szalonna",
+    "quantity": 150,
+    "unit": "g"
+  },
+  {
+    "_id": 625,
+    "recipe_id": 120,
+    "name": "zeller",
+    "quantity": 1,
+    "unit": "db"
+  },
+  {
+    "_id": 626,
+    "recipe_id": 120,
+    "name": "fokhagyma",
+    "quantity": 3,
+    "unit": "gerezd"
+  }
 ]

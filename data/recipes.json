@@ -1,98 +1,1922 @@
 [
-    {
-        "_id": 1,
-        "title": "Gulyásleves",
-        "description": "Klasszikus magyar gulyásleves marhahúsból, paprikával és burgonyával.",
-        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
-        "preparation_time": 90,
-        "difficulty": "easy",
-        "average_rating": 4.5,
-        "rating_count": 2,
-        "author_id": 2,
-        "created_at": {
-            "$date": "2026-01-10T10:00:00Z"
-        },
-        "updated_at": null,
-        "is_deleted": false
+  {
+    "_id": 1,
+    "title": "Gulyásleves",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 60,
+    "difficulty": "medium",
+    "average_rating": 3.5,
+    "rating_count": 4,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-01-10T08:00:00.000Z"
     },
-    {
-        "_id": 2,
-        "title": "Lecsó",
-        "description": "Friss zöldségekből készült hagyományos lecsó tojással.",
-        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
-        "preparation_time": 45,
-        "difficulty": "easy",
-        "average_rating": 4.0,
-        "rating_count": 1,
-        "author_id": 2,
-        "created_at": {
-            "$date": "2026-01-12T11:00:00Z"
-        },
-        "updated_at": null,
-        "is_deleted": false
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 2,
+    "title": "Lecsó",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 60,
+    "difficulty": "hard",
+    "average_rating": 3,
+    "rating_count": 1,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-01-12T09:00:00.000Z"
     },
-    {
-        "_id": 3,
-        "title": "Rántott csirke",
-        "description": "Ropogós rántott csirkemell, a magyaros konyha egyik klasszikusa.",
-        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
-        "preparation_time": 60,
-        "difficulty": "medium",
-        "average_rating": 5.0,
-        "rating_count": 1,
-        "author_id": 3,
-        "created_at": {
-            "$date": "2026-01-15T09:00:00Z"
-        },
-        "updated_at": null,
-        "is_deleted": false
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 3,
+    "title": "Rántott csirke",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 20,
+    "difficulty": "easy",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 3,
+    "created_at": {
+      "$date": "2026-01-15T10:00:00.000Z"
     },
-    {
-        "_id": 4,
-        "title": "Túrós csusza",
-        "description": "Tejfölös-túrós tészta ropogós szalonnával.",
-        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
-        "preparation_time": 30,
-        "difficulty": "easy",
-        "average_rating": 3.0,
-        "rating_count": 1,
-        "author_id": 4,
-        "created_at": {
-            "$date": "2026-01-18T14:00:00Z"
-        },
-        "updated_at": null,
-        "is_deleted": false
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 4,
+    "title": "Túrós csusza",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 180,
+    "difficulty": "medium",
+    "average_rating": 3.3,
+    "rating_count": 4,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-01-17T11:00:00.000Z"
     },
-    {
-        "_id": 5,
-        "title": "Somlói galuska",
-        "description": "A legendás magyar desszert rum, csokoládé és tejszín hármasa.",
-        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
-        "preparation_time": 120,
-        "difficulty": "hard",
-        "average_rating": 4.0,
-        "rating_count": 1,
-        "author_id": 5,
-        "created_at": {
-            "$date": "2026-01-20T16:00:00Z"
-        },
-        "updated_at": null,
-        "is_deleted": false
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 5,
+    "title": "Somlói galuska",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 30,
+    "difficulty": "hard",
+    "average_rating": 4,
+    "rating_count": 7,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-01-20T12:00:00.000Z"
     },
-    {
-        "_id": 6,
-        "title": "Házi lasagne bolognai raguval",
-        "description": "Többrétegű, gazdagon töltött házi lasagne, amely a klasszikus olasz bolognai ragut párosítja krémes besamel mártással és házi készítésű tésztalapokkal. Ez a recept időigényes, de az eredmény egy igazi kulináris remekmű, ami garantáltan lenyűgözi a vendégeket. A lassú főzésnek köszönhetően a ragu mélyen aromás, a rétegek selymesen egybeolvadnak, és a tetején aranybarnára sült sajtkéreg koronázza meg az egészet. Tökéletes vasárnapi ebédnek vagy ünnepi alkalomra.",
-        "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
-        "preparation_time": 180,
-        "difficulty": "hard",
-        "average_rating": 0,
-        "rating_count": 0,
-        "author_id": 2,
-        "created_at": {
-            "$date": "2026-03-19T10:00:00Z"
-        },
-        "updated_at": null,
-        "is_deleted": false
-    }
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 6,
+    "title": "Házi lasagne bolognai raguval",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 90,
+    "difficulty": "easy",
+    "average_rating": 3.4,
+    "rating_count": 8,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-01-22T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 7,
+    "title": "Pörkölt nokedlivel",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-01-25T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 8,
+    "title": "Halászlé",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 60,
+    "difficulty": "hard",
+    "average_rating": 3.8,
+    "rating_count": 4,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-01-27T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 9,
+    "title": "Töltött paprika",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 180,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 8,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-02-02T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 10,
+    "title": "Töltött káposzta",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3,
+    "rating_count": 4,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-02-04T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 11,
+    "title": "Rakott krumpli",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 180,
+    "difficulty": "hard",
+    "average_rating": 5,
+    "rating_count": 1,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-02-07T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 12,
+    "title": "Paprikás csirke",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 60,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 3,
+    "created_at": {
+      "$date": "2026-02-09T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 13,
+    "title": "Mákos rétes",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 2,
+    "author_id": 15,
+    "created_at": {
+      "$date": "2026-02-12T20:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 14,
+    "title": "Lángos",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 25,
+    "difficulty": "hard",
+    "average_rating": 3,
+    "rating_count": 1,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-02-14T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 15,
+    "title": "Pogácsa",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 90,
+    "difficulty": "easy",
+    "average_rating": 4.2,
+    "rating_count": 6,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-02-17T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 16,
+    "title": "Kürtőskalács",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.3,
+    "rating_count": 4,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-02-19T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 17,
+    "title": "Dobostorta",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 15,
+    "difficulty": "hard",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-02-22T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 18,
+    "title": "Túrógombóc",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 3.4,
+    "rating_count": 7,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-02-24T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 19,
+    "title": "Gesztenyepüré",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 180,
+    "difficulty": "medium",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 3,
+    "created_at": {
+      "$date": "2026-02-27T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 20,
+    "title": "Szilvásgombóc",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 120,
+    "difficulty": "hard",
+    "average_rating": 4.5,
+    "rating_count": 2,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-02-01T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 21,
+    "title": "Madártej",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 60,
+    "difficulty": "easy",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 19,
+    "created_at": {
+      "$date": "2026-03-04T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 22,
+    "title": "Hortobágyi palacsinta",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 90,
+    "difficulty": "medium",
+    "average_rating": 3.8,
+    "rating_count": 5,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-03-06T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 23,
+    "title": "Csirkepörkölt",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 30,
+    "difficulty": "hard",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-03-09T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 24,
+    "title": "Brassói aprópecsenye",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 90,
+    "difficulty": "easy",
+    "average_rating": 2,
+    "rating_count": 1,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-03-11T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 25,
+    "title": "Meggyleves",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 25,
+    "difficulty": "medium",
+    "average_rating": 2.7,
+    "rating_count": 3,
+    "author_id": 19,
+    "created_at": {
+      "$date": "2026-03-14T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 26,
+    "title": "Kapros túrós palacsinta",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 3,
+    "rating_count": 1,
+    "author_id": 10,
+    "created_at": {
+      "$date": "2026-03-16T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 27,
+    "title": "Sajtos pogácsa",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 2.8,
+    "rating_count": 4,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-03-19T20:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 28,
+    "title": "Csirkemell tejszínes gombával",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 30,
+    "difficulty": "medium",
+    "average_rating": 2.6,
+    "rating_count": 5,
+    "author_id": 10,
+    "created_at": {
+      "$date": "2026-03-21T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 29,
+    "title": "Paradicsomleves",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 45,
+    "difficulty": "hard",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-03-24T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 30,
+    "title": "Krumplis tészta",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 3,
+    "rating_count": 5,
+    "author_id": 17,
+    "created_at": {
+      "$date": "2026-03-26T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 31,
+    "title": "Bundáskenyér",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 15,
+    "difficulty": "medium",
+    "average_rating": 3.3,
+    "rating_count": 6,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-03-01T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 32,
+    "title": "Diós bejgli",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 60,
+    "difficulty": "hard",
+    "average_rating": 4,
+    "rating_count": 4,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-03-03T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 33,
+    "title": "Mákos bejgli",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 4,
+    "rating_count": 3,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-04-06T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 34,
+    "title": "Zöldségleves",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 60,
+    "difficulty": "medium",
+    "average_rating": 3,
+    "rating_count": 2,
+    "author_id": 15,
+    "created_at": {
+      "$date": "2026-04-08T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 35,
+    "title": "Frankfurti leves",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 3.5,
+    "rating_count": 4,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-04-11T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 36,
+    "title": "Újházi tyúkhúsleves",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 60,
+    "difficulty": "easy",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-04-13T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 37,
+    "title": "Babgulyás",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.8,
+    "rating_count": 4,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-04-16T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 38,
+    "title": "Lencsefőzelék",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 120,
+    "difficulty": "hard",
+    "average_rating": 2.8,
+    "rating_count": 5,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-04-18T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 39,
+    "title": "Tökfőzelék",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-04-21T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 40,
+    "title": "Spenótfőzelék",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 180,
+    "difficulty": "medium",
+    "average_rating": 3.2,
+    "rating_count": 6,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-04-23T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 41,
+    "title": "Sült kacsacomb",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 2.5,
+    "rating_count": 6,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-04-26T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 42,
+    "title": "Vörösboros marharagu",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 45,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 7,
+    "created_at": {
+      "$date": "2026-04-28T06:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 43,
+    "title": "Csülök pékné módra",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 60,
+    "difficulty": "medium",
+    "average_rating": 3.7,
+    "rating_count": 7,
+    "author_id": 18,
+    "created_at": {
+      "$date": "2026-04-03T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 44,
+    "title": "Bécsi szelet",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 2,
+    "rating_count": 1,
+    "author_id": 19,
+    "created_at": {
+      "$date": "2026-04-05T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 45,
+    "title": "Tejszínes kukoricakrémleves",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 25,
+    "difficulty": "easy",
+    "average_rating": 3.8,
+    "rating_count": 5,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-05-08T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 46,
+    "title": "Sült csirkecomb fűszervajjal",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 45,
+    "difficulty": "medium",
+    "average_rating": 3.1,
+    "rating_count": 7,
+    "author_id": 7,
+    "created_at": {
+      "$date": "2026-05-10T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 47,
+    "title": "Házi pizza margherita",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 45,
+    "difficulty": "hard",
+    "average_rating": 3.3,
+    "rating_count": 3,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-05-13T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 48,
+    "title": "Bolognai spagetti",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 180,
+    "difficulty": "easy",
+    "average_rating": 3.6,
+    "rating_count": 7,
+    "author_id": 13,
+    "created_at": {
+      "$date": "2026-05-15T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 49,
+    "title": "Carbonara",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 15,
+    "difficulty": "medium",
+    "average_rating": 4.3,
+    "rating_count": 4,
+    "author_id": 17,
+    "created_at": {
+      "$date": "2026-05-18T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 50,
+    "title": "Penne arrabiata",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 45,
+    "difficulty": "hard",
+    "average_rating": 3,
+    "rating_count": 3,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-05-20T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 51,
+    "title": "Risotto milánói módra",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 4,
+    "rating_count": 1,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-05-23T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 52,
+    "title": "Csirkesaláta",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 90,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 4,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-05-25T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 53,
+    "title": "Tonhalsaláta",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 180,
+    "difficulty": "hard",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 15,
+    "created_at": {
+      "$date": "2026-05-28T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 54,
+    "title": "Caesar saláta",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 45,
+    "difficulty": "easy",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-05-02T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 55,
+    "title": "Görög saláta",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.4,
+    "rating_count": 5,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-05-05T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 56,
+    "title": "Tabouleh",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 90,
+    "difficulty": "hard",
+    "average_rating": 2.6,
+    "rating_count": 5,
+    "author_id": 10,
+    "created_at": {
+      "$date": "2026-05-07T06:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 57,
+    "title": "Pad thai",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 25,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 4,
+    "author_id": 16,
+    "created_at": {
+      "$date": "2026-06-10T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 58,
+    "title": "Tikka masala",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 180,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 5,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-06-12T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 59,
+    "title": "Tandoori csirke",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 120,
+    "difficulty": "hard",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 16,
+    "created_at": {
+      "$date": "2026-06-15T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 60,
+    "title": "Bánh mì szendvics",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 60,
+    "difficulty": "easy",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-06-17T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 61,
+    "title": "Falafel tál",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 45,
+    "difficulty": "medium",
+    "average_rating": 2.9,
+    "rating_count": 7,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-06-20T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 62,
+    "title": "Hummus",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 30,
+    "difficulty": "hard",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 17,
+    "created_at": {
+      "$date": "2026-06-22T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 63,
+    "title": "Gyros tál",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 120,
+    "difficulty": "easy",
+    "average_rating": 4.5,
+    "rating_count": 2,
+    "author_id": 15,
+    "created_at": {
+      "$date": "2026-06-25T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 64,
+    "title": "Kebab tál",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.3,
+    "rating_count": 3,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-06-27T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 65,
+    "title": "Quesadilla",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 25,
+    "difficulty": "hard",
+    "average_rating": 5,
+    "rating_count": 1,
+    "author_id": 17,
+    "created_at": {
+      "$date": "2026-06-02T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 66,
+    "title": "Burrito",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 4.7,
+    "rating_count": 3,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-06-04T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 67,
+    "title": "Taco",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 20,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 2,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-06-07T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 68,
+    "title": "Nachos",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 180,
+    "difficulty": "hard",
+    "average_rating": 2.5,
+    "rating_count": 6,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-06-09T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 69,
+    "title": "Chili con carne",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 180,
+    "difficulty": "easy",
+    "average_rating": 4,
+    "rating_count": 2,
+    "author_id": 18,
+    "created_at": {
+      "$date": "2026-07-12T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 70,
+    "title": "Pulled pork szendvics",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 15,
+    "difficulty": "medium",
+    "average_rating": 3.8,
+    "rating_count": 4,
+    "author_id": 13,
+    "created_at": {
+      "$date": "2026-07-14T06:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 71,
+    "title": "Smash burger",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 30,
+    "difficulty": "hard",
+    "average_rating": 4.5,
+    "rating_count": 4,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-07-17T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 72,
+    "title": "Fish and chips",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 3.3,
+    "rating_count": 3,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-07-19T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 73,
+    "title": "Ramen",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 90,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 1,
+    "author_id": 7,
+    "created_at": {
+      "$date": "2026-07-22T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 74,
+    "title": "Miso leves",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 90,
+    "difficulty": "hard",
+    "average_rating": 4,
+    "rating_count": 7,
+    "author_id": 8,
+    "created_at": {
+      "$date": "2026-07-24T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 75,
+    "title": "Sushi bowl",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 8,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-07-27T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 76,
+    "title": "Teriyaki csirke",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-07-01T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 77,
+    "title": "Szecsuáni csirke",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 120,
+    "difficulty": "hard",
+    "average_rating": 3,
+    "rating_count": 1,
+    "author_id": 4,
+    "created_at": {
+      "$date": "2026-07-04T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 78,
+    "title": "Pad see ew",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 20,
+    "difficulty": "easy",
+    "average_rating": 4,
+    "rating_count": 6,
+    "author_id": 18,
+    "created_at": {
+      "$date": "2026-07-06T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 79,
+    "title": "Tom kha gai",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 120,
+    "difficulty": "medium",
+    "average_rating": 3.4,
+    "rating_count": 8,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-07-09T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 80,
+    "title": "Pho bo",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 25,
+    "difficulty": "hard",
+    "average_rating": 4.5,
+    "rating_count": 2,
+    "author_id": 16,
+    "created_at": {
+      "$date": "2026-07-11T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 81,
+    "title": "Bibimbap",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 13,
+    "created_at": {
+      "$date": "2026-08-14T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 82,
+    "title": "Kimchi pirított rizs",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 25,
+    "difficulty": "medium",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 10,
+    "created_at": {
+      "$date": "2026-08-16T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 83,
+    "title": "Edamame",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 180,
+    "difficulty": "hard",
+    "average_rating": 3.7,
+    "rating_count": 3,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-08-19T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 84,
+    "title": "Gyoza",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 60,
+    "difficulty": "easy",
+    "average_rating": 4.3,
+    "rating_count": 4,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-08-21T06:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 85,
+    "title": "Shakshuka",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 25,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 3,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-08-24T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 86,
+    "title": "Avokádós pirítós",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 25,
+    "difficulty": "hard",
+    "average_rating": 3.3,
+    "rating_count": 3,
+    "author_id": 17,
+    "created_at": {
+      "$date": "2026-08-26T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 87,
+    "title": "Açaí bowl",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 2.3,
+    "rating_count": 7,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-08-01T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 88,
+    "title": "Granola",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 20,
+    "difficulty": "medium",
+    "average_rating": 3.3,
+    "rating_count": 4,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-08-03T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 89,
+    "title": "Overnight oats",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 120,
+    "difficulty": "hard",
+    "average_rating": 3.5,
+    "rating_count": 6,
+    "author_id": 11,
+    "created_at": {
+      "$date": "2026-08-06T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 90,
+    "title": "Protein palacsinta",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 45,
+    "difficulty": "easy",
+    "average_rating": 3.4,
+    "rating_count": 5,
+    "author_id": 13,
+    "created_at": {
+      "$date": "2026-08-08T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 91,
+    "title": "Bánánkenyér",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 30,
+    "difficulty": "medium",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-08-11T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 92,
+    "title": "Répatorta",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 60,
+    "difficulty": "hard",
+    "average_rating": 4,
+    "rating_count": 4,
+    "author_id": 20,
+    "created_at": {
+      "$date": "2026-08-13T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 93,
+    "title": "Almás pite",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 3.3,
+    "rating_count": 7,
+    "author_id": 3,
+    "created_at": {
+      "$date": "2026-09-16T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 94,
+    "title": "Epres tiramisu",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 25,
+    "difficulty": "medium",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 11,
+    "created_at": {
+      "$date": "2026-09-18T16:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 95,
+    "title": "Csokis brownie",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 120,
+    "difficulty": "hard",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 19,
+    "created_at": {
+      "$date": "2026-09-21T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 96,
+    "title": "Panna cotta",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 90,
+    "difficulty": "easy",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-09-23T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 97,
+    "title": "Crème brûlée",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 180,
+    "difficulty": "medium",
+    "average_rating": 3.4,
+    "rating_count": 5,
+    "author_id": 16,
+    "created_at": {
+      "$date": "2026-09-26T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 98,
+    "title": "Pavlova",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 25,
+    "difficulty": "hard",
+    "average_rating": 3,
+    "rating_count": 1,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-09-28T06:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 99,
+    "title": "Citromos sajttorta",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 15,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 4,
+    "author_id": 9,
+    "created_at": {
+      "$date": "2026-09-03T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 100,
+    "title": "Házi kenyér",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 90,
+    "difficulty": "medium",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-09-05T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 101,
+    "title": "Focaccia",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 30,
+    "difficulty": "hard",
+    "average_rating": 4,
+    "rating_count": 1,
+    "author_id": 7,
+    "created_at": {
+      "$date": "2026-09-08T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 102,
+    "title": "Ciabatta",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 3.5,
+    "rating_count": 2,
+    "author_id": 8,
+    "created_at": {
+      "$date": "2026-09-10T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 103,
+    "title": "Bagel",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 20,
+    "difficulty": "medium",
+    "average_rating": 2.5,
+    "rating_count": 2,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-09-13T11:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 104,
+    "title": "Croissant",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 3.8,
+    "rating_count": 4,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-09-15T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 105,
+    "title": "Brioche",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 3.6,
+    "rating_count": 5,
+    "author_id": 7,
+    "created_at": {
+      "$date": "2026-10-18T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 106,
+    "title": "Kalács",
+    "description": "Klasszikus magyar étel, a család kedvence.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 90,
+    "difficulty": "medium",
+    "average_rating": 3,
+    "rating_count": 2,
+    "author_id": 6,
+    "created_at": {
+      "$date": "2026-10-20T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 107,
+    "title": "Házi kifli",
+    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 3.7,
+    "rating_count": 6,
+    "author_id": 8,
+    "created_at": {
+      "$date": "2026-10-23T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 108,
+    "title": "Zsemle",
+    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 60,
+    "difficulty": "easy",
+    "average_rating": 3,
+    "rating_count": 1,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-10-25T17:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 109,
+    "title": "Pogácsa sajtos-tejfölös",
+    "description": "Modern twist a klasszikus fogáson.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 180,
+    "difficulty": "medium",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 10,
+    "created_at": {
+      "$date": "2026-10-28T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 110,
+    "title": "Smoothie bowl",
+    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 90,
+    "difficulty": "hard",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-10-02T18:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 111,
+    "title": "Limonádé",
+    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 180,
+    "difficulty": "easy",
+    "average_rating": 3.6,
+    "rating_count": 7,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-10-05T19:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 112,
+    "title": "Mojito alkoholmentes",
+    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 15,
+    "difficulty": "medium",
+    "average_rating": 3.4,
+    "rating_count": 7,
+    "author_id": 17,
+    "created_at": {
+      "$date": "2026-10-07T06:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 113,
+    "title": "Jegeskávé",
+    "description": "Street food ihletésű, házi változatban.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 60,
+    "difficulty": "hard",
+    "average_rating": 3.5,
+    "rating_count": 4,
+    "author_id": 8,
+    "created_at": {
+      "$date": "2026-10-10T07:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 114,
+    "title": "Chai latte",
+    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
+    "preparation_time": 30,
+    "difficulty": "easy",
+    "average_rating": 2.7,
+    "rating_count": 3,
+    "author_id": 14,
+    "created_at": {
+      "$date": "2026-10-12T08:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 115,
+    "title": "Forró csoki",
+    "description": "Vegán változat, 100% növényi alapú.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
+    "preparation_time": 15,
+    "difficulty": "medium",
+    "average_rating": 3,
+    "rating_count": 3,
+    "author_id": 19,
+    "created_at": {
+      "$date": "2026-10-15T09:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 116,
+    "title": "Alma chips",
+    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
+    "preparation_time": 60,
+    "difficulty": "hard",
+    "average_rating": 3.7,
+    "rating_count": 6,
+    "author_id": 5,
+    "created_at": {
+      "$date": "2026-10-17T10:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 117,
+    "title": "Házi müzli szelet",
+    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
+    "preparation_time": 20,
+    "difficulty": "easy",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 2,
+    "created_at": {
+      "$date": "2026-11-20T12:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 118,
+    "title": "Sós karamell popcorn",
+    "description": "30 perc alatt az asztalon!",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
+    "preparation_time": 45,
+    "difficulty": "medium",
+    "average_rating": 4,
+    "rating_count": 3,
+    "author_id": 12,
+    "created_at": {
+      "$date": "2026-11-22T13:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 119,
+    "title": "Sajtkrém mártogatós",
+    "description": "Kézműves minőség, házi elkészítéssel.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
+    "preparation_time": 20,
+    "difficulty": "hard",
+    "average_rating": 0,
+    "rating_count": 0,
+    "author_id": 15,
+    "created_at": {
+      "$date": "2026-11-25T14:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  },
+  {
+    "_id": 120,
+    "title": "Füstölt sajtos dip",
+    "description": "Igazi comfort food hideg estékre.",
+    "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
+    "preparation_time": 120,
+    "difficulty": "easy",
+    "average_rating": 5,
+    "rating_count": 1,
+    "author_id": 16,
+    "created_at": {
+      "$date": "2026-11-27T15:00:00.000Z"
+    },
+    "updated_at": null,
+    "is_deleted": false
+  }
 ]
