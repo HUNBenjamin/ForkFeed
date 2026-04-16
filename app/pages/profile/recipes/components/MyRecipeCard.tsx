@@ -4,6 +4,7 @@ type Recipe = {
   id: number;
   title: string;
   description: string | null;
+  image_url: string | null;
   preparation_time: number;
   difficulty: string;
   average_rating: number;
@@ -30,7 +31,22 @@ type Props = {
 
 export default function MyRecipeCard({ recipe, onDelete }: Props) {
   return (
-    <div className="card bg-base-100 shadow-md">
+    <div className="card bg-base-100 shadow-md overflow-hidden">
+      {recipe.image_url ? (
+        <Link href={`/pages/recipe/${recipe.id}`}>
+          <figure className="h-36 overflow-hidden">
+            <img src={recipe.image_url} alt={recipe.title} className="w-full h-full object-cover" />
+          </figure>
+        </Link>
+      ) : (
+        <Link
+          href={`/pages/recipe/${recipe.id}`}
+          className="h-36 bg-base-300 flex items-center justify-center text-4xl text-base-content/20"
+        >
+          🍽️
+        </Link>
+      )}
+
       <div className="card-body p-4 flex flex-col gap-2">
         <div className="flex items-start justify-between gap-2">
           <Link

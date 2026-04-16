@@ -12,6 +12,7 @@ type Recipe = {
   id: number;
   title: string;
   description: string | null;
+  image_url: string | null;
   preparation_time: number;
   difficulty: string;
   average_rating: number;

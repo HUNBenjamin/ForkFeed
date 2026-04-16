@@ -9,6 +9,7 @@ type Recipe = {
   average_rating: number;
   rating_count: number;
   created_at: string;
+  latest_comment: string | null;
 };
 
 const difficultyLabels: Record<string, string> = {
@@ -45,8 +46,10 @@ export default function CommentedRecipeCard({ recipe }: Props) {
           </span>
         </div>
 
-        {recipe.description && (
-          <p className="text-sm text-base-content/60 line-clamp-2">{recipe.description}</p>
+        {recipe.latest_comment && (
+          <p className="text-sm text-base-content/60 line-clamp-2">
+            💬 &ldquo;{recipe.latest_comment}&rdquo;
+          </p>
         )}
 
         <div className="flex flex-wrap gap-3 text-sm text-base-content/50">

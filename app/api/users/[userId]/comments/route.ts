@@ -53,6 +53,12 @@ export async function GET(
         average_rating: true,
         rating_count: true,
         created_at: true,
+        comments: {
+          where: { user_id: id, is_deleted: false },
+          orderBy: { created_at: "desc" },
+          take: 1,
+          select: { content: true, created_at: true },
+        },
       },
     }),
     prisma.recipe.count({ where }),
@@ -60,7 +66,10 @@ export async function GET(
 
   return NextResponse.json(
     {
-      recipes,
+      recipes: recipes.map(({ comments, ...r }) => ({
+        ...r,
+        latest_comment: comments[0]?.content ?? null,
+      })),
       pagination: {
         page,
         limit,

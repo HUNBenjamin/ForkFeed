@@ -17,6 +17,7 @@ type Recipe = {
   average_rating: number;
   rating_count: number;
   created_at: string;
+  latest_comment: string | null;
 };
 
 export default function MyCommentsPage() {
