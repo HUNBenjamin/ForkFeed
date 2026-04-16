@@ -29,7 +29,7 @@ echo.
 echo.
 echo === Import kesz! ===
 echo.
-echo Felhasznalok:
+echo Példa felhasználók:
 echo   _id 1  admin          (admin@forkfeed.com)          role: admin  pw: admin1234
 echo   _id 2  chefmari       (mari@example.com)             role: user   pw: password123
 echo   _id 3  kovacsistvan   (kovacs.istvan@example.com)    role: user   pw: password123
