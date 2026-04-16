@@ -62,8 +62,38 @@ export default function BookRecipeCard({ recipe, onRemove }: Props) {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/80" />
 
-      {/* Top: title + badge + metadata (visible as peek) */}
+      {/* Top: ingredients + difficulty badge */}
       <div className="absolute top-0 left-0 right-0 p-4 flex items-start justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          {recipe.ingredients && recipe.ingredients.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {recipe.ingredients.slice(0, 8).map((ing) => (
+                <span
+                  key={ing.id}
+                  className="badge badge-sm bg-white/15 border-white/20 text-white/90 backdrop-blur-sm"
+                >
+                  {ing.quantity != null && ing.unit
+                    ? `${ing.quantity} ${ing.unit} ${ing.name}`
+                    : ing.name}
+                </span>
+              ))}
+              {recipe.ingredients.length > 8 && (
+                <span className="badge badge-sm bg-white/10 border-white/15 text-white/60">
+                  +{recipe.ingredients.length - 8}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+        <span
+          className={`badge badge-sm shrink-0 shadow ${difficultyBadge[recipe.difficulty] ?? "badge-ghost"}`}
+        >
+          {difficultyLabels[recipe.difficulty] ?? recipe.difficulty}
+        </span>
+      </div>
+
+      {/* Bottom: title + metadata + author */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-2">
         <div className="flex-1 min-w-0">
           <h3 className="text-white font-bold text-lg leading-snug drop-shadow-md line-clamp-1">
             {recipe.title}
@@ -78,34 +108,6 @@ export default function BookRecipeCard({ recipe, onRemove }: Props) {
             )}
           </div>
         </div>
-        <span
-          className={`badge badge-sm shrink-0 shadow ${difficultyBadge[recipe.difficulty] ?? "badge-ghost"}`}
-        >
-          {difficultyLabels[recipe.difficulty] ?? recipe.difficulty}
-        </span>
-      </div>
-
-      {/* Bottom: description + ingredients + author (revealed when card expands) */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-2">
-        {recipe.ingredients && recipe.ingredients.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {recipe.ingredients.slice(0, 8).map((ing) => (
-              <span
-                key={ing.id}
-                className="badge badge-sm bg-white/15 border-white/20 text-white/90 backdrop-blur-sm"
-              >
-                {ing.quantity != null && ing.unit
-                  ? `${ing.quantity} ${ing.unit} ${ing.name}`
-                  : ing.name}
-              </span>
-            ))}
-            {recipe.ingredients.length > 8 && (
-              <span className="badge badge-sm bg-white/10 border-white/15 text-white/60">
-                +{recipe.ingredients.length - 8}
-              </span>
-            )}
-          </div>
-        )}
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5 text-xs text-white/60">
             <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center overflow-hidden text-[10px] text-white shrink-0">
