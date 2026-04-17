@@ -141,3084 +141,3630 @@
     "_id": 24,
     "recipe_id": 7,
     "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg zsírban."
   },
   {
     "_id": 25,
     "recipe_id": 7,
     "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Add hozzá a húst és süsd meg minden oldalát."
   },
   {
     "_id": 26,
     "recipe_id": 7,
     "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Szórd meg pirospaprikával, sózd és öntsd fel kevés vízzel."
   },
   {
     "_id": 27,
-    "recipe_id": 8,
-    "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 7,
+    "step_number": 4,
+    "description": "Főzd fedő alatt kb. 1 órát, amíg a hús megpuhul."
   },
   {
     "_id": 28,
-    "recipe_id": 8,
-    "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 7,
+    "step_number": 5,
+    "description": "Készítsd el a nokedlit: keverd össze a lisztet, tojást és sót, szaggatd forró vízbe."
   },
   {
     "_id": 29,
-    "recipe_id": 8,
-    "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 7,
+    "step_number": 6,
+    "description": "Tálald a pörköltet a nokedlivel."
   },
   {
     "_id": 30,
     "recipe_id": 8,
-    "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "step_number": 1,
+    "description": "Főzd ki a halcsontokon az alaplevest kb. 30 percig."
   },
   {
     "_id": 31,
     "recipe_id": 8,
-    "step_number": 5,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "step_number": 2,
+    "description": "Szűrd le a levest, a hagymát karikázd bele."
   },
   {
     "_id": 32,
     "recipe_id": 8,
-    "step_number": 6,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "step_number": 3,
+    "description": "Add hozzá a pirospaprikát és forrald fel."
   },
   {
     "_id": 33,
-    "recipe_id": 9,
-    "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 8,
+    "step_number": 4,
+    "description": "Tedd bele a hal szeleteket és a paradicsom karikákat."
   },
   {
     "_id": 34,
-    "recipe_id": 9,
-    "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 8,
+    "step_number": 5,
+    "description": "Főzd lassan 15-20 percig, ne keverd."
   },
   {
     "_id": 35,
-    "recipe_id": 9,
-    "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 8,
+    "step_number": 6,
+    "description": "Forrón tálald friss kenyérrel."
   },
   {
     "_id": 36,
     "recipe_id": 9,
-    "step_number": 4,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "step_number": 1,
+    "description": "Mosd meg a paprikákat, vágd ki a tetejét és magozd ki."
   },
   {
     "_id": 37,
-    "recipe_id": 10,
-    "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 9,
+    "step_number": 2,
+    "description": "Keverd össze a darált húst a rizssel, tojással és fűszerekkel."
   },
   {
     "_id": 38,
-    "recipe_id": 10,
-    "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 9,
+    "step_number": 3,
+    "description": "Töltsd meg a paprikákat a hústöltelékkel."
   },
   {
     "_id": 39,
-    "recipe_id": 10,
-    "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 9,
+    "step_number": 4,
+    "description": "Főzd össze a paradicsomszószt és öntsd a paprikákra."
   },
   {
     "_id": 40,
-    "recipe_id": 10,
-    "step_number": 4,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 9,
+    "step_number": 5,
+    "description": "Főzd fedő alatt kb. 40 percig lassú tűzön."
   },
   {
     "_id": 41,
-    "recipe_id": 10,
-    "step_number": 5,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 9,
+    "step_number": 6,
+    "description": "Tálald tejföllel."
   },
   {
     "_id": 42,
-    "recipe_id": 11,
+    "recipe_id": 10,
     "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Válaszd szét a káposztafaleveleket óvatosan."
   },
   {
     "_id": 43,
-    "recipe_id": 11,
+    "recipe_id": 10,
     "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Keverd össze a darált húst a rizzsel, hagymával és fűszerekkel."
   },
   {
     "_id": 44,
-    "recipe_id": 11,
+    "recipe_id": 10,
     "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Töltsd meg a káposztafaleveleket és tekerd fel."
   },
   {
     "_id": 45,
-    "recipe_id": 11,
+    "recipe_id": 10,
     "step_number": 4,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "Rétegezd a töltött káposztát a savanyú káposzta ágyára."
   },
   {
     "_id": 46,
-    "recipe_id": 11,
+    "recipe_id": 10,
     "step_number": 5,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "description": "Öntsd fel vízzel és főzd lassú tűzön 2-3 órát."
   },
   {
     "_id": 47,
-    "recipe_id": 12,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 10,
+    "step_number": 6,
+    "description": "Tálald tejföllel és friss kenyérrel."
   },
   {
     "_id": 48,
-    "recipe_id": 12,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 11,
+    "step_number": 1,
+    "description": "Főzd meg a burgonyát és a tojásokat héjukban."
   },
   {
     "_id": 49,
-    "recipe_id": 12,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 11,
+    "step_number": 2,
+    "description": "Hámozd meg és szeleteld a burgonyát, tojásokat és kolbászt."
   },
   {
     "_id": 50,
-    "recipe_id": 12,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 11,
+    "step_number": 3,
+    "description": "Rétegezd egy kivajazott tepsibe: burgonya, kolbász, tojás, tejföl."
   },
   {
     "_id": 51,
-    "recipe_id": 13,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 11,
+    "step_number": 4,
+    "description": "Ismételd a rétegezést, tetejére tejfölt kanalazz."
   },
   {
     "_id": 52,
-    "recipe_id": 13,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 11,
+    "step_number": 5,
+    "description": "Süsd 180°C-on 25-30 percig aranybarnára."
   },
   {
     "_id": 53,
-    "recipe_id": 13,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 12,
+    "step_number": 1,
+    "description": "Pirítsd meg az apróra vágott hagymát zsírban."
   },
   {
     "_id": 54,
-    "recipe_id": 13,
-    "step_number": 4,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 12,
+    "step_number": 2,
+    "description": "Add hozzá a pirospaprikát, majd a csirkedarabokat."
   },
   {
     "_id": 55,
-    "recipe_id": 13,
-    "step_number": 5,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 12,
+    "step_number": 3,
+    "description": "Öntsd fel kevés vízzel és főzd fedő alatt 30 percig."
   },
   {
     "_id": 56,
-    "recipe_id": 13,
-    "step_number": 6,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 12,
+    "step_number": 4,
+    "description": "Keverd el a tejfölt liszttel és add a szószhoz."
   },
   {
     "_id": 57,
-    "recipe_id": 14,
-    "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 12,
+    "step_number": 5,
+    "description": "Főzd még 5 percig, amíg besűrűsödik."
   },
   {
     "_id": 58,
-    "recipe_id": 14,
-    "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 12,
+    "step_number": 6,
+    "description": "Tálald nokedlivel vagy galuskával."
   },
   {
     "_id": 59,
-    "recipe_id": 14,
-    "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 13,
+    "step_number": 1,
+    "description": "Őröld meg a mákot és keverd össze a cukorral."
   },
   {
     "_id": 60,
-    "recipe_id": 14,
-    "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 13,
+    "step_number": 2,
+    "description": "Olvaszd fel a vajat és kend meg a réteslapokat."
   },
   {
     "_id": 61,
-    "recipe_id": 15,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 13,
+    "step_number": 3,
+    "description": "Szórd rá a mákos tölteléket egyenletesen."
   },
   {
     "_id": 62,
-    "recipe_id": 15,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 13,
+    "step_number": 4,
+    "description": "Tekerd fel a rétest és helyezd sütőpapírra."
   },
   {
     "_id": 63,
-    "recipe_id": 15,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 13,
+    "step_number": 5,
+    "description": "Süsd 180°C-on 25-30 percig aranybarnára."
   },
   {
     "_id": 64,
-    "recipe_id": 16,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 13,
+    "step_number": 6,
+    "description": "Szeleteld és tálald porcukorral megszórva."
   },
   {
     "_id": 65,
-    "recipe_id": 16,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 14,
+    "step_number": 1,
+    "description": "Főzd meg és nyomd át a burgonyát."
   },
   {
     "_id": 66,
-    "recipe_id": 16,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 14,
+    "step_number": 2,
+    "description": "Keverd össze a lisztet, élesztőt, sót és krumplit, dagaszd össze."
   },
   {
     "_id": 67,
-    "recipe_id": 16,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 14,
+    "step_number": 3,
+    "description": "Keleszd 30 percig meleg helyen."
   },
   {
     "_id": 68,
-    "recipe_id": 16,
-    "step_number": 5,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 14,
+    "step_number": 4,
+    "description": "Nyújtsd ki a tésztát és süsd forró olajban."
   },
   {
     "_id": 69,
-    "recipe_id": 17,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 14,
+    "step_number": 5,
+    "description": "Kend meg fokhagymás vízzel, tejföllel és szórd meg sajttal."
   },
   {
     "_id": 70,
-    "recipe_id": 17,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 15,
+    "step_number": 1,
+    "description": "Keverd össze a lisztet a vajjal, tejföllel és élesztővel."
   },
   {
     "_id": 71,
-    "recipe_id": 17,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 15,
+    "step_number": 2,
+    "description": "Dagaszd össze a tésztát és keleszd 30 percig."
   },
   {
     "_id": 72,
-    "recipe_id": 17,
-    "step_number": 4,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 15,
+    "step_number": 3,
+    "description": "Nyújtsd ki 2 cm vastagra és szúrd ki pogácsa formával."
   },
   {
     "_id": 73,
-    "recipe_id": 17,
-    "step_number": 5,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 15,
+    "step_number": 4,
+    "description": "Kend meg tojással és tedd a sütőbe."
   },
   {
     "_id": 74,
-    "recipe_id": 18,
-    "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 15,
+    "step_number": 5,
+    "description": "Süsd 180°C-on 20-25 percig aranybarnára."
   },
   {
     "_id": 75,
-    "recipe_id": 18,
-    "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 16,
+    "step_number": 1,
+    "description": "Készítsd el az észtőstésztát a lisztből, tejből, élesztőből, tojásból."
   },
   {
     "_id": 76,
-    "recipe_id": 18,
-    "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 16,
+    "step_number": 2,
+    "description": "Keleszd 1 órát meleg helyen."
   },
   {
     "_id": 77,
-    "recipe_id": 18,
-    "step_number": 4,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 16,
+    "step_number": 3,
+    "description": "Nyújtsd ki és tekerd a kürtőskalács formára."
   },
   {
     "_id": 78,
-    "recipe_id": 18,
-    "step_number": 5,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 16,
+    "step_number": 4,
+    "description": "Forgasd meg a cukor-fahéj keverékben."
   },
   {
     "_id": 79,
-    "recipe_id": 19,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 16,
+    "step_number": 5,
+    "description": "Süsd forgatva a parázs felett vagy sütőben kb. 20 percig."
   },
   {
     "_id": 80,
-    "recipe_id": 19,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 17,
+    "step_number": 1,
+    "description": "Süsd meg a vékony tortalapokat egyenként 180°C-on."
   },
   {
     "_id": 81,
-    "recipe_id": 19,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 17,
+    "step_number": 2,
+    "description": "Készítsd el a csokoládés vajkrémet: hab vajba keverd a kakaót és cukrot."
   },
   {
     "_id": 82,
-    "recipe_id": 19,
-    "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 17,
+    "step_number": 3,
+    "description": "Kend meg a lapokat a krémmel és rétegezd egymásra."
   },
   {
     "_id": 83,
-    "recipe_id": 19,
-    "step_number": 5,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 17,
+    "step_number": 4,
+    "description": "A tetejére készíts karamellt a cukorból."
   },
   {
     "_id": 84,
-    "recipe_id": 20,
-    "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 17,
+    "step_number": 5,
+    "description": "Öntsd a karamellt a tetejére és szeleteld gyorsan."
   },
   {
     "_id": 85,
-    "recipe_id": 20,
-    "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 17,
+    "step_number": 6,
+    "description": "Hűtsd 2 órát szeletelés előtt."
   },
   {
     "_id": 86,
-    "recipe_id": 20,
-    "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 18,
+    "step_number": 1,
+    "description": "Gyúrd össze a túrót a búzadarával, tojásokkal és sóval."
   },
   {
     "_id": 87,
-    "recipe_id": 20,
-    "step_number": 4,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 18,
+    "step_number": 2,
+    "description": "Hagyd pihenni 15 percig."
   },
   {
     "_id": 88,
-    "recipe_id": 21,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 18,
+    "step_number": 3,
+    "description": "Formázz gombócokat és főzd lobogó vízben 10-12 percig."
   },
   {
     "_id": 89,
-    "recipe_id": 21,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 18,
+    "step_number": 4,
+    "description": "Pirítsd meg a zsemlemorzsát vajban."
   },
   {
     "_id": 90,
-    "recipe_id": 21,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 18,
+    "step_number": 5,
+    "description": "Forgasd meg a gombócokat a pirított zsemlemorzsában."
   },
   {
     "_id": 91,
-    "recipe_id": 21,
-    "step_number": 4,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 18,
+    "step_number": 6,
+    "description": "Tálald tejföllel és cukorral."
   },
   {
     "_id": 92,
-    "recipe_id": 21,
-    "step_number": 5,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 19,
+    "step_number": 1,
+    "description": "Főzd puhára a gesztenyét és hámozd meg."
   },
   {
     "_id": 93,
-    "recipe_id": 22,
-    "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 19,
+    "step_number": 2,
+    "description": "Törd össze a gesztenyét cukorral és rummal."
   },
   {
     "_id": 94,
-    "recipe_id": 22,
-    "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 19,
+    "step_number": 3,
+    "description": "Nyomd át húsdarálón vagy gesztenyepüré-nyomón."
   },
   {
     "_id": 95,
-    "recipe_id": 22,
-    "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 19,
+    "step_number": 4,
+    "description": "Verd fel a tejszínhabot a cukorral."
   },
   {
     "_id": 96,
-    "recipe_id": 22,
-    "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 19,
+    "step_number": 5,
+    "description": "Halmozd tálba a gesztenyepürét és díszítsd tejszínhabbal."
   },
   {
     "_id": 97,
-    "recipe_id": 23,
+    "recipe_id": 20,
     "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Főzd meg a burgonyát, hámozd és nyomd át."
   },
   {
     "_id": 98,
-    "recipe_id": 23,
+    "recipe_id": 20,
     "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Keverd össze a liszttel és tojással, gyúrd össze tésztává."
   },
   {
     "_id": 99,
-    "recipe_id": 23,
+    "recipe_id": 20,
     "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Magozd ki a szilvákat és csomagold be a tésztába."
   },
   {
     "_id": 100,
-    "recipe_id": 23,
+    "recipe_id": 20,
     "step_number": 4,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Főzd lobogó sós vízben 10-15 percig."
   },
   {
     "_id": 101,
-    "recipe_id": 23,
+    "recipe_id": 20,
     "step_number": 5,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Pirítsd meg a zsemlemorzsát vajban."
   },
   {
     "_id": 102,
-    "recipe_id": 23,
+    "recipe_id": 20,
     "step_number": 6,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "Forgasd meg a gombócokat és tálald cukorral."
   },
   {
     "_id": 103,
-    "recipe_id": 24,
+    "recipe_id": 21,
     "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Válaszd szét a tojásokat, a fehérjéket verd kemény habbá cukorral."
   },
   {
     "_id": 104,
-    "recipe_id": 24,
+    "recipe_id": 21,
     "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Forrald fel a tejet vaníliával."
   },
   {
     "_id": 105,
-    "recipe_id": 24,
+    "recipe_id": 21,
     "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Kanalazz gombócokat a habból a forró tejbe, főzd 2 percig."
   },
   {
     "_id": 106,
-    "recipe_id": 24,
+    "recipe_id": 21,
     "step_number": 4,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Szedd ki a habgombócokat."
   },
   {
     "_id": 107,
-    "recipe_id": 24,
+    "recipe_id": 21,
     "step_number": 5,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "A sárgájákból és cukorból készíts sodót, keverd a tejbe."
   },
   {
     "_id": 108,
-    "recipe_id": 25,
-    "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 21,
+    "step_number": 6,
+    "description": "Tálald a sodóra helyezve a habgombócokat, hűtve."
   },
   {
     "_id": 109,
-    "recipe_id": 25,
-    "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 22,
+    "step_number": 1,
+    "description": "Süss vékony palacsintákat a lisztből, tojásból és tejből."
   },
   {
     "_id": 110,
-    "recipe_id": 25,
-    "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 22,
+    "step_number": 2,
+    "description": "Párold meg a hagymát, add hozzá az apró kockás csirkét."
   },
   {
     "_id": 111,
-    "recipe_id": 25,
-    "step_number": 4,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 22,
+    "step_number": 3,
+    "description": "Fűszerezd pirospaprikával, sóval és párold puhára."
   },
   {
     "_id": 112,
-    "recipe_id": 25,
-    "step_number": 5,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 22,
+    "step_number": 4,
+    "description": "Töltsd meg a palacsintákat a húsos töltelékkel, tekerd fel."
   },
   {
     "_id": 113,
-    "recipe_id": 25,
-    "step_number": 6,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 22,
+    "step_number": 5,
+    "description": "Öntsd le a tejfölös-paprikás szósszal."
   },
   {
     "_id": 114,
-    "recipe_id": 26,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 22,
+    "step_number": 6,
+    "description": "Süsd a sütőben 180°C-on 15 percig."
   },
   {
     "_id": 115,
-    "recipe_id": 26,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 23,
+    "step_number": 1,
+    "description": "Pirítsd meg az apróra vágott hagymát zsírban."
   },
   {
     "_id": 116,
-    "recipe_id": 26,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 23,
+    "step_number": 2,
+    "description": "Szórd meg pirospaprikával, add hozzá a csirkedarabokat."
   },
   {
     "_id": 117,
-    "recipe_id": 26,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 23,
+    "step_number": 3,
+    "description": "Dobd bele a paradicsomot és a paprikát."
   },
   {
     "_id": 118,
-    "recipe_id": 26,
-    "step_number": 5,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 23,
+    "step_number": 4,
+    "description": "Öntsd fel kevés vízzel, sózd."
   },
   {
     "_id": 119,
-    "recipe_id": 27,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 23,
+    "step_number": 5,
+    "description": "Főzd fedő alatt 30-40 percig, amíg a hús megpuhul."
   },
   {
     "_id": 120,
-    "recipe_id": 27,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 23,
+    "step_number": 6,
+    "description": "Tálald nokedlivel vagy galuskával."
   },
   {
     "_id": 121,
-    "recipe_id": 27,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 24,
+    "step_number": 1,
+    "description": "Vágd kockákra a húst és süsd meg forró olajban."
   },
   {
     "_id": 122,
-    "recipe_id": 27,
-    "step_number": 4,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 24,
+    "step_number": 2,
+    "description": "Süsd külön a hasábra vágott burgonyát."
   },
   {
     "_id": 123,
-    "recipe_id": 27,
-    "step_number": 5,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 24,
+    "step_number": 3,
+    "description": "Pirítsd meg a hagymát és fokhagymát."
   },
   {
     "_id": 124,
-    "recipe_id": 27,
-    "step_number": 6,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 24,
+    "step_number": 4,
+    "description": "Keverd össze a húst, burgonyát és hagymát."
   },
   {
     "_id": 125,
-    "recipe_id": 28,
-    "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 24,
+    "step_number": 5,
+    "description": "Fűszerezd sóval, borssal, majoránnával."
   },
   {
     "_id": 126,
-    "recipe_id": 28,
-    "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 24,
+    "step_number": 6,
+    "description": "Tálald frissen, savanyúsággal."
   },
   {
     "_id": 127,
-    "recipe_id": 28,
-    "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 25,
+    "step_number": 1,
+    "description": "Főzd puhára a meggyet vízben cukorral."
   },
   {
     "_id": 128,
-    "recipe_id": 28,
-    "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 25,
+    "step_number": 2,
+    "description": "Keverd el a tejfölt a liszttel simára."
   },
   {
     "_id": 129,
-    "recipe_id": 28,
-    "step_number": 5,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 25,
+    "step_number": 3,
+    "description": "Habarj bele a levesbe és forrald fel."
   },
   {
     "_id": 130,
-    "recipe_id": 28,
-    "step_number": 6,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 25,
+    "step_number": 4,
+    "description": "Ízesítsd fahéjjal."
   },
   {
     "_id": 131,
-    "recipe_id": 29,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 25,
+    "step_number": 5,
+    "description": "Tálald hidegen vagy melegen."
   },
   {
     "_id": 132,
-    "recipe_id": 29,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 26,
+    "step_number": 1,
+    "description": "Süss vékony palacsintákat."
   },
   {
     "_id": 133,
-    "recipe_id": 29,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 26,
+    "step_number": 2,
+    "description": "Keverd össze a túrót kaprokkal, tejföllel és sóval."
   },
   {
     "_id": 134,
-    "recipe_id": 29,
-    "step_number": 4,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 26,
+    "step_number": 3,
+    "description": "Töltsd meg a palacsintákat a túrós töltelékkel."
   },
   {
     "_id": 135,
-    "recipe_id": 29,
-    "step_number": 5,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 26,
+    "step_number": 4,
+    "description": "Tekerd fel és rakd tepsibe."
   },
   {
     "_id": 136,
-    "recipe_id": 30,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 26,
+    "step_number": 5,
+    "description": "Öntsd le tejföllel és süsd 180°C-on 15 percig."
   },
   {
     "_id": 137,
-    "recipe_id": 30,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 27,
+    "step_number": 1,
+    "description": "Reszeld le a sajtot és keverd a lisztbe a vajjal."
   },
   {
     "_id": 138,
-    "recipe_id": 30,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 27,
+    "step_number": 2,
+    "description": "Add hozzá a tejfölt és sót, dagaszd össze."
   },
   {
     "_id": 139,
-    "recipe_id": 30,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 27,
+    "step_number": 3,
+    "description": "Nyújtsd ki és hajtogasd össze háromszor."
   },
   {
     "_id": 140,
-    "recipe_id": 31,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 27,
+    "step_number": 4,
+    "description": "Szúrd ki pogácsaszaggatóval."
   },
   {
     "_id": 141,
-    "recipe_id": 31,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 27,
+    "step_number": 5,
+    "description": "Kend meg tojással és süsd 180°C-on 20 percig."
   },
   {
     "_id": 142,
-    "recipe_id": 31,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 28,
+    "step_number": 1,
+    "description": "Szeleteld a csirkemellt és süsd meg forró olajon."
   },
   {
     "_id": 143,
-    "recipe_id": 32,
-    "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 28,
+    "step_number": 2,
+    "description": "Vedd ki és pirítsd meg a szeletelt gombát és hagymát."
   },
   {
     "_id": 144,
-    "recipe_id": 32,
-    "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 28,
+    "step_number": 3,
+    "description": "Add hozzá a fokhagymát, öntsd fel tejszínnel."
   },
   {
     "_id": 145,
-    "recipe_id": 32,
-    "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 28,
+    "step_number": 4,
+    "description": "Tedd vissza a csirkét, sózd, borsozd."
   },
   {
     "_id": 146,
-    "recipe_id": 32,
-    "step_number": 4,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 28,
+    "step_number": 5,
+    "description": "Főzd 5 percig, amíg besűrűsödik."
   },
   {
     "_id": 147,
-    "recipe_id": 33,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 28,
+    "step_number": 6,
+    "description": "Tálald rizzsel vagy tésztával."
   },
   {
     "_id": 148,
-    "recipe_id": 33,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 29,
+    "step_number": 1,
+    "description": "Pirítsd meg a hagymát és fokhagymát olívaolajban."
   },
   {
     "_id": 149,
-    "recipe_id": 33,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 29,
+    "step_number": 2,
+    "description": "Add hozzá a felkockázott paradicsomot."
   },
   {
     "_id": 150,
-    "recipe_id": 34,
-    "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 29,
+    "step_number": 3,
+    "description": "Főzd 15 percig, majd botmixerrel pürésítsd."
   },
   {
     "_id": 151,
-    "recipe_id": 34,
-    "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 29,
+    "step_number": 4,
+    "description": "Add hozzá a tejszínt, cukrot, sót."
   },
   {
     "_id": 152,
-    "recipe_id": 34,
-    "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 29,
+    "step_number": 5,
+    "description": "Forrald fel és tálald friss bazsalikommal."
   },
   {
     "_id": 153,
-    "recipe_id": 34,
-    "step_number": 4,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 30,
+    "step_number": 1,
+    "description": "Főzd meg a burgonyát kockákra vágva."
   },
   {
     "_id": 154,
-    "recipe_id": 35,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 30,
+    "step_number": 2,
+    "description": "Pirítsd meg a hagymát zsírban, szórd meg pirospaprikával."
   },
   {
     "_id": 155,
-    "recipe_id": 35,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 30,
+    "step_number": 3,
+    "description": "Főzd meg a tésztát sós vízben."
   },
   {
     "_id": 156,
-    "recipe_id": 35,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 30,
+    "step_number": 4,
+    "description": "Keverd össze a tésztát a hagymával és burgonyával."
   },
   {
     "_id": 157,
-    "recipe_id": 35,
-    "step_number": 4,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 30,
+    "step_number": 5,
+    "description": "Sózd ízlés szerint és tálald."
   },
   {
     "_id": 158,
-    "recipe_id": 36,
+    "recipe_id": 31,
     "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Verd fel a tojásokat a tejjel és sóval."
   },
   {
     "_id": 159,
-    "recipe_id": 36,
+    "recipe_id": 31,
     "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Áztatsd meg a kenyérszeleteket a tojásos tejben."
   },
   {
     "_id": 160,
-    "recipe_id": 36,
+    "recipe_id": 31,
     "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Süsd forró olajban aranybarnára mindkét oldalát."
   },
   {
     "_id": 161,
-    "recipe_id": 36,
+    "recipe_id": 31,
     "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Tálald forrón, ízlés szerint cukorral vagy fokhagymával."
   },
   {
     "_id": 162,
-    "recipe_id": 37,
+    "recipe_id": 32,
     "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Készítsd el a tésztát: liszt, vaj, élesztő, tojás, tej."
   },
   {
     "_id": 163,
-    "recipe_id": 37,
+    "recipe_id": 32,
     "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Keleszd 30 percig."
   },
   {
     "_id": 164,
-    "recipe_id": 37,
+    "recipe_id": 32,
     "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Darálj diót és keverd össze a cukorral, mézzel."
   },
   {
     "_id": 165,
-    "recipe_id": 37,
+    "recipe_id": 32,
     "step_number": 4,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Nyújtsd ki a tésztát, kend meg a diós töltelékkel."
   },
   {
     "_id": 166,
-    "recipe_id": 37,
+    "recipe_id": 32,
     "step_number": 5,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Tekerd fel és helyezd sütőpapírra."
   },
   {
     "_id": 167,
-    "recipe_id": 38,
-    "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 32,
+    "step_number": 6,
+    "description": "Kend meg tojással, süsd 180°C-on 35-40 percig."
   },
   {
     "_id": 168,
-    "recipe_id": 38,
-    "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 33,
+    "step_number": 1,
+    "description": "Készítsd el a bejglitésztát."
   },
   {
     "_id": 169,
-    "recipe_id": 38,
-    "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 33,
+    "step_number": 2,
+    "description": "Keleszd 30 percig."
   },
   {
     "_id": 170,
-    "recipe_id": 39,
-    "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 33,
+    "step_number": 3,
+    "description": "Őröld meg a mákot, főzd át cukorral és tejjel."
   },
   {
     "_id": 171,
-    "recipe_id": 39,
-    "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 33,
+    "step_number": 4,
+    "description": "Nyújtsd ki a tésztát, kend meg a mákos töltelékkel."
   },
   {
     "_id": 172,
-    "recipe_id": 39,
-    "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 33,
+    "step_number": 5,
+    "description": "Tekerd fel, kend meg tojással."
   },
   {
     "_id": 173,
-    "recipe_id": 40,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 33,
+    "step_number": 6,
+    "description": "Süsd 180°C-on 35-40 percig."
   },
   {
     "_id": 174,
-    "recipe_id": 40,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 34,
+    "step_number": 1,
+    "description": "Tisztítsd meg és kockázd fel a zöldségeket."
   },
   {
     "_id": 175,
-    "recipe_id": 40,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 34,
+    "step_number": 2,
+    "description": "Tedd fel főni bő vízben."
   },
   {
     "_id": 176,
-    "recipe_id": 40,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 34,
+    "step_number": 3,
+    "description": "Főzd 30 percig, amíg a zöldségek megpuhulnak."
   },
   {
     "_id": 177,
-    "recipe_id": 40,
-    "step_number": 5,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 34,
+    "step_number": 4,
+    "description": "Sózd, borsozd ízlés szerint."
   },
   {
     "_id": 178,
-    "recipe_id": 41,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 34,
+    "step_number": 5,
+    "description": "Tálald friss petrezselyemmel megszórva."
   },
   {
     "_id": 179,
-    "recipe_id": 41,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 35,
+    "step_number": 1,
+    "description": "Főzd meg a zöldségeket kockára vágva."
   },
   {
     "_id": 180,
-    "recipe_id": 41,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 35,
+    "step_number": 2,
+    "description": "Rántást készíts a lisztből, add hozzá a mustárt."
   },
   {
     "_id": 181,
-    "recipe_id": 41,
-    "step_number": 4,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 35,
+    "step_number": 3,
+    "description": "Öntsd a leveshez és forrald fel."
   },
   {
     "_id": 182,
-    "recipe_id": 41,
-    "step_number": 5,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 35,
+    "step_number": 4,
+    "description": "Add hozzá a karikázott virslit."
   },
   {
     "_id": 183,
-    "recipe_id": 42,
-    "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 35,
+    "step_number": 5,
+    "description": "Tálald tejföllel."
   },
   {
     "_id": 184,
-    "recipe_id": 42,
-    "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 36,
+    "step_number": 1,
+    "description": "Tedd fel a tyúkot főni hideg vízben."
   },
   {
     "_id": 185,
-    "recipe_id": 42,
-    "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 36,
+    "step_number": 2,
+    "description": "Hab szedése után add hozzá a zöldségeket."
   },
   {
     "_id": 186,
-    "recipe_id": 42,
-    "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 36,
+    "step_number": 3,
+    "description": "Főzd 1.5-2 órát, amíg a hús megpuhul."
   },
   {
     "_id": 187,
-    "recipe_id": 42,
-    "step_number": 5,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 36,
+    "step_number": 4,
+    "description": "Szedd ki a húst, szűrd le a levest."
   },
   {
     "_id": 188,
-    "recipe_id": 43,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 36,
+    "step_number": 5,
+    "description": "Főzd meg benne a tésztát, borsót és gombát."
   },
   {
     "_id": 189,
-    "recipe_id": 43,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 36,
+    "step_number": 6,
+    "description": "Tálald a szeletelt hússal."
   },
   {
     "_id": 190,
-    "recipe_id": 43,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 37,
+    "step_number": 1,
+    "description": "Áztasd be a babot egy éjszakára."
   },
   {
     "_id": 191,
-    "recipe_id": 43,
-    "step_number": 4,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 37,
+    "step_number": 2,
+    "description": "Pirítsd meg a hagymát, szórd meg pirospaprikával."
   },
   {
     "_id": 192,
-    "recipe_id": 44,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 37,
+    "step_number": 3,
+    "description": "Add hozzá a csülköt és a babot, öntsd fel vízzel."
   },
   {
     "_id": 193,
-    "recipe_id": 44,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 37,
+    "step_number": 4,
+    "description": "Főzd lassú tűzön 1.5-2 órát."
   },
   {
     "_id": 194,
-    "recipe_id": 44,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 37,
+    "step_number": 5,
+    "description": "Sózd ízlés szerint és tálald friss kenyérrel."
   },
   {
     "_id": 195,
-    "recipe_id": 44,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 38,
+    "step_number": 1,
+    "description": "Főzd puhára a lencsét babérlevéllel."
   },
   {
     "_id": 196,
-    "recipe_id": 44,
-    "step_number": 5,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 38,
+    "step_number": 2,
+    "description": "Készíts rántást a lisztből és hagymából."
   },
   {
     "_id": 197,
-    "recipe_id": 44,
-    "step_number": 6,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 38,
+    "step_number": 3,
+    "description": "Add a lencséhez, ízesítsd ecettel és cukorral."
   },
   {
     "_id": 198,
-    "recipe_id": 45,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 38,
+    "step_number": 4,
+    "description": "Főzd még 5 percig."
   },
   {
     "_id": 199,
-    "recipe_id": 45,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 38,
+    "step_number": 5,
+    "description": "Tálald tükörtojással vagy virslivei."
   },
   {
     "_id": 200,
-    "recipe_id": 45,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 39,
+    "step_number": 1,
+    "description": "Reszeld le a tököt, sózd be és hagyd 15 percig."
   },
   {
     "_id": 201,
-    "recipe_id": 45,
-    "step_number": 4,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 39,
+    "step_number": 2,
+    "description": "Csavard ki a levét."
   },
   {
     "_id": 202,
-    "recipe_id": 45,
-    "step_number": 5,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 39,
+    "step_number": 3,
+    "description": "Rántást készíts, add hozzá a tököt."
   },
   {
     "_id": 203,
-    "recipe_id": 45,
-    "step_number": 6,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 39,
+    "step_number": 4,
+    "description": "Öntsd fel vízzel, ízesítsd ecettel és kaporral."
   },
   {
     "_id": 204,
-    "recipe_id": 46,
-    "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 39,
+    "step_number": 5,
+    "description": "Forrald fel és add hozzá a tejfölt."
   },
   {
     "_id": 205,
-    "recipe_id": 46,
-    "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 39,
+    "step_number": 6,
+    "description": "Tálald húsokkal vagy tükörtojással."
   },
   {
     "_id": 206,
-    "recipe_id": 46,
-    "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 40,
+    "step_number": 1,
+    "description": "Blanzsírozd a spenótot, majd aprítsd fel."
   },
   {
     "_id": 207,
-    "recipe_id": 46,
-    "step_number": 4,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 40,
+    "step_number": 2,
+    "description": "Készíts habart rántást tejjel."
   },
   {
     "_id": 208,
-    "recipe_id": 46,
-    "step_number": 5,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 40,
+    "step_number": 3,
+    "description": "Add hozzá a spenótot és fokhagymát."
   },
   {
     "_id": 209,
-    "recipe_id": 47,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 40,
+    "step_number": 4,
+    "description": "Főzd össze 10 percig."
   },
   {
     "_id": 210,
-    "recipe_id": 47,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 40,
+    "step_number": 5,
+    "description": "Tálald tükörtojással és főtt burgonyával."
   },
   {
     "_id": 211,
-    "recipe_id": 47,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 41,
+    "step_number": 1,
+    "description": "Dörzsöld be a kacsacombokat sóval és fokhagymával."
   },
   {
     "_id": 212,
-    "recipe_id": 47,
-    "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 41,
+    "step_number": 2,
+    "description": "Tedd sütőtálba a felszeletelt burgonyával."
   },
   {
     "_id": 213,
-    "recipe_id": 47,
-    "step_number": 5,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 41,
+    "step_number": 3,
+    "description": "Süsd 180°C-on 1.5 órát, időnként locsolva."
   },
   {
     "_id": 214,
-    "recipe_id": 48,
-    "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 41,
+    "step_number": 4,
+    "description": "Fordítsd meg félúton."
   },
   {
     "_id": 215,
-    "recipe_id": 48,
-    "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 41,
+    "step_number": 5,
+    "description": "Tálald párolt káposztával."
   },
   {
     "_id": 216,
-    "recipe_id": 48,
-    "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 42,
+    "step_number": 1,
+    "description": "Pirítsd meg a húskockákat forró olajban."
   },
   {
     "_id": 217,
-    "recipe_id": 49,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 42,
+    "step_number": 2,
+    "description": "Pirítsd meg a hagymát és zöldségeket."
   },
   {
     "_id": 218,
-    "recipe_id": 49,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 42,
+    "step_number": 3,
+    "description": "Öntsd fel vörösboral és forrald fel."
   },
   {
     "_id": 219,
-    "recipe_id": 49,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 42,
+    "step_number": 4,
+    "description": "Főzd fedő alatt lassú tűzön 2-3 órát."
   },
   {
     "_id": 220,
-    "recipe_id": 50,
-    "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 42,
+    "step_number": 5,
+    "description": "Sózd, borsozd ízlés szerint."
   },
   {
     "_id": 221,
-    "recipe_id": 50,
-    "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 42,
+    "step_number": 6,
+    "description": "Tálald krumplipürével vagy tésztával."
   },
   {
     "_id": 222,
-    "recipe_id": 50,
-    "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 43,
+    "step_number": 1,
+    "description": "Főzd elő a csülköt 30 percig sós vízben."
   },
   {
     "_id": 223,
-    "recipe_id": 50,
-    "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 43,
+    "step_number": 2,
+    "description": "Kend be mustárral és fokhagymával."
   },
   {
     "_id": 224,
-    "recipe_id": 51,
-    "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 43,
+    "step_number": 3,
+    "description": "Rakd köré a felszeletelt burgonyát és hagymát."
   },
   {
     "_id": 225,
-    "recipe_id": 51,
-    "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 43,
+    "step_number": 4,
+    "description": "Süsd 180°C-on 1.5-2 órát."
   },
   {
     "_id": 226,
-    "recipe_id": 51,
-    "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 43,
+    "step_number": 5,
+    "description": "Locsold meg időnként a szaftjával."
   },
   {
     "_id": 227,
-    "recipe_id": 52,
-    "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 43,
+    "step_number": 6,
+    "description": "Tálald savanyúsággal."
   },
   {
     "_id": 228,
-    "recipe_id": 52,
-    "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 44,
+    "step_number": 1,
+    "description": "Klopfold ki a húst vékonyra, sózd."
   },
   {
     "_id": 229,
-    "recipe_id": 52,
-    "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 44,
+    "step_number": 2,
+    "description": "Forgasd lisztbe, tojásba majd zsemlemorzsába."
   },
   {
     "_id": 230,
-    "recipe_id": 52,
-    "step_number": 4,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 44,
+    "step_number": 3,
+    "description": "Süsd bő forró olajban aranybarnára mindkét oldalát."
   },
   {
     "_id": 231,
-    "recipe_id": 53,
-    "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 44,
+    "step_number": 4,
+    "description": "Csorgasd le papírtörlőn."
   },
   {
     "_id": 232,
-    "recipe_id": 53,
-    "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 44,
+    "step_number": 5,
+    "description": "Tálald citromszelettel és burgonyasalátával."
   },
   {
     "_id": 233,
-    "recipe_id": 53,
-    "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 45,
+    "step_number": 1,
+    "description": "Pirítsd meg a hagymát vajban."
   },
   {
     "_id": 234,
-    "recipe_id": 53,
-    "step_number": 4,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 45,
+    "step_number": 2,
+    "description": "Add hozzá a kukoricát és öntsd fel vízzel."
   },
   {
     "_id": 235,
-    "recipe_id": 53,
-    "step_number": 5,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 45,
+    "step_number": 3,
+    "description": "Főzd 15 percig, majd botmixerrel pürésítsd."
   },
   {
     "_id": 236,
-    "recipe_id": 54,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 45,
+    "step_number": 4,
+    "description": "Add hozzá a tejszínt, sózd."
   },
   {
     "_id": 237,
-    "recipe_id": 54,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 45,
+    "step_number": 5,
+    "description": "Tálald krutonnal."
   },
   {
     "_id": 238,
-    "recipe_id": 54,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 46,
+    "step_number": 1,
+    "description": "Készítsd el a fűszervajat: keverd össze a vajat fokhagymával, petrezselyemmel, citromlével."
   },
   {
     "_id": 239,
-    "recipe_id": 55,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 46,
+    "step_number": 2,
+    "description": "Dörzsöld be a csirkecombokat sóval."
   },
   {
     "_id": 240,
-    "recipe_id": 55,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 46,
+    "step_number": 3,
+    "description": "Kend meg a fűszervajjal, bőr alá is nyomj belőle."
   },
   {
     "_id": 241,
-    "recipe_id": 55,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 46,
+    "step_number": 4,
+    "description": "Süsd 200°C-on 40-45 percig ropogósra."
   },
   {
     "_id": 242,
-    "recipe_id": 56,
-    "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 46,
+    "step_number": 5,
+    "description": "Tálald sült zöldségekkel."
   },
   {
     "_id": 243,
-    "recipe_id": 56,
-    "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 47,
+    "step_number": 1,
+    "description": "Készítsd el a pizzatésztát és keleszd 30 percig."
   },
   {
     "_id": 244,
-    "recipe_id": 56,
-    "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 47,
+    "step_number": 2,
+    "description": "Nyújtsd ki vékonyra."
   },
   {
     "_id": 245,
-    "recipe_id": 56,
-    "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 47,
+    "step_number": 3,
+    "description": "Kend meg paradicsomszósszal."
   },
   {
     "_id": 246,
-    "recipe_id": 56,
-    "step_number": 5,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 47,
+    "step_number": 4,
+    "description": "Szórd meg mozzarellával."
   },
   {
     "_id": 247,
-    "recipe_id": 56,
-    "step_number": 6,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 47,
+    "step_number": 5,
+    "description": "Süsd 220°C-on 12-15 percig."
   },
   {
     "_id": 248,
-    "recipe_id": 57,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 47,
+    "step_number": 6,
+    "description": "Tálald friss bazsalikommal."
   },
   {
     "_id": 249,
-    "recipe_id": 57,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 48,
+    "step_number": 1,
+    "description": "Pirítsd meg a hagymát és fokhagymát olívaolajban."
   },
   {
     "_id": 250,
-    "recipe_id": 57,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 48,
+    "step_number": 2,
+    "description": "Add hozzá a darált húst és süsd meg."
   },
   {
     "_id": 251,
-    "recipe_id": 57,
-    "step_number": 4,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 48,
+    "step_number": 3,
+    "description": "Öntsd hozzá a paradicsomot, fűszerezd."
   },
   {
     "_id": 252,
-    "recipe_id": 57,
-    "step_number": 5,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 48,
+    "step_number": 4,
+    "description": "Főzd lassú tűzön 30 percig."
   },
   {
     "_id": 253,
-    "recipe_id": 57,
-    "step_number": 6,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 48,
+    "step_number": 5,
+    "description": "Főzd meg a spagettit al dente."
   },
   {
     "_id": 254,
-    "recipe_id": 58,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 48,
+    "step_number": 6,
+    "description": "Keverd össze és tálald parmezánnal."
   },
   {
     "_id": 255,
-    "recipe_id": 58,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 49,
+    "step_number": 1,
+    "description": "Főzd meg a tésztát sós vízben al dente."
   },
   {
     "_id": 256,
-    "recipe_id": 58,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 49,
+    "step_number": 2,
+    "description": "Pirítsd ropogósra a guanciale kockákat."
   },
   {
     "_id": 257,
-    "recipe_id": 58,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 49,
+    "step_number": 3,
+    "description": "Keverd össze a tojásokat a reszelt sajttal és borssal."
   },
   {
     "_id": 258,
-    "recipe_id": 59,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 49,
+    "step_number": 4,
+    "description": "Szűrd le a tésztát, keverd a guancialehoz."
   },
   {
     "_id": 259,
-    "recipe_id": 59,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 49,
+    "step_number": 5,
+    "description": "Vedd le a tűzről, öntsd rá a tojásos krémet és keverd gyorsan."
   },
   {
     "_id": 260,
-    "recipe_id": 59,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 49,
+    "step_number": 6,
+    "description": "Tálald azonnal extra sajttal."
   },
   {
     "_id": 261,
-    "recipe_id": 59,
-    "step_number": 4,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 50,
+    "step_number": 1,
+    "description": "Pirítsd meg a fokhagymát és chilit olívaolajban."
   },
   {
     "_id": 262,
-    "recipe_id": 60,
-    "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 50,
+    "step_number": 2,
+    "description": "Add hozzá a paradicsomot és főzd 15 percig."
   },
   {
     "_id": 263,
-    "recipe_id": 60,
-    "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 50,
+    "step_number": 3,
+    "description": "Főzd meg a pennét al dente."
   },
   {
     "_id": 264,
-    "recipe_id": 60,
-    "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 50,
+    "step_number": 4,
+    "description": "Keverd össze a szósszal."
   },
   {
     "_id": 265,
-    "recipe_id": 61,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 50,
+    "step_number": 5,
+    "description": "Tálald friss petrezselyemmel."
   },
   {
     "_id": 266,
-    "recipe_id": 61,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 51,
+    "step_number": 1,
+    "description": "Pirítsd meg a hagymát vajban."
   },
   {
     "_id": 267,
-    "recipe_id": 61,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 51,
+    "step_number": 2,
+    "description": "Add hozzá a rizst, pirítsd 2 percig."
   },
   {
     "_id": 268,
-    "recipe_id": 61,
-    "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 51,
+    "step_number": 3,
+    "description": "Öntsd fel borral, majd fokozatosan add hozzá a sáfrányos levest."
   },
   {
     "_id": 269,
-    "recipe_id": 62,
-    "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 51,
+    "step_number": 4,
+    "description": "Folyamatosan keverd 18-20 percig."
   },
   {
     "_id": 270,
-    "recipe_id": 62,
-    "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 51,
+    "step_number": 5,
+    "description": "Végül keverd bele a vajat és parmezánt."
   },
   {
     "_id": 271,
-    "recipe_id": 62,
-    "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 51,
+    "step_number": 6,
+    "description": "Tálald azonnal."
   },
   {
     "_id": 272,
-    "recipe_id": 62,
-    "step_number": 4,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 52,
+    "step_number": 1,
+    "description": "Grillezd vagy süsd meg a csirkemellt, szeleteld."
   },
   {
     "_id": 273,
-    "recipe_id": 62,
-    "step_number": 5,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 52,
+    "step_number": 2,
+    "description": "Mosd meg és tépd a salátát."
   },
   {
     "_id": 274,
-    "recipe_id": 62,
-    "step_number": 6,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 52,
+    "step_number": 3,
+    "description": "Kockázd a paradicsomot és uborkát."
   },
   {
     "_id": 275,
-    "recipe_id": 63,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 52,
+    "step_number": 4,
+    "description": "Keverd össze és locsold meg olívaolaj-citrom dresszinggel."
   },
   {
     "_id": 276,
-    "recipe_id": 63,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 52,
+    "step_number": 5,
+    "description": "Tálald a csirkeszeletekkel."
   },
   {
     "_id": 277,
-    "recipe_id": 63,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 53,
+    "step_number": 1,
+    "description": "Csorgasd le a tonhalat és a kukoricát."
   },
   {
     "_id": 278,
-    "recipe_id": 64,
-    "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 53,
+    "step_number": 2,
+    "description": "Kockázd fel a hagymát és paradicsomot."
   },
   {
     "_id": 279,
-    "recipe_id": 64,
-    "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 53,
+    "step_number": 3,
+    "description": "Keverd össze az összes hozzávalót."
   },
   {
     "_id": 280,
-    "recipe_id": 64,
-    "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 53,
+    "step_number": 4,
+    "description": "Locsold meg citromlével és olívaolajjal."
   },
   {
     "_id": 281,
-    "recipe_id": 64,
-    "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 53,
+    "step_number": 5,
+    "description": "Tálald frissen."
   },
   {
     "_id": 282,
-    "recipe_id": 64,
-    "step_number": 5,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 54,
+    "step_number": 1,
+    "description": "Grillezd a csirkemellt és szeleteld."
   },
   {
     "_id": 283,
-    "recipe_id": 64,
-    "step_number": 6,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 54,
+    "step_number": 2,
+    "description": "Süsd ropogósra a kenyérkockákat (kruton)."
   },
   {
     "_id": 284,
-    "recipe_id": 65,
-    "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 54,
+    "step_number": 3,
+    "description": "Tépd a salátát és keverd össze a dresszinggel."
   },
   {
     "_id": 285,
-    "recipe_id": 65,
-    "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 54,
+    "step_number": 4,
+    "description": "Tedd rá a csirkét, krutont és reszelt parmezánt."
   },
   {
     "_id": 286,
-    "recipe_id": 65,
-    "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 54,
+    "step_number": 5,
+    "description": "Tálald azonnal."
   },
   {
     "_id": 287,
-    "recipe_id": 65,
-    "step_number": 4,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 55,
+    "step_number": 1,
+    "description": "Kockázd a paradicsomot, uborkát, hagymát."
   },
   {
     "_id": 288,
-    "recipe_id": 65,
-    "step_number": 5,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 55,
+    "step_number": 2,
+    "description": "Tedd tálba és szórd meg feta sajttal."
   },
   {
     "_id": 289,
-    "recipe_id": 66,
-    "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 55,
+    "step_number": 3,
+    "description": "Add hozzá az olívabogyót."
   },
   {
     "_id": 290,
-    "recipe_id": 66,
-    "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 55,
+    "step_number": 4,
+    "description": "Locsold meg olívaolajjal, sózd."
   },
   {
     "_id": 291,
-    "recipe_id": 66,
-    "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 55,
+    "step_number": 5,
+    "description": "Tálald friss kenyérrel."
   },
   {
     "_id": 292,
-    "recipe_id": 67,
+    "recipe_id": 56,
     "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Áztatsd a bulgurt forró vízben 15 percig."
   },
   {
     "_id": 293,
-    "recipe_id": 67,
+    "recipe_id": 56,
     "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Aprítsd fel a petrezselymet, mentát és paradicsomot."
   },
   {
     "_id": 294,
-    "recipe_id": 67,
+    "recipe_id": 56,
     "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Keverd össze a bulgurral."
   },
   {
     "_id": 295,
-    "recipe_id": 68,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 56,
+    "step_number": 4,
+    "description": "Locsold meg citromlével és olívaolajjal."
   },
   {
     "_id": 296,
-    "recipe_id": 68,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 56,
+    "step_number": 5,
+    "description": "Tálald hűtve."
   },
   {
     "_id": 297,
-    "recipe_id": 68,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 57,
+    "step_number": 1,
+    "description": "Áztatsd a rizstésztát meleg vízben."
   },
   {
     "_id": 298,
-    "recipe_id": 68,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 57,
+    "step_number": 2,
+    "description": "Süsd meg a csirkét kockákra vágva wokban."
   },
   {
     "_id": 299,
-    "recipe_id": 69,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 57,
+    "step_number": 3,
+    "description": "Told félre, süss tojást a wokban."
   },
   {
     "_id": 300,
-    "recipe_id": 69,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 57,
+    "step_number": 4,
+    "description": "Add hozzá a tésztát, szójaszószt, keverd össze."
   },
   {
     "_id": 301,
-    "recipe_id": 69,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 57,
+    "step_number": 5,
+    "description": "Szórd meg mogyoróval és bab csírával."
   },
   {
     "_id": 302,
-    "recipe_id": 69,
-    "step_number": 4,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 57,
+    "step_number": 6,
+    "description": "Tálald lime-mal."
   },
   {
     "_id": 303,
-    "recipe_id": 70,
+    "recipe_id": 58,
     "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "Pácolj csirkét joghurtban curry-vel 30 percig."
   },
   {
     "_id": 304,
-    "recipe_id": 70,
+    "recipe_id": 58,
     "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "description": "Grillezd vagy süsd meg a csirkét."
   },
   {
     "_id": 305,
-    "recipe_id": 70,
+    "recipe_id": 58,
     "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "description": "Pirítsd meg a hagymát, add hozzá a fűszereket."
   },
   {
     "_id": 306,
-    "recipe_id": 70,
+    "recipe_id": 58,
     "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "description": "Öntsd hozzá a paradicsomot és tejszínt."
   },
   {
     "_id": 307,
-    "recipe_id": 71,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 58,
+    "step_number": 5,
+    "description": "Add bele a csirkét és főzd 15 percig."
   },
   {
     "_id": 308,
-    "recipe_id": 71,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 58,
+    "step_number": 6,
+    "description": "Tálald basmati rizzsel."
   },
   {
     "_id": 309,
-    "recipe_id": 71,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 59,
+    "step_number": 1,
+    "description": "Bevagdosd a csirkecombokat."
   },
   {
     "_id": 310,
-    "recipe_id": 71,
-    "step_number": 4,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 59,
+    "step_number": 2,
+    "description": "Keverd össze a joghurtot a fűszerekkel."
   },
   {
     "_id": 311,
-    "recipe_id": 71,
-    "step_number": 5,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 59,
+    "step_number": 3,
+    "description": "Pácolj legalább 2 órát."
   },
   {
     "_id": 312,
-    "recipe_id": 71,
-    "step_number": 6,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 59,
+    "step_number": 4,
+    "description": "Süsd sütőben 200°C-on 35-40 percig."
   },
   {
     "_id": 313,
-    "recipe_id": 72,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 59,
+    "step_number": 5,
+    "description": "Tálald naan kenyérrel és salátával."
   },
   {
     "_id": 314,
-    "recipe_id": 72,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 60,
+    "step_number": 1,
+    "description": "Pácolj sertéshúst szójaszósszal és grillezd meg."
   },
   {
     "_id": 315,
-    "recipe_id": 72,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 60,
+    "step_number": 2,
+    "description": "Reszelj sárgarépát, szeleteld az uborkát."
   },
   {
     "_id": 316,
-    "recipe_id": 72,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 60,
+    "step_number": 3,
+    "description": "Vágd fel a bagettet és töltsd meg a hússal."
   },
   {
     "_id": 317,
-    "recipe_id": 72,
-    "step_number": 5,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 60,
+    "step_number": 4,
+    "description": "Rakd rá a zöldségeket és koriandert."
   },
   {
     "_id": 318,
-    "recipe_id": 73,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 60,
+    "step_number": 5,
+    "description": "Tálald frissen."
   },
   {
     "_id": 319,
-    "recipe_id": 73,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 61,
+    "step_number": 1,
+    "description": "Áztatd a csicseriborsót egy éjszakára."
   },
   {
     "_id": 320,
-    "recipe_id": 73,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 61,
+    "step_number": 2,
+    "description": "Darálj össze csicseriborsót, hagymát, fokhagymát, petrezselymet."
   },
   {
     "_id": 321,
-    "recipe_id": 73,
-    "step_number": 4,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 61,
+    "step_number": 3,
+    "description": "Fűszerezd és formázz kis gombócokat."
   },
   {
     "_id": 322,
-    "recipe_id": 73,
-    "step_number": 5,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 61,
+    "step_number": 4,
+    "description": "Süsd forró olajban aranybarnára."
   },
   {
     "_id": 323,
-    "recipe_id": 74,
-    "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 61,
+    "step_number": 5,
+    "description": "Tálald hummusszal, salátával és pitával."
   },
   {
     "_id": 324,
-    "recipe_id": 74,
-    "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 62,
+    "step_number": 1,
+    "description": "Csorgasd le a csicseriborsót."
   },
   {
     "_id": 325,
-    "recipe_id": 74,
-    "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 62,
+    "step_number": 2,
+    "description": "Turmixold össze az összes hozzávalót simára."
   },
   {
     "_id": 326,
-    "recipe_id": 74,
-    "step_number": 4,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 62,
+    "step_number": 3,
+    "description": "Ízesítsd sóval és citromlével."
   },
   {
     "_id": 327,
-    "recipe_id": 74,
-    "step_number": 5,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 62,
+    "step_number": 4,
+    "description": "Tálald olívaolajjal meglocsolva."
   },
   {
     "_id": 328,
-    "recipe_id": 75,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 62,
+    "step_number": 5,
+    "description": "Kínáld pitakenyérrel vagy zöldségekkel."
   },
   {
     "_id": 329,
-    "recipe_id": 75,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 63,
+    "step_number": 1,
+    "description": "Pácolj csirkét gyros fűszerrel."
   },
   {
     "_id": 330,
-    "recipe_id": 75,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 63,
+    "step_number": 2,
+    "description": "Süsd serpenyőben szeletekre vágva."
   },
   {
     "_id": 331,
-    "recipe_id": 75,
-    "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 63,
+    "step_number": 3,
+    "description": "Készítsd el a tzatziki szószt joghurtból és uborkából."
   },
   {
     "_id": 332,
-    "recipe_id": 75,
-    "step_number": 5,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 63,
+    "step_number": 4,
+    "description": "Melegítsd a pitákat."
   },
   {
     "_id": 333,
-    "recipe_id": 75,
-    "step_number": 6,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 63,
+    "step_number": 5,
+    "description": "Tálald a hússal, salátával és tzatzikivel."
   },
   {
     "_id": 334,
-    "recipe_id": 76,
+    "recipe_id": 64,
     "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "description": "Gyúrd össze a darált húst hagymával és fűszerekkel."
   },
   {
     "_id": 335,
-    "recipe_id": 76,
+    "recipe_id": 64,
     "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Formázz nyárs formájú kebabokat."
   },
   {
     "_id": 336,
-    "recipe_id": 76,
+    "recipe_id": 64,
     "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Grillezd vagy süsd serpenyőben."
   },
   {
     "_id": 337,
-    "recipe_id": 76,
+    "recipe_id": 64,
     "step_number": 4,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Főzd meg a rizst köretnek."
   },
   {
     "_id": 338,
-    "recipe_id": 76,
+    "recipe_id": 64,
     "step_number": 5,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Tálald salátával és joghurtos szósszal."
   },
   {
     "_id": 339,
-    "recipe_id": 76,
-    "step_number": 6,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 65,
+    "step_number": 1,
+    "description": "Süsd meg és szeleteld a csirkét."
   },
   {
     "_id": 340,
-    "recipe_id": 77,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 65,
+    "step_number": 2,
+    "description": "Szórd meg a tortillát sajttal, csirkével, paprikával."
   },
   {
     "_id": 341,
-    "recipe_id": 77,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 65,
+    "step_number": 3,
+    "description": "Hajtsd félbe és süsd serpenyőben mindkét oldalát."
   },
   {
     "_id": 342,
-    "recipe_id": 77,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 65,
+    "step_number": 4,
+    "description": "Vágd háromszögekre."
   },
   {
     "_id": 343,
-    "recipe_id": 77,
-    "step_number": 4,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 65,
+    "step_number": 5,
+    "description": "Tálald tejföllel és salsa szósszal."
   },
   {
     "_id": 344,
-    "recipe_id": 78,
+    "recipe_id": 66,
     "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Süsd meg a darált húst fűszerekkel."
   },
   {
     "_id": 345,
-    "recipe_id": 78,
+    "recipe_id": 66,
     "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Főzd meg a rizst és melegítsd a babot."
   },
   {
     "_id": 346,
-    "recipe_id": 78,
+    "recipe_id": 66,
     "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Töltsd meg a tortillákat: rizs, hús, bab, sajt, saláta."
   },
   {
     "_id": 347,
-    "recipe_id": 78,
+    "recipe_id": 66,
     "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Tekerd fel szorosan."
   },
   {
     "_id": 348,
-    "recipe_id": 79,
-    "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 66,
+    "step_number": 5,
+    "description": "Tálald tejföllel."
   },
   {
     "_id": 349,
-    "recipe_id": 79,
-    "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 67,
+    "step_number": 1,
+    "description": "Süsd meg a darált húst taco fűszerrel."
   },
   {
     "_id": 350,
-    "recipe_id": 79,
-    "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 67,
+    "step_number": 2,
+    "description": "Melegítsd a taco kagylókat."
   },
   {
     "_id": 351,
-    "recipe_id": 80,
-    "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 67,
+    "step_number": 3,
+    "description": "Töltsd meg hússal, salátával, paradicsommal."
   },
   {
     "_id": 352,
-    "recipe_id": 80,
-    "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 67,
+    "step_number": 4,
+    "description": "Szórd meg reszelt sajttal."
   },
   {
     "_id": 353,
-    "recipe_id": 80,
-    "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 67,
+    "step_number": 5,
+    "description": "Tálald tejföllel."
   },
   {
     "_id": 354,
-    "recipe_id": 80,
-    "step_number": 4,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 68,
+    "step_number": 1,
+    "description": "Terítsd a nachosokat tepsire."
   },
   {
     "_id": 355,
-    "recipe_id": 80,
-    "step_number": 5,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 68,
+    "step_number": 2,
+    "description": "Szórd meg reszelt sajttal és jalapeñóval."
   },
   {
     "_id": 356,
-    "recipe_id": 81,
-    "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 68,
+    "step_number": 3,
+    "description": "Süsd 180°C-on 10 percig, amíg a sajt megolvad."
   },
   {
     "_id": 357,
-    "recipe_id": 81,
-    "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 68,
+    "step_number": 4,
+    "description": "Tálald salsával és tejföllel."
   },
   {
     "_id": 358,
-    "recipe_id": 81,
-    "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 69,
+    "step_number": 1,
+    "description": "Pirítsd meg a hagymát és fokhagymát."
   },
   {
     "_id": 359,
-    "recipe_id": 81,
-    "step_number": 4,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 69,
+    "step_number": 2,
+    "description": "Add hozzá a darált húst, süsd meg."
   },
   {
     "_id": 360,
-    "recipe_id": 81,
-    "step_number": 5,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 69,
+    "step_number": 3,
+    "description": "Dobd bele a babot, paradicsomot, chilit."
   },
   {
     "_id": 361,
-    "recipe_id": 82,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 69,
+    "step_number": 4,
+    "description": "Fűszerezd és főzd lassú tűzön 1 órát."
   },
   {
     "_id": 362,
-    "recipe_id": 82,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 69,
+    "step_number": 5,
+    "description": "Tálald rizzsel és tejföllel."
   },
   {
     "_id": 363,
-    "recipe_id": 82,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 70,
+    "step_number": 1,
+    "description": "Dörzsöld be a húst fűszerkeverékkel."
   },
   {
     "_id": 364,
-    "recipe_id": 82,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 70,
+    "step_number": 2,
+    "description": "Süsd lassan 160°C-on 4-5 órát."
   },
   {
     "_id": 365,
-    "recipe_id": 82,
-    "step_number": 5,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 70,
+    "step_number": 3,
+    "description": "Tépd szét a húst vilkával."
   },
   {
     "_id": 366,
-    "recipe_id": 83,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 70,
+    "step_number": 4,
+    "description": "Keverd össze BBQ szósszal."
   },
   {
     "_id": 367,
-    "recipe_id": 83,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 70,
+    "step_number": 5,
+    "description": "Töltsd zsemlékbe és tálald coleslaw-val."
   },
   {
     "_id": 368,
-    "recipe_id": 83,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 71,
+    "step_number": 1,
+    "description": "Formázz gombócokat a húsból."
   },
   {
     "_id": 369,
-    "recipe_id": 84,
-    "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 71,
+    "step_number": 2,
+    "description": "Nyomd laposra forró serpenyőben."
   },
   {
     "_id": 370,
-    "recipe_id": 84,
-    "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 71,
+    "step_number": 3,
+    "description": "Tedd rá a sajtot, hogy megolvadjon."
   },
   {
     "_id": 371,
-    "recipe_id": 84,
-    "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 71,
+    "step_number": 4,
+    "description": "Pirítsd meg a zsemléket."
   },
   {
     "_id": 372,
-    "recipe_id": 84,
-    "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 71,
+    "step_number": 5,
+    "description": "Állítsd össze: zsemle, saláta, hús, paradicsom, hagyma."
   },
   {
     "_id": 373,
-    "recipe_id": 85,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 71,
+    "step_number": 6,
+    "description": "Tálald azonnal."
   },
   {
     "_id": 374,
-    "recipe_id": 85,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 72,
+    "step_number": 1,
+    "description": "Készítsd el a sörtésztát: liszt + sör + só."
   },
   {
     "_id": 375,
-    "recipe_id": 85,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 72,
+    "step_number": 2,
+    "description": "Vágd hasábra a burgonyát és süsd kétszer."
   },
   {
     "_id": 376,
-    "recipe_id": 85,
-    "step_number": 4,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 72,
+    "step_number": 3,
+    "description": "Mártsd a halat a tésztába."
   },
   {
     "_id": 377,
-    "recipe_id": 85,
-    "step_number": 5,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 72,
+    "step_number": 4,
+    "description": "Süsd bő olajban aranybarnára."
   },
   {
     "_id": 378,
-    "recipe_id": 86,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 72,
+    "step_number": 5,
+    "description": "Tálald citrommal és tartármártással."
   },
   {
     "_id": 379,
-    "recipe_id": 86,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 73,
+    "step_number": 1,
+    "description": "Készíts erőteljes húslevest a csontokból."
   },
   {
     "_id": 380,
-    "recipe_id": 86,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 73,
+    "step_number": 2,
+    "description": "Főzd meg a lágy tojásokat (6 perc)."
   },
   {
     "_id": 381,
-    "recipe_id": 86,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 73,
+    "step_number": 3,
+    "description": "Süsd meg a húst szeletekre vágva."
   },
   {
     "_id": 382,
-    "recipe_id": 87,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 73,
+    "step_number": 4,
+    "description": "Főzd meg a ramen tésztát."
   },
   {
     "_id": 383,
-    "recipe_id": 87,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 73,
+    "step_number": 5,
+    "description": "Öntsd a levest a tálba, tedd bele a tésztát."
   },
   {
     "_id": 384,
-    "recipe_id": 87,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 73,
+    "step_number": 6,
+    "description": "Díszítsd hússal, tojással, újhagymával."
   },
   {
     "_id": 385,
-    "recipe_id": 87,
-    "step_number": 4,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 74,
+    "step_number": 1,
+    "description": "Forrald fel a dashit."
   },
   {
     "_id": 386,
-    "recipe_id": 87,
-    "step_number": 5,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 74,
+    "step_number": 2,
+    "description": "Old fel benne a miso pasztát (ne forrald!)."
   },
   {
     "_id": 387,
-    "recipe_id": 87,
-    "step_number": 6,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 74,
+    "step_number": 3,
+    "description": "Add hozzá a kockázott tofut és algát."
   },
   {
     "_id": 388,
-    "recipe_id": 88,
-    "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 74,
+    "step_number": 4,
+    "description": "Díszítsd újhagymával."
   },
   {
     "_id": 389,
-    "recipe_id": 88,
-    "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 74,
+    "step_number": 5,
+    "description": "Tálald forrón."
   },
   {
     "_id": 390,
-    "recipe_id": 88,
-    "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 75,
+    "step_number": 1,
+    "description": "Főzd meg a sushi rizst és ízesítsd rizsecettel."
   },
   {
     "_id": 391,
-    "recipe_id": 89,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 75,
+    "step_number": 2,
+    "description": "Szeleteld a lazacot és az avokádót."
   },
   {
     "_id": 392,
-    "recipe_id": 89,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 75,
+    "step_number": 3,
+    "description": "Karikázd az uborkát."
   },
   {
     "_id": 393,
-    "recipe_id": 89,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 75,
+    "step_number": 4,
+    "description": "Tedd tálba a rizst, rendezd rá a feltéteket."
   },
   {
     "_id": 394,
-    "recipe_id": 89,
-    "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 75,
+    "step_number": 5,
+    "description": "Locsold meg szójaszósszal és szórd meg szezámmaggal."
   },
   {
     "_id": 395,
-    "recipe_id": 90,
+    "recipe_id": 76,
     "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "description": "Keverd össze a szószt: szójaszósz, méz, fokhagyma, gyömbér."
   },
   {
     "_id": 396,
-    "recipe_id": 90,
+    "recipe_id": 76,
     "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Pácolj csirkét 20 percig."
   },
   {
     "_id": 397,
-    "recipe_id": 90,
+    "recipe_id": 76,
     "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Süsd serpenyőben barnára."
   },
   {
     "_id": 398,
-    "recipe_id": 91,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 76,
+    "step_number": 4,
+    "description": "Öntsd rá a maradék pácot és redukáld."
   },
   {
     "_id": 399,
-    "recipe_id": 91,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 76,
+    "step_number": 5,
+    "description": "Főzd meg a rizst."
   },
   {
     "_id": 400,
-    "recipe_id": 91,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 76,
+    "step_number": 6,
+    "description": "Tálald a teriyaki csirkét rizzsel."
   },
   {
     "_id": 401,
-    "recipe_id": 92,
+    "recipe_id": 77,
     "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Kockázd a csirkét és pácolj szójaszószban."
   },
   {
     "_id": 402,
-    "recipe_id": 92,
+    "recipe_id": 77,
     "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Hevítsd a wokot és süsd meg a csirkét."
   },
   {
     "_id": 403,
-    "recipe_id": 92,
+    "recipe_id": 77,
     "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Add hozzá a chilit, fokhagymát, szecsuáni borsot."
   },
   {
     "_id": 404,
-    "recipe_id": 92,
+    "recipe_id": 77,
     "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Öntsd hozzá a szószt."
   },
   {
     "_id": 405,
-    "recipe_id": 92,
+    "recipe_id": 77,
     "step_number": 5,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Szórd meg mogyoróval és tálald rizzsel."
   },
   {
     "_id": 406,
-    "recipe_id": 93,
+    "recipe_id": 78,
     "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Süsd meg a csirkét wokban."
   },
   {
     "_id": 407,
-    "recipe_id": 93,
+    "recipe_id": 78,
     "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Add hozzá a brokkolit és fokhagymát."
   },
   {
     "_id": 408,
-    "recipe_id": 93,
+    "recipe_id": 78,
     "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Told félre, süss tojást."
   },
   {
     "_id": 409,
-    "recipe_id": 93,
+    "recipe_id": 78,
     "step_number": 4,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Add hozzá a tésztát és szójaszószt."
   },
   {
     "_id": 410,
-    "recipe_id": 93,
+    "recipe_id": 78,
     "step_number": 5,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Keverd össze jól és tálald."
   },
   {
     "_id": 411,
-    "recipe_id": 93,
-    "step_number": 6,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 79,
+    "step_number": 1,
+    "description": "Forrald fel a kókusztejet galangállal és citromfűvel."
   },
   {
     "_id": 412,
-    "recipe_id": 94,
-    "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 79,
+    "step_number": 2,
+    "description": "Add hozzá a szeletelt csirkét."
   },
   {
     "_id": 413,
-    "recipe_id": 94,
-    "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 79,
+    "step_number": 3,
+    "description": "Dobd bele a gombát és chilit."
   },
   {
     "_id": 414,
-    "recipe_id": 94,
-    "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 79,
+    "step_number": 4,
+    "description": "Főzd 15 percig."
   },
   {
     "_id": 415,
-    "recipe_id": 94,
-    "step_number": 4,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 79,
+    "step_number": 5,
+    "description": "Ízesítsd lime-mal és koriandernnel."
   },
   {
     "_id": 416,
-    "recipe_id": 94,
-    "step_number": 5,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 79,
+    "step_number": 6,
+    "description": "Tálald forrón."
   },
   {
     "_id": 417,
-    "recipe_id": 94,
-    "step_number": 6,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 80,
+    "step_number": 1,
+    "description": "Süsd meg a hagymát és gyömbért szárazon."
   },
   {
     "_id": 418,
-    "recipe_id": 95,
-    "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 80,
+    "step_number": 2,
+    "description": "Főzd a csontlevest fűszerekkel 3 órát."
   },
   {
     "_id": 419,
-    "recipe_id": 95,
-    "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 80,
+    "step_number": 3,
+    "description": "Szűrd le és ízesítsd."
   },
   {
     "_id": 420,
-    "recipe_id": 95,
-    "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 80,
+    "step_number": 4,
+    "description": "Főzd meg a rizstésztát."
   },
   {
     "_id": 421,
-    "recipe_id": 96,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 80,
+    "step_number": 5,
+    "description": "Szeleteld vékonyra a nyers marhát."
   },
   {
     "_id": 422,
-    "recipe_id": 96,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 80,
+    "step_number": 6,
+    "description": "Öntsd rá a forró levest és tálald friss fűszerekkel."
   },
   {
     "_id": 423,
-    "recipe_id": 96,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 81,
+    "step_number": 1,
+    "description": "Főzd meg a rizst."
   },
   {
     "_id": 424,
-    "recipe_id": 96,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 81,
+    "step_number": 2,
+    "description": "Párolj minden zöldséget külön-külön."
   },
   {
     "_id": 425,
-    "recipe_id": 96,
-    "step_number": 5,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 81,
+    "step_number": 3,
+    "description": "Süsd meg a húst szójaszószban."
   },
   {
     "_id": 426,
-    "recipe_id": 96,
-    "step_number": 6,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 81,
+    "step_number": 4,
+    "description": "Süss tükörtojást."
   },
   {
     "_id": 427,
-    "recipe_id": 97,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 81,
+    "step_number": 5,
+    "description": "Rendezd a tálba: rizs, zöldségek, hús, tojás."
   },
   {
     "_id": 428,
-    "recipe_id": 97,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 81,
+    "step_number": 6,
+    "description": "Tálald gochujang szósszal."
   },
   {
     "_id": 429,
-    "recipe_id": 97,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 82,
+    "step_number": 1,
+    "description": "Pirítsd a kimchit szezámolajban."
   },
   {
     "_id": 430,
-    "recipe_id": 97,
-    "step_number": 4,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 82,
+    "step_number": 2,
+    "description": "Add hozzá a főtt rizst és szójaszószt."
   },
   {
     "_id": 431,
-    "recipe_id": 97,
-    "step_number": 5,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 82,
+    "step_number": 3,
+    "description": "Pirítsd 5 percig."
   },
   {
     "_id": 432,
-    "recipe_id": 97,
-    "step_number": 6,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 82,
+    "step_number": 4,
+    "description": "Süss tükörtojást a tetejére."
   },
   {
     "_id": 433,
-    "recipe_id": 98,
-    "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 82,
+    "step_number": 5,
+    "description": "Szórd meg újhagymával."
   },
   {
     "_id": 434,
-    "recipe_id": 98,
-    "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 83,
+    "step_number": 1,
+    "description": "Forrald fel a vizet sóval."
   },
   {
     "_id": 435,
-    "recipe_id": 98,
-    "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 83,
+    "step_number": 2,
+    "description": "Főzd az edamame-t 5 percig."
   },
   {
     "_id": 436,
-    "recipe_id": 98,
-    "step_number": 4,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 83,
+    "step_number": 3,
+    "description": "Szűrd le és szórd meg tengeri sóval."
   },
   {
     "_id": 437,
-    "recipe_id": 99,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 83,
+    "step_number": 4,
+    "description": "Szórd meg szezámmaggal."
   },
   {
     "_id": 438,
-    "recipe_id": 99,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 83,
+    "step_number": 5,
+    "description": "Tálald melegben előételként."
   },
   {
     "_id": 439,
-    "recipe_id": 99,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 84,
+    "step_number": 1,
+    "description": "Keverd össze a tölteléket: hús, káposzta, fűszerek."
   },
   {
     "_id": 440,
-    "recipe_id": 99,
-    "step_number": 4,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 84,
+    "step_number": 2,
+    "description": "Tölts meg minden tésztát és zárd össze."
   },
   {
     "_id": 441,
-    "recipe_id": 99,
-    "step_number": 5,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 84,
+    "step_number": 3,
+    "description": "Süsd serpenyőben az alját ropogósra."
   },
   {
     "_id": 442,
-    "recipe_id": 100,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 84,
+    "step_number": 4,
+    "description": "Önts hozzá vizet és párolj fedő alatt 5 percig."
   },
   {
     "_id": 443,
-    "recipe_id": 100,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 84,
+    "step_number": 5,
+    "description": "Tálald szójaszósszal és ecettel."
   },
   {
     "_id": 444,
-    "recipe_id": 100,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 85,
+    "step_number": 1,
+    "description": "Pirítsd meg a hagymát, paprikát és fokhagymát."
   },
   {
     "_id": 445,
-    "recipe_id": 101,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 85,
+    "step_number": 2,
+    "description": "Add hozzá a paradicsomot és fűszereket."
   },
   {
     "_id": 446,
-    "recipe_id": 101,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 85,
+    "step_number": 3,
+    "description": "Főzd 10 percig, amíg besűrűsödik."
   },
   {
     "_id": 447,
-    "recipe_id": 101,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 85,
+    "step_number": 4,
+    "description": "Üss bele tojásokat és fedő alatt süsd 5 percig."
   },
   {
     "_id": 448,
-    "recipe_id": 101,
-    "step_number": 4,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 85,
+    "step_number": 5,
+    "description": "Tálald friss kenyérrel."
   },
   {
     "_id": 449,
-    "recipe_id": 102,
+    "recipe_id": 86,
     "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "description": "Pirítsd meg a kenyeret."
   },
   {
     "_id": 450,
-    "recipe_id": 102,
+    "recipe_id": 86,
     "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "description": "Nyomd össze az avokádót vilkával, citromlével, sóval."
   },
   {
     "_id": 451,
-    "recipe_id": 102,
+    "recipe_id": 86,
     "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "description": "Kend a pirítósra."
   },
   {
     "_id": 452,
-    "recipe_id": 102,
+    "recipe_id": 86,
     "step_number": 4,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Tedd rá a buggyantott tojást."
   },
   {
     "_id": 453,
-    "recipe_id": 102,
+    "recipe_id": 86,
     "step_number": 5,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Szórd meg chili pehellyel."
   },
   {
     "_id": 454,
-    "recipe_id": 103,
+    "recipe_id": 87,
     "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "description": "Turmixold az açaí pasztát fagyasztott banánnal."
   },
   {
     "_id": 455,
-    "recipe_id": 103,
+    "recipe_id": 87,
     "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "description": "Öntsd tálba."
   },
   {
     "_id": 456,
-    "recipe_id": 103,
+    "recipe_id": 87,
     "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Díszítsd granolával, szeletelt eperrel, banánnal."
   },
   {
     "_id": 457,
-    "recipe_id": 103,
+    "recipe_id": 87,
     "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Szórd meg kókuszreszelékkel és mézzl."
   },
   {
     "_id": 458,
-    "recipe_id": 103,
+    "recipe_id": 87,
     "step_number": 5,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Tálald azonnal."
   },
   {
     "_id": 459,
-    "recipe_id": 103,
-    "step_number": 6,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 88,
+    "step_number": 1,
+    "description": "Keverd össze a zabpelyhet mézzel és kókuszolajjal."
   },
   {
     "_id": 460,
-    "recipe_id": 104,
-    "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 88,
+    "step_number": 2,
+    "description": "Add hozzá a diót és mandulát."
   },
   {
     "_id": 461,
-    "recipe_id": 104,
-    "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 88,
+    "step_number": 3,
+    "description": "Terítsd sütőpapírra és süsd 160°C-on 25 percig."
   },
   {
     "_id": 462,
-    "recipe_id": 104,
-    "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 88,
+    "step_number": 4,
+    "description": "Keverd meg félúton."
   },
   {
     "_id": 463,
-    "recipe_id": 104,
-    "step_number": 4,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 88,
+    "step_number": 5,
+    "description": "Hűtsd ki és add hozzá a mazsolát."
   },
   {
     "_id": 464,
-    "recipe_id": 104,
-    "step_number": 5,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 89,
+    "step_number": 1,
+    "description": "Keverd össze a zabpelyhet tejjel, joghurttal, chia maggal."
   },
   {
     "_id": 465,
-    "recipe_id": 104,
-    "step_number": 6,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 89,
+    "step_number": 2,
+    "description": "Édesítsd mézzel."
   },
   {
     "_id": 466,
-    "recipe_id": 105,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 89,
+    "step_number": 3,
+    "description": "Zárd le és tedd hűtőbe éjszakára."
   },
   {
     "_id": 467,
-    "recipe_id": 105,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 89,
+    "step_number": 4,
+    "description": "Reggel díszítsd friss gyümölccsel."
   },
   {
     "_id": 468,
-    "recipe_id": 105,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 89,
+    "step_number": 5,
+    "description": "Tálald hidegen."
   },
   {
     "_id": 469,
-    "recipe_id": 106,
+    "recipe_id": 90,
     "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Turmixold össze az összes hozzávalót."
   },
   {
     "_id": 470,
-    "recipe_id": 106,
+    "recipe_id": 90,
     "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Süss kis palacsintákat serpenyőben."
   },
   {
     "_id": 471,
-    "recipe_id": 106,
+    "recipe_id": 90,
     "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Fordítsd meg, amint buborékosodik."
   },
   {
     "_id": 472,
-    "recipe_id": 106,
+    "recipe_id": 90,
     "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Tálald gyümölccsel és mézzel."
   },
   {
     "_id": 473,
-    "recipe_id": 106,
-    "step_number": 5,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 91,
+    "step_number": 1,
+    "description": "Nyomd össze a banánokat vilkával."
   },
   {
     "_id": 474,
-    "recipe_id": 106,
-    "step_number": 6,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 91,
+    "step_number": 2,
+    "description": "Keverd össze a vajat cukorral, add hozzá a tojásokat."
   },
   {
     "_id": 475,
-    "recipe_id": 107,
-    "step_number": 1,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 91,
+    "step_number": 3,
+    "description": "Keverd bele a lisztet és sütőport."
   },
   {
     "_id": 476,
-    "recipe_id": 107,
-    "step_number": 2,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 91,
+    "step_number": 4,
+    "description": "Öntsd formába és süsd 180°C-on 45 percig."
   },
   {
     "_id": 477,
-    "recipe_id": 107,
-    "step_number": 3,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 91,
+    "step_number": 5,
+    "description": "Hagyd kihűlni szeletelés előtt."
   },
   {
     "_id": 478,
-    "recipe_id": 108,
+    "recipe_id": 92,
     "step_number": 1,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Reszeld le a sárgarépát."
   },
   {
     "_id": 479,
-    "recipe_id": 108,
+    "recipe_id": 92,
     "step_number": 2,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Keverd össze a tojást, cukrot, olajat."
   },
   {
     "_id": 480,
-    "recipe_id": 108,
+    "recipe_id": 92,
     "step_number": 3,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Add hozzá a lisztet, fahéjat, diót, sárgarépát."
   },
   {
     "_id": 481,
-    "recipe_id": 108,
+    "recipe_id": 92,
     "step_number": 4,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Süsd 180°C-on 40 percig."
   },
   {
     "_id": 482,
-    "recipe_id": 108,
+    "recipe_id": 92,
     "step_number": 5,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "Készíts krémsajtos frosting-ot és kend a tetejére."
   },
   {
     "_id": 483,
-    "recipe_id": 108,
+    "recipe_id": 92,
     "step_number": 6,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "description": "Hűtsd le szeletelés előtt."
   },
   {
     "_id": 484,
-    "recipe_id": 109,
+    "recipe_id": 93,
     "step_number": 1,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "description": "Készítsd el az omlós tésztát: liszt, vaj, cukor, tojás."
   },
   {
     "_id": 485,
-    "recipe_id": 109,
+    "recipe_id": 93,
     "step_number": 2,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Hámozd és szeleteld az almákat."
   },
   {
     "_id": 486,
-    "recipe_id": 109,
+    "recipe_id": 93,
     "step_number": 3,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "description": "Fűszerezd fahéjjal és cukorral."
   },
   {
     "_id": 487,
-    "recipe_id": 109,
+    "recipe_id": 93,
     "step_number": 4,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "Béleld ki a formát tésztával, töltsd meg almával."
   },
   {
     "_id": 488,
-    "recipe_id": 110,
-    "step_number": 1,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "recipe_id": 93,
+    "step_number": 5,
+    "description": "Fedjed rácsozva tésztával."
   },
   {
     "_id": 489,
-    "recipe_id": 110,
-    "step_number": 2,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 93,
+    "step_number": 6,
+    "description": "Süsd 180°C-on 40-45 percig."
   },
   {
     "_id": 490,
-    "recipe_id": 110,
-    "step_number": 3,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 94,
+    "step_number": 1,
+    "description": "Készítsd el a mascarponekrémet: tojás, cukor, mascarpone."
   },
   {
     "_id": 491,
-    "recipe_id": 110,
-    "step_number": 4,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 94,
+    "step_number": 2,
+    "description": "Pürésítsd az eper felét."
   },
   {
     "_id": 492,
-    "recipe_id": 111,
-    "step_number": 1,
-    "description": "Készítsd elő az összes hozzávalót, mosd meg a zöldségeket."
+    "recipe_id": 94,
+    "step_number": 3,
+    "description": "Mártsd a babapiskótát az eperszószba."
   },
   {
     "_id": 493,
-    "recipe_id": 111,
-    "step_number": 2,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "recipe_id": 94,
+    "step_number": 4,
+    "description": "Rétegezd: piskóta, krém, eper."
   },
   {
     "_id": 494,
-    "recipe_id": 111,
-    "step_number": 3,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 94,
+    "step_number": 5,
+    "description": "Hűtsd legalább 4 órát."
   },
   {
     "_id": 495,
-    "recipe_id": 111,
-    "step_number": 4,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 94,
+    "step_number": 6,
+    "description": "Díszítsd szeletelt eperrel."
   },
   {
     "_id": 496,
-    "recipe_id": 112,
+    "recipe_id": 95,
     "step_number": 1,
-    "description": "Vágd fel a hagymát apró kockákra és pirítsd meg olajon."
+    "description": "Olvaszd össze a csokoládét a vajjal."
   },
   {
     "_id": 497,
-    "recipe_id": 112,
+    "recipe_id": 95,
     "step_number": 2,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "description": "Keverd bele a cukrot és tojásokat."
   },
   {
     "_id": 498,
-    "recipe_id": 112,
+    "recipe_id": 95,
     "step_number": 3,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "description": "Add hozzá a lisztet és kakaót."
   },
   {
     "_id": 499,
-    "recipe_id": 113,
-    "step_number": 1,
-    "description": "Add hozzá a fűszereket, keverd össze és pirítsd 1 percig."
+    "recipe_id": 95,
+    "step_number": 4,
+    "description": "Öntsd tepsibe és süsd 180°C-on 25 percig."
   },
   {
     "_id": 500,
-    "recipe_id": 113,
-    "step_number": 2,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 95,
+    "step_number": 5,
+    "description": "Hagyd kihűlni és szeleteld."
   },
   {
     "_id": 501,
-    "recipe_id": 113,
-    "step_number": 3,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 96,
+    "step_number": 1,
+    "description": "Áztasd a zselatint hideg vízben."
   },
   {
     "_id": 502,
-    "recipe_id": 114,
-    "step_number": 1,
-    "description": "Öntsd fel vízzel vagy levessel, és forrald fel."
+    "recipe_id": 96,
+    "step_number": 2,
+    "description": "Forrald fel a tejszínt cukorral és vaníliával."
   },
   {
     "_id": 503,
-    "recipe_id": 114,
-    "step_number": 2,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 96,
+    "step_number": 3,
+    "description": "Old fel benne a zselatint."
   },
   {
     "_id": 504,
-    "recipe_id": 114,
-    "step_number": 3,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 96,
+    "step_number": 4,
+    "description": "Öntsd formákba és hűtsd 4 órát."
   },
   {
     "_id": 505,
-    "recipe_id": 114,
-    "step_number": 4,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 96,
+    "step_number": 5,
+    "description": "Díszítsd eperszósszal."
   },
   {
     "_id": 506,
-    "recipe_id": 114,
-    "step_number": 5,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 97,
+    "step_number": 1,
+    "description": "Forrald fel a tejszínt vaníliával."
   },
   {
     "_id": 507,
-    "recipe_id": 114,
-    "step_number": 6,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 97,
+    "step_number": 2,
+    "description": "Keverd el a tojássárgákat cukorral."
   },
   {
     "_id": 508,
-    "recipe_id": 115,
-    "step_number": 1,
-    "description": "Főzd közepes lángon fedő alatt, amíg megpuhul."
+    "recipe_id": 97,
+    "step_number": 3,
+    "description": "Öntsd hozzá lassan a forró tejszínt."
   },
   {
     "_id": 509,
-    "recipe_id": 115,
-    "step_number": 2,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "recipe_id": 97,
+    "step_number": 4,
+    "description": "Töltsd kokilokba és süsd vízfürdőben 160°C-on 40 percig."
   },
   {
     "_id": 510,
-    "recipe_id": 115,
-    "step_number": 3,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 97,
+    "step_number": 5,
+    "description": "Hűtsd le, szórd meg cukorral és karamellizáld."
   },
   {
     "_id": 511,
-    "recipe_id": 116,
+    "recipe_id": 98,
     "step_number": 1,
-    "description": "Add hozzá a többi zöldséget, keverd össze."
+    "description": "Verd kemény habbá a tojásfehérjéket cukorral."
   },
   {
     "_id": 512,
-    "recipe_id": 116,
+    "recipe_id": 98,
     "step_number": 2,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "description": "Formázd tortaformára sütőpapírra."
   },
   {
     "_id": 513,
-    "recipe_id": 116,
+    "recipe_id": 98,
     "step_number": 3,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "description": "Süsd 120°C-on 1 órát, hagyd kihűlni a sütőben."
   },
   {
     "_id": 514,
-    "recipe_id": 116,
+    "recipe_id": 98,
     "step_number": 4,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Verd fel a tejszínhabot."
   },
   {
     "_id": 515,
-    "recipe_id": 116,
+    "recipe_id": 98,
     "step_number": 5,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Töltsd meg a habbal és díszítsd gyümölccsel."
   },
   {
     "_id": 516,
-    "recipe_id": 116,
-    "step_number": 6,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 99,
+    "step_number": 1,
+    "description": "Morzsold össze a kekszet és keverd a vajjal, nyomd formába."
   },
   {
     "_id": 517,
-    "recipe_id": 117,
-    "step_number": 1,
-    "description": "Sózd, borsozd ízlés szerint, szükség esetén ízesítsd tovább."
+    "recipe_id": 99,
+    "step_number": 2,
+    "description": "Keverd össze a krémsajtot cukorral és tojásokkal."
   },
   {
     "_id": 518,
-    "recipe_id": 117,
-    "step_number": 2,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "recipe_id": 99,
+    "step_number": 3,
+    "description": "Add hozzá a citromlevet és héjat."
   },
   {
     "_id": 519,
-    "recipe_id": 117,
-    "step_number": 3,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 99,
+    "step_number": 4,
+    "description": "Öntsd az alapra és süsd 160°C-on 45 percig."
   },
   {
     "_id": 520,
-    "recipe_id": 117,
-    "step_number": 4,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 99,
+    "step_number": 5,
+    "description": "Hűtsd le lassan a sütőben."
   },
   {
     "_id": 521,
-    "recipe_id": 117,
-    "step_number": 5,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 99,
+    "step_number": 6,
+    "description": "Tálald hűtve."
   },
   {
     "_id": 522,
-    "recipe_id": 118,
+    "recipe_id": 100,
     "step_number": 1,
-    "description": "Szedd tányérba és díszítsd friss petrezselyemmel."
+    "description": "Old fel az élesztőt langyos vízben."
   },
   {
     "_id": 523,
-    "recipe_id": 118,
+    "recipe_id": 100,
     "step_number": 2,
-    "description": "Forrón tálald, jó étvágyat!"
+    "description": "Keverd hozzá a lisztet, sót, olajat."
   },
   {
     "_id": 524,
-    "recipe_id": 118,
+    "recipe_id": 100,
     "step_number": 3,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "description": "Dagaszd 10 percig."
   },
   {
     "_id": 525,
-    "recipe_id": 118,
+    "recipe_id": 100,
     "step_number": 4,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "description": "Keleszd 1 órát."
   },
   {
     "_id": 526,
-    "recipe_id": 118,
+    "recipe_id": 100,
     "step_number": 5,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "description": "Formázd meg és süsd 200°C-on 35-40 percig."
   },
   {
     "_id": 527,
-    "recipe_id": 118,
-    "step_number": 6,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 101,
+    "step_number": 1,
+    "description": "Keverd össze a lisztet, élesztőt, vizet, olajat."
   },
   {
     "_id": 528,
-    "recipe_id": 119,
-    "step_number": 1,
-    "description": "Forrón tálald, jó étvágyat!"
+    "recipe_id": 101,
+    "step_number": 2,
+    "description": "Keleszd 1 órát."
   },
   {
     "_id": 529,
-    "recipe_id": 119,
-    "step_number": 2,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 101,
+    "step_number": 3,
+    "description": "Terítsd tepsire és nyomkodd ujjal mélyedéseket."
   },
   {
     "_id": 530,
-    "recipe_id": 119,
-    "step_number": 3,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 101,
+    "step_number": 4,
+    "description": "Locsold meg olívaolajjal, szórd meg rozmaringgal és sóval."
   },
   {
     "_id": 531,
-    "recipe_id": 119,
-    "step_number": 4,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 101,
+    "step_number": 5,
+    "description": "Süsd 200°C-on 25 percig."
   },
   {
     "_id": 532,
-    "recipe_id": 119,
-    "step_number": 5,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 102,
+    "step_number": 1,
+    "description": "Keverd össze a hozzávalókat ragacsos tésztává."
   },
   {
     "_id": 533,
-    "recipe_id": 120,
-    "step_number": 1,
-    "description": "Keverd el a szószt, amíg sűrű és krémes lesz."
+    "recipe_id": 102,
+    "step_number": 2,
+    "description": "Hajtogasd félóránként 2 órán át."
   },
   {
     "_id": 534,
-    "recipe_id": 120,
-    "step_number": 2,
-    "description": "Süsd aranybarnára mindkét oldalát forró olajban."
+    "recipe_id": 102,
+    "step_number": 3,
+    "description": "Formázd meg lisztezett felületen."
   },
   {
     "_id": 535,
-    "recipe_id": 120,
-    "step_number": 3,
-    "description": "Tedd a sütőbe előmelegített 180°C-ra 25-30 percre."
+    "recipe_id": 102,
+    "step_number": 4,
+    "description": "Keleszd még 30 percig."
   },
   {
     "_id": 536,
-    "recipe_id": 120,
-    "step_number": 4,
-    "description": "Hagyd 5 percig pihenni szeletelés előtt."
+    "recipe_id": 102,
+    "step_number": 5,
+    "description": "Süsd 220°C-on 25-30 percig."
   },
   {
     "_id": 537,
+    "recipe_id": 103,
+    "step_number": 1,
+    "description": "Dagaszd össze a tésztát és keleszd 1 órát."
+  },
+  {
+    "_id": 538,
+    "recipe_id": 103,
+    "step_number": 2,
+    "description": "Formázz karikákat."
+  },
+  {
+    "_id": 539,
+    "recipe_id": 103,
+    "step_number": 3,
+    "description": "Főzd cukros vízben 1 percig mindkét oldalát."
+  },
+  {
+    "_id": 540,
+    "recipe_id": 103,
+    "step_number": 4,
+    "description": "Tedd sütőpapírra."
+  },
+  {
+    "_id": 541,
+    "recipe_id": 103,
+    "step_number": 5,
+    "description": "Süsd 200°C-on 20 percig."
+  },
+  {
+    "_id": 542,
+    "recipe_id": 104,
+    "step_number": 1,
+    "description": "Készítsd el az észtőstésztát."
+  },
+  {
+    "_id": 543,
+    "recipe_id": 104,
+    "step_number": 2,
+    "description": "Hajtogasd a vajjal háromszor, közben hűtsd."
+  },
+  {
+    "_id": 544,
+    "recipe_id": 104,
+    "step_number": 3,
+    "description": "Nyújtsd ki és vágj háromszögeket."
+  },
+  {
+    "_id": 545,
+    "recipe_id": 104,
+    "step_number": 4,
+    "description": "Tekerd fel és formázd félhold alakúra."
+  },
+  {
+    "_id": 546,
+    "recipe_id": 104,
+    "step_number": 5,
+    "description": "Keleszd és kend meg tojással."
+  },
+  {
+    "_id": 547,
+    "recipe_id": 104,
+    "step_number": 6,
+    "description": "Süsd 200°C-on 15-18 percig."
+  },
+  {
+    "_id": 548,
+    "recipe_id": 105,
+    "step_number": 1,
+    "description": "Keverd össze a lisztet, tojásokat, cukrot, élesztőt."
+  },
+  {
+    "_id": 549,
+    "recipe_id": 105,
+    "step_number": 2,
+    "description": "Dagaszt közben add hozzá fokozatosan a vajat."
+  },
+  {
+    "_id": 550,
+    "recipe_id": 105,
+    "step_number": 3,
+    "description": "Keleszd 1 órát."
+  },
+  {
+    "_id": 551,
+    "recipe_id": 105,
+    "step_number": 4,
+    "description": "Formázd meg és tedd formába."
+  },
+  {
+    "_id": 552,
+    "recipe_id": 105,
+    "step_number": 5,
+    "description": "Kend meg tojással és süsd 180°C-on 25 percig."
+  },
+  {
+    "_id": 553,
+    "recipe_id": 106,
+    "step_number": 1,
+    "description": "Készíts észtőstésztát a hozzávalókból."
+  },
+  {
+    "_id": 554,
+    "recipe_id": 106,
+    "step_number": 2,
+    "description": "Keleszd 1 órát."
+  },
+  {
+    "_id": 555,
+    "recipe_id": 106,
+    "step_number": 3,
+    "description": "Oszd három részre és sodord ki."
+  },
+  {
+    "_id": 556,
+    "recipe_id": 106,
+    "step_number": 4,
+    "description": "Fond össze és tedd sütőpapírra."
+  },
+  {
+    "_id": 557,
+    "recipe_id": 106,
+    "step_number": 5,
+    "description": "Keleszd még 30 percig, kend meg tojással."
+  },
+  {
+    "_id": 558,
+    "recipe_id": 106,
+    "step_number": 6,
+    "description": "Süsd 180°C-on 30-35 percig."
+  },
+  {
+    "_id": 559,
+    "recipe_id": 107,
+    "step_number": 1,
+    "description": "Készíts észtőstésztát."
+  },
+  {
+    "_id": 560,
+    "recipe_id": 107,
+    "step_number": 2,
+    "description": "Keleszd 40 percig."
+  },
+  {
+    "_id": 561,
+    "recipe_id": 107,
+    "step_number": 3,
+    "description": "Nyújtsd ki és vágj háromszögeket."
+  },
+  {
+    "_id": 562,
+    "recipe_id": 107,
+    "step_number": 4,
+    "description": "Tekerd fel kifli formára."
+  },
+  {
+    "_id": 563,
+    "recipe_id": 107,
+    "step_number": 5,
+    "description": "Kend meg tojással és süsd 200°C-on 15-20 percig."
+  },
+  {
+    "_id": 564,
+    "recipe_id": 108,
+    "step_number": 1,
+    "description": "Keverd össze a hozzávalókat és dagaszd."
+  },
+  {
+    "_id": 565,
+    "recipe_id": 108,
+    "step_number": 2,
+    "description": "Keleszd 40 percig."
+  },
+  {
+    "_id": 566,
+    "recipe_id": 108,
+    "step_number": 3,
+    "description": "Formázz kis zsemléket."
+  },
+  {
+    "_id": 567,
+    "recipe_id": 108,
+    "step_number": 4,
+    "description": "Vágj tetejükre mintát."
+  },
+  {
+    "_id": 568,
+    "recipe_id": 108,
+    "step_number": 5,
+    "description": "Süsd 200°C-on gőzzel 18-20 percig."
+  },
+  {
+    "_id": 569,
+    "recipe_id": 109,
+    "step_number": 1,
+    "description": "Keverd össze a lisztet, tejfölt, reszelt sajtot, vajat."
+  },
+  {
+    "_id": 570,
+    "recipe_id": 109,
+    "step_number": 2,
+    "description": "Dagaszd össze és hajtogasd háromszor."
+  },
+  {
+    "_id": 571,
+    "recipe_id": 109,
+    "step_number": 3,
+    "description": "Szúrd ki pogácsaszaggatóval."
+  },
+  {
+    "_id": 572,
+    "recipe_id": 109,
+    "step_number": 4,
+    "description": "Kend meg tojással."
+  },
+  {
+    "_id": 573,
+    "recipe_id": 109,
+    "step_number": 5,
+    "description": "Süsd 180°C-on 20-25 percig."
+  },
+  {
+    "_id": 574,
+    "recipe_id": 110,
+    "step_number": 1,
+    "description": "Turmixold a fagyasztott banánt, epret, joghurtot."
+  },
+  {
+    "_id": 575,
+    "recipe_id": 110,
+    "step_number": 2,
+    "description": "Öntsd tálba."
+  },
+  {
+    "_id": 576,
+    "recipe_id": 110,
+    "step_number": 3,
+    "description": "Díszítsd granolával, gyümölccsel, kókuszreszelékkel."
+  },
+  {
+    "_id": 577,
+    "recipe_id": 110,
+    "step_number": 4,
+    "description": "Csepegess rá mézet."
+  },
+  {
+    "_id": 578,
+    "recipe_id": 110,
+    "step_number": 5,
+    "description": "Tálald azonnal."
+  },
+  {
+    "_id": 579,
+    "recipe_id": 111,
+    "step_number": 1,
+    "description": "Facsard ki a citromokat."
+  },
+  {
+    "_id": 580,
+    "recipe_id": 111,
+    "step_number": 2,
+    "description": "Old fel a cukrot langyos vízben."
+  },
+  {
+    "_id": 581,
+    "recipe_id": 111,
+    "step_number": 3,
+    "description": "Keverd össze a citromlével és töltsd fel hideg vízzel."
+  },
+  {
+    "_id": 582,
+    "recipe_id": 111,
+    "step_number": 4,
+    "description": "Add hozzá a mentát és jeget."
+  },
+  {
+    "_id": 583,
+    "recipe_id": 111,
+    "step_number": 5,
+    "description": "Tálald jéghidegen."
+  },
+  {
+    "_id": 584,
+    "recipe_id": 112,
+    "step_number": 1,
+    "description": "Nyomd ki a lime-ot és nyomkodd össze a mentával."
+  },
+  {
+    "_id": 585,
+    "recipe_id": 112,
+    "step_number": 2,
+    "description": "Add hozzá a cukrot."
+  },
+  {
+    "_id": 586,
+    "recipe_id": 112,
+    "step_number": 3,
+    "description": "Öntsd fel szódával és jéggel."
+  },
+  {
+    "_id": 587,
+    "recipe_id": 112,
+    "step_number": 4,
+    "description": "Díszítsd mentával és lime szelettel."
+  },
+  {
+    "_id": 588,
+    "recipe_id": 112,
+    "step_number": 5,
+    "description": "Tálald azonnal."
+  },
+  {
+    "_id": 589,
+    "recipe_id": 113,
+    "step_number": 1,
+    "description": "Főzz erős espressót és hűtsd le."
+  },
+  {
+    "_id": 590,
+    "recipe_id": 113,
+    "step_number": 2,
+    "description": "Tedd poharakba a jeget."
+  },
+  {
+    "_id": 591,
+    "recipe_id": 113,
+    "step_number": 3,
+    "description": "Öntsd rá a kávét."
+  },
+  {
+    "_id": 592,
+    "recipe_id": 113,
+    "step_number": 4,
+    "description": "Add hozzá a tejet és cukrot."
+  },
+  {
+    "_id": 593,
+    "recipe_id": 113,
+    "step_number": 5,
+    "description": "Keverd meg és tálald."
+  },
+  {
+    "_id": 594,
+    "recipe_id": 114,
+    "step_number": 1,
+    "description": "Forrald fel a tejet a fűszerekkel."
+  },
+  {
+    "_id": 595,
+    "recipe_id": 114,
+    "step_number": 2,
+    "description": "Főzd benne a teát 5 percig."
+  },
+  {
+    "_id": 596,
+    "recipe_id": 114,
+    "step_number": 3,
+    "description": "Szűrd le."
+  },
+  {
+    "_id": 597,
+    "recipe_id": 114,
+    "step_number": 4,
+    "description": "Édesítsd mézzel."
+  },
+  {
+    "_id": 598,
+    "recipe_id": 114,
+    "step_number": 5,
+    "description": "Tálald forrón, fahéjjal díszítve."
+  },
+  {
+    "_id": 599,
+    "recipe_id": 115,
+    "step_number": 1,
+    "description": "Melegítsd a tejet."
+  },
+  {
+    "_id": 600,
+    "recipe_id": 115,
+    "step_number": 2,
+    "description": "Reszeld bele a csokoládét és keverd, amíg feloldódik."
+  },
+  {
+    "_id": 601,
+    "recipe_id": 115,
+    "step_number": 3,
+    "description": "Add hozzá a kakaót és cukrot."
+  },
+  {
+    "_id": 602,
+    "recipe_id": 115,
+    "step_number": 4,
+    "description": "Tálald tejszínhabbal."
+  },
+  {
+    "_id": 603,
+    "recipe_id": 115,
+    "step_number": 5,
+    "description": "Szórd meg kakaóporral."
+  },
+  {
+    "_id": 604,
+    "recipe_id": 116,
+    "step_number": 1,
+    "description": "Szeleteld vékonyra az almát mandolinnal."
+  },
+  {
+    "_id": 605,
+    "recipe_id": 116,
+    "step_number": 2,
+    "description": "Terítsd sütőpapírra."
+  },
+  {
+    "_id": 606,
+    "recipe_id": 116,
+    "step_number": 3,
+    "description": "Szórd meg fahéjjal és cukorral."
+  },
+  {
+    "_id": 607,
+    "recipe_id": 116,
+    "step_number": 4,
+    "description": "Süsd 100°C-on 1 órát, amíg ropogós."
+  },
+  {
+    "_id": 608,
+    "recipe_id": 116,
+    "step_number": 5,
+    "description": "Hagyd kihűlni."
+  },
+  {
+    "_id": 609,
+    "recipe_id": 117,
+    "step_number": 1,
+    "description": "Keverd össze a zabpelyhet, mézet, mogyoróvajat."
+  },
+  {
+    "_id": 610,
+    "recipe_id": 117,
+    "step_number": 2,
+    "description": "Add hozzá a diót és csokicseppeket."
+  },
+  {
+    "_id": 611,
+    "recipe_id": 117,
+    "step_number": 3,
+    "description": "Nyomd tepsibe egyenletesen."
+  },
+  {
+    "_id": 612,
+    "recipe_id": 117,
+    "step_number": 4,
+    "description": "Süsd 170°C-on 20 percig."
+  },
+  {
+    "_id": 613,
+    "recipe_id": 117,
+    "step_number": 5,
+    "description": "Hűtsd ki és szeleteld."
+  },
+  {
+    "_id": 614,
+    "recipe_id": 118,
+    "step_number": 1,
+    "description": "Pattogtatd a kukoricát."
+  },
+  {
+    "_id": 615,
+    "recipe_id": 118,
+    "step_number": 2,
+    "description": "Karamellizáld a cukrot, add hozzá a vajat és tejszínt."
+  },
+  {
+    "_id": 616,
+    "recipe_id": 118,
+    "step_number": 3,
+    "description": "Sózd meg."
+  },
+  {
+    "_id": 617,
+    "recipe_id": 118,
+    "step_number": 4,
+    "description": "Öntsd a popcornra és keverd össze."
+  },
+  {
+    "_id": 618,
+    "recipe_id": 118,
+    "step_number": 5,
+    "description": "Terítsd sütőpapírra és hagyd megszilárdulni."
+  },
+  {
+    "_id": 619,
+    "recipe_id": 119,
+    "step_number": 1,
+    "description": "Keverd össze a krémsajtot tejföllel."
+  },
+  {
+    "_id": 620,
+    "recipe_id": 119,
+    "step_number": 2,
+    "description": "Reszeld bele a fokhagymát."
+  },
+  {
+    "_id": 621,
+    "recipe_id": 119,
+    "step_number": 3,
+    "description": "Vágd bele a snidlinget."
+  },
+  {
+    "_id": 622,
+    "recipe_id": 119,
+    "step_number": 4,
+    "description": "Sózd ízlés szerint."
+  },
+  {
+    "_id": 623,
+    "recipe_id": 119,
+    "step_number": 5,
+    "description": "Tálald zöldség rudacskákkal vagy keksszel."
+  },
+  {
+    "_id": 624,
+    "recipe_id": 120,
+    "step_number": 1,
+    "description": "Reszeld le a füstölt sajtot."
+  },
+  {
+    "_id": 625,
+    "recipe_id": 120,
+    "step_number": 2,
+    "description": "Keverd össze a tejföllel."
+  },
+  {
+    "_id": 626,
+    "recipe_id": 120,
+    "step_number": 3,
+    "description": "Add hozzá a reszelt fokhagymát."
+  },
+  {
+    "_id": 627,
+    "recipe_id": 120,
+    "step_number": 4,
+    "description": "Szórd meg petrezselyemmel."
+  },
+  {
+    "_id": 628,
     "recipe_id": 120,
     "step_number": 5,
-    "description": "Tálald rizzsel vagy friss kenyérrel."
+    "description": "Tálald pirítós kenyérrel vagy zöldségekkel."
   }
 ]

@@ -98,7 +98,7 @@
   {
     "_id": 7,
     "title": "Pörkölt nokedlivel",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Klasszikus magyar pörkölt gazdagon, házi nokedlivel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -114,7 +114,7 @@
   {
     "_id": 8,
     "title": "Halászlé",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Hagyományos bajai halászlé, igazi magyaros ízvilág.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 60,
     "difficulty": "hard",
@@ -130,7 +130,7 @@
   {
     "_id": 9,
     "title": "Töltött paprika",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Anyukám receptje szerint készült töltött paprika.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 180,
     "difficulty": "easy",
@@ -146,7 +146,7 @@
   {
     "_id": 10,
     "title": "Töltött káposzta",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Karácsonyi kedvenc, savanyú káposztába töltve.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -162,7 +162,7 @@
   {
     "_id": 11,
     "title": "Rakott krumpli",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Egyszerű és laktató családi ebéd.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 180,
     "difficulty": "hard",
@@ -178,7 +178,7 @@
   {
     "_id": 12,
     "title": "Paprikás csirke",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Paprikás csirke galuskával, igazi comfort food.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 60,
     "difficulty": "easy",
@@ -194,7 +194,7 @@
   {
     "_id": 13,
     "title": "Mákos rétes",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Ropogós házi rétes mákos töltelékkel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -210,7 +210,7 @@
   {
     "_id": 14,
     "title": "Lángos",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Street food klasszikus: ropogós lángos tejföllel és sajttal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 25,
     "difficulty": "hard",
@@ -226,7 +226,7 @@
   {
     "_id": 15,
     "title": "Pogácsa",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Omlós, vajas pogácsa, ami mindig fogy.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 90,
     "difficulty": "easy",
@@ -242,7 +242,7 @@
   {
     "_id": 16,
     "title": "Kürtőskalács",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Édes erdélyi kürtőskalács fahéjas cukorral.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -258,7 +258,7 @@
   {
     "_id": 17,
     "title": "Dobostorta",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Elegáns magyar torta karamellás tetővel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 15,
     "difficulty": "hard",
@@ -274,7 +274,7 @@
   {
     "_id": 18,
     "title": "Túrógombóc",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Könnyű és finom desszert pirított zsemlemorzsával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -290,7 +290,7 @@
   {
     "_id": 19,
     "title": "Gesztenyepüré",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Selymes gesztenyepüré tejszínhabbal koronázva.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 180,
     "difficulty": "medium",
@@ -306,7 +306,7 @@
   {
     "_id": 20,
     "title": "Szilvásgombóc",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Krumplitésztában szilva - igazi nyári csemege.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 120,
     "difficulty": "hard",
@@ -322,7 +322,7 @@
   {
     "_id": 21,
     "title": "Madártej",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Habos, krémes madártej vaníliás sodóval.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 60,
     "difficulty": "easy",
@@ -338,7 +338,7 @@
   {
     "_id": 22,
     "title": "Hortobágyi palacsinta",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Hortobágy híres húsos palacsintatekercsei.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 90,
     "difficulty": "medium",
@@ -354,7 +354,7 @@
   {
     "_id": 23,
     "title": "Csirkepörkölt",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Fűszeres csirkepörkölt gazdagon.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 30,
     "difficulty": "hard",
@@ -370,7 +370,7 @@
   {
     "_id": 24,
     "title": "Brassói aprópecsenye",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Ropogós sertéshús sült burgonyával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 90,
     "difficulty": "easy",
@@ -386,7 +386,7 @@
   {
     "_id": 25,
     "title": "Meggyleves",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Hűsítő gyümölcsleves tejfölös habarással.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 25,
     "difficulty": "medium",
@@ -402,7 +402,7 @@
   {
     "_id": 26,
     "title": "Kapros túrós palacsinta",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Kapros túróval töltött palacsinta, sütőben sütve.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -418,7 +418,7 @@
   {
     "_id": 27,
     "title": "Sajtos pogácsa",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Omlós sajtos pogácsa, tökéletes vendégvárónak.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -434,7 +434,7 @@
   {
     "_id": 28,
     "title": "Csirkemell tejszínes gombával",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Gyors és ízletes csirkemell krémes gombamártással.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 30,
     "difficulty": "medium",
@@ -450,7 +450,7 @@
   {
     "_id": 29,
     "title": "Paradicsomleves",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Krémes paradicsomleves friss fűszerekkel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 45,
     "difficulty": "hard",
@@ -466,7 +466,7 @@
   {
     "_id": 30,
     "title": "Krumplis tészta",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Egyszerű magyar tészta, gyorsan elkészíthető.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -482,7 +482,7 @@
   {
     "_id": 31,
     "title": "Bundáskenyér",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Reggeli klasszikus: tojásos bundáskenyér.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 15,
     "difficulty": "medium",
@@ -498,7 +498,7 @@
   {
     "_id": 32,
     "title": "Diós bejgli",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Karácsonyi diós bejgli hagyományos recept szerint.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 60,
     "difficulty": "hard",
@@ -514,7 +514,7 @@
   {
     "_id": 33,
     "title": "Mákos bejgli",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Mákos bejgli, a karácsonyi asztal elengedhetetlen darabja.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -530,7 +530,7 @@
   {
     "_id": 34,
     "title": "Zöldségleves",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Könnyű és egészséges zöldségleves friss alapanyagokból.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 60,
     "difficulty": "medium",
@@ -546,7 +546,7 @@
   {
     "_id": 35,
     "title": "Frankfurti leves",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Mustáros frankfurti leves virslivei.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -562,7 +562,7 @@
   {
     "_id": 36,
     "title": "Újházi tyúkhúsleves",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Ünnepi Újházi tyúkhúsleves csigatésztával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 60,
     "difficulty": "easy",
@@ -578,7 +578,7 @@
   {
     "_id": 37,
     "title": "Babgulyás",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Tartalmas babgulyás füstölt hússal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -594,7 +594,7 @@
   {
     "_id": 38,
     "title": "Lencsefőzelék",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Klasszikus magyar lencsefőzelék édes-savanyúan.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 120,
     "difficulty": "hard",
@@ -610,7 +610,7 @@
   {
     "_id": 39,
     "title": "Tökfőzelék",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Könnyű tökfőzelék kapros ízesítéssel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -626,7 +626,7 @@
   {
     "_id": 40,
     "title": "Spenótfőzelék",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Fokhagymás spenótfőzelék tükörtojással.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 180,
     "difficulty": "medium",
@@ -642,7 +642,7 @@
   {
     "_id": 41,
     "title": "Sült kacsacomb",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Ropogós bőrű sült kacsacomb sült burgonyával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -658,7 +658,7 @@
   {
     "_id": 42,
     "title": "Vörösboros marharagu",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Lassú főzéssel készült mélyen aromás marharagu.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 45,
     "difficulty": "easy",
@@ -674,7 +674,7 @@
   {
     "_id": 43,
     "title": "Csülök pékné módra",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Tradicionális csülök sült burgonyával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 60,
     "difficulty": "medium",
@@ -690,7 +690,7 @@
   {
     "_id": 44,
     "title": "Bécsi szelet",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Klasszikus bécsi szelet ropogós panírban.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -706,7 +706,7 @@
   {
     "_id": 45,
     "title": "Tejszínes kukoricakrémleves",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Krémes, selymes kukoricakrémleves.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 25,
     "difficulty": "easy",
@@ -722,7 +722,7 @@
   {
     "_id": 46,
     "title": "Sült csirkecomb fűszervajjal",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Ropogós csirkecomb házi fűszervajjal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 45,
     "difficulty": "medium",
@@ -738,7 +738,7 @@
   {
     "_id": 47,
     "title": "Házi pizza margherita",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Házi pizza friss paradicsommal és mozzarellával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 45,
     "difficulty": "hard",
@@ -754,7 +754,7 @@
   {
     "_id": 48,
     "title": "Bolognai spagetti",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Hagyományos olasz bolognai ragu spagettivel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 180,
     "difficulty": "easy",
@@ -770,7 +770,7 @@
   {
     "_id": 49,
     "title": "Carbonara",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Eredeti olasz carbonara tészta.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 15,
     "difficulty": "medium",
@@ -786,7 +786,7 @@
   {
     "_id": 50,
     "title": "Penne arrabiata",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Csípős penne arrabiata szósszal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 45,
     "difficulty": "hard",
@@ -802,7 +802,7 @@
   {
     "_id": 51,
     "title": "Risotto milánói módra",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Krémes milánói sáfrányos risotto.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -818,7 +818,7 @@
   {
     "_id": 52,
     "title": "Csirkesaláta",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Könnyű csirkesaláta friss zöldségekkel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 90,
     "difficulty": "medium",
@@ -834,7 +834,7 @@
   {
     "_id": 53,
     "title": "Tonhalsaláta",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Gyors tonhalsaláta citromos dresszinggel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 180,
     "difficulty": "hard",
@@ -850,7 +850,7 @@
   {
     "_id": 54,
     "title": "Caesar saláta",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Klasszikus Caesar saláta grillezett csirkével.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 45,
     "difficulty": "easy",
@@ -866,7 +866,7 @@
   {
     "_id": 55,
     "title": "Görög saláta",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Friss görög saláta feta sajttal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -882,7 +882,7 @@
   {
     "_id": 56,
     "title": "Tabouleh",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Könnyű libanoni bulgursaláta sok petrezselyemmel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 90,
     "difficulty": "hard",
@@ -898,7 +898,7 @@
   {
     "_id": 57,
     "title": "Pad thai",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Thai klasszikus: pad thai wokban sütve.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 25,
     "difficulty": "easy",
@@ -914,7 +914,7 @@
   {
     "_id": 58,
     "title": "Tikka masala",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Krémes indiai tikka masala csirkével.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 180,
     "difficulty": "medium",
@@ -930,7 +930,7 @@
   {
     "_id": 59,
     "title": "Tandoori csirke",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Fűszeres joghurtos tandoori csirke.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 120,
     "difficulty": "hard",
@@ -946,7 +946,7 @@
   {
     "_id": 60,
     "title": "Bánh mì szendvics",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Vietnámi szendvics friss zöldségekkel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 60,
     "difficulty": "easy",
@@ -962,7 +962,7 @@
   {
     "_id": 61,
     "title": "Falafel tál",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Ropogós falafel hummusszal és salátával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 45,
     "difficulty": "medium",
@@ -978,7 +978,7 @@
   {
     "_id": 62,
     "title": "Hummus",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Krémes házi hummus tahini szósszal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 30,
     "difficulty": "hard",
@@ -994,7 +994,7 @@
   {
     "_id": 63,
     "title": "Gyros tál",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Görög gyros tzatzikivel és pitával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 120,
     "difficulty": "easy",
@@ -1010,7 +1010,7 @@
   {
     "_id": 64,
     "title": "Kebab tál",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Fűszeres bárány kebab friss salátával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -1026,7 +1026,7 @@
   {
     "_id": 65,
     "title": "Quesadilla",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Ropogós sajtos quesadilla gyorsan.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 25,
     "difficulty": "hard",
@@ -1042,7 +1042,7 @@
   {
     "_id": 66,
     "title": "Burrito",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Töltött burrito rizzsel, babbal és hússal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -1058,7 +1058,7 @@
   {
     "_id": 67,
     "title": "Taco",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Ropogós taco kagylók darált hússal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 20,
     "difficulty": "medium",
@@ -1074,7 +1074,7 @@
   {
     "_id": 68,
     "title": "Nachos",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Olvadós sajtos nachos salsával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 180,
     "difficulty": "hard",
@@ -1090,7 +1090,7 @@
   {
     "_id": 69,
     "title": "Chili con carne",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Csípős chili con carne babbal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 180,
     "difficulty": "easy",
@@ -1106,7 +1106,7 @@
   {
     "_id": 70,
     "title": "Pulled pork szendvics",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Lassan sült, tépett sertéshús BBQ szósszal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 15,
     "difficulty": "medium",
@@ -1122,7 +1122,7 @@
   {
     "_id": 71,
     "title": "Smash burger",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Kétszer sütött, szaftos smash burger.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 30,
     "difficulty": "hard",
@@ -1138,7 +1138,7 @@
   {
     "_id": 72,
     "title": "Fish and chips",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Angol klasszikus: sörtésztás hal sült burgonyával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -1154,7 +1154,7 @@
   {
     "_id": 73,
     "title": "Ramen",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Japán ramen gazdag húslevessel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 90,
     "difficulty": "medium",
@@ -1170,7 +1170,7 @@
   {
     "_id": 74,
     "title": "Miso leves",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Könnyű és gyors japán miso leves.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 90,
     "difficulty": "hard",
@@ -1186,7 +1186,7 @@
   {
     "_id": 75,
     "title": "Sushi bowl",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Friss sushi bowl lazaccal és avokádóval.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -1202,7 +1202,7 @@
   {
     "_id": 76,
     "title": "Teriyaki csirke",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Édes-sós teriyaki csirke rizzsel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -1218,7 +1218,7 @@
   {
     "_id": 77,
     "title": "Szecsuáni csirke",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Tüzes szecsuáni csirke mogyoróval.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 120,
     "difficulty": "hard",
@@ -1234,7 +1234,7 @@
   {
     "_id": 78,
     "title": "Pad see ew",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Thai széles tészta brokkolival.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 20,
     "difficulty": "easy",
@@ -1250,7 +1250,7 @@
   {
     "_id": 79,
     "title": "Tom kha gai",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Krémes thai kókuszos csirkeleves.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 120,
     "difficulty": "medium",
@@ -1266,7 +1266,7 @@
   {
     "_id": 80,
     "title": "Pho bo",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Vietnámi marha pho gazdag fűszeres levessel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 25,
     "difficulty": "hard",
@@ -1282,7 +1282,7 @@
   {
     "_id": 81,
     "title": "Bibimbap",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Koreai vegyes tál rizzsel és gochujang szósszal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -1298,7 +1298,7 @@
   {
     "_id": 82,
     "title": "Kimchi pirított rizs",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Gyors és fűszeres kimchi sült rizs.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 25,
     "difficulty": "medium",
@@ -1314,7 +1314,7 @@
   {
     "_id": 83,
     "title": "Edamame",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Egyszerű japán edamame tengeri sóval.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 180,
     "difficulty": "hard",
@@ -1330,7 +1330,7 @@
   {
     "_id": 84,
     "title": "Gyoza",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Ropogós aljú japán gyoza.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 60,
     "difficulty": "easy",
@@ -1346,7 +1346,7 @@
   {
     "_id": 85,
     "title": "Shakshuka",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Fűszeres tojásos shakshuka friss kenyérrel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 25,
     "difficulty": "medium",
@@ -1362,7 +1362,7 @@
   {
     "_id": 86,
     "title": "Avokádós pirítós",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Gyors és egészséges avokádós pirítós.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 25,
     "difficulty": "hard",
@@ -1378,7 +1378,7 @@
   {
     "_id": 87,
     "title": "Açaí bowl",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Frissítő açaí bowl granolával és gyümölccsel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -1394,7 +1394,7 @@
   {
     "_id": 88,
     "title": "Granola",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Házi ropogós granola mézzel és dióval.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 20,
     "difficulty": "medium",
@@ -1410,7 +1410,7 @@
   {
     "_id": 89,
     "title": "Overnight oats",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Éjszakára beáztatott zabkása gyümölccsel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 120,
     "difficulty": "hard",
@@ -1426,7 +1426,7 @@
   {
     "_id": 90,
     "title": "Protein palacsinta",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Fehérjedús palacsinta zabpehelyből és banánból.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 45,
     "difficulty": "easy",
@@ -1442,7 +1442,7 @@
   {
     "_id": 91,
     "title": "Bánánkenyér",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Puha házi banánkenyér, tökéletes uzsonnára.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 30,
     "difficulty": "medium",
@@ -1458,7 +1458,7 @@
   {
     "_id": 92,
     "title": "Répatorta",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Fűszeres répatorta krémsajtos frosting-gal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 60,
     "difficulty": "hard",
@@ -1474,7 +1474,7 @@
   {
     "_id": 93,
     "title": "Almás pite",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Klasszikus almás pite omlós tésztával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -1490,7 +1490,7 @@
   {
     "_id": 94,
     "title": "Epres tiramisu",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Könnyű és gyümölcsös epres tiramisu.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 25,
     "difficulty": "medium",
@@ -1506,7 +1506,7 @@
   {
     "_id": 95,
     "title": "Csokis brownie",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Olvadós, gazdag csokis brownie.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 120,
     "difficulty": "hard",
@@ -1522,7 +1522,7 @@
   {
     "_id": 96,
     "title": "Panna cotta",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Selymes olasz panna cotta eperszósszal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 90,
     "difficulty": "easy",
@@ -1538,7 +1538,7 @@
   {
     "_id": 97,
     "title": "Crème brûlée",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Elegáns francia crème brûlée karamellkéreggel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 180,
     "difficulty": "medium",
@@ -1554,7 +1554,7 @@
   {
     "_id": 98,
     "title": "Pavlova",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Ropogós habcsók torta friss gyümölccsel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 25,
     "difficulty": "hard",
@@ -1570,7 +1570,7 @@
   {
     "_id": 99,
     "title": "Citromos sajttorta",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Krémes citromos sajttorta omlós alapon.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 15,
     "difficulty": "easy",
@@ -1586,7 +1586,7 @@
   {
     "_id": 100,
     "title": "Házi kenyér",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Ropogós héjú házi kenyér egyszerűen.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 90,
     "difficulty": "medium",
@@ -1602,7 +1602,7 @@
   {
     "_id": 101,
     "title": "Focaccia",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Olasz lapos kenyér rozmaringgal és olívaolajjal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 30,
     "difficulty": "hard",
@@ -1618,7 +1618,7 @@
   {
     "_id": 102,
     "title": "Ciabatta",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Lyukacsos olasz ciabatta kenyér.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -1634,7 +1634,7 @@
   {
     "_id": 103,
     "title": "Bagel",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Kerek, rágós házi bagel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 20,
     "difficulty": "medium",
@@ -1650,7 +1650,7 @@
   {
     "_id": 104,
     "title": "Croissant",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Vajas, réteges francia croissant.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -1666,7 +1666,7 @@
   {
     "_id": 105,
     "title": "Brioche",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Puha, vajas francia brioche.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -1682,7 +1682,7 @@
   {
     "_id": 106,
     "title": "Kalács",
-    "description": "Klasszikus magyar étel, a család kedvence.",
+    "description": "Fonott magyar kalács vaníliás ízzel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 90,
     "difficulty": "medium",
@@ -1698,7 +1698,7 @@
   {
     "_id": 107,
     "title": "Házi kifli",
-    "description": "Egyszerű, gyors és nagyon finom házi recept.",
+    "description": "Házi kifli, ahogy a nagyi csinálta.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -1714,7 +1714,7 @@
   {
     "_id": 108,
     "title": "Zsemle",
-    "description": "Hagyományos recept, generációkon át öröklődik.",
+    "description": "Klasszikus házi zsemle ropogós héjjal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 60,
     "difficulty": "easy",
@@ -1730,7 +1730,7 @@
   {
     "_id": 109,
     "title": "Pogácsa sajtos-tejfölös",
-    "description": "Modern twist a klasszikus fogáson.",
+    "description": "Omlós sajtos-tejfölös pogácsa.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 180,
     "difficulty": "medium",
@@ -1746,7 +1746,7 @@
   {
     "_id": 110,
     "title": "Smoothie bowl",
-    "description": "Egészséges és laktató, tökéletes ebédre.",
+    "description": "Frissítő gyümölcsös smoothie bowl.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 90,
     "difficulty": "hard",
@@ -1762,7 +1762,7 @@
   {
     "_id": 111,
     "title": "Limonádé",
-    "description": "Ünnepi alkalmakra is tökéletes választás.",
+    "description": "Házi limonádé mentával, nyári hűsítő.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 180,
     "difficulty": "easy",
@@ -1778,7 +1778,7 @@
   {
     "_id": 112,
     "title": "Mojito alkoholmentes",
-    "description": "Gyerekek kedvence, egyszerűen elkészíthető.",
+    "description": "Alkoholmentes mojito lime-mal és mentával.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 15,
     "difficulty": "medium",
@@ -1794,7 +1794,7 @@
   {
     "_id": 113,
     "title": "Jegeskávé",
-    "description": "Street food ihletésű, házi változatban.",
+    "description": "Jeges kávé tejjel, nyári frissítő.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 60,
     "difficulty": "hard",
@@ -1810,7 +1810,7 @@
   {
     "_id": 114,
     "title": "Chai latte",
-    "description": "Fitness barát recept, magas fehérjetartalommal.",
+    "description": "Fűszeres chai latte mézzel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/samples/dessert-on-a-plate.jpg",
     "preparation_time": 30,
     "difficulty": "easy",
@@ -1826,7 +1826,7 @@
   {
     "_id": 115,
     "title": "Forró csoki",
-    "description": "Vegán változat, 100% növényi alapú.",
+    "description": "Házi forró csokoládé tejszínhabbal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912482/samples/breakfast.jpg",
     "preparation_time": 15,
     "difficulty": "medium",
@@ -1842,7 +1842,7 @@
   {
     "_id": 116,
     "title": "Alma chips",
-    "description": "Könnyű nyári fogás, friss alapanyagokból.",
+    "description": "Ropogós alma chips fahéjjal.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/spices.jpg",
     "preparation_time": 60,
     "difficulty": "hard",
@@ -1858,7 +1858,7 @@
   {
     "_id": 117,
     "title": "Házi müzli szelet",
-    "description": "Lassú főzéssel készül, mélyen aromás.",
+    "description": "Házi müzli szelet, egészséges nassolnivaló.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/pot-mussels.jpg",
     "preparation_time": 20,
     "difficulty": "easy",
@@ -1874,7 +1874,7 @@
   {
     "_id": 118,
     "title": "Sós karamell popcorn",
-    "description": "30 perc alatt az asztalon!",
+    "description": "Sós karamelles popcorn, tökéletes mozizáshoz.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912470/samples/food/fish-vegetables.jpg",
     "preparation_time": 45,
     "difficulty": "medium",
@@ -1890,7 +1890,7 @@
   {
     "_id": 119,
     "title": "Sajtkrém mártogatós",
-    "description": "Kézműves minőség, házi elkészítéssel.",
+    "description": "Krémes sajtkrém mártogatós zöldségekhez.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/food/dessert.jpg",
     "preparation_time": 20,
     "difficulty": "hard",
@@ -1906,7 +1906,7 @@
   {
     "_id": 120,
     "title": "Füstölt sajtos dip",
-    "description": "Igazi comfort food hideg estékre.",
+    "description": "Füstölt sajtos dip pirítós kenyérrel.",
     "image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912494/cld-sample-4.jpg",
     "preparation_time": 120,
     "difficulty": "easy",
