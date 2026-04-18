@@ -1,118 +1,118 @@
-# ForkFeed — Frontend Documentation
+# ForkFeed — Frontend dokumentáció
 
-This document provides a comprehensive reference for the ForkFeed frontend application, covering architecture, page structure, components, navigation, theming, and user interactions.
-
----
-
-## Table of Contents
-
-- [Architecture Overview](#architecture-overview)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Global Layout & Theming](#global-layout--theming)
-- [Navigation](#navigation)
-- [Authentication Flow](#authentication-flow)
-- [Pages](#pages)
-  - [Home / Recipe Feed](#home--recipe-feed)
-  - [Login](#login)
-  - [Registration](#registration)
-  - [Password Reset](#password-reset)
-  - [Recipe Detail](#recipe-detail)
-  - [New Recipe](#new-recipe)
-  - [Profile](#profile)
-  - [My Recipes](#my-recipes)
-  - [Recipe Edit](#recipe-edit)
-  - [Favorites](#favorites)
-  - [Recipe Books](#recipe-books)
-  - [Recipe Book Detail](#recipe-book-detail)
-  - [My Comments](#my-comments)
-  - [My Ratings](#my-ratings)
-  - [Public User Profile](#public-user-profile)
-- [Shared Components](#shared-components)
-- [Image Upload System](#image-upload-system)
-- [Comment System](#comment-system)
-- [Recipe Books & Save Flow](#recipe-books--save-flow)
-- [Reporting System](#reporting-system)
-- [Responsive Design](#responsive-design)
-- [API Endpoint Reference](#api-endpoint-reference)
+Ez a dokumentum átfogó referenciát nyújt a ForkFeed frontend alkalmazáshoz, beleértve az architektúrát, oldalstruktúrát, komponenseket, navigációt, témakezelést és felhasználói interakciókat.
 
 ---
 
-## Architecture Overview
+## Tartalomjegyzék
 
-ForkFeed's frontend is a **Next.js 16 App Router** application. All user-facing pages live under `app/pages/` and use the `"use client"` directive — the application is predominantly **client-side rendered** with data fetching via `useEffect` and `fetch()`.
+- [Architektúra áttekintés](#architektúra-áttekintés)
+- [Technológiai stack](#technológiai-stack)
+- [Projekt struktúra](#projekt-struktúra)
+- [Globális elrendezés és témakezelés](#globális-elrendezés-és-témakezelés)
+- [Navigáció](#navigáció)
+- [Hitelesítési folyamat](#hitelesítési-folyamat)
+- [Oldalak](#oldalak)
+  - [Főoldal / Receptfolyam](#főoldal--receptfolyam)
+  - [Bejelentkezés](#bejelentkezés)
+  - [Regisztráció](#regisztráció)
+  - [Jelszó-visszaállítás](#jelszó-visszaállítás)
+  - [Recept részletek](#recept-részletek)
+  - [Új recept](#új-recept)
+  - [Profil](#profil)
+  - [Receptjeim](#receptjeim)
+  - [Recept szerkesztése](#recept-szerkesztése)
+  - [Kedvencek](#kedvencek)
+  - [Receptkönyvek](#receptkönyvek)
+  - [Receptkönyv részletek](#receptkönyv-részletek)
+  - [Hozzászólásaim](#hozzászólásaim)
+  - [Értékeléseim](#értékeléseim)
+  - [Nyilvános felhasználói profil](#nyilvános-felhasználói-profil)
+- [Megosztott komponensek](#megosztott-komponensek)
+- [Képfeltöltési rendszer](#képfeltöltési-rendszer)
+- [Hozzászólás rendszer](#hozzászólás-rendszer)
+- [Receptkönyvek és mentési folyamat](#receptkönyvek-és-mentési-folyamat)
+- [Jelentési rendszer](#jelentési-rendszer)
+- [Reszponzív dizájn](#reszponzív-dizájn)
+- [API végpont referencia](#api-végpont-referencia)
 
-### Key Design Decisions
+---
 
-- **No global state library** — Each page manages its own state with React's `useState` and `useEffect` hooks. There are no context providers, Redux stores, or similar.
-- **JWT in localStorage** — Authentication tokens are stored in `localStorage` and sent as `Authorization: Bearer <token>` headers. There are no HTTP-only cookies.
-- **Hungarian UI** — All user-facing text (labels, buttons, error messages, placeholders) is in Hungarian. The `<html>` element has `lang="hu"`.
-- **Page-level data fetching** — Every page independently fetches the data it needs on mount. There is no shared data cache or SWR/React Query layer.
-- **Component colocation** — Page-specific components live in `components/` subdirectories next to their parent page. Only truly shared components are in `app/components/`.
+## Architektúra áttekintés
 
-### Rendering Pattern
+A ForkFeed frontend egy **Next.js 16 App Router** alkalmazás. Minden felhasználó által látható oldal az `app/pages/` könyvtár alatt található, és a `"use client"` direktívát használja — az alkalmazás túlnyomórészt **kliensoldali renderelést** használ `useEffect` és `fetch()` alapú adatlekéréssel.
+
+### Fő tervezési döntések
+
+- **Nincs globális állapotkezelő könyvtár** — Minden oldal a saját állapotát kezeli a React `useState` és `useEffect` hookjaival. Nincs context provider, Redux store vagy hasonló.
+- **JWT a localStorage-ban** — A hitelesítési tokenek a `localStorage`-ban vannak tárolva, és `Authorization: Bearer <token>` fejlécként kerülnek elküldésre. Nincsenek HTTP-only cookie-k.
+- **Magyar felhasználói felület** — Minden felhasználónak szóló szöveg (címkék, gombok, hibaüzenetek, helyőrzők) magyarul van. A `<html>` elem `lang="hu"` attribútummal rendelkezik.
+- **Oldalszintű adatlekérés** — Minden oldal függetlenül lekéri a szükséges adatokat betöltéskor. Nincs megosztott adatgyorsítótár vagy SWR/React Query réteg.
+- **Komponens kolokáció** — Az oldalspecifikus komponensek `components/` alkönyvtárakban helyezkednek el a szülő oldaluk mellett. Csak a valóban megosztott komponensek vannak az `app/components/` mappában.
+
+### Renderelési minta
 
 ```
-app/layout.tsx          → Root HTML shell (server-rendered)
-  └── app/page.tsx      → Redirect to /pages/main
+app/layout.tsx          → Gyökér HTML keret (szerver-renderelt)
+  └── app/page.tsx      → Átirányítás a /pages/main oldalra
   └── app/pages/
-       ├── main/        → Client component (useEffect + fetch)
-       ├── login/       → Client component
-       ├── profile/     → Client component (auth-guarded)
-       ├── admin/       → Client component (admin-guarded, own layout)
+       ├── main/        → Kliens komponens (useEffect + fetch)
+       ├── login/       → Kliens komponens
+       ├── profile/     → Kliens komponens (hitelesítés-védett)
+       ├── admin/       → Kliens komponens (admin-védett, saját elrendezés)
        └── ...
 ```
 
 ---
 
-## Technology Stack
+## Technológiai stack
 
-| Component         | Technology              | Purpose                                               |
-| ----------------- | ----------------------- | ----------------------------------------------------- |
-| Framework         | Next.js 16 (App Router) | Routing, SSR shell, API routes                        |
-| Language          | TypeScript 5            | Type-safe development                                 |
-| UI Library        | React 19                | Component architecture                                |
-| CSS Framework     | Tailwind CSS 4          | Utility-first styling                                 |
-| Component Library | DaisyUI 5               | Pre-built UI components (cards, modals, badges, etc.) |
-| Theming           | DaisyUI themes          | Light/dark mode with `data-theme` attribute           |
-| Icons             | Heroicons (inline SVG)  | All icons are inlined as SVG paths                    |
-| Image Cropping    | Custom canvas-based     | Built-in `ImageCropModal` component                   |
+| Komponens | Technológia | Cél |
+|-----------|-------------|-----|
+| Keretrendszer | Next.js 16 (App Router) | Útvonalkezelés, SSR keret, API útvonalak |
+| Nyelv | TypeScript 5 | Típusbiztos fejlesztés |
+| UI könyvtár | React 19 | Komponens architektúra |
+| CSS keretrendszer | Tailwind CSS 4 | Utility-first stílus |
+| Komponens könyvtár | DaisyUI 5 | Előre elkészített UI komponensek (kártyák, modálok, jelvények stb.) |
+| Témakezelés | DaisyUI témák | Világos/sötét mód `data-theme` attribútummal |
+| Ikonok | Heroicons (inline SVG) | Minden ikon inline SVG path-ként van beágyazva |
+| Képvágás | Egyéni canvas-alapú | Beépített `ImageCropModal` komponens |
 
 ---
 
-## Project Structure
+## Projekt struktúra
 
 ```
 app/
-├── layout.tsx                    # Root layout: <html lang="hu">, font, globals.css
-├── page.tsx                      # Redirects → /pages/main
-├── globals.css                   # Tailwind imports, DaisyUI config, custom animations
+├── layout.tsx                    # Gyökér elrendezés: <html lang="hu">, betűtípus, globals.css
+├── page.tsx                      # Átirányítás → /pages/main
+├── globals.css                   # Tailwind importok, DaisyUI konfiguráció, egyéni animációk
 │
-├── components/                   # Shared components
-│   ├── Pagination.tsx            # Reusable pagination control
-│   ├── ReportModal.tsx           # Report content/user modal
-│   ├── ImageUpload.tsx           # Image upload with crop support
-│   └── ImageCropModal.tsx        # Canvas-based image cropping
+├── components/                   # Megosztott komponensek
+│   ├── Pagination.tsx            # Újrafelhasználható lapozó vezérlő
+│   ├── ReportModal.tsx           # Tartalom/felhasználó jelentő modál
+│   ├── ImageUpload.tsx           # Képfeltöltés vágás támogatással
+│   └── ImageCropModal.tsx        # Canvas-alapú képvágás
 │
 └── pages/
-    ├── main/                     # Home page + recipe feed
+    ├── main/                     # Főoldal + receptfolyam
     │   ├── page.tsx
     │   └── components/
-    │       ├── Navbar.tsx         # Global navigation bar
-    │       ├── ThemeToggle.tsx    # Light/dark mode switch
-    │       ├── RecipeList.tsx     # Recipe browser with filters
-    │       ├── RecipeCard.tsx     # Recipe card in feed
+    │       ├── Navbar.tsx         # Globális navigációs sáv
+    │       ├── ThemeToggle.tsx    # Világos/sötét mód kapcsoló
+    │       ├── RecipeList.tsx     # Receptböngésző szűrőkkel
+    │       ├── RecipeCard.tsx     # Receptkártya a folyamban
     │       └── NewRecipeButton.tsx
     │
-    ├── login/                    # Login page
+    ├── login/                    # Bejelentkezés oldal
     │   ├── page.tsx
-    │   ├── layout.tsx            # Auth layout wrapper
+    │   ├── layout.tsx            # Hitelesítési elrendezés burkoló
     │   └── components/
     │       ├── AuthLayout.tsx
     │       ├── LoginForm.tsx
     │       └── Input.tsx
     │
-    ├── register/                 # Registration page
+    ├── register/                 # Regisztrációs oldal
     │   ├── page.tsx
     │   ├── layout.tsx
     │   └── components/
@@ -120,13 +120,13 @@ app/
     │       ├── RegisterForm.tsx
     │       └── Input.tsx
     │
-    ├── reset-password/           # Password reset page
+    ├── reset-password/           # Jelszó-visszaállítás oldal
     │   ├── page.tsx
     │   └── components/
     │       └── ResetPasswordForm.tsx
     │
     ├── recipe/
-    │   ├── [recipeId]/           # Recipe detail page
+    │   ├── [recipeId]/           # Recept részletek oldal
     │   │   ├── page.tsx
     │   │   └── components/
     │   │       ├── HeroImage.tsx
@@ -147,22 +147,22 @@ app/
     │   │           ├── CommentCard.tsx
     │   │           ├── CommentPagination.tsx
     │   │           └── commentTypes.ts
-    │   └── new/                  # New recipe page
+    │   └── new/                  # Új recept oldal
     │       └── page.tsx
     │
-    ├── profile/                  # Authenticated user's profile area
-    │   ├── page.tsx              # Profile overview
+    ├── profile/                  # Hitelesített felhasználó profilterülete
+    │   ├── page.tsx              # Profil áttekintés
     │   ├── components/
-    │   │   ├── ProfileTabs.tsx   # Tab navigation (6 tabs)
+    │   │   ├── ProfileTabs.tsx   # Füles navigáció (6 fül)
     │   │   ├── ProfileCard.tsx
     │   │   ├── StatsCard.tsx
     │   │   ├── EditProfileModal.tsx
     │   │   └── DeactivateAccountModal.tsx
-    │   ├── recipes/              # My recipes
+    │   ├── recipes/              # Receptjeim
     │   │   ├── page.tsx
     │   │   ├── components/
     │   │   │   └── MyRecipeCard.tsx
-    │   │   └── [recipeId]/edit/  # Recipe editor
+    │   │   └── [recipeId]/edit/  # Recept szerkesztő
     │   │       ├── page.tsx
     │   │       ├── types.ts
     │   │       └── components/
@@ -170,339 +170,339 @@ app/
     │   │           ├── IngredientsEditor.tsx
     │   │           ├── StepsEditor.tsx
     │   │           └── TagCategoryPicker.tsx
-    │   ├── favorites/            # Favorite recipes
+    │   ├── favorites/            # Kedvenc receptek
     │   │   ├── page.tsx
     │   │   └── components/
     │   │       └── FavoriteRecipeCard.tsx
-    │   ├── recipe-books/         # Recipe book collections
+    │   ├── recipe-books/         # Receptkönyv gyűjtemények
     │   │   ├── page.tsx
     │   │   ├── components/
     │   │   │   ├── RecipeBookCard.tsx
     │   │   │   └── CreateBookModal.tsx
-    │   │   └── [bookId]/         # Book detail
+    │   │   └── [bookId]/         # Könyv részletek
     │   │       ├── page.tsx
     │   │       └── components/
     │   │           ├── BookRecipeCard.tsx
     │   │           └── EditBookModal.tsx
-    │   ├── comments/             # My comments
+    │   ├── comments/             # Hozzászólásaim
     │   │   ├── page.tsx
     │   │   └── components/
     │   │       └── CommentedRecipeCard.tsx
-    │   └── ratings/              # My ratings
+    │   └── ratings/              # Értékeléseim
     │       ├── page.tsx
     │       └── components/
     │           └── RatedRecipeCard.tsx
     │
     ├── user/
-    │   └── [userId]/             # Public user profile
+    │   └── [userId]/             # Nyilvános felhasználói profil
     │       └── page.tsx
     │
-    └── admin/                    # Admin panel (separate layout)
-        ├── layout.tsx            # Sidebar layout + auth guard
-        ├── page.tsx              # Dashboard overview
+    └── admin/                    # Admin panel (külön elrendezés)
+        ├── layout.tsx            # Oldalsáv elrendezés + hitelesítési védelem
+        ├── page.tsx              # Vezérlőpult áttekintés
         ├── reports/
-        │   └── page.tsx          # Report management
+        │   └── page.tsx          # Jelentéskezelés
         └── users/
-            └── page.tsx          # User management
+            └── page.tsx          # Felhasználókezelés
 ```
 
 ---
 
-## Global Layout & Theming
+## Globális elrendezés és témakezelés
 
-### Root Layout (`app/layout.tsx`)
+### Gyökér elrendezés (`app/layout.tsx`)
 
-The root layout renders the HTML shell with `lang="hu"`, imports global CSS, and sets metadata:
+A gyökér elrendezés rendereli a HTML keretet `lang="hu"` attribútummal, importálja a globális CSS-t és beállítja a metaadatokat:
 
 ```
-Title: "ForkFeed"
-Description: "Receptmegosztó közösség" (Recipe-sharing community)
+Cím: "ForkFeed"
+Leírás: "Receptmegosztó közösség"
 ```
 
-### Theming (`app/globals.css` + `ThemeToggle`)
+### Témakezelés (`app/globals.css` + `ThemeToggle`)
 
-DaisyUI is configured with two themes:
+A DaisyUI két témával van konfigurálva:
 
-| Theme   | Activation                                                    |
-| ------- | ------------------------------------------------------------- |
-| `light` | Default theme                                                 |
-| `dark`  | Applied when `prefers-color-scheme: dark` or manually toggled |
+| Téma | Aktiválás |
+|------|-----------|
+| `light` | Alapértelmezett téma |
+| `dark` | Alkalmazásra kerül, ha `prefers-color-scheme: dark` vagy manuálisan átváltva |
 
-The `ThemeToggle` component:
+A `ThemeToggle` komponens:
 
-- Toggles the `data-theme` attribute on `<html>` between `light` and `dark`
-- Persists the choice in `localStorage.theme`
-- Respects system preference on first load (if no stored preference)
-- Renders a sun icon (light mode) or moon icon (dark mode)
+- A `data-theme` attribútumot váltja a `<html>` elemen `light` és `dark` között
+- A választást a `localStorage.theme`-ben tárolja
+- Az első betöltéskor a rendszer preferenciáját veszi figyelembe (ha nincs tárolt beállítás)
+- Nap ikont (világos mód) vagy hold ikont (sötét mód) jelenít meg
 
-### Custom CSS Animations
+### Egyéni CSS animációk
 
-| Animation          | Purpose                                   |
-| ------------------ | ----------------------------------------- |
-| `slideText`        | Sort label transition in recipe list      |
-| `fadeIn`           | Tooltip fade-in effect                    |
-| `highlightComment` | Pulsing glow effect on user's own comment |
+| Animáció | Cél |
+|----------|-----|
+| `slideText` | Rendezési címke átmenet a receptlistában |
+| `fadeIn` | Tooltip megjelenési effektus |
+| `highlightComment` | Pulzáló fény effektus a felhasználó saját hozzászólásán |
 
 ---
 
-## Navigation
+## Navigáció
 
-### Navbar (`app/pages/main/components/Navbar.tsx`)
+### Navigációs sáv (`app/pages/main/components/Navbar.tsx`)
 
-The navbar is the primary navigation component, used on all pages except the admin panel (which has its own sidebar layout).
+A navigációs sáv az elsődleges navigációs komponens, amelyet minden oldalon használnak, kivéve az admin panelt (amelynek saját oldalsáv elrendezése van).
 
-#### Desktop Layout
+#### Asztali elrendezés
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │ 🍴 ForkFeed  │  Receptek  Kedvencek*  Receptkönyvek*  │  🌙  👤 ▾  │
 └──────────────────────────────────────────────────────────────┘
-                                                     * = auth only
+                                                     * = csak hitelesített
 ```
 
-- **Logo**: Links to `/pages/main`
-- **Nav links**: `Receptek`, `Kedvencek` (auth), `Receptkönyvek` (auth)
-- **Active state**: Current page link highlighted with `bg-primary/10 text-primary`
-- **Right side**: Theme toggle + user dropdown (or login/register buttons)
+- **Logó**: A `/pages/main` oldalra mutat
+- **Navigációs linkek**: `Receptek`, `Kedvencek` (hitelesített), `Receptkönyvek` (hitelesített)
+- **Aktív állapot**: Az aktuális oldal linkje `bg-primary/10 text-primary` stílussal kijelölve
+- **Jobb oldal**: Téma kapcsoló + felhasználói legördülő (vagy bejelentkezés/regisztráció gombok)
 
-#### User Dropdown Menu
+#### Felhasználói legördülő menü
 
-| Item          | Link                          | Condition               |
-| ------------- | ----------------------------- | ----------------------- |
-| Profilom      | `/pages/profile`              | Always                  |
-| Receptjeim    | `/pages/profile/recipes`      | Always                  |
-| Receptkönyvek | `/pages/profile/recipe-books` | Always                  |
-| Admin panel   | `/pages/admin`                | `role === "admin"` only |
-| Kijelentkezés | Logout action                 | Always                  |
+| Elem | Link | Feltétel |
+|------|------|----------|
+| Profilom | `/pages/profile` | Mindig |
+| Receptjeim | `/pages/profile/recipes` | Mindig |
+| Receptkönyvek | `/pages/profile/recipe-books` | Mindig |
+| Admin panel | `/pages/admin` | Csak ha `role === "admin"` |
+| Kijelentkezés | Kijelentkezés művelet | Mindig |
 
-#### Mobile Layout
+#### Mobil elrendezés
 
-- Hamburger menu button + theme toggle (right-aligned via `ml-auto`)
-- Full-screen dropdown with all navigation links and user menu items
-- Same active state highlighting as desktop
-
----
-
-## Authentication Flow
-
-### Token Management
-
-1. **Login** → `POST /api/auth/login` → receives JWT token → stored in `localStorage("token")`
-2. **Every authenticated request** → reads token from `localStorage` → sends as `Authorization: Bearer <token>`
-3. **Logout** → `POST /api/auth/logout` (server-side token deny-listing) → removes token from `localStorage`
-4. **Auth check** → `GET /api/auth/me` → returns user object or 401
-
-### Page-Level Auth Guards
-
-| Pattern           | Implementation                                                                  |
-| ----------------- | ------------------------------------------------------------------------------- |
-| **Required auth** | `useEffect` checks `localStorage.token`, redirects to `/pages/login` if missing |
-| **Optional auth** | Fetches `/api/auth/me`, shows extra features if authenticated                   |
-| **Admin guard**   | Fetches `/api/auth/me`, checks `role === "admin"`, redirects if not             |
-
-### Password Reset Flow
-
-1. User clicks "Elfelejtett jelszó" on login page
-2. Enters email → `POST /api/auth/forgot-password` → server sends email with reset link
-3. User clicks link → `/pages/reset-password?token=<token>`
-4. Enters new password → `POST /api/auth/reset-password` → success → auto-redirect to login (3s delay)
+- Hamburger menü gomb + téma kapcsoló (jobbra igazítva `ml-auto` segítségével)
+- Teljes képernyős legördülő az összes navigációs linkkel és felhasználói menüelemekkel
+- Ugyanaz az aktív állapot kiemelés, mint az asztali változatban
 
 ---
 
-## Pages
+## Hitelesítési folyamat
 
-### Home / Recipe Feed
+### Token kezelés
 
-**Route**: `/pages/main`
-**Auth**: Public
+1. **Bejelentkezés** → `POST /api/auth/login` → JWT token fogadása → tárolás `localStorage("token")`-ben
+2. **Minden hitelesített kérés** → token olvasása a `localStorage`-ből → küldés `Authorization: Bearer <token>` fejlécként
+3. **Kijelentkezés** → `POST /api/auth/logout` (szerveroldali token tiltólistázás) → token eltávolítása a `localStorage`-ből
+4. **Hitelesítés ellenőrzése** → `GET /api/auth/me` → felhasználói objektum vagy 401 visszaadása
 
-The landing page and primary recipe discovery interface.
+### Oldalszintű hitelesítési védelem
 
-#### Hero Section
+| Minta | Megvalósítás |
+|-------|-------------|
+| **Kötelező hitelesítés** | `useEffect` ellenőrzi a `localStorage.token`-t, átirányít a `/pages/login` oldalra, ha hiányzik |
+| **Opcionális hitelesítés** | `/api/auth/me` lekérése, extra funkciók megjelenítése ha hitelesített |
+| **Admin védelem** | `/api/auth/me` lekérése, `role === "admin"` ellenőrzése, átirányítás ha nem admin |
 
-- Emoji-decorated heading with app name and tagline
-- "Recept feltöltése" CTA button (links to `/pages/recipe/new` if logged in, shows tooltip if not)
+### Jelszó-visszaállítási folyamat
 
-#### Recipe Browser (`RecipeList`)
-
-The recipe list is a complex filtering component with URL query parameter synchronization.
-
-**Search**:
-
-- Text search by recipe title (default) or author username (togglable)
-- 400ms debounce on keystroke
-- Autocomplete suggestions from `/api/search/suggestions`
-
-**Filters**:
-| Filter | Type | Interaction |
-|--------|------|-------------|
-| Difficulty | Single select | `easy` / `medium` / `hard` |
-| Categories | Multi-select (3-state) | Neutral → Include → Exclude → Neutral |
-| Tags | Multi-select (3-state) | Same as categories |
-| Ingredients | Include/Exclude text list | Comma-separated ingredient names |
-
-**Sorting**:
-| Sort | Options |
-|------|---------|
-| Date | Newest first / Oldest first |
-| Rating | Highest first / Lowest first |
-| Prep time | Shortest first / Longest first |
-
-**URL Sync**: All filter/sort state is synchronized with URL query parameters via `useSearchParams`, enabling shareable filtered views.
-
-#### Recipe Card (`RecipeCard`)
-
-Each recipe displays:
-
-- Color-coded difficulty strip (green = easy, yellow = medium, red = hard)
-- Recipe image (or placeholder)
-- Title, description (2-line clamp)
-- Difficulty badge, preparation time, star rating
-- Author avatar and username (clickable → user profile)
+1. A felhasználó az „Elfelejtett jelszó" linkre kattint a bejelentkezési oldalon
+2. E-mail megadása → `POST /api/auth/forgot-password` → a szerver visszaállítási linkkel ellátott e-mailt küld
+3. A felhasználó a linkre kattint → `/pages/reset-password?token=<token>`
+4. Új jelszó megadása → `POST /api/auth/reset-password` → siker → automatikus átirányítás a bejelentkezésre (3 mp késleltetéssel)
 
 ---
 
-### Login
+## Oldalak
 
-**Route**: `/pages/login`
-**Auth**: Public
+### Főoldal / Receptfolyam
 
-- Email or username + password form
-- Client-side validation (required fields)
-- Server error messages translated to Hungarian
-- Inline "Elfelejtett jelszó" (forgot password) flow with email input
-- On success: stores JWT → redirects to `/pages/main`
+**Útvonal**: `/pages/main`
+**Hitelesítés**: Nyilvános
 
----
+A kezdőoldal és az elsődleges receptfelfedezési felület.
 
-### Registration
+#### Kiemelt szekció
 
-**Route**: `/pages/register`
-**Auth**: Public
+- Emoji-díszítésű fejléc az alkalmazás nevével és szlogenjével
+- „Recept feltöltése" CTA gomb (ha bejelentkezett, a `/pages/recipe/new` oldalra mutat, egyébként tooltip jelenik meg)
 
-- Username (min 3 chars), email (valid format), password (min 8 chars)
-- Client-side validation with Hungarian error messages
-- On success: redirects to `/pages/login`
+#### Receptböngésző (`RecipeList`)
 
----
+A receptlista egy összetett szűrő komponens, amely URL lekérdezési paraméterekkel szinkronizál.
 
-### Password Reset
+**Keresés**:
 
-**Route**: `/pages/reset-password?token=<token>`
-**Auth**: Token-based
+- Szöveges keresés recept cím (alapértelmezett) vagy szerző felhasználónév alapján (átkapcsolható)
+- 400 ms-os debounce billentyűleütéskor
+- Automatikus kiegészítési javaslatok a `/api/search/suggestions` végpontról
 
-- New password + confirmation inputs
-- Validates token presence from URL
-- Shows appropriate errors for invalid/expired tokens
-- Auto-redirects to login after 3 seconds on success
+**Szűrők**:
+| Szűrő | Típus | Interakció |
+|-------|-------|-----------|
+| Nehézség | Egyszeres választás | `easy` / `medium` / `hard` |
+| Kategóriák | Többszörös választás (3 állapotú) | Semleges → Belefoglalás → Kizárás → Semleges |
+| Címkék | Többszörös választás (3 állapotú) | Ugyanaz, mint a kategóriáknál |
+| Hozzávalók | Belefoglalás/Kizárás szöveges lista | Vesszővel elválasztott hozzávaló nevek |
 
----
+**Rendezés**:
+| Rendezés | Lehetőségek |
+|----------|-------------|
+| Dátum | Legújabb először / Legrégebbi először |
+| Értékelés | Legmagasabb először / Legalacsonyabb először |
+| Elkészítési idő | Legrövidebb először / Leghosszabb először |
 
-### Recipe Detail
+**URL szinkronizáció**: Az összes szűrő/rendezési állapot szinkronizálva van az URL lekérdezési paraméterekkel a `useSearchParams` segítségével, lehetővé téve a megosztható szűrt nézeteket.
 
-**Route**: `/pages/recipe/{recipeId}`
-**Auth**: Optional (more features when logged in)
+#### Receptkártya (`RecipeCard`)
 
-The most feature-rich page in the application.
+Minden recept megjeleníti:
 
-#### Content Sections
-
-| Section     | Description                                    |
-| ----------- | ---------------------------------------------- |
-| Hero Image  | Full-width recipe image with gradient overlay  |
-| Badge Row   | Difficulty badge + category badges             |
-| Author Card | Avatar, username (link), creation/update dates |
-| Description | Recipe description text                        |
-| Ingredients | Bulleted list with quantities and units        |
-| Steps       | Numbered preparation steps                     |
-| Tags        | Tag badges at the bottom                       |
-
-#### Interactive Features (Authenticated Users)
-
-| Feature      | Component          | Description                                                        |
-| ------------ | ------------------ | ------------------------------------------------------------------ |
-| Favorite     | Heart toggle       | `POST`/`DELETE /api/recipes/{id}/favorite`                         |
-| Save to Book | `SaveToBookButton` | Modal to add recipe to a recipe book (with inline book creation)   |
-| Rate         | `StarRating`       | 1-5 star rating with hover preview, click to set, option to delete |
-| Comment      | `CommentSection`   | Full comment CRUD (see [Comment System](#comment-system))          |
-| Report       | `ReportModal`      | Report recipe for moderation                                       |
-| Share        | `ShareButton`      | Copies recipe URL to clipboard                                     |
-| Print        | `PrintButton`      | Generates print-friendly HTML and triggers browser print           |
-
-#### Admin Features
-
-- **Delete recipe** button (red, with confirmation dialog)
-
-#### Section Navigation (`SectionNav`)
-
-Quick-jump buttons that smooth-scroll to each section (ingredients, steps, comments).
-
-#### Scroll to Top (`ScrollToTop`)
-
-Floating arrow button that appears after scrolling 400px.
+- Színkódolt nehézségi csíkot (zöld = könnyű, sárga = közepes, piros = nehéz)
+- Receptkép (vagy helyőrző)
+- Cím, leírás (2 soros levágás)
+- Nehézségi jelvény, elkészítési idő, csillagos értékelés
+- Szerző avatárja és felhasználóneve (kattintható → felhasználói profil)
 
 ---
 
-### New Recipe
+### Bejelentkezés
 
-**Route**: `/pages/recipe/new`
-**Auth**: Required
+**Útvonal**: `/pages/login`
+**Hitelesítés**: Nyilvános
 
-Full recipe creation form using the same editor components as the edit page.
-
-**Form Fields**:
-| Field | Component | Required |
-|-------|-----------|----------|
-| Title | `BasicFields` | Yes |
-| Description | `BasicFields` | No |
-| Preparation time | `BasicFields` | Yes (positive integer) |
-| Difficulty | `BasicFields` | Yes (easy/medium/hard) |
-| Image | `ImageUpload` | No |
-| Ingredients | `IngredientsEditor` | No |
-| Steps | `StepsEditor` | No |
-| Categories | `TagCategoryPicker` | No |
-| Tags | `TagCategoryPicker` | No |
-
-On success: redirects to the newly created recipe's detail page.
+- E-mail vagy felhasználónév + jelszó űrlap
+- Kliensoldali validáció (kötelező mezők)
+- Szerverhiba üzenetek magyarra fordítva
+- Inline „Elfelejtett jelszó" folyamat e-mail megadással
+- Sikeres bejelentkezés esetén: JWT tárolása → átirányítás a `/pages/main` oldalra
 
 ---
 
-### Profile
+### Regisztráció
 
-**Route**: `/pages/profile`
-**Auth**: Required
+**Útvonal**: `/pages/register`
+**Hitelesítés**: Nyilvános
 
-#### Profile Card
+- Felhasználónév (min. 3 karakter), e-mail (érvényes formátum), jelszó (min. 8 karakter)
+- Kliensoldali validáció magyar hibaüzenetekkel
+- Sikeres regisztráció esetén: átirányítás a `/pages/login` oldalra
 
-Displays avatar (uploaded image or initial letter), username, email, role badge, bio, and join date.
+---
 
-#### Statistics Card
+### Jelszó-visszaállítás
 
-| Stat         | Description             | Clickable                           |
-| ------------ | ----------------------- | ----------------------------------- |
-| Recipes      | Total recipes created   | Yes → `/pages/profile/recipes`      |
-| Comments     | Total comments          | Yes → `/pages/profile/comments`     |
-| Ratings      | Ratings given           | Yes → `/pages/profile/ratings`      |
-| Favorites    | Saved favorites         | Yes → `/pages/profile/favorites`    |
-| Recipe Books | Created collections     | Yes → `/pages/profile/recipe-books` |
-| Avg. Rating  | Average rating received | No                                  |
+**Útvonal**: `/pages/reset-password?token=<token>`
+**Hitelesítés**: Token-alapú
 
-#### Edit Profile Modal
+- Új jelszó + megerősítés beviteli mezők
+- Token jelenlétének ellenőrzése az URL-ből
+- Megfelelő hibaüzenetek érvénytelen/lejárt tokenekhez
+- Sikeres visszaállítás után 3 másodperces automatikus átirányítás a bejelentkezésre
 
-Update username, bio, and profile image (with crop support).
+---
 
-#### Account Deactivation
+### Recept részletek
 
-"Fiók deaktiválása" button at the bottom → opens modal with:
+**Útvonal**: `/pages/recipe/{recipeId}`
+**Hitelesítés**: Opcionális (több funkció bejelentkezve)
 
-- Warning alert explaining consequences
-- Password confirmation field
-- Deactivates account → clears token → redirects to login
-- Reversible by admin only
+Az alkalmazás legfunkciógazdagabb oldala.
 
-#### Profile Tabs
+#### Tartalom szekciók
 
-Horizontal tab bar present on all profile sub-pages with 6 tabs:
+| Szekció | Leírás |
+|---------|--------|
+| Kiemelt kép | Teljes szélességű receptkép gradiens átfedéssel |
+| Jelvénysor | Nehézségi jelvény + kategória jelvények |
+| Szerzői kártya | Avatár, felhasználónév (link), létrehozási/frissítési dátumok |
+| Leírás | Recept leírás szövege |
+| Hozzávalók | Felsorolás mennyiségekkel és mértékegységekkel |
+| Lépések | Számozott elkészítési lépések |
+| Címkék | Címke jelvények az oldal alján |
+
+#### Interaktív funkciók (hitelesített felhasználóknak)
+
+| Funkció | Komponens | Leírás |
+|---------|-----------|--------|
+| Kedvenc | Szív kapcsoló | `POST`/`DELETE /api/recipes/{id}/favorite` |
+| Mentés könyvbe | `SaveToBookButton` | Modál a recept hozzáadásához egy receptkönyvhöz (inline könyv létrehozással) |
+| Értékelés | `StarRating` | 1-5 csillagos értékelés hover előnézettel, kattintással beállítás, törlési lehetőség |
+| Hozzászólás | `CommentSection` | Teljes hozzászólás CRUD (lásd [Hozzászólás rendszer](#hozzászólás-rendszer)) |
+| Jelentés | `ReportModal` | Recept jelentése moderálásra |
+| Megosztás | `ShareButton` | Recept URL másolása vágólapra |
+| Nyomtatás | `PrintButton` | Nyomtatásra kész HTML generálása és böngésző nyomtatás indítása |
+
+#### Admin funkciók
+
+- **Recept törlése** gomb (piros, megerősítő párbeszédablakkal)
+
+#### Szekció navigáció (`SectionNav`)
+
+Gyors ugrás gombok, amelyek simán görgetnek az egyes szekciókhoz (hozzávalók, lépések, hozzászólások).
+
+#### Görgetés felfelé (`ScrollToTop`)
+
+Lebegő nyíl gomb, amely 400px görgetés után jelenik meg.
+
+---
+
+### Új recept
+
+**Útvonal**: `/pages/recipe/new`
+**Hitelesítés**: Kötelező
+
+Teljes recept létrehozási űrlap, amely ugyanazokat a szerkesztő komponenseket használja, mint a szerkesztés oldal.
+
+**Űrlap mezők**:
+| Mező | Komponens | Kötelező |
+|------|-----------|----------|
+| Cím | `BasicFields` | Igen |
+| Leírás | `BasicFields` | Nem |
+| Elkészítési idő | `BasicFields` | Igen (pozitív egész szám) |
+| Nehézség | `BasicFields` | Igen (easy/medium/hard) |
+| Kép | `ImageUpload` | Nem |
+| Hozzávalók | `IngredientsEditor` | Nem |
+| Lépések | `StepsEditor` | Nem |
+| Kategóriák | `TagCategoryPicker` | Nem |
+| Címkék | `TagCategoryPicker` | Nem |
+
+Sikeres mentés esetén: átirányítás az újonnan létrehozott recept részletoldalára.
+
+---
+
+### Profil
+
+**Útvonal**: `/pages/profile`
+**Hitelesítés**: Kötelező
+
+#### Profilkártya
+
+Avatárt (feltöltött kép vagy kezdőbetű), felhasználónevet, e-mailt, szerep jelvényt, bemutatkozást és regisztráció dátumát jeleníti meg.
+
+#### Statisztikák kártya
+
+| Statisztika | Leírás | Kattintható |
+|-------------|--------|-------------|
+| Receptek | Összes létrehozott recept | Igen → `/pages/profile/recipes` |
+| Hozzászólások | Összes hozzászólás | Igen → `/pages/profile/comments` |
+| Értékelések | Adott értékelések | Igen → `/pages/profile/ratings` |
+| Kedvencek | Mentett kedvencek | Igen → `/pages/profile/favorites` |
+| Receptkönyvek | Létrehozott gyűjtemények | Igen → `/pages/profile/recipe-books` |
+| Átl. értékelés | Kapott átlagos értékelés | Nem |
+
+#### Profil szerkesztése modál
+
+Felhasználónév, bemutatkozás és profilkép frissítése (vágás támogatással).
+
+#### Fiók deaktiválása
+
+„Fiók deaktiválása" gomb az oldal alján → modál megnyitása:
+
+- Figyelmeztető értesítés a következményekről
+- Jelszó megerősítés mező
+- Fiók deaktiválása → token törlése → átirányítás a bejelentkezésre
+- Csak admin által visszafordítható
+
+#### Profil fülek
+
+Vízszintes fülsor, amely minden profil aloldalon megjelenik 6 füllel:
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
@@ -510,359 +510,359 @@ Horizontal tab bar present on all profile sub-pages with 6 tabs:
 └───────────────────────────────────────────────────────────────┘
 ```
 
-Active tab is highlighted based on current `pathname`.
+Az aktív fül az aktuális `pathname` alapján van kiemelve.
 
 ---
 
-### My Recipes
+### Receptjeim
 
-**Route**: `/pages/profile/recipes`
-**Auth**: Required
+**Útvonal**: `/pages/profile/recipes`
+**Hitelesítés**: Kötelező
 
-- Grid of user's own recipes (3 columns on desktop)
-- Each card shows: image, title, difficulty, description, prep time, rating, creation date
-- **Edit** button → navigates to `/pages/profile/recipes/{id}/edit`
-- **Delete** button → confirmation dialog → `DELETE /api/recipes/{id}`
-- Pagination
-
----
-
-### Recipe Edit
-
-**Route**: `/pages/profile/recipes/{recipeId}/edit`
-**Auth**: Required (must be recipe owner)
-
-Same editor UI as the new recipe page, pre-populated with existing data. Uses shared components:
-
-| Component           | Purpose                                            |
-| ------------------- | -------------------------------------------------- |
-| `BasicFields`       | Title, description, prep time, difficulty selector |
-| `IngredientsEditor` | Dynamic ingredient list (add/remove/reorder)       |
-| `StepsEditor`       | Ordered step list (add/remove/reorder)             |
-| `TagCategoryPicker` | Multi-select from available categories and tags    |
-| `ImageUpload`       | Image upload with crop (deferred until save)       |
+- A felhasználó saját receptjeinek rácsa (asztalon 3 oszlop)
+- Minden kártya megjeleníti: kép, cím, nehézség, leírás, elkészítési idő, értékelés, létrehozási dátum
+- **Szerkesztés** gomb → navigáció a `/pages/profile/recipes/{id}/edit` oldalra
+- **Törlés** gomb → megerősítő párbeszédablak → `DELETE /api/recipes/{id}`
+- Lapozás
 
 ---
 
-### Favorites
+### Recept szerkesztése
 
-**Route**: `/pages/profile/favorites`
-**Auth**: Required
+**Útvonal**: `/pages/profile/recipes/{recipeId}/edit`
+**Hitelesítés**: Kötelező (recept tulajdonosnak kell lennie)
 
-- Lists favorited recipes with image, author avatar, "favorited at" timestamp
-- Remove from favorites button per card
-- Pagination
+Ugyanaz a szerkesztő felület, mint az új recept oldalon, a meglévő adatokkal előre kitöltve. Megosztott komponenseket használ:
 
----
-
-### Recipe Books
-
-**Route**: `/pages/profile/recipe-books`
-**Auth**: Required
-
-- Lists user's recipe book collections
-- Each card: name, description, public/private badge, recipe count
-- **Create** button → modal with name (required), description, public toggle
-- **Delete** button → confirmation dialog
-- Pagination
+| Komponens | Cél |
+|-----------|-----|
+| `BasicFields` | Cím, leírás, elkészítési idő, nehézség választó |
+| `IngredientsEditor` | Dinamikus hozzávalólista (hozzáadás/eltávolítás/átrendezés) |
+| `StepsEditor` | Rendezett lépéslista (hozzáadás/eltávolítás/átrendezés) |
+| `TagCategoryPicker` | Többszörös választás az elérhető kategóriák és címkék közül |
+| `ImageUpload` | Képfeltöltés vágással (mentésig késleltetett) |
 
 ---
 
-### Recipe Book Detail
+### Kedvencek
 
-**Route**: `/pages/profile/recipe-books/{bookId}`
-**Auth**: Optional (ownership-aware)
+**Útvonal**: `/pages/profile/favorites`
+**Hitelesítés**: Kötelező
 
-#### Stacked Card Layout
-
-Recipes are displayed in a vertically stacked layout where cards overlap each other:
-
-- Cards use negative margin (`-10rem`) to stack on top of each other
-- Only the top portion (title, difficulty, prep time) peeks out from under the card above
-- **Hover** expands the hovered card — the card below slides down to reveal full content
-- **Click** navigates to the recipe detail page
-- Cards feature full-bleed background images with gradient overlays
-
-#### Card Content
-
-Each `BookRecipeCard` shows:
-
-- Background image with dark gradient overlay
-- Title, difficulty badge, preparation time, rating (top area — always visible)
-- Ingredient badges (up to 8, with "+N" overflow indicator)
-- Author avatar and username
-- Remove button (owner only, appears on hover)
-
-#### Owner vs. Visitor
-
-| Feature        | Owner               | Visitor                   |
-| -------------- | ------------------- | ------------------------- |
-| Edit book      | ✅                  | ❌                        |
-| Remove recipes | ✅                  | ❌                        |
-| Back link      | → Recipe books list | → Owner's profile         |
-| Owner info     | Hidden              | Shown (avatar + username) |
+- Kedvencelt receptek listája képpel, szerző avatárjával, „kedvencnek jelölve" időbélyeggel
+- Kedvencekből eltávolítás gomb kártyánként
+- Lapozás
 
 ---
 
-### My Comments
+### Receptkönyvek
 
-**Route**: `/pages/profile/comments`
-**Auth**: Required
+**Útvonal**: `/pages/profile/recipe-books`
+**Hitelesítés**: Kötelező
 
-- Lists recipes that the user has commented on
-- Clicking a card navigates to `/pages/recipe/{id}#my-comment` (auto-scrolls to their comment)
-- Pagination
-
----
-
-### My Ratings
-
-**Route**: `/pages/profile/ratings`
-**Auth**: Required
-
-- Lists recipes the user has rated
-- Shows user's rating alongside the recipe's average rating
-- Pagination
+- A felhasználó receptkönyv gyűjteményeinek listája
+- Minden kártya: név, leírás, nyilvános/privát jelvény, receptszám
+- **Létrehozás** gomb → modál névvel (kötelező), leírással, nyilvános kapcsolóval
+- **Törlés** gomb → megerősítő párbeszédablak
+- Lapozás
 
 ---
 
-### Public User Profile
+### Receptkönyv részletek
 
-**Route**: `/pages/user/{userId}`
-**Auth**: Optional
+**Útvonal**: `/pages/profile/recipe-books/{bookId}`
+**Hitelesítés**: Opcionális (tulajdonos-tudatos)
 
-- Profile header: avatar, username, bio, join date
-- Stats: recipe count, recipe book count, average rating
-- Two tabs: **Recipes** and **Recipe Books** (public only)
-- Report user button (visible to logged-in users, hidden for own profile)
-- Paginated content in both tabs
+#### Egymásra rakott kártya elrendezés
 
----
+A receptek függőlegesen egymásra rakott elrendezésben jelennek meg, ahol a kártyák átfedik egymást:
 
-## Shared Components
+- A kártyák negatív margót (`-10rem`) használnak az egymásra rakódáshoz
+- Csak a felső rész (cím, nehézség, elkészítési idő) látszik ki a felette lévő kártya alól
+- **Hover** kibővíti a kurzor alatti kártyát — az alatta lévő kártya lecsúszik a teljes tartalom megjelenítéséhez
+- **Kattintás** a recept részletoldalra navigál
+- A kártyák teljes szélességű háttérképeket tartalmaznak gradiens átfedéssel
 
-### Pagination (`app/components/Pagination.tsx`)
+#### Kártya tartalom
 
-Reusable pagination control used across all list pages.
+Minden `BookRecipeCard` megjeleníti:
 
-- "Előző" (Previous) / "Következő" (Next) buttons
-- Smart page number display with ellipsis for large page counts
-- Active page highlighted
-- Props: `page`, `totalPages`, `onPageChange`
+- Háttérkép sötét gradiens átfedéssel
+- Cím, nehézségi jelvény, elkészítési idő, értékelés (felső terület — mindig látható)
+- Hozzávaló jelvények (legfeljebb 8, „+N" túlcsordulás jelzővel)
+- Szerző avatárja és felhasználóneve
+- Eltávolítás gomb (csak tulajdonos, hover-re jelenik meg)
 
-### ReportModal (`app/components/ReportModal.tsx`)
+#### Tulajdonos vs. Látogató
 
-Universal reporting modal for recipes, comments, and users.
-
-- Text area for reason (max 500 characters)
-- Submits to `POST /api/reports`
-- Shows success confirmation after submission
-- Props: `open`, `onClose`, `targetType`, `targetId`, `targetLabel`
-
-### ImageUpload (`app/components/ImageUpload.tsx`)
-
-Reusable image upload component with integrated cropping.
-
-- Supports two modes: `"recipe"` (16:9 aspect ratio) and `"avatar"` (1:1)
-- File validation: JPEG, PNG, or WEBP only, max 5 MB
-- **Deferred upload pattern** — the component exposes an imperative `upload()` method via `ref`. The actual upload to the server only happens when the parent form is saved.
-- Integrates `ImageCropModal` for interactive cropping
-
-### ImageCropModal (`app/components/ImageCropModal.tsx`)
-
-Canvas-based image cropping interface.
-
-- Draggable crop box with corner resize handles
-- Locked aspect ratio (16:9 or 1:1 depending on mode)
-- Outputs cropped image as JPEG blob
-- Interactive preview of the crop result
+| Funkció | Tulajdonos | Látogató |
+|---------|-----------|----------|
+| Könyv szerkesztése | ✅ | ❌ |
+| Receptek eltávolítása | ✅ | ❌ |
+| Vissza link | → Receptkönyvek lista | → Tulajdonos profilja |
+| Tulajdonos info | Rejtett | Megjelenítve (avatár + felhasználónév) |
 
 ---
 
-## Image Upload System
+### Hozzászólásaim
 
-The image upload flow follows a deferred pattern:
+**Útvonal**: `/pages/profile/comments`
+**Hitelesítés**: Kötelező
+
+- Azon receptek listázása, amelyekhez a felhasználó hozzászólt
+- Kártyára kattintás navigáció: `/pages/recipe/{id}#my-comment` (automatikusan a hozzászólásukhoz görget)
+- Lapozás
+
+---
+
+### Értékeléseim
+
+**Útvonal**: `/pages/profile/ratings`
+**Hitelesítés**: Kötelező
+
+- A felhasználó által értékelt receptek listázása
+- A felhasználó értékelése a recept átlagos értékelése mellett megjelenítve
+- Lapozás
+
+---
+
+### Nyilvános felhasználói profil
+
+**Útvonal**: `/pages/user/{userId}`
+**Hitelesítés**: Opcionális
+
+- Profil fejléc: avatár, felhasználónév, bemutatkozás, regisztráció dátuma
+- Statisztikák: receptszám, receptkönyvek száma, átlagos értékelés
+- Két fül: **Receptek** és **Receptkönyvek** (csak nyilvánosak)
+- Felhasználó jelentése gomb (bejelentkezett felhasználóknak látható, saját profilra rejtett)
+- Lapozott tartalom mindkét fülön
+
+---
+
+## Megosztott komponensek
+
+### Lapozó (`app/components/Pagination.tsx`)
+
+Újrafelhasználható lapozó vezérlő, amelyet minden listázó oldalon használnak.
+
+- „Előző" / „Következő" gombok
+- Okos oldalszám megjelenítés ellipszissel nagy oldalszámok esetén
+- Aktív oldal kiemelve
+- Propok: `page`, `totalPages`, `onPageChange`
+
+### Jelentés modál (`app/components/ReportModal.tsx`)
+
+Univerzális jelentési modál receptekhez, hozzászólásokhoz és felhasználókhoz.
+
+- Szövegterület az indokláshoz (max. 500 karakter)
+- Beküldés a `POST /api/reports` végpontra
+- Sikeres beküldés után visszaigazolás megjelenítése
+- Propok: `open`, `onClose`, `targetType`, `targetId`, `targetLabel`
+
+### Képfeltöltés (`app/components/ImageUpload.tsx`)
+
+Újrafelhasználható képfeltöltő komponens integrált vágással.
+
+- Két módot támogat: `"recipe"` (16:9 képarány) és `"avatar"` (1:1)
+- Fájl validáció: csak JPEG, PNG vagy WEBP, max. 5 MB
+- **Késleltetett feltöltési minta** — a komponens imperatív `upload()` metódust tesz elérhetővé `ref`-en keresztül. A tényleges feltöltés a szerverre csak akkor történik meg, amikor a szülő űrlap mentésre kerül.
+- `ImageCropModal` integráció az interaktív vágáshoz
+
+### Képvágó modál (`app/components/ImageCropModal.tsx`)
+
+Canvas-alapú képvágó felület.
+
+- Húzható vágókeret sarok átméretező fogantyúkkal
+- Rögzített képarány (16:9 vagy 1:1 a módtól függően)
+- A vágott képet JPEG blob-ként adja ki
+- A vágási eredmény interaktív előnézete
+
+---
+
+## Képfeltöltési rendszer
+
+A képfeltöltési folyamat késleltetett mintát követ:
 
 ```
-1. User selects file
-2. ImageCropModal opens → user crops image
-3. Cropped image stored locally in component state (as Blob)
-4. User fills out the rest of the form
-5. User clicks "Save"
-6. Parent calls ref.upload() → POST /api/uploads (multipart/form-data)
-7. Server uploads to Cloudinary → returns URL
-8. Parent includes URL in the main save request (recipe/profile)
+1. A felhasználó kiválasztja a fájlt
+2. Az ImageCropModal megnyílik → a felhasználó megvágja a képet
+3. A vágott kép lokálisan a komponens állapotában tárolódik (Blob-ként)
+4. A felhasználó kitölti az űrlap többi részét
+5. A felhasználó a „Mentés"-re kattint
+6. A szülő meghívja a ref.upload()-ot → POST /api/uploads (multipart/form-data)
+7. A szerver feltölti a Cloudinary-ra → URL-t ad vissza
+8. A szülő belefoglalja az URL-t a fő mentési kérésbe (recept/profil)
 ```
 
-This ensures images are only uploaded when the user commits to saving, avoiding orphaned uploads.
+Ez biztosítja, hogy a képek csak akkor kerüljenek feltöltésre, amikor a felhasználó elkötelezi magát a mentés mellett, elkerülve az árva feltöltéseket.
 
 ---
 
-## Comment System
+## Hozzászólás rendszer
 
-### Architecture
+### Architektúra
 
-The comment system is built from several components located in `app/pages/recipe/[recipeId]/components/comments/`:
+A hozzászólás rendszer több komponensből épül fel, amelyek az `app/pages/recipe/[recipeId]/components/comments/` könyvtárban találhatók:
 
-| Component           | Purpose                                                    |
-| ------------------- | ---------------------------------------------------------- |
-| `CommentSection`    | Container: loads comments, manages state, handles CRUD     |
-| `CommentForm`       | Textarea + submit button for new comments                  |
-| `CommentCard`       | Individual comment display with edit/delete/report actions |
-| `CommentPagination` | Pagination specific to comments                            |
-| `commentTypes.ts`   | Shared TypeScript types and helper functions               |
+| Komponens | Cél |
+|-----------|-----|
+| `CommentSection` | Konténer: hozzászólások betöltése, állapotkezelés, CRUD műveletek |
+| `CommentForm` | Szövegterület + beküldés gomb új hozzászólásokhoz |
+| `CommentCard` | Egyéni hozzászólás megjelenítés szerkesztés/törlés/jelentés műveletekkel |
+| `CommentPagination` | Hozzászólás-specifikus lapozás |
+| `commentTypes.ts` | Megosztott TypeScript típusok és segédfüggvények |
 
-### Features
+### Funkciók
 
-- **One comment per user** — if the user has already commented, the form shows an info alert instead
-- **Edit in place** — clicking edit turns the comment into an editable textarea
-- **Soft delete** — deleted comments are marked `is_deleted` but can be seen by admins
-- **Auto-scroll** — navigating with `#my-comment` hash auto-scrolls to and highlights the user's comment
-- **Highlight animation** — the user's own comment gets a pulsing glow effect via `highlightComment` CSS animation
-- **Report** — each comment has a report button opening the `ReportModal`
-- **Ordering** — comments are loaded newest-first (`order=desc`)
-
----
-
-## Recipe Books & Save Flow
-
-### YouTube-Style Inline Creation
-
-The `SaveToBookButton` on the recipe detail page provides a YouTube playlist-style save experience:
-
-1. Click the save button → modal opens listing user's recipe books
-2. Click "Hozzáadás" next to any book → recipe is added
-3. Click "+ Új receptkönyv létrehozása" → inline form appears (no page navigation)
-4. Fill in name, toggle public/private → "Létrehozás és mentés"
-5. New book is created AND recipe is saved in a single flow
-
-### Book Visibility
-
-| Type                         | Visible to |
-| ---------------------------- | ---------- |
-| Public (`is_public: true`)   | Everyone   |
-| Private (`is_public: false`) | Owner only |
-
-Books on other users' profiles show only public books. The API enforces visibility rules — private books return 404 for non-owners.
+- **Felhasználónként egy hozzászólás** — ha a felhasználó már hozzászólt, az űrlap egy tájékoztató üzenetet jelenít meg helyette
+- **Helyben szerkesztés** — a szerkesztésre kattintás szerkeszthető szövegterületté alakítja a hozzászólást
+- **Lágy törlés** — a törölt hozzászólások `is_deleted` jelzőt kapnak, de adminok számára láthatók maradnak
+- **Automatikus görgetés** — a `#my-comment` hash-sel navigálva automatikusan a felhasználó hozzászólásához görget és kiemeli azt
+- **Kiemelés animáció** — a felhasználó saját hozzászólása pulzáló fény effektust kap a `highlightComment` CSS animáción keresztül
+- **Jelentés** — minden hozzászóláshoz tartozik egy jelentés gomb, amely a `ReportModal`-t nyitja meg
+- **Rendezés** — a hozzászólások legújabb-először sorrendben töltődnek be (`order=desc`)
 
 ---
 
-## Reporting System
+## Receptkönyvek és mentési folyamat
 
-Users can report three types of content:
+### YouTube-stílusú inline létrehozás
 
-| Target  | Reported from            | Link provided                   |
-| ------- | ------------------------ | ------------------------------- |
-| Recipe  | Recipe detail page       | Recipe page link                |
-| Comment | Comment card (in recipe) | Recipe page with comment anchor |
-| User    | Public user profile      | User profile link               |
+A `SaveToBookButton` a recept részletoldalon YouTube lejátszási lista stílusú mentési élményt biztosít:
 
-Reports are submitted via `POST /api/reports` with a reason text (max 500 chars). The admin panel provides the review interface (see [ADMIN.md](ADMIN.md)).
+1. A mentés gombra kattintás → modál megnyílik a felhasználó receptkönyveinek listájával
+2. „Hozzáadás" kattintás bármely könyv mellett → a recept hozzáadódik
+3. „+ Új receptkönyv létrehozása" kattintás → inline űrlap jelenik meg (nincs oldal navigáció)
+4. Név kitöltése, nyilvános/privát kapcsoló → „Létrehozás és mentés"
+5. Az új könyv létrejön ÉS a recept mentésre kerül egyetlen folyamatban
 
----
+### Könyv láthatóság
 
-## Responsive Design
+| Típus | Látható |
+|-------|---------|
+| Nyilvános (`is_public: true`) | Mindenki számára |
+| Privát (`is_public: false`) | Csak a tulajdonos számára |
 
-The application uses Tailwind CSS responsive prefixes throughout:
-
-| Breakpoint    | Prefix    | Typical Behavior                                |
-| ------------- | --------- | ----------------------------------------------- |
-| Mobile        | (default) | Single column, hamburger menu, full-width cards |
-| Tablet        | `sm:`     | 2-column grids                                  |
-| Desktop       | `md:`     | Desktop navbar visible, hamburger hidden        |
-| Large desktop | `lg:`     | 3-column grids, admin sidebar visible           |
-
-### Key Responsive Patterns
-
-- **Navbar**: Desktop links hidden below `md:`, hamburger menu shown instead
-- **Recipe grid**: 1 column → 2 columns (`sm:`) → 3 columns (`lg:`)
-- **Profile tabs**: Horizontally scrollable on mobile (`overflow-x-auto`)
-- **Admin layout**: Sidebar hidden below `lg:`, replaced by mobile top bar + slide-out drawer
-- **Forms**: Full-width on mobile, max-width constrained on desktop
+Más felhasználók profiljain a könyvek között csak a nyilvánosak jelennek meg. Az API érvényesíti a láthatósági szabályokat — privát könyvek 404-et adnak vissza nem tulajdonosoknak.
 
 ---
 
-## API Endpoint Reference
+## Jelentési rendszer
 
-Every API endpoint consumed by the frontend, organized by feature area.
+A felhasználók háromféle tartalmat jelenthetnek:
 
-### Authentication
+| Cél | Jelentés helye | Megadott link |
+|-----|---------------|---------------|
+| Recept | Recept részletoldal | Recept oldal link |
+| Hozzászólás | Hozzászólás kártya (receptben) | Recept oldal hozzászólás horgonnyal |
+| Felhasználó | Nyilvános felhasználói profil | Felhasználói profil link |
 
-| Endpoint                    | Method | Used by                                           |
-| --------------------------- | ------ | ------------------------------------------------- |
-| `/api/auth/me`              | GET    | Navbar, Profile, Recipe Detail, Admin, many pages |
-| `/api/auth/login`           | POST   | Login page                                        |
-| `/api/auth/register`        | POST   | Register page                                     |
-| `/api/auth/logout`          | POST   | Navbar                                            |
-| `/api/auth/forgot-password` | POST   | Login page (forgot flow)                          |
-| `/api/auth/reset-password`  | POST   | Reset Password page                               |
+A jelentéseket a `POST /api/reports` végpontra küldik el indoklás szöveggel (max. 500 karakter). Az admin panel biztosítja az elbírálási felületet (lásd [ADMIN.md](ADMIN.md)).
 
-### Recipes
+---
 
-| Endpoint                       | Method       | Used by                                |
-| ------------------------------ | ------------ | -------------------------------------- |
-| `/api/recipes`                 | GET          | Main page (recipe list)                |
-| `/api/recipes`                 | POST         | New Recipe page                        |
-| `/api/recipes/{id}`            | GET          | Recipe Detail page                     |
-| `/api/recipes/{id}`            | PATCH        | Recipe Edit page                       |
-| `/api/recipes/{id}`            | DELETE       | My Recipes page, Recipe Detail (admin) |
-| `/api/recipes/{id}/favorite`   | POST, DELETE | Recipe Detail page                     |
-| `/api/recipes/{id}/ratings/me` | PUT, DELETE  | Recipe Detail page                     |
-| `/api/recipes/{id}/comments`   | GET, POST    | Comment Section                        |
+## Reszponzív dizájn
 
-### Comments
+Az alkalmazás Tailwind CSS reszponzív prefix-eket használ mindenhol:
 
-| Endpoint             | Method | Used by                  |
-| -------------------- | ------ | ------------------------ |
-| `/api/comments/{id}` | PATCH  | Comment editing (inline) |
-| `/api/comments/{id}` | DELETE | Comment deletion         |
+| Töréspont | Prefix | Tipikus viselkedés |
+|-----------|--------|-------------------|
+| Mobil | (alapértelmezett) | Egy oszlop, hamburger menü, teljes szélességű kártyák |
+| Tablet | `sm:` | 2 oszlopos rácsok |
+| Asztali | `md:` | Asztali navigációs sáv látható, hamburger rejtett |
+| Nagy asztali | `lg:` | 3 oszlopos rácsok, admin oldalsáv látható |
 
-### Categories & Tags
+### Fő reszponzív minták
 
-| Endpoint          | Method | Used by                               |
-| ----------------- | ------ | ------------------------------------- |
-| `/api/categories` | GET    | RecipeList filters, TagCategoryPicker |
-| `/api/tags`       | GET    | RecipeList filters, TagCategoryPicker |
+- **Navigációs sáv**: Asztali linkek rejtettek `md:` alatt, helyette hamburger menü
+- **Recept rács**: 1 oszlop → 2 oszlop (`sm:`) → 3 oszlop (`lg:`)
+- **Profil fülek**: Vízszintesen görgethető mobilon (`overflow-x-auto`)
+- **Admin elrendezés**: Oldalsáv rejtett `lg:` alatt, helyette mobil felső sáv + kihúzható fiók
+- **Űrlapok**: Teljes szélességű mobilon, maximális szélességgel korlátozott asztalon
 
-### Users
+---
 
-| Endpoint                       | Method     | Used by                         |
-| ------------------------------ | ---------- | ------------------------------- |
-| `/api/users/{id}`              | GET        | Public User Profile             |
-| `/api/users/{id}/stats`        | GET        | Public User Profile             |
-| `/api/users/{id}/recipes`      | GET        | Public User Profile, My Recipes |
-| `/api/users/{id}/recipe-books` | GET        | Public User Profile             |
-| `/api/users/{id}/comments`     | GET        | My Comments                     |
-| `/api/users/{id}/ratings`      | GET        | My Ratings                      |
-| `/api/users/me`                | GET, PATCH | Profile page                    |
-| `/api/users/me/stats`          | GET        | Profile page                    |
-| `/api/users/me/favorites`      | GET        | Favorites page                  |
-| `/api/users/me/deactivate`     | PATCH      | DeactivateAccountModal          |
+## API végpont referencia
 
-### Recipe Books
+Minden, a frontend által felhasznált API végpont, funkciók szerint csoportosítva.
 
-| Endpoint                                    | Method             | Used by                           |
-| ------------------------------------------- | ------------------ | --------------------------------- |
-| `/api/recipe-books`                         | GET                | Recipe Books page                 |
-| `/api/recipe-books`                         | POST               | CreateBookModal, SaveToBookButton |
-| `/api/recipe-books/{id}`                    | GET, PATCH, DELETE | Book Detail page                  |
-| `/api/recipe-books/{id}/recipes`            | GET, POST          | Book Detail, SaveToBookButton     |
-| `/api/recipe-books/{id}/recipes/{recipeId}` | DELETE             | Book Detail (remove recipe)       |
+### Hitelesítés
 
-### Reports & Uploads
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/auth/me` | GET | Navbar, Profil, Recept részletek, Admin, számos oldal |
+| `/api/auth/login` | POST | Bejelentkezés oldal |
+| `/api/auth/register` | POST | Regisztrációs oldal |
+| `/api/auth/logout` | POST | Navbar |
+| `/api/auth/forgot-password` | POST | Bejelentkezés oldal (elfelejtett jelszó folyamat) |
+| `/api/auth/reset-password` | POST | Jelszó-visszaállítás oldal |
 
-| Endpoint                  | Method | Used by                        |
-| ------------------------- | ------ | ------------------------------ |
-| `/api/reports`            | POST   | ReportModal                    |
-| `/api/uploads`            | POST   | ImageUpload                    |
-| `/api/search/suggestions` | GET    | RecipeList search autocomplete |
+### Receptek
+
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/recipes` | GET | Főoldal (receptlista) |
+| `/api/recipes` | POST | Új recept oldal |
+| `/api/recipes/{id}` | GET | Recept részletek oldal |
+| `/api/recipes/{id}` | PATCH | Recept szerkesztés oldal |
+| `/api/recipes/{id}` | DELETE | Receptjeim oldal, Recept részletek (admin) |
+| `/api/recipes/{id}/favorite` | POST, DELETE | Recept részletek oldal |
+| `/api/recipes/{id}/ratings/me` | PUT, DELETE | Recept részletek oldal |
+| `/api/recipes/{id}/comments` | GET, POST | Hozzászólás szekció |
+
+### Hozzászólások
+
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/comments/{id}` | PATCH | Hozzászólás szerkesztés (inline) |
+| `/api/comments/{id}` | DELETE | Hozzászólás törlés |
+
+### Kategóriák és címkék
+
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/categories` | GET | RecipeList szűrők, TagCategoryPicker |
+| `/api/tags` | GET | RecipeList szűrők, TagCategoryPicker |
+
+### Felhasználók
+
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/users/{id}` | GET | Nyilvános felhasználói profil |
+| `/api/users/{id}/stats` | GET | Nyilvános felhasználói profil |
+| `/api/users/{id}/recipes` | GET | Nyilvános felhasználói profil, Receptjeim |
+| `/api/users/{id}/recipe-books` | GET | Nyilvános felhasználói profil |
+| `/api/users/{id}/comments` | GET | Hozzászólásaim |
+| `/api/users/{id}/ratings` | GET | Értékeléseim |
+| `/api/users/me` | GET, PATCH | Profil oldal |
+| `/api/users/me/stats` | GET | Profil oldal |
+| `/api/users/me/favorites` | GET | Kedvencek oldal |
+| `/api/users/me/deactivate` | PATCH | Fiók deaktiválás modál |
+
+### Receptkönyvek
+
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/recipe-books` | GET | Receptkönyvek oldal |
+| `/api/recipe-books` | POST | Könyv létrehozása modál, SaveToBookButton |
+| `/api/recipe-books/{id}` | GET, PATCH, DELETE | Könyv részletek oldal |
+| `/api/recipe-books/{id}/recipes` | GET, POST | Könyv részletek, SaveToBookButton |
+| `/api/recipe-books/{id}/recipes/{recipeId}` | DELETE | Könyv részletek (recept eltávolítás) |
+
+### Jelentések és feltöltések
+
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/reports` | POST | ReportModal |
+| `/api/uploads` | POST | ImageUpload |
+| `/api/search/suggestions` | GET | RecipeList keresés automatikus kiegészítés |
 
 ### Admin
 
-| Endpoint                          | Method | Used by                        |
-| --------------------------------- | ------ | ------------------------------ |
-| `/api/admin/reports`              | GET    | Admin Dashboard, Admin Reports |
-| `/api/admin/reports/{id}`         | PATCH  | Admin Reports                  |
-| `/api/admin/reports/{id}/actions` | POST   | Admin Reports                  |
-| `/api/admin/users`                | GET    | Admin Dashboard, Admin Users   |
-| `/api/admin/users/{id}`           | PATCH  | Admin Users                    |
+| Végpont | Metódus | Használja |
+|---------|---------|-----------|
+| `/api/admin/reports` | GET | Admin vezérlőpult, Admin jelentések |
+| `/api/admin/reports/{id}` | PATCH | Admin jelentések |
+| `/api/admin/reports/{id}/actions` | POST | Admin jelentések |
+| `/api/admin/users` | GET | Admin vezérlőpult, Admin felhasználók |
+| `/api/admin/users/{id}` | PATCH | Admin felhasználók |

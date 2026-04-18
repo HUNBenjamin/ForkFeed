@@ -1,105 +1,105 @@
 # 🍴 ForkFeed
 
-**ForkFeed** is a full-stack recipe-sharing community platform built as a _Szakvizsgaremek_ (senior thesis project). Users can discover, create, rate, and organize recipes — while admins moderate content through a built-in reporting system.
+A **ForkFeed** egy full-stack receptmegosztó közösségi platform, amely _Szakvizsgaremek_ projektként készült. A felhasználók recepteket fedezhetnek fel, hozhatnak létre, értékelhetnek és rendszerezhetnek — miközben az adminisztrátorok a beépített jelentési rendszeren keresztül moderálják a tartalmat.
 
 ---
 
-## Table of Contents
+## Tartalomjegyzék
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Available Scripts](#available-scripts)
-- [Database](#database)
-- [API Overview](#api-overview)
-- [Backend Documentation](#backend-documentation)
-- [Frontend Documentation](#frontend-documentation)
-- [Admin Panel Documentation](#admin-panel-documentation)
-
----
-
-## Features
-
-### For Users
-
-- **Authentication** — Register, log in, log out, change password, and reset forgotten passwords via email
-- **Recipe Management** — Create, edit, and delete your own recipes with ingredients, steps, categories, and tags
-- **Image Uploads** — Upload recipe and avatar images (stored on Cloudinary with automatic resizing)
-- **Ratings & Comments** — Rate recipes (1–5 stars) and leave comments
-- **Favorites** — Save recipes to your personal favorites list
-- **Recipe Books** — Organize recipes into custom collections (public or private), clone other users' public books
-- **Search & Discovery** — Browse recipes with filtering (difficulty, category), sorting (rating, date, prep time), and autocomplete suggestions
-- **User Profiles** — View profiles, stats, recipes, and activity of any user
-- **Account Management** — Update profile info (username, bio, avatar), deactivate account
-
-### For Admins
-
-- **User Management** — List, filter, activate/deactivate users, promote/demote roles
-- **Report System** — Review user-submitted reports on recipes/comments, take action (delete content, warn users)
-- **Content Moderation** — Hard-delete comments, manage categories and tags
+- [Funkciók](#funkciók)
+- [Technológiai stack](#technológiai-stack)
+- [Projekt struktúra](#projekt-struktúra)
+- [Első lépések](#első-lépések)
+- [Környezeti változók](#környezeti-változók)
+- [Elérhető szkriptek](#elérhető-szkriptek)
+- [Adatbázis](#adatbázis)
+- [API áttekintés](#api-áttekintés)
+- [Backend dokumentáció](#backend-dokumentáció)
+- [Frontend dokumentáció](#frontend-dokumentáció)
+- [Admin panel dokumentáció](#admin-panel-dokumentáció)
 
 ---
 
-## Tech Stack
+## Funkciók
 
-| Layer             | Technology                                                                     |
+### Felhasználóknak
+
+- **Hitelesítés** — Regisztráció, bejelentkezés, kijelentkezés, jelszó módosítás és elfelejtett jelszó visszaállítása e-mailben
+- **Receptkezelés** — Saját receptek létrehozása, szerkesztése és törlése hozzávalókkal, lépésekkel, kategóriákkal és címkékkel
+- **Képfeltöltés** — Recept- és avatárképek feltöltése (Cloudinary-n tárolva, automatikus átméretezéssel)
+- **Értékelések és hozzászólások** — Receptek értékelése (1–5 csillag) és hozzászólások írása
+- **Kedvencek** — Receptek mentése a személyes kedvencek listájára
+- **Receptkönyvek** — Receptek rendszerezése egyéni gyűjteményekbe (nyilvános vagy privát), más felhasználók nyilvános könyveinek klónozása
+- **Keresés és felfedezés** — Receptek böngészése szűréssel (nehézség, kategória), rendezéssel (értékelés, dátum, elkészítési idő) és automatikus kiegészítő javaslatokkal
+- **Felhasználói profilok** — Bármely felhasználó profiljának, statisztikáinak, receptjeinek és tevékenységének megtekintése
+- **Fiókkezelés** — Profil adatok frissítése (felhasználónév, bemutatkozás, avatár), fiók deaktiválása
+
+### Adminisztrátoroknak
+
+- **Felhasználókezelés** — Felhasználók listázása, szűrése, aktiválása/deaktiválása, szerepkörök előléptetése/visszaminősítése
+- **Jelentési rendszer** — Felhasználói jelentések elbírálása receptekről/hozzászólásokról, intézkedés (tartalom törlése, felhasználók figyelmeztetése)
+- **Tartalom moderálás** — Hozzászólások végleges törlése, kategóriák és címkék kezelése
+
+---
+
+## Technológiai stack
+
+| Réteg             | Technológia                                                                    |
 | ----------------- | ------------------------------------------------------------------------------ |
-| **Framework**     | [Next.js 16](https://nextjs.org/) (App Router)                                 |
-| **Language**      | [TypeScript 5](https://www.typescriptlang.org/)                                |
-| **Database**      | [MongoDB](https://www.mongodb.com/)                                            |
+| **Keretrendszer** | [Next.js 16](https://nextjs.org/) (App Router)                                 |
+| **Nyelv**         | [TypeScript 5](https://www.typescriptlang.org/)                                |
+| **Adatbázis**     | [MongoDB](https://www.mongodb.com/)                                            |
 | **ORM**           | [Prisma 6](https://www.prisma.io/)                                             |
-| **Styling**       | [Tailwind CSS 4](https://tailwindcss.com/) + [DaisyUI 5](https://daisyui.com/) |
-| **Image Storage** | [Cloudinary](https://cloudinary.com/)                                          |
-| **Auth**          | JWT (jsonwebtoken) with token denylist                                         |
-| **Email**         | [Nodemailer](https://nodemailer.com/) (SMTP)                                   |
+| **Stílusok**      | [Tailwind CSS 4](https://tailwindcss.com/) + [DaisyUI 5](https://daisyui.com/) |
+| **Képtárolás**    | [Cloudinary](https://cloudinary.com/)                                          |
+| **Hitelesítés**   | JWT (jsonwebtoken) token tiltólistával                                         |
+| **E-mail**        | [Nodemailer](https://nodemailer.com/) (SMTP)                                   |
 | **Linting**       | ESLint 9 + typescript-eslint                                                   |
-| **Formatting**    | Prettier 3                                                                     |
+| **Formázás**      | Prettier 3                                                                     |
 
 ---
 
-## Project Structure
+## Projekt struktúra
 
 ```
 ForkFeed/
 ├── app/
-│   ├── layout.tsx              # Root layout (HTML shell, lang="hu")
-│   ├── page.tsx                # Root page → redirects to /pages/main
-│   ├── globals.css             # Global Tailwind styles
+│   ├── layout.tsx              # Gyökér elrendezés (HTML váz, lang="hu")
+│   ├── page.tsx                # Gyökér oldal → átirányít a /pages/main-re
+│   ├── globals.css             # Globális Tailwind stílusok
 │   ├── api/                    # ← REST API (Next.js Route Handlers)
-│   │   ├── auth/               #   Authentication endpoints
-│   │   ├── recipes/            #   Recipe CRUD + sub-resources
-│   │   ├── categories/         #   Category management
-│   │   ├── tags/               #   Tag management
-│   │   ├── comments/           #   Comment editing/deletion
-│   │   ├── users/              #   Public profiles + authenticated user
-│   │   ├── recipe-books/       #   Recipe book collections
-│   │   ├── reports/            #   User reports
-│   │   ├── admin/              #   Admin-only moderation
-│   │   ├── uploads/            #   Image upload
-│   │   ├── search/             #   Autocomplete suggestions
-│   │   ├── meta/               #   Enum values (difficulties, roles)
-│   │   └── health/             #   Health check
-│   ├── pages/                  # ← Frontend pages
-│   │   ├── main/               #   Home / recipe feed
-│   │   ├── login/              #   Login page
-│   │   ├── register/           #   Registration page
-│   │   ├── reset-password/     #   Password reset page
-│   │   ├── recipe/             #   Recipe detail + create new
-│   │   ├── profile/            #   Authenticated user's profile
-│   │   └── user/               #   Public user profile
-│   ├── components/             # Shared UI components
-│   └── prisma/                 # Generated Prisma client (auto-generated)
+│   │   ├── auth/               #   Hitelesítési végpontok
+│   │   ├── recipes/            #   Recept CRUD + al-erőforrások
+│   │   ├── categories/         #   Kategória kezelés
+│   │   ├── tags/               #   Címke kezelés
+│   │   ├── comments/           #   Hozzászólás szerkesztés/törlés
+│   │   ├── users/              #   Nyilvános profilok + hitelesített felhasználó
+│   │   ├── recipe-books/       #   Receptkönyv gyűjtemények
+│   │   ├── reports/            #   Felhasználói jelentések
+│   │   ├── admin/              #   Csak admin moderáció
+│   │   ├── uploads/            #   Képfeltöltés
+│   │   ├── search/             #   Automatikus kiegészítő javaslatok
+│   │   ├── meta/               #   Enum értékek (nehézségek, szerepkörök)
+│   │   └── health/             #   Állapot ellenőrzés
+│   ├── pages/                  # ← Frontend oldalak
+│   │   ├── main/               #   Főoldal / recept feed
+│   │   ├── login/              #   Bejelentkezés oldal
+│   │   ├── register/           #   Regisztráció oldal
+│   │   ├── reset-password/     #   Jelszó visszaállítás oldal
+│   │   ├── recipe/             #   Recept részletek + új létrehozása
+│   │   ├── profile/            #   Hitelesített felhasználó profilja
+│   │   └── user/               #   Nyilvános felhasználói profil
+│   ├── components/             # Megosztott UI komponensek
+│   └── prisma/                 # Generált Prisma kliens (automatikusan generált)
 ├── lib/
-│   ├── auth.ts                 # JWT sign/verify, token denylist, auth helpers
-│   ├── prisma.ts               # Singleton Prisma client
-│   └── cloudinary.ts           # Cloudinary upload/delete helpers
+│   ├── auth.ts                 # JWT aláírás/ellenőrzés, token tiltólista, auth segédfüggvények
+│   ├── prisma.ts               # Singleton Prisma kliens
+│   └── cloudinary.ts           # Cloudinary feltöltés/törlés segédfüggvények
 ├── prisma/
-│   └── schema.prisma           # Database schema definition
-├── data/                       # Seed data (JSON) + test files
-├── dataPlans/                  # Sample data plans
-├── documentation/              # Detailed backend documentation
+│   └── schema.prisma           # Adatbázis séma definíció
+├── data/                       # Seed adatok (JSON) + teszt fájlok
+├── dataPlans/                  # Minta adat tervek
+├── documentation/              # Részletes dokumentáció
 ├── package.json
 ├── next.config.ts
 ├── tsconfig.json
@@ -110,45 +110,45 @@ ForkFeed/
 
 ---
 
-## Getting Started
+## Első lépések
 
-### Prerequisites
+### Előfeltételek
 
 - **Node.js** ≥ 18
-- **MongoDB** instance (local or cloud — e.g. MongoDB Atlas)
-- **Cloudinary** account (for image uploads)
-- _(Optional)_ SMTP credentials for password reset emails
+- **MongoDB** példány (helyi vagy felhő — pl. MongoDB Atlas)
+- **Cloudinary** fiók (képfeltöltéshez)
+- _(Opcionális)_ SMTP hitelesítő adatok jelszó-visszaállító e-mailekhez
 
-### Installation
+### Telepítés
 
 ```bash
-# 1. Clone the repository
+# 1. Repository klónozása
 git clone <repository-url>
 cd ForkFeed
 
-# 2. Install dependencies
+# 2. Függőségek telepítése
 npm install
 
-# 3. Copy and configure environment variables
-#    (see Environment Variables section below)
+# 3. Környezeti változók másolása és konfigurálása
+#    (lásd a Környezeti változók szekciót lentebb)
 
-# 4. Generate Prisma client
+# 4. Prisma kliens generálása
 npx prisma generate
 
-# 5. Start the development server
+# 5. Fejlesztői szerver indítása
 npm run dev
 ```
 
-The app will be available at **http://localhost:8080**.
+Az alkalmazás elérhető lesz a **http://localhost:8080** címen.
 
 ---
 
-## Environment Variables
+## Környezeti változók
 
-Create a `.env` file in the project root:
+Hozz létre egy `.env` fájlt a projekt gyökerében:
 
 ```env
-# Database
+# Adatbázis
 DATABASE_URL="mongodb+srv://<user>:<password>@<cluster>/<database>?retryWrites=true&w=majority"
 
 # JWT
@@ -159,7 +159,7 @@ CLOUDINARY_CLOUD_NAME="your-cloud-name"
 CLOUDINARY_API_KEY="your-api-key"
 CLOUDINARY_API_SECRET="your-api-secret"
 
-# SMTP (for password reset emails)
+# SMTP (jelszó-visszaállító e-mailekhez)
 SMTP_HOST="smtp.gmail.com"
 SMTP_PORT=587
 SMTP_SECURE=false
@@ -167,94 +167,94 @@ SMTP_USER="your-email@gmail.com"
 SMTP_PASS="your-app-password"
 SMTP_FROM="\"ForkFeed\" <your-email@gmail.com>"
 
-# App URL (used in password reset emails)
+# Alkalmazás URL (jelszó-visszaállító e-mailekben használva)
 NEXT_PUBLIC_APP_URL="http://localhost:8080"
 ```
 
 ---
 
-## Available Scripts
+## Elérhető szkriptek
 
-| Script          | Command              | Description                                   |
-| --------------- | -------------------- | --------------------------------------------- |
-| **dev**         | `npm run dev`        | Start dev server on port 8080                 |
-| **build**       | `npm run build`      | Generate Prisma client + build for production |
-| **start**       | `npm start`          | Start production server                       |
-| **lint**        | `npm run lint`       | Run ESLint                                    |
-| **format**      | `npm run format`     | Check formatting with Prettier                |
-| **format:fix**  | `npm run format:fix` | Auto-fix formatting                           |
-| **postinstall** | _(automatic)_        | Generates Prisma client after `npm install`   |
-
----
-
-## Database
-
-ForkFeed uses **MongoDB** with **Prisma ORM**. The schema defines 14 models:
-
-| Model                | Description                                 |
-| -------------------- | ------------------------------------------- |
-| `User`               | User accounts with roles (user/admin)       |
-| `Recipe`             | Recipes with soft-delete support            |
-| `Ingredient`         | Recipe ingredients (name, quantity, unit)   |
-| `Step`               | Ordered preparation steps                   |
-| `Category`           | Recipe categories                           |
-| `Tag`                | Recipe tags                                 |
-| `RecipeCategory`     | Many-to-many: Recipe ↔ Category             |
-| `RecipeTag`          | Many-to-many: Recipe ↔ Tag                  |
-| `RecipeBook`         | User-created recipe collections             |
-| `RecipeBookRecipe`   | Many-to-many: RecipeBook ↔ Recipe           |
-| `Comment`            | Recipe comments with soft-delete            |
-| `Rating`             | User ratings (1–5, one per user per recipe) |
-| `Favorite`           | User favorites (one per user per recipe)    |
-| `Report`             | Content reports (recipe/comment)            |
-| `PasswordResetToken` | Time-limited password reset tokens          |
-| `DenylistedToken`    | Invalidated JWT tokens                      |
+| Szkript         | Parancs              | Leírás                                       |
+| --------------- | -------------------- | -------------------------------------------- |
+| **dev**         | `npm run dev`        | Fejlesztői szerver indítása a 8080-as porton |
+| **build**       | `npm run build`      | Prisma kliens generálás + éles build         |
+| **start**       | `npm start`          | Éles szerver indítása                        |
+| **lint**        | `npm run lint`       | ESLint futtatása                             |
+| **format**      | `npm run format`     | Formázás ellenőrzése Prettier-rel            |
+| **format:fix**  | `npm run format:fix` | Formázás automatikus javítása                |
+| **postinstall** | _(automatikus)_      | Prisma kliens generálása `npm install` után  |
 
 ---
 
-## API Overview
+## Adatbázis
 
-The backend exposes **54 API endpoints** organized as Next.js Route Handlers under `/app/api/`. All endpoints return JSON.
+A ForkFeed **MongoDB**-t használ **Prisma ORM**-mel. A séma 14 modellt definiál:
 
-| Domain         | Base Path             | Endpoints                                                                             |
-| -------------- | --------------------- | ------------------------------------------------------------------------------------- |
-| Authentication | `/api/auth/*`         | Login, register, logout, me, change/reset password                                    |
-| Recipes        | `/api/recipes/*`      | Full CRUD + ratings, comments, steps, ingredients, favorites, image, categories, tags |
-| Categories     | `/api/categories/*`   | List, create, update, delete                                                          |
-| Tags           | `/api/tags/*`         | List, create, update, delete                                                          |
-| Comments       | `/api/comments/*`     | Edit, delete                                                                          |
-| Users          | `/api/users/*`        | Public profiles, stats, activity                                                      |
-| Current User   | `/api/users/me/*`     | Profile, stats, favorites, deactivation                                               |
-| Recipe Books   | `/api/recipe-books/*` | CRUD, clone, manage recipes                                                           |
-| Reports        | `/api/reports/*`      | Create and list own reports                                                           |
-| Admin          | `/api/admin/*`        | User management, report review, content moderation                                    |
-| Uploads        | `/api/uploads`        | Image upload to Cloudinary                                                            |
-| Search         | `/api/search/*`       | Autocomplete suggestions                                                              |
-| Meta           | `/api/meta/*`         | Difficulty levels, user roles                                                         |
-| Health         | `/api/health`         | Database health check                                                                 |
-
-> **For the complete API reference with request/response details, see [documentation/BACKEND.md](documentation/BACKEND.md).**
+| Modell               | Leírás                                                 |
+| -------------------- | ------------------------------------------------------ |
+| `User`               | Felhasználói fiókok szerepkörökkel (user/admin)        |
+| `Recipe`             | Receptek lágy törlés támogatással                      |
+| `Ingredient`         | Recept hozzávalók (név, mennyiség, mértékegység)       |
+| `Step`               | Sorrendezett elkészítési lépések                       |
+| `Category`           | Recept kategóriák                                      |
+| `Tag`                | Recept címkék                                          |
+| `RecipeCategory`     | Több-a-többhöz: Recept ↔ Kategória                     |
+| `RecipeTag`          | Több-a-többhöz: Recept ↔ Címke                         |
+| `RecipeBook`         | Felhasználó által létrehozott receptgyűjtemények       |
+| `RecipeBookRecipe`   | Több-a-többhöz: Receptkönyv ↔ Recept                   |
+| `Comment`            | Recept hozzászólások lágy törléssel                    |
+| `Rating`             | Felhasználói értékelések (1–5, egy/felhasználó/recept) |
+| `Favorite`           | Felhasználói kedvencek (egy/felhasználó/recept)        |
+| `Report`             | Tartalomjelentések (recept/hozzászólás)                |
+| `PasswordResetToken` | Időkorlátos jelszó-visszaállító tokenek                |
+| `DenylistedToken`    | Érvénytelenített JWT tokenek                           |
 
 ---
 
-## Backend Documentation
+## API áttekintés
 
-The full backend documentation — including every endpoint's method, URL, request body, query parameters, response format, authentication requirements, and error codes — is available in:
+A backend **54 API végpontot** biztosít, Next.js Route Handler-ként szervezve az `/app/api/` alatt. Minden végpont JSON-t ad vissza.
+
+| Terület        | Alap útvonal          | Végpontok                                                                                         |
+| -------------- | --------------------- | ------------------------------------------------------------------------------------------------- |
+| Hitelesítés    | `/api/auth/*`         | Bejelentkezés, regisztráció, kijelentkezés, profil, jelszó módosítás/visszaállítás                |
+| Receptek       | `/api/recipes/*`      | Teljes CRUD + értékelések, hozzászólások, lépések, hozzávalók, kedvencek, kép, kategóriák, címkék |
+| Kategóriák     | `/api/categories/*`   | Listázás, létrehozás, frissítés, törlés                                                           |
+| Címkék         | `/api/tags/*`         | Listázás, létrehozás, frissítés, törlés                                                           |
+| Hozzászólások  | `/api/comments/*`     | Szerkesztés, törlés                                                                               |
+| Felhasználók   | `/api/users/*`        | Nyilvános profilok, statisztikák, tevékenység                                                     |
+| Aktuális felh. | `/api/users/me/*`     | Profil, statisztikák, kedvencek, deaktiválás                                                      |
+| Receptkönyvek  | `/api/recipe-books/*` | CRUD, klónozás, receptek kezelése                                                                 |
+| Jelentések     | `/api/reports/*`      | Saját jelentések létrehozása és listázása                                                         |
+| Admin          | `/api/admin/*`        | Felhasználókezelés, jelentések elbírálása, tartalom moderálás                                     |
+| Feltöltések    | `/api/uploads`        | Képfeltöltés Cloudinary-ra                                                                        |
+| Keresés        | `/api/search/*`       | Automatikus kiegészítő javaslatok                                                                 |
+| Meta           | `/api/meta/*`         | Nehézségi szintek, felhasználói szerepkörök                                                       |
+| Állapot        | `/api/health`         | Adatbázis állapot ellenőrzés                                                                      |
+
+> **A teljes API referenciáért kérés/válasz részletekkel lásd: [documentation/BACKEND.md](documentation/BACKEND.md).**
+
+---
+
+## Backend dokumentáció
+
+A teljes backend dokumentáció — beleértve minden végpont metódusát, URL-jét, kérés törzsét, lekérdezési paramétereit, válasz formátumát, hitelesítési követelményeit és hibakódjait — elérhető itt:
 
 📄 **[documentation/BACKEND.md](documentation/BACKEND.md)**
 
 ---
 
-## Frontend Documentation
+## Frontend dokumentáció
 
-The full frontend documentation — covering page structure, components, navigation, theming, authentication flow, image upload system, comment system, recipe books, and responsive design — is available in:
+A teljes frontend dokumentáció — az oldalstruktúrát, komponenseket, navigációt, témázást, hitelesítési folyamatot, képfeltöltő rendszert, hozzászólás rendszert, receptkönyveket és reszponzív dizájnt lefedve — elérhető itt:
 
 📄 **[documentation/FRONTEND.md](documentation/FRONTEND.md)**
 
 ---
 
-## Admin Panel Documentation
+## Admin panel dokumentáció
 
-The admin panel documentation — covering the dashboard, report management, user management, moderation workflows, self-protection mechanisms, and all admin API endpoints — is available in:
+Az admin panel dokumentáció — a vezérlőpultot, jelentéskezelést, felhasználókezelést, moderációs munkafolyamatokat, önvédelmi mechanizmusokat és az összes admin API végpontot lefedve — elérhető itt:
 
 📄 **[documentation/ADMIN.md](documentation/ADMIN.md)**

@@ -1,87 +1,87 @@
-# ForkFeed — Admin Panel Documentation
+# ForkFeed — Admin panel dokumentáció
 
-This document provides a comprehensive reference for the ForkFeed admin panel, covering architecture, access control, all admin pages, moderation workflows, and the underlying API endpoints.
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Access Control](#access-control)
-- [Layout & Navigation](#layout--navigation)
-- [Dashboard](#dashboard)
-- [Report Management](#report-management)
-  - [Report Lifecycle](#report-lifecycle)
-  - [Comment Preview](#comment-preview)
-  - [Available Actions](#available-actions)
-- [User Management](#user-management)
-  - [Filtering & Search](#filtering--search)
-  - [User Actions](#user-actions)
-  - [Self-Protection](#self-protection)
-- [Admin API Endpoints](#admin-api-endpoints)
-  - [Reports API](#reports-api)
-  - [Users API](#users-api)
-- [Moderation Workflows](#moderation-workflows)
+Ez a dokumentum átfogó referenciát nyújt a ForkFeed admin panelhez, beleértve az architektúrát, hozzáférés-vezérlést, az összes admin oldalt, moderációs munkafolyamatokat és az alapjául szolgáló API végpontokat.
 
 ---
 
-## Overview
+## Tartalomjegyzék
 
-The ForkFeed admin panel is a dedicated interface for platform administrators to moderate content and manage users. It is accessible at `/pages/admin` and provides three main sections:
-
-| Section   | Route                  | Purpose                                  |
-| --------- | ---------------------- | ---------------------------------------- |
-| Dashboard | `/pages/admin`         | Overview statistics and recent activity  |
-| Reports   | `/pages/admin/reports` | Review and act on user-submitted reports |
-| Users     | `/pages/admin/users`   | Search, filter, and manage user accounts |
-
-The admin panel uses a **separate layout** from the main application, with its own sidebar navigation and mobile drawer — completely independent from the main navbar.
+- [Áttekintés](#áttekintés)
+- [Hozzáférés-vezérlés](#hozzáférés-vezérlés)
+- [Elrendezés és navigáció](#elrendezés-és-navigáció)
+- [Vezérlőpult](#vezérlőpult)
+- [Jelentéskezelés](#jelentéskezelés)
+  - [Jelentés életciklus](#jelentés-életciklus)
+  - [Hozzászólás előnézet](#hozzászólás-előnézet)
+  - [Elérhető műveletek](#elérhető-műveletek)
+- [Felhasználókezelés](#felhasználókezelés)
+  - [Szűrés és keresés](#szűrés-és-keresés)
+  - [Felhasználói műveletek](#felhasználói-műveletek)
+  - [Önvédelem](#önvédelem)
+- [Admin API végpontok](#admin-api-végpontok)
+  - [Jelentések API](#jelentések-api)
+  - [Felhasználók API](#felhasználók-api)
+- [Moderációs munkafolyamatok](#moderációs-munkafolyamatok)
 
 ---
 
-## Access Control
+## Áttekintés
 
-### Authentication Guard
+A ForkFeed admin panel egy dedikált felület a platform adminisztrátorai számára a tartalom moderálásához és a felhasználók kezeléséhez. A `/pages/admin` útvonalon érhető el, és három fő szekciót tartalmaz:
 
-The admin layout (`app/pages/admin/layout.tsx`) implements a strict access control flow:
+| Szekció | Útvonal | Cél |
+|---------|---------|-----|
+| Vezérlőpult | `/pages/admin` | Áttekintő statisztikák és legutóbbi tevékenység |
+| Jelentések | `/pages/admin/reports` | Felhasználói jelentések elbírálása és kezelése |
+| Felhasználók | `/pages/admin/users` | Felhasználói fiókok keresése, szűrése és kezelése |
+
+Az admin panel **külön elrendezést** használ a fő alkalmazástól, saját oldalsáv navigációval és mobil fiókkal — teljesen független a fő navigációs sávtól.
+
+---
+
+## Hozzáférés-vezérlés
+
+### Hitelesítési védelem
+
+Az admin elrendezés (`app/pages/admin/layout.tsx`) szigorú hozzáférés-vezérlési folyamatot valósít meg:
 
 ```
-1. On mount, check localStorage for JWT token
-2. If no token → redirect to /pages/login
-3. Fetch GET /api/auth/me with the token
-4. If response fails or user.role !== "admin" → redirect to /pages/main
-5. If admin → render the admin interface
+1. Betöltéskor ellenőrzi a localStorage-ban a JWT tokent
+2. Ha nincs token → átirányítás a /pages/login oldalra
+3. GET /api/auth/me lekérése a tokennel
+4. Ha a válasz sikertelen vagy user.role !== "admin" → átirányítás a /pages/main oldalra
+5. Ha admin → az admin felület megjelenítése
 ```
 
-A loading spinner is shown while the auth check is in progress.
+A hitelesítési ellenőrzés alatt egy betöltési animáció jelenik meg.
 
-### Server-Side Enforcement
+### Szerveroldali végrehajtás
 
-All admin API endpoints use the `requireAdmin()` helper from `lib/auth.ts`, which:
+Minden admin API végpont a `requireAdmin()` segédfüggvényt használja a `lib/auth.ts`-ből, amely:
 
-1. Validates the JWT token
-2. Checks that the token is not deny-listed
-3. Verifies that the user's role is `"admin"`
-4. Returns `401` (no token), `403` (not admin), or the authenticated payload
+1. Validálja a JWT tokent
+2. Ellenőrzi, hogy a token nincs-e tiltólistán
+3. Ellenőrzi, hogy a felhasználó szerepköre `"admin"`-e
+4. `401`-et (nincs token), `403`-at (nem admin) vagy a hitelesített payload-ot adja vissza
 
-Both client-side and server-side checks are applied — the client-side guard prevents UI access, while the server-side guard prevents unauthorized API calls.
+Kliens- és szerveroldali ellenőrzés egyaránt alkalmazásra kerül — a kliensoldali védelem megakadályozza a felhasználói felülethez való hozzáférést, míg a szerveroldali védelem megakadályozza az engedély nélküli API hívásokat.
 
-### Admin Role Assignment
+### Admin szerepkör kiosztása
 
-Admin roles are managed through the admin users page. The first admin must be assigned directly in the database. After that, existing admins can promote other users to admin role.
+Az admin szerepköröket az admin felhasználókezelő oldalon keresztül kezelik. Az első admint közvetlenül az adatbázisban kell kijelölni. Ezt követően a meglévő adminok előléptethetnek más felhasználókat admin szerepkörbe.
 
 ---
 
-## Layout & Navigation
+## Elrendezés és navigáció
 
-### Desktop Layout
+### Asztali elrendezés
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │ ┌──────────┐ ┌─────────────────────────────────────────────────┐ │
 │ │          │ │                                                 │ │
 │ │  🍴      │ │                                                 │ │
-│ │ ForkFeed │ │              Page Content                       │ │
+│ │ ForkFeed │ │              Oldal tartalom                     │ │
 │ │ Admin    │ │                                                 │ │
 │ │          │ │                                                 │ │
 │ │ ■ Átteki │ │                                                 │ │
@@ -95,247 +95,247 @@ Admin roles are managed through the admin users page. The first admin must be as
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-- **Sidebar** (264px wide): Fixed left panel with logo, nav links, theme toggle, and user avatar
-- **Content area**: Flexible main content region
-- **Active nav link**: Highlighted with primary color background
+- **Oldalsáv** (264px széles): Fix bal oldali panel logóval, navigációs linkekkel, téma kapcsolóval és felhasználói avatárral
+- **Tartalom terület**: Rugalmas fő tartalom régió
+- **Aktív navigációs link**: Elsődleges szín háttérrel kiemelve
 
-### Mobile Layout
+### Mobil elrendezés
 
-- **Top bar**: Hamburger button (left), "🍴 Admin" title (center), theme toggle (right)
-- **Slide-out drawer**: Same sidebar content, opens from left with dark overlay backdrop
-- **Content**: Full-width below the top bar (with `pt-14` padding for the fixed header)
+- **Felső sáv**: Hamburger gomb (bal), "🍴 Admin" cím (közép), téma kapcsoló (jobb)
+- **Kihúzható fiók**: Ugyanaz az oldalsáv tartalom, balról nyílik sötét átfedés háttérrel
+- **Tartalom**: Teljes szélességű a felső sáv alatt (`pt-14` kitöltéssel a fix fejléchez)
 
-### Sidebar Navigation Links
+### Oldalsáv navigációs linkek
 
-| Icon  | Label        | Route                  | Active Matching  |
-| ----- | ------------ | ---------------------- | ---------------- |
-| Grid  | Áttekintés   | `/pages/admin`         | Exact match only |
-| Flag  | Jelentések   | `/pages/admin/reports` | Prefix match     |
-| Users | Felhasználók | `/pages/admin/users`   | Prefix match     |
+| Ikon | Címke | Útvonal | Aktív egyezés |
+|------|-------|---------|---------------|
+| Rács | Áttekintés | `/pages/admin` | Csak pontos egyezés |
+| Zászló | Jelentések | `/pages/admin/reports` | Prefix egyezés |
+| Felhasználók | Felhasználók | `/pages/admin/users` | Prefix egyezés |
 
-### Sidebar Footer
+### Oldalsáv lábléc
 
-- Theme toggle (light/dark mode switcher)
-- User profile link with avatar (image or initial letter) and username
-- Links to `/pages/profile`
-
----
-
-## Dashboard
-
-**Route**: `/pages/admin`
-
-The dashboard provides a quick overview of platform activity.
-
-### Statistics Cards
-
-Four stat cards displayed in a 2×2 grid (4 columns on large screens):
-
-| Card                               | Color            | Value Source                                                         | Clickable                                   |
-| ---------------------------------- | ---------------- | -------------------------------------------------------------------- | ------------------------------------------- |
-| Függő jelentések (Pending reports) | Warning (yellow) | `GET /api/admin/reports?status=pending&limit=1` → `pagination.total` | Yes → `/pages/admin/reports?status=pending` |
-| Összes jelentés (Total reports)    | Primary (blue)   | `GET /api/admin/reports?limit=1` → `pagination.total`                | No                                          |
-| Összes felhasználó (Total users)   | Primary (blue)   | `GET /api/admin/users?limit=1` → `pagination.total`                  | No                                          |
-| Aktív felhasználó (Active users)   | Success (green)  | `GET /api/admin/users?is_active=true&limit=1` → `pagination.total`   | No                                          |
-
-> **Note**: The dashboard uses `limit=1` requests intentionally — it only needs the `pagination.total` count from each response, not the actual data.
-
-### Recent Reports Table
-
-A table showing the 5 most recent reports with columns:
-
-| Column    | Description                                    |
-| --------- | ---------------------------------------------- |
-| ID        | Report ID (links to reports page)              |
-| Típus     | Target type badge (Recept/Komment/Felhasználó) |
-| Indok     | Report reason text (truncated)                 |
-| Bejelentő | Reporter username (links to reports page)      |
-| Státusz   | Color-coded status badge                       |
-| Dátum     | Submission date (Hungarian locale)             |
-
-If no reports exist, a "Nincsenek jelentések." empty state is shown.
+- Téma kapcsoló (világos/sötét mód váltó)
+- Felhasználói profil link avatárral (kép vagy kezdőbetű) és felhasználónévvel
+- A `/pages/profile` oldalra mutat
 
 ---
 
-## Report Management
+## Vezérlőpult
 
-**Route**: `/pages/admin/reports`
+**Útvonal**: `/pages/admin`
 
-The reports page is the primary moderation interface for reviewing user-submitted content reports.
+A vezérlőpult gyors áttekintést nyújt a platform tevékenységéről.
 
-### Filtering
+### Statisztikai kártyák
 
-Two filter dropdowns at the top:
+Négy statisztikai kártya 2×2-es rácsban (nagy képernyőn 4 oszlop):
 
-| Filter | Options                                         | Default            |
-| ------ | ----------------------------------------------- | ------------------ |
-| Status | Minden státusz, Függőben, Elfogadva, Elutasítva | Függőben (pending) |
-| Type   | Minden típus, Recept, Komment, Felhasználó      | All types          |
+| Kártya | Szín | Érték forrása | Kattintható |
+|--------|------|--------------|-------------|
+| Függő jelentések | Figyelmeztető (sárga) | `GET /api/admin/reports?status=pending&limit=1` → `pagination.total` | Igen → `/pages/admin/reports?status=pending` |
+| Összes jelentés | Elsődleges (kék) | `GET /api/admin/reports?limit=1` → `pagination.total` | Nem |
+| Összes felhasználó | Elsődleges (kék) | `GET /api/admin/users?limit=1` → `pagination.total` | Nem |
+| Aktív felhasználó | Sikeres (zöld) | `GET /api/admin/users?is_active=true&limit=1` → `pagination.total` | Nem |
 
-Changing filters immediately refreshes the list (resets to page 1).
+> **Megjegyzés**: A vezérlőpult szándékosan `limit=1` kéréseket használ — csak a `pagination.total` értékre van szüksége minden válaszból, nem a tényleges adatokra.
 
-### Report Cards
+### Legutóbbi jelentések táblázat
 
-Each report is rendered as a card with a color-coded left border:
+Táblázat az 5 legutóbbi jelentéssel, oszlopok:
 
-| Status   | Border Color     |
-| -------- | ---------------- |
-| Pending  | Warning (yellow) |
-| Accepted | Success (green)  |
-| Rejected | Base-300 (gray)  |
+| Oszlop | Leírás |
+|--------|--------|
+| ID | Jelentés azonosító (linkek a jelentések oldalra) |
+| Típus | Cél típus jelvény (Recept/Komment/Felhasználó) |
+| Indok | Jelentés indoklás szövege (levágva) |
+| Bejelentő | Bejelentő felhasználóneve (linkek a jelentések oldalra) |
+| Státusz | Színkódolt státusz jelvény |
+| Dátum | Beküldés dátuma (magyar lokál) |
 
-#### Card Header Content
+Ha nincsenek jelentések, a „Nincsenek jelentések." üres állapot jelenik meg.
 
-- **Report ID** — mono-styled `#123`
-- **Status badge** — color-coded (warning/success/ghost)
-- **Target type badge** — outlined (Recept/Komment/Felhasználó)
-- **Target link** — for recipes: link to recipe page; for comments: link to recipe page with comment; for users: no direct link here (available in actions)
-- **Reason text** — the full report reason
-- **Metadata row** — Reporter username (clickable to user profile), submission date, reviewer name (if reviewed)
-- **Expand/collapse chevron** — toggles the action panel
+---
 
-### Comment Preview
+## Jelentéskezelés
 
-When a report targets a comment (`target_type === "comment"`), the card displays an inline preview:
+**Útvonal**: `/pages/admin/reports`
+
+A jelentések oldal az elsődleges moderációs felület a felhasználók által beküldött tartalomjelentések elbírálásához.
+
+### Szűrés
+
+Két szűrő legördülő a tetején:
+
+| Szűrő | Lehetőségek | Alapértelmezett |
+|-------|-------------|-----------------|
+| Státusz | Minden státusz, Függőben, Elfogadva, Elutasítva | Függőben (pending) |
+| Típus | Minden típus, Recept, Komment, Felhasználó | Minden típus |
+
+A szűrők módosítása azonnal frissíti a listát (visszaállítja az 1. oldalra).
+
+### Jelentés kártyák
+
+Minden jelentés kártyaként jelenik meg színkódolt bal szegéllyel:
+
+| Státusz | Szegély szín |
+|---------|-------------|
+| Függőben | Figyelmeztető (sárga) |
+| Elfogadva | Sikeres (zöld) |
+| Elutasítva | Base-300 (szürke) |
+
+#### Kártya fejléc tartalom
+
+- **Jelentés azonosító** — mono-stílusú `#123`
+- **Státusz jelvény** — színkódolt (warning/success/ghost)
+- **Cél típus jelvény** — körvonalazott (Recept/Komment/Felhasználó)
+- **Cél link** — recepteknél: link a recept oldalra; hozzászólásoknál: link a recept oldalra a hozzászólással; felhasználóknál: itt nincs közvetlen link (a műveletekben elérhető)
+- **Indoklás szöveg** — a teljes jelentés indoklás
+- **Metaadat sor** — Bejelentő felhasználóneve (kattintható a felhasználó profiljára), beküldés dátuma, elbíráló neve (ha elbírálva)
+- **Kinyitás/összecsukás ikon** — a művelet panel megjelenítése/elrejtése
+
+### Hozzászólás előnézet
+
+Ha egy jelentés hozzászólást céloz meg (`target_type === "comment"`), a kártya inline előnézetet jelenít meg:
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  [username]                        [Törölve]    │
-│  "The actual comment content text here..."      │
+│  [felhasználónév]                  [Törölve]    │
+│  "A tényleges hozzászólás szövege itt..."       │
 └─────────────────────────────────────────────────┘
 ```
 
-- Displayed in a rounded box with `bg-base-200` background
-- If the comment is already deleted (`is_deleted: true`): red-tinted background with "Törölve" (Deleted) badge
-- Author username is clickable (links to user profile)
-- Comment text shown in italics with quotation marks
+- Lekerekített dobozban jelenik meg `bg-base-200` háttérrel
+- Ha a hozzászólás már törölve van (`is_deleted: true`): vörös árnyalatú háttér „Törölve" jelvénnyel
+- A szerző felhasználóneve kattintható (a felhasználó profiljára mutat)
+- A hozzászólás szövege dőlt betűvel és idézőjelekkel jelenik meg
 
-The comment data is fetched server-side by the API — the reports endpoint enriches comment-type reports with the actual comment content, author info, recipe ID, and deletion status.
+A hozzászólás adatait az API szerveroldali lekéréssel gazdagítja — a jelentések végpont a hozzászólás típusú jelentéseket kiegészíti a tényleges hozzászólás tartalmával, szerző adataival, recept azonosítóval és törlési státusszal.
 
-### Report Lifecycle
+### Jelentés életciklus
 
 ```
-                    ┌─────────┐
-                    │ Pending │  ← Initial state
-                    └────┬────┘
+                    ┌──────────┐
+                    │ Függőben │  ← Kezdeti állapot
+                    └────┬─────┘
                     ╱         ╲
-              ┌────▼───┐  ┌───▼─────┐
-              │Accepted│  │Rejected │
-              └────┬───┘  └───┬─────┘
-                   │          │
-                   └──────────┘
+              ┌────▼────┐  ┌───▼──────┐
+              │Elfogadva│  │Elutasítva│
+              └────┬────┘  └───┬──────┘
+                   │           │
+                   └───────────┘
                         │
                    ↩ Újranyitás
-                   (Reopen → Pending)
+                   (Újranyitás → Függőben)
 ```
 
-Any closed report can be reopened back to "Pending" status.
+Bármely lezárt jelentés újranyitható „Függőben" státuszra.
 
-### Available Actions
+### Elérhető műveletek
 
-The action panel is revealed by clicking the expand chevron on each report card.
+A művelet panel a jelentés kártya kinyitás ikonjára kattintva jelenik meg.
 
-| Action                             | Button         | Availability             | Description                                       |
-| ---------------------------------- | -------------- | ------------------------ | ------------------------------------------------- |
-| Elfogadás (Accept)                 | ✓ green        | Pending only             | Sets status to `accepted`                         |
-| Elutasítás (Reject)                | ✕ ghost        | Pending only             | Sets status to `rejected`                         |
-| Tartalom törlése (Delete content)  | 🗑️ red outline | Recipe & Comment reports | Soft-deletes the target (sets `is_deleted: true`) |
-| Felhasználó kezelése (Manage user) | 👤 outline     | User reports             | Links to `/pages/admin/users?highlight={userId}`  |
-| Újranyitás (Reopen)                | ↩ ghost        | Accepted/Rejected only   | Resets status to `pending`                        |
+| Művelet | Gomb | Elérhetőség | Leírás |
+|---------|------|-------------|--------|
+| Elfogadás | ✓ zöld | Csak függőben | Státuszt `accepted` értékre állítja |
+| Elutasítás | ✕ ghost | Csak függőben | Státuszt `rejected` értékre állítja |
+| Tartalom törlése | 🗑️ piros körvonal | Recept és hozzászólás jelentések | A cél lágy törlése (`is_deleted: true` beállítása) |
+| Felhasználó kezelése | 👤 körvonal | Felhasználó jelentések | Navigáció: `/pages/admin/users?highlight={userId}` |
+| Újranyitás | ↩ ghost | Csak elfogadva/elutasítva | Státuszt `pending` értékre állítja |
 
-#### Content Deletion Flow
+#### Tartalom törlési folyamat
 
-1. Admin clicks "Tartalom törlése"
-2. Browser `confirm()` dialog: "Biztosan törlöd a bejelentett tartalmat?"
-3. If confirmed: `POST /api/admin/reports/{id}/actions` with `{ action: "delete_target" }`
-4. Server soft-deletes the comment or recipe (`is_deleted: true`)
-5. Report list is refreshed
-
----
-
-## User Management
-
-**Route**: `/pages/admin/users`
-
-The users page provides a searchable, filterable table of all registered users.
-
-### Filtering & Search
-
-Three filter controls:
-
-| Control | Type       | Options                                        |
-| ------- | ---------- | ---------------------------------------------- |
-| Search  | Text input | Searches username and email (case-insensitive) |
-| Role    | Dropdown   | Minden szerep, Felhasználó (user), Admin       |
-| Status  | Dropdown   | Minden státusz, Aktív, Inaktív                 |
-
-Changing any filter resets to page 1 and refreshes the list.
-
-### User Table
-
-| Column         | Content                                                                |
-| -------------- | ---------------------------------------------------------------------- |
-| Felhasználó    | Avatar (image or initial letter) + username + `#id`                    |
-| Email          | Email address                                                          |
-| Szerep         | Role badge — `admin` (primary color) or `user` (ghost)                 |
-| Státusz        | Active badge (success = "Aktív") or inactive badge (error = "Inaktív") |
-| Regisztráció   | Registration date (Hungarian locale)                                   |
-| Utolsó belépés | Last login date or "—" if never logged in                              |
-| Műveletek      | Action controls (see below)                                            |
-
-### User Actions
-
-Each user row has two action controls:
-
-#### Role Change
-
-- **Dropdown select** with options: `user`, `admin`
-- Selecting a different role triggers a `confirm()` dialog
-- On confirmation: `PATCH /api/admin/users/{userId}` with `{ role: "newRole" }`
-- Table refreshes after successful change
-
-#### Ban/Unban Toggle
-
-- **Active users**: Red "Tiltás" (Ban) button → sets `is_active: false`
-- **Inactive users**: Green "Aktiválás" (Activate) button → sets `is_active: true`
-- Both trigger `confirm()` dialogs before execution
-- On confirmation: `PATCH /api/admin/users/{userId}` with `{ is_active: true/false }`
-
-### Self-Protection
-
-The admin panel implements safeguards to prevent administrators from accidentally locking themselves out:
-
-| Protection             | Implementation                                                        |
-| ---------------------- | --------------------------------------------------------------------- |
-| Cannot change own role | Role dropdown is **disabled** for the current admin's row             |
-| Cannot ban self        | Ban button is **disabled** for the current admin's row                |
-| Server-side check      | API returns `400: "Cannot deactivate your own account."` if attempted |
-
-The current admin's user ID is fetched on mount via `GET /api/auth/me` and compared against each row's ID. Matching rows show disabled controls with reduced opacity.
+1. Az admin a „Tartalom törlése" gombra kattint
+2. Böngésző `confirm()` párbeszédablak: „Biztosan törlöd a bejelentett tartalmat?"
+3. Ha megerősítve: `POST /api/admin/reports/{id}/actions` `{ action: "delete_target" }` törzzsel
+4. A szerver lágy törli a hozzászólást vagy receptet (`is_deleted: true`)
+5. A jelentéslista frissül
 
 ---
 
-## Admin API Endpoints
+## Felhasználókezelés
 
-### Reports API
+**Útvonal**: `/pages/admin/users`
 
-#### List Reports
+A felhasználók oldal kereshető, szűrhető táblázatot biztosít az összes regisztrált felhasználóról.
+
+### Szűrés és keresés
+
+Három szűrő vezérlő:
+
+| Vezérlő | Típus | Lehetőségek |
+|---------|-------|-------------|
+| Keresés | Szöveg beviteli mező | Keresés felhasználónév és e-mail alapján (kis-nagybetű érzéketlen) |
+| Szerep | Legördülő | Minden szerep, Felhasználó (user), Admin |
+| Státusz | Legördülő | Minden státusz, Aktív, Inaktív |
+
+Bármely szűrő módosítása visszaállítja az 1. oldalra és frissíti a listát.
+
+### Felhasználói táblázat
+
+| Oszlop | Tartalom |
+|--------|----------|
+| Felhasználó | Avatár (kép vagy kezdőbetű) + felhasználónév + `#id` |
+| Email | E-mail cím |
+| Szerep | Szerep jelvény — `admin` (elsődleges szín) vagy `user` (ghost) |
+| Státusz | Aktív jelvény (sikeres = „Aktív") vagy inaktív jelvény (hiba = „Inaktív") |
+| Regisztráció | Regisztráció dátuma (magyar lokál) |
+| Utolsó belépés | Utolsó bejelentkezés dátuma vagy „—" ha soha nem lépett be |
+| Műveletek | Művelet vezérlők (lásd alább) |
+
+### Felhasználói műveletek
+
+Minden felhasználó sorban két művelet vezérlő található:
+
+#### Szerepkör módosítás
+
+- **Legördülő választó** a `user`, `admin` lehetőségekkel
+- Eltérő szerepkör kiválasztása `confirm()` párbeszédablakot indít
+- Megerősítés esetén: `PATCH /api/admin/users/{userId}` `{ role: "newRole" }` törzzsel
+- A táblázat frissül a sikeres módosítás után
+
+#### Tiltás/Aktiválás kapcsoló
+
+- **Aktív felhasználók**: Piros „Tiltás" gomb → `is_active: false` beállítása
+- **Inaktív felhasználók**: Zöld „Aktiválás" gomb → `is_active: true` beállítása
+- Mindkettő `confirm()` párbeszédablakot indít végrehajtás előtt
+- Megerősítés esetén: `PATCH /api/admin/users/{userId}` `{ is_active: true/false }` törzzsel
+
+### Önvédelem
+
+Az admin panel biztonsági intézkedéseket valósít meg, hogy megakadályozza az adminisztrátorokat abban, hogy véletlenül kizárják magukat:
+
+| Védelem | Megvalósítás |
+|---------|-------------|
+| Nem módosíthatja saját szerepkörét | A szerepkör legördülő **letiltva** az aktuális admin sorában |
+| Nem tilthatja ki saját magát | A tiltás gomb **letiltva** az aktuális admin sorában |
+| Szerveroldali ellenőrzés | Az API `400: "Cannot deactivate your own account."` hibát ad vissza, ha megpróbálnák |
+
+Az aktuális admin felhasználó azonosítóját betöltéskor a `GET /api/auth/me` végpontról kéri le, és összehasonlítja minden sor azonosítójával. Az egyező sorok letiltott vezérlőket jelenítenek meg csökkentett átlátszósággal.
+
+---
+
+## Admin API végpontok
+
+### Jelentések API
+
+#### Jelentések listázása
 
 ```
 GET /api/admin/reports
 ```
 
-**Query Parameters**:
+**Lekérdezési paraméterek**:
 
-| Parameter     | Type    | Default | Description                                         |
-| ------------- | ------- | ------- | --------------------------------------------------- |
-| `page`        | integer | 1       | Page number                                         |
-| `limit`       | integer | 20      | Items per page (max 50)                             |
-| `status`      | string  | —       | Filter by status: `pending`, `accepted`, `rejected` |
-| `target_type` | string  | —       | Filter by type: `recipe`, `comment`, `user`         |
-| `reported_by` | integer | —       | Filter by reporter user ID                          |
+| Paraméter | Típus | Alapértelmezett | Leírás |
+|-----------|-------|-----------------|--------|
+| `page` | integer | 1 | Oldalszám |
+| `limit` | integer | 20 | Elemek oldalanként (max. 50) |
+| `status` | string | — | Szűrés státusz alapján: `pending`, `accepted`, `rejected` |
+| `target_type` | string | — | Szűrés típus alapján: `recipe`, `comment`, `user` |
+| `reported_by` | integer | — | Szűrés bejelentő felhasználó azonosítója alapján |
 
-**Response**:
+**Válasz**:
 
 ```json
 {
@@ -362,23 +362,23 @@ GET /api/admin/reports
 }
 ```
 
-> **Note**: The `comment` field is only present for reports where `target_type === "comment"`. It is enriched server-side by batch-fetching the referenced comments.
+> **Megjegyzés**: A `comment` mező csak azoknál a jelentéseknél van jelen, ahol `target_type === "comment"`. Szerveroldali kötegelt lekéréssel gazdagítják a hivatkozott hozzászólásokkal.
 
-#### Get Single Report
+#### Egyetlen jelentés lekérése
 
 ```
 GET /api/admin/reports/{reportId}
 ```
 
-Returns a single report with reporter and reviewer details.
+Egyetlen jelentést ad vissza a bejelentő és elbíráló adataival.
 
-#### Update Report Status
+#### Jelentés státusz frissítése
 
 ```
 PATCH /api/admin/reports/{reportId}
 ```
 
-**Request Body**:
+**Kérés törzs**:
 
 ```json
 {
@@ -386,15 +386,15 @@ PATCH /api/admin/reports/{reportId}
 }
 ```
 
-Sets `reviewed_by` to the current admin's ID and `reviewed_at` to the current timestamp.
+A `reviewed_by` mezőt az aktuális admin azonosítójára, a `reviewed_at` mezőt az aktuális időbélyegre állítja.
 
-#### Execute Report Action
+#### Jelentés művelet végrehajtása
 
 ```
 POST /api/admin/reports/{reportId}/actions
 ```
 
-**Request Body**:
+**Kérés törzs**:
 
 ```json
 {
@@ -402,34 +402,34 @@ POST /api/admin/reports/{reportId}/actions
 }
 ```
 
-**Actions**:
+**Műveletek**:
 
-| Action          | `target_type` | Effect                                         |
-| --------------- | ------------- | ---------------------------------------------- |
-| `delete_target` | `comment`     | Sets `is_deleted: true` on the comment         |
-| `delete_target` | `recipe`      | Sets `is_deleted: true` on the recipe          |
-| `delete_target` | `user`        | Not supported (returns 422)                    |
-| `warn_user`     | any           | Placeholder — acknowledged but no action taken |
+| Művelet | `target_type` | Hatás |
+|---------|---------------|-------|
+| `delete_target` | `comment` | `is_deleted: true` beállítása a hozzászólásra |
+| `delete_target` | `recipe` | `is_deleted: true` beállítása a receptre |
+| `delete_target` | `user` | Nem támogatott (422-t ad vissza) |
+| `warn_user` | bármely | Helyőrző — tudomásul veszi, de nem hajt végre műveletet |
 
-### Users API
+### Felhasználók API
 
-#### List Users
+#### Felhasználók listázása
 
 ```
 GET /api/admin/users
 ```
 
-**Query Parameters**:
+**Lekérdezési paraméterek**:
 
-| Parameter   | Type    | Default | Description                                     |
-| ----------- | ------- | ------- | ----------------------------------------------- |
-| `page`      | integer | 1       | Page number                                     |
-| `limit`     | integer | 20      | Items per page (max 50)                         |
-| `query`     | string  | —       | Search in username and email (case-insensitive) |
-| `role`      | string  | —       | Filter by role: `user`, `admin`                 |
-| `is_active` | string  | —       | Filter by status: `true`, `false`               |
+| Paraméter | Típus | Alapértelmezett | Leírás |
+|-----------|-------|-----------------|--------|
+| `page` | integer | 1 | Oldalszám |
+| `limit` | integer | 20 | Elemek oldalanként (max. 50) |
+| `query` | string | — | Keresés felhasználónév és e-mail alapján (kis-nagybetű érzéketlen) |
+| `role` | string | — | Szűrés szerep alapján: `user`, `admin` |
+| `is_active` | string | — | Szűrés státusz alapján: `true`, `false` |
 
-**Response**:
+**Válasz**:
 
 ```json
 {
@@ -451,13 +451,13 @@ GET /api/admin/users
 }
 ```
 
-#### Update User
+#### Felhasználó frissítése
 
 ```
 PATCH /api/admin/users/{userId}
 ```
 
-**Request Body** (all fields optional, at least one required):
+**Kérés törzs** (minden mező opcionális, legalább egy kötelező):
 
 ```json
 {
@@ -466,66 +466,66 @@ PATCH /api/admin/users/{userId}
 }
 ```
 
-**Server-side protections**:
+**Szerveroldali védelem**:
 
-- Cannot set `is_active: false` on your own account (returns 400)
-- Invalid roles return 400
-- Non-boolean `is_active` returns 400
+- Saját fiókra nem állítható `is_active: false` (400-at ad vissza)
+- Érvénytelen szerepkörök 400-at adnak vissza
+- Nem logikai `is_active` 400-at ad vissza
 
 ---
 
-## Moderation Workflows
+## Moderációs munkafolyamatok
 
-### Handling a Reported Comment
-
-```
-1. Navigate to /pages/admin/reports (default filter: Pending)
-2. Find comment report → read the reason and inline comment preview
-3. Decide:
-   a. Legitimate report:
-      - Click expand → "Elfogadás" (Accept)
-      - If content violates rules: "Tartalom törlése" (Delete content)
-   b. False report:
-      - Click expand → "Elutasítás" (Reject)
-4. Report is moved to accepted/rejected list
-```
-
-### Handling a Reported Recipe
+### Bejelentett hozzászólás kezelése
 
 ```
-1. Find recipe report → click "megtekintése ↗" to view the recipe in a new tab
-2. Review the recipe content
-3. Accept/reject the report
-4. Optionally delete the recipe via "Tartalom törlése"
+1. Navigáció: /pages/admin/reports (alapértelmezett szűrő: Függőben)
+2. Hozzászólás jelentés megkeresése → indoklás és inline hozzászólás előnézet olvasása
+3. Döntés:
+   a. Jogos jelentés:
+      - Kinyitás → „Elfogadás"
+      - Ha a tartalom megsérti a szabályokat: „Tartalom törlése"
+   b. Hamis jelentés:
+      - Kinyitás → „Elutasítás"
+4. A jelentés az elfogadott/elutasított listába kerül
 ```
 
-### Handling a Reported User
+### Bejelentett recept kezelése
 
 ```
-1. Find user report → read the reason
-2. Click expand → "Felhasználó kezelése" → navigates to user management page
-3. Find the user in the table
-4. Take action: change role or ban the user
-5. Return to reports → accept/reject the report
+1. Recept jelentés megkeresése → „megtekintése ↗" kattintás a recept megtekintéséhez új lapon
+2. A recept tartalmának áttekintése
+3. Jelentés elfogadása/elutasítása
+4. Opcionálisan a recept törlése a „Tartalom törlése" gombbal
 ```
 
-### Banning a User
+### Bejelentett felhasználó kezelése
 
 ```
-1. Navigate to /pages/admin/users
-2. Search for the user by name or email
-3. Click "Tiltás" (Ban) in the user's row
-4. Confirm in the dialog
-5. User is immediately banned (is_active: false)
-6. Banned users cannot log in (login returns 403)
+1. Felhasználó jelentés megkeresése → indoklás olvasása
+2. Kinyitás → „Felhasználó kezelése" → navigáció a felhasználókezelő oldalra
+3. A felhasználó megkeresése a táblázatban
+4. Művelet végrehajtása: szerepkör módosítás vagy felhasználó tiltása
+5. Visszatérés a jelentésekhez → jelentés elfogadása/elutasítása
 ```
 
-### Promoting a User to Admin
+### Felhasználó tiltása
 
 ```
-1. Navigate to /pages/admin/users
-2. Find the user
-3. Change role dropdown from "user" to "admin"
-4. Confirm in the dialog
-5. User now has admin access (effective on next page load)
+1. Navigáció: /pages/admin/users
+2. A felhasználó megkeresése név vagy e-mail alapján
+3. „Tiltás" kattintás a felhasználó sorában
+4. Megerősítés a párbeszédablakban
+5. A felhasználó azonnal tiltásra kerül (is_active: false)
+6. A tiltott felhasználók nem tudnak bejelentkezni (bejelentkezés 403-at ad vissza)
+```
+
+### Felhasználó előléptetése adminná
+
+```
+1. Navigáció: /pages/admin/users
+2. A felhasználó megkeresése
+3. Szerep legördülő módosítása „user"-ről „admin"-ra
+4. Megerősítés a párbeszédablakban
+5. A felhasználó innentől admin hozzáféréssel rendelkezik (következő oldalbetöltéstől érvényes)
 ```

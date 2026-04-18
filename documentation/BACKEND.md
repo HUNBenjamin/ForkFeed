@@ -1,118 +1,118 @@
-# ForkFeed — Backend Documentation
+# ForkFeed — Backend dokumentáció
 
-This document provides a comprehensive reference for the ForkFeed REST API backend, covering architecture, authentication, database schema, every API endpoint, error handling, and utility libraries.
+Ez a dokumentum átfogó referenciát nyújt a ForkFeed REST API backendhez, beleértve az architektúrát, hitelesítést, adatbázissémát, minden API végpontot, hibakezelést és segédkönyvtárakat.
 
 ---
 
-## Table of Contents
+## Tartalomjegyzék
 
-- [Architecture Overview](#architecture-overview)
-- [Technology Stack](#technology-stack)
-- [Authentication & Authorization](#authentication--authorization)
-- [Database Schema](#database-schema)
-- [Utility Libraries](#utility-libraries)
-- [API Endpoints](#api-endpoints)
-  - [Health](#health)
-  - [Authentication](#authentication)
-  - [Recipes](#recipes)
-  - [Recipe Sub-Resources](#recipe-sub-resources)
-  - [Categories](#categories)
-  - [Tags](#tags)
-  - [Comments](#comments)
-  - [Users (Public)](#users-public)
-  - [Users (Authenticated — /me)](#users-authenticated--me)
-  - [Recipe Books](#recipe-books)
-  - [Reports](#reports)
+- [Architektúra áttekintés](#architektúra-áttekintés)
+- [Technológiai stack](#technológiai-stack)
+- [Hitelesítés és jogosultságkezelés](#hitelesítés-és-jogosultságkezelés)
+- [Adatbázisséma](#adatbázisséma)
+- [Segédkönyvtárak](#segédkönyvtárak)
+- [API végpontok](#api-végpontok)
+  - [Állapotjelző](#állapotjelző)
+  - [Hitelesítés](#hitelesítés)
+  - [Receptek](#receptek)
+  - [Recept al-erőforrások](#recept-al-erőforrások)
+  - [Kategóriák](#kategóriák)
+  - [Címkék](#címkék)
+  - [Hozzászólások](#hozzászólások)
+  - [Felhasználók (nyilvános)](#felhasználók-nyilvános)
+  - [Felhasználók (hitelesített — /me)](#felhasználók-hitelesített--me)
+  - [Receptkönyvek](#receptkönyvek)
+  - [Jelentések](#jelentések)
   - [Admin](#admin)
-  - [Uploads](#uploads)
-  - [Search](#search)
+  - [Feltöltések](#feltöltések)
+  - [Keresés](#keresés)
   - [Meta](#meta)
-- [Error Handling](#error-handling)
-- [Endpoint Summary Table](#endpoint-summary-table)
+- [Hibakezelés](#hibakezelés)
+- [Végpont összefoglaló táblázat](#végpont-összefoglaló-táblázat)
 
 ---
 
-## Architecture Overview
+## Architektúra áttekintés
 
-ForkFeed's backend is built entirely with **Next.js 16 App Router** using **Route Handlers** (`route.ts` files). There is no separate backend server — all API routes live under `app/api/` and are deployed as serverless functions alongside the frontend.
+A ForkFeed backendje teljes egészében **Next.js 16 App Router** használatával készült, **Route Handler**-ek (`route.ts` fájlok) segítségével. Nincs külön backend szerver — minden API útvonal az `app/api/` könyvtár alatt található, és a frontenddel együtt serverless függvényekként kerülnek telepítésre.
 
-### Key Design Decisions
+### Fő tervezési döntések
 
-- **Runtime**: All API routes explicitly set `export const runtime = "nodejs"` to ensure Node.js APIs (crypto, Buffer) are available (as opposed to the Edge runtime).
-- **No middleware file**: Authentication is handled per-route by calling helper functions from `lib/auth.ts`. There is no global `middleware.ts`.
-- **Soft deletes**: Recipes and comments use an `is_deleted` boolean flag rather than being permanently removed. Admin endpoints exist for hard deletion.
-- **Sequential IDs**: User, Recipe, and other primary models use sequential integer IDs (auto-incremented by finding the max existing ID + 1) instead of MongoDB's default ObjectId. Join tables (`RecipeCategory`, `RecipeTag`, `RecipeBookRecipe`, `PasswordResetToken`, `DenylistedToken`) use auto-generated ObjectIds.
-- **Pagination**: All list endpoints support `page` and `limit` query parameters (defaults: `page=1`, `limit=20`). Responses include a `pagination` object with `page`, `limit`, `total`, and `totalPages`.
+- **Futtatókörnyezet**: Minden API útvonal explicit módon beállítja az `export const runtime = "nodejs"` értéket, hogy biztosítsa a Node.js API-k (crypto, Buffer) elérhetőségét (az Edge futtatókörnyezettel szemben).
+- **Nincs middleware fájl**: A hitelesítést útvonalonként kezelik a `lib/auth.ts` segédfüggvényeinek hívásával. Nincs globális `middleware.ts`.
+- **Lágy törlés**: A receptek és hozzászólások `is_deleted` logikai jelzőt használnak a végleges eltávolítás helyett. Admin végpontok léteznek a végleges törléshez.
+- **Szekvenciális azonosítók**: A felhasználó, recept és más fő modellek szekvenciális egész szám azonosítókat használnak (automatikusan növekszik a meglévő maximum ID + 1 megtalálásával) a MongoDB alapértelmezett ObjectId-ja helyett. A kapcsolótáblák (`RecipeCategory`, `RecipeTag`, `RecipeBookRecipe`, `PasswordResetToken`, `DenylistedToken`) automatikusan generált ObjectId-kat használnak.
+- **Lapozás**: Minden listázó végpont támogatja a `page` és `limit` lekérdezési paramétereket (alapértékek: `page=1`, `limit=20`). A válaszok tartalmaznak egy `pagination` objektumot a `page`, `limit`, `total` és `totalPages` mezőkkel.
 
-### Request/Response Format
+### Kérés/Válasz formátum
 
-- All request bodies are **JSON** (except file uploads which use `multipart/form-data`).
-- All responses are **JSON** (`application/json`).
-- Successful responses return the resource or a `{ message: "..." }` confirmation.
-- Error responses return `{ error: "Human-readable message." }`.
-
----
-
-## Technology Stack
-
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| Runtime | Node.js 18+ | Server-side JavaScript execution |
-| Framework | Next.js 16 (App Router) | Route handlers, SSR, static generation |
-| Language | TypeScript 5 | Type safety |
-| Database | MongoDB | Document database |
-| ORM | Prisma 6 | Type-safe database access, schema management |
-| Auth | jsonwebtoken (JWT) | Stateless authentication |
-| Password Hashing | Node.js `crypto.scryptSync` | Secure password hashing with random salt |
-| Image Storage | Cloudinary SDK v2 | Image upload, transformation, and CDN |
-| Email | Nodemailer | SMTP email delivery (password reset) |
+- Minden kéréstörzs **JSON** (kivéve a fájlfeltöltéseket, amelyek `multipart/form-data` formátumot használnak).
+- Minden válasz **JSON** (`application/json`).
+- Sikeres válaszok az erőforrást vagy egy `{ message: "..." }` megerősítést adnak vissza.
+- Hibaválaszok `{ error: "Ember által olvasható üzenet." }` formátumot adnak vissza.
 
 ---
 
-## Authentication & Authorization
+## Technológiai stack
 
-### JWT-Based Authentication
+| Komponens | Technológia | Cél |
+|-----------|-------------|-----|
+| Futtatókörnyezet | Node.js 18+ | Szerveroldali JavaScript végrehajtás |
+| Keretrendszer | Next.js 16 (App Router) | Route handlerek, SSR, statikus generálás |
+| Nyelv | TypeScript 5 | Típusbiztonság |
+| Adatbázis | MongoDB | Dokumentum-adatbázis |
+| ORM | Prisma 6 | Típusbiztos adatbázis-hozzáférés, séma kezelés |
+| Hitelesítés | jsonwebtoken (JWT) | Állapotmentes hitelesítés |
+| Jelszó hashelés | Node.js `crypto.scryptSync` | Biztonságos jelszó hashelés véletlenszerű sóval |
+| Képtárolás | Cloudinary SDK v2 | Képfeltöltés, transzformáció és CDN |
+| E-mail | Nodemailer | SMTP e-mail küldés (jelszó-visszaállítás) |
 
-ForkFeed uses **JWT (JSON Web Tokens)** for stateless authentication. Tokens are issued on login/register and must be sent in the `Authorization` header for protected endpoints.
+---
 
-#### Token Structure
+## Hitelesítés és jogosultságkezelés
+
+### JWT alapú hitelesítés
+
+A ForkFeed **JWT (JSON Web Token)** tokeneket használ az állapotmentes hitelesítéshez. A tokenek bejelentkezéskor/regisztrációkor kerülnek kiadásra, és az `Authorization` fejlécben kell elküldeni a védett végpontokhoz.
+
+#### Token szerkezet
 
 ```
 Authorization: Bearer <jwt-token>
 ```
 
-The JWT payload contains:
+A JWT payload tartalma:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `sub` | `number` | User ID |
-| `username` | `string` | Username |
-| `role` | `string` | `"user"` or `"admin"` |
-| `jti` | `string` | Unique token identifier (UUID v4) |
-| `iat` | `number` | Issued-at timestamp (Unix) |
-| `exp` | `number` | Expiration timestamp (Unix) |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `sub` | `number` | Felhasználó azonosító |
+| `username` | `string` | Felhasználónév |
+| `role` | `string` | `"user"` vagy `"admin"` |
+| `jti` | `string` | Egyedi token azonosító (UUID v4) |
+| `iat` | `number` | Kibocsátás időbélyege (Unix) |
+| `exp` | `number` | Lejárat időbélyege (Unix) |
 
-- **Expiration**: Tokens expire after **1 day** (`1d`).
-- **Secret**: Configured via the `JWT_SECRET` environment variable.
+- **Lejárat**: A tokenek **1 nap** (`1d`) után járnak le.
+- **Titkos kulcs**: A `JWT_SECRET` környezeti változóval konfigurálható.
 
-#### Token Denylist
+#### Token tiltólista
 
-When a user logs out, the token's `jti` is added to the `DenylistedToken` collection in the database, effectively invalidating it before its natural expiration. Every authenticated request checks the denylist.
+Amikor egy felhasználó kijelentkezik, a token `jti` értéke hozzáadódik a `DenylistedToken` gyűjteményhez az adatbázisban, ezáltal érvényteleníti azt a természetes lejárata előtt. Minden hitelesített kérés ellenőrzi a tiltólistát.
 
-### Authorization Levels
+### Jogosultsági szintek
 
-The API has four authorization levels:
+Az API négy jogosultsági szinttel rendelkezik:
 
-| Level | Description | Implementation |
-|-------|-------------|----------------|
-| **None** | No authentication required | No auth check |
-| **Optional Auth** | Works without auth, but returns extra data if authenticated | `optionalAuth(request)` — returns `JwtPayload \| null` |
-| **Authenticated** | Requires a valid, non-denylisted JWT | `authenticateRequest(request)` — returns payload or `{error, status}` |
-| **Admin** | Requires authenticated user with `role: "admin"` | `requireAdmin(request)` — checks auth + role |
+| Szint | Leírás | Megvalósítás |
+|-------|--------|--------------|
+| **Nincs** | Nem szükséges hitelesítés | Nincs hitelesítési ellenőrzés |
+| **Opcionális hitelesítés** | Hitelesítés nélkül is működik, de hitelesített felhasználónak extra adatokat ad vissza | `optionalAuth(request)` — `JwtPayload \| null` értéket ad vissza |
+| **Hitelesített** | Érvényes, nem tiltólistázott JWT szükséges | `authenticateRequest(request)` — payload-ot vagy `{error, status}` értéket ad vissza |
+| **Admin** | Hitelesített felhasználó `role: "admin"` jogosultsággal | `requireAdmin(request)` — hitelesítést + szerepkört ellenőriz |
 
-### Owner-or-Admin Pattern
+### Tulajdonos-vagy-admin minta
 
-Many write operations (update/delete) check that the requester is either the **resource owner** or an **admin**. This is implemented inline in each route handler:
+Sok írási művelet (frissítés/törlés) ellenőrzi, hogy a kérelmező az **erőforrás tulajdonosa** vagy **admin**-e. Ez minden route handlerben inline módon van megvalósítva:
 
 ```typescript
 if (recipe.author_id !== auth.sub && auth.role !== "admin") {
@@ -120,22 +120,22 @@ if (recipe.author_id !== auth.sub && auth.role !== "admin") {
 }
 ```
 
-### Password Hashing
+### Jelszó hashelés
 
-Passwords are hashed using **scrypt** (Node.js built-in `crypto.scryptSync`) with:
-- A **random 16-byte salt** (hex-encoded)
-- **64-byte key length**
-- Stored format: `scrypt$<salt>$<hash>`
+A jelszavak **scrypt** (Node.js beépített `crypto.scryptSync`) használatával vannak hashelve:
+- **Véletlenszerű 16 bájtos só** (hexadecimális kódolású)
+- **64 bájtos kulcshossz**
+- Tárolt formátum: `scrypt$<salt>$<hash>`
 
-Verification uses `timingSafeEqual` to prevent timing attacks.
+Az ellenőrzés `timingSafeEqual` használatával történik az időzítési támadások megelőzése érdekében.
 
 ---
 
-## Database Schema
+## Adatbázisséma
 
-The database is **MongoDB**, accessed through **Prisma ORM**. The schema is defined in `prisma/schema.prisma`.
+Az adatbázis **MongoDB**, amelyet a **Prisma ORM**-en keresztül érünk el. A séma a `prisma/schema.prisma` fájlban van definiálva.
 
-### Entity-Relationship Overview
+### Entitás-kapcsolat áttekintés
 
 ```
 User ──┬── Recipe ──┬── Ingredient
@@ -148,249 +148,249 @@ User ──┬── Recipe ──┬── Ingredient
        │            └── RecipeBookRecipe ──── RecipeBook ←── User
        ├── Report
        ├── PasswordResetToken
-       └── DenylistedToken (standalone)
+       └── DenylistedToken (önálló)
 ```
 
-### Models
+### Modellek
 
-#### User
+#### User (Felhasználó)
 
-Represents a registered user account.
+Egy regisztrált felhasználói fiókot reprezentál.
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `id` | `Int` | — | Primary key (sequential) |
-| `username` | `String` | — | Unique username |
-| `email` | `String` | — | Unique email (stored lowercase) |
+| Mező | Típus | Alapértelmezett | Leírás |
+|------|-------|-----------------|--------|
+| `id` | `Int` | — | Elsődleges kulcs (szekvenciális) |
+| `username` | `String` | — | Egyedi felhasználónév |
+| `email` | `String` | — | Egyedi e-mail (kisbetűsen tárolt) |
 | `password_hash` | `String` | — | Scrypt hash (`scrypt$salt$hash`) |
 | `role` | `Role` | `user` | Enum: `user` \| `admin` |
-| `profile_image_url` | `String?` | `null` | Cloudinary avatar URL |
-| `bio` | `String?` | `null` | User bio text |
-| `is_active` | `Boolean` | `true` | `false` = deactivated account |
-| `created_at` | `DateTime` | `now()` | Account creation timestamp |
-| `updated_at` | `DateTime?` | `null` | Last profile update |
-| `last_login` | `DateTime?` | `null` | Last successful login |
+| `profile_image_url` | `String?` | `null` | Cloudinary profilkép URL |
+| `bio` | `String?` | `null` | Felhasználó bemutatkozás |
+| `is_active` | `Boolean` | `true` | `false` = deaktivált fiók |
+| `created_at` | `DateTime` | `now()` | Fiók létrehozás időbélyege |
+| `updated_at` | `DateTime?` | `null` | Utolsó profil frissítés |
+| `last_login` | `DateTime?` | `null` | Utolsó sikeres bejelentkezés |
 
-**Relations**: recipes, comments, ratings, favorites, recipe_books, reported_reports, reviewed_reports, password_reset_tokens
+**Kapcsolatok**: recipes, comments, ratings, favorites, recipe_books, reported_reports, reviewed_reports, password_reset_tokens
 
-#### Recipe
+#### Recipe (Recept)
 
-A user-created recipe with metadata, ingredients, and steps.
+Egy felhasználó által létrehozott recept metaadatokkal, hozzávalókkal és lépésekkel.
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `id` | `Int` | — | Primary key (sequential) |
-| `title` | `String` | — | Recipe title |
-| `description` | `String?` | `null` | Recipe description |
-| `image_url` | `String?` | `null` | Cloudinary image URL |
-| `preparation_time` | `Int` | — | Prep time in minutes (> 0) |
+| Mező | Típus | Alapértelmezett | Leírás |
+|------|-------|-----------------|--------|
+| `id` | `Int` | — | Elsődleges kulcs (szekvenciális) |
+| `title` | `String` | — | Recept címe |
+| `description` | `String?` | `null` | Recept leírása |
+| `image_url` | `String?` | `null` | Cloudinary kép URL |
+| `preparation_time` | `Int` | — | Elkészítési idő percben (> 0) |
 | `difficulty` | `String` | — | `"easy"` \| `"medium"` \| `"hard"` |
-| `average_rating` | `Float` | `0` | Cached average (recalculated on rating change) |
-| `rating_count` | `Int` | `0` | Cached total ratings |
+| `average_rating` | `Float` | `0` | Átlagos értékelés gyorsítótárban (újraszámolódik értékelés változáskor) |
+| `rating_count` | `Int` | `0` | Összes értékelés számláló gyorsítótárban |
 | `author_id` | `Int` | — | FK → User.id |
-| `created_at` | `DateTime` | `now()` | Creation timestamp |
-| `updated_at` | `DateTime?` | `null` | Last update timestamp |
-| `is_deleted` | `Boolean` | `false` | Soft-delete flag |
+| `created_at` | `DateTime` | `now()` | Létrehozás időbélyege |
+| `updated_at` | `DateTime?` | `null` | Utolsó frissítés időbélyege |
+| `is_deleted` | `Boolean` | `false` | Lágy törlés jelző |
 
-**Relations**: author (User), ingredients, steps, comments, ratings, favorites, recipe_categories, recipe_tags, recipe_book_recipes
+**Kapcsolatok**: author (User), ingredients, steps, comments, ratings, favorites, recipe_categories, recipe_tags, recipe_book_recipes
 
-#### Ingredient
+#### Ingredient (Hozzávaló)
 
-An ingredient belonging to a recipe.
+Egy recepthez tartozó hozzávaló.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `Int` | Primary key (sequential) |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `Int` | Elsődleges kulcs (szekvenciális) |
 | `recipe_id` | `Int` | FK → Recipe.id |
-| `name` | `String` | Ingredient name |
-| `quantity` | `Float?` | Numeric quantity (optional) |
-| `unit` | `String?` | Unit of measurement (optional) |
+| `name` | `String` | Hozzávaló neve |
+| `quantity` | `Float?` | Mennyiség (opcionális) |
+| `unit` | `String?` | Mértékegység (opcionális) |
 
-#### Step
+#### Step (Elkészítési lépés)
 
-An ordered preparation step belonging to a recipe.
+Egy recepthez tartozó rendezett elkészítési lépés.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `Int` | Primary key (sequential) |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `Int` | Elsődleges kulcs (szekvenciális) |
 | `recipe_id` | `Int` | FK → Recipe.id |
-| `step_number` | `Int` | Order index (1-based) |
-| `description` | `String` | Step instruction text |
+| `step_number` | `Int` | Sorrendi index (1-alapú) |
+| `description` | `String` | Lépés utasítás szövege |
 
-#### Category
+#### Category (Kategória)
 
-A recipe classification category (e.g., "Dessert", "Soup").
+Recept besorolási kategória (pl. „Desszert", „Leves").
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `Int` | Primary key (sequential) |
-| `name` | `String` | Unique category name |
-| `description` | `String?` | Category description |
-| `created_at` | `DateTime` | Creation timestamp |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `Int` | Elsődleges kulcs (szekvenciális) |
+| `name` | `String` | Egyedi kategórianév |
+| `description` | `String?` | Kategória leírása |
+| `created_at` | `DateTime` | Létrehozás időbélyege |
 
-#### Tag
+#### Tag (Címke)
 
-A lightweight label for recipes (e.g., "vegan", "gluten-free").
+Könnyű súlyú címke a receptekhez (pl. „vegán", „gluténmentes").
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `Int` | Primary key (sequential) |
-| `name` | `String` | Unique tag name |
-| `created_at` | `DateTime` | Creation timestamp |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `Int` | Elsődleges kulcs (szekvenciális) |
+| `name` | `String` | Egyedi címkenév |
+| `created_at` | `DateTime` | Létrehozás időbélyege |
 
-#### RecipeCategory (Join Table)
+#### RecipeCategory (Kapcsolótábla)
 
-Many-to-many link between Recipe and Category.
+Több-a-többhöz kapcsolat a Recipe és Category között.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `ObjectId` | Auto-generated |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `ObjectId` | Automatikusan generált |
 | `recipe_id` | `Int` | FK → Recipe.id |
 | `category_id` | `Int` | FK → Category.id |
 
-**Unique constraint**: `(recipe_id, category_id)`
+**Egyediségi megszorítás**: `(recipe_id, category_id)`
 
-#### RecipeTag (Join Table)
+#### RecipeTag (Kapcsolótábla)
 
-Many-to-many link between Recipe and Tag.
+Több-a-többhöz kapcsolat a Recipe és Tag között.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `ObjectId` | Auto-generated |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `ObjectId` | Automatikusan generált |
 | `recipe_id` | `Int` | FK → Recipe.id |
 | `tag_id` | `Int` | FK → Tag.id |
 
-**Unique constraint**: `(recipe_id, tag_id)`
+**Egyediségi megszorítás**: `(recipe_id, tag_id)`
 
-#### Comment
+#### Comment (Hozzászólás)
 
-A user comment on a recipe.
+Egy felhasználói hozzászólás egy recepthez.
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `id` | `Int` | — | Primary key (sequential) |
+| Mező | Típus | Alapértelmezett | Leírás |
+|------|-------|-----------------|--------|
+| `id` | `Int` | — | Elsődleges kulcs (szekvenciális) |
 | `recipe_id` | `Int` | — | FK → Recipe.id |
 | `user_id` | `Int` | — | FK → User.id |
-| `content` | `String` | — | Comment text |
-| `created_at` | `DateTime` | `now()` | Creation timestamp |
-| `updated_at` | `DateTime?` | `null` | Last edit timestamp |
-| `is_deleted` | `Boolean` | `false` | Soft-delete flag |
+| `content` | `String` | — | Hozzászólás szövege |
+| `created_at` | `DateTime` | `now()` | Létrehozás időbélyege |
+| `updated_at` | `DateTime?` | `null` | Utolsó szerkesztés időbélyege |
+| `is_deleted` | `Boolean` | `false` | Lágy törlés jelző |
 
-#### Rating
+#### Rating (Értékelés)
 
-A user's star rating (1–5) for a recipe. One rating per user per recipe.
+Egy felhasználó csillagos értékelése (1–5) egy recepthez. Receptenként egy értékelés felhasználónként.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `Int` | Primary key (sequential) |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `Int` | Elsődleges kulcs (szekvenciális) |
 | `recipe_id` | `Int` | FK → Recipe.id |
 | `user_id` | `Int` | FK → User.id |
 | `rating` | `Int` | 1–5 |
-| `created_at` | `DateTime` | Creation timestamp |
+| `created_at` | `DateTime` | Létrehozás időbélyege |
 
-**Unique constraint**: `(recipe_id, user_id)`
+**Egyediségi megszorítás**: `(recipe_id, user_id)`
 
-#### Favorite
+#### Favorite (Kedvenc)
 
-A user's bookmark of a recipe.
+Egy felhasználó könyvjelzője egy recepthez.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `Int` | Primary key (sequential) |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `Int` | Elsődleges kulcs (szekvenciális) |
 | `user_id` | `Int` | FK → User.id |
 | `recipe_id` | `Int` | FK → Recipe.id |
-| `created_at` | `DateTime` | Creation timestamp |
+| `created_at` | `DateTime` | Létrehozás időbélyege |
 
-**Unique constraint**: `(user_id, recipe_id)`
+**Egyediségi megszorítás**: `(user_id, recipe_id)`
 
-#### RecipeBook
+#### RecipeBook (Receptkönyv)
 
-A user-created collection of recipes.
+Felhasználó által létrehozott receptgyűjtemény.
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `id` | `Int` | — | Primary key (sequential) |
-| `name` | `String` | — | Book title |
-| `description` | `String?` | `null` | Book description |
+| Mező | Típus | Alapértelmezett | Leírás |
+|------|-------|-----------------|--------|
+| `id` | `Int` | — | Elsődleges kulcs (szekvenciális) |
+| `name` | `String` | — | Könyv címe |
+| `description` | `String?` | `null` | Könyv leírása |
 | `owner_id` | `Int` | — | FK → User.id |
-| `is_public` | `Boolean` | `false` | Public visibility |
-| `created_at` | `DateTime` | `now()` | Creation timestamp |
-| `updated_at` | `DateTime?` | `null` | Last update |
+| `is_public` | `Boolean` | `false` | Nyilvános láthatóság |
+| `created_at` | `DateTime` | `now()` | Létrehozás időbélyege |
+| `updated_at` | `DateTime?` | `null` | Utolsó frissítés |
 
-#### RecipeBookRecipe (Join Table)
+#### RecipeBookRecipe (Kapcsolótábla)
 
-Many-to-many link between RecipeBook and Recipe.
+Több-a-többhöz kapcsolat a RecipeBook és Recipe között.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `ObjectId` | Auto-generated |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `ObjectId` | Automatikusan generált |
 | `recipe_book_id` | `Int` | FK → RecipeBook.id |
 | `recipe_id` | `Int` | FK → Recipe.id |
 
-**Unique constraint**: `(recipe_book_id, recipe_id)`
+**Egyediségi megszorítás**: `(recipe_book_id, recipe_id)`
 
-#### Report
+#### Report (Jelentés)
 
-A report filed by a user against a recipe or comment.
+Egy felhasználó által egy recept vagy hozzászólás ellen beadott jelentés.
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `id` | `Int` | — | Primary key (sequential) |
-| `reported_by` | `Int` | — | FK → User.id (reporter) |
+| Mező | Típus | Alapértelmezett | Leírás |
+|------|-------|-----------------|--------|
+| `id` | `Int` | — | Elsődleges kulcs (szekvenciális) |
+| `reported_by` | `Int` | — | FK → User.id (bejelentő) |
 | `target_type` | `String` | — | `"recipe"` \| `"comment"` |
-| `target_id` | `Int` | — | ID of the reported recipe/comment |
-| `reason` | `String` | — | Report reason text |
+| `target_id` | `Int` | — | A bejelentett recept/hozzászólás azonosítója |
+| `reason` | `String` | — | Jelentés indoklás szövege |
 | `status` | `String` | `"pending"` | `"pending"` \| `"accepted"` \| `"rejected"` |
-| `reviewed_by` | `Int?` | `null` | FK → User.id (reviewing admin) |
-| `created_at` | `DateTime` | `now()` | Creation timestamp |
-| `reviewed_at` | `DateTime?` | `null` | Review timestamp |
+| `reviewed_by` | `Int?` | `null` | FK → User.id (elbíráló admin) |
+| `created_at` | `DateTime` | `now()` | Létrehozás időbélyege |
+| `reviewed_at` | `DateTime?` | `null` | Elbírálás időbélyege |
 
-#### PasswordResetToken
+#### PasswordResetToken (Jelszó-visszaállító token)
 
-Time-limited token for the password reset flow.
+Időkorlátos token a jelszó-visszaállítási folyamathoz.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `ObjectId` | Auto-generated |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `ObjectId` | Automatikusan generált |
 | `user_id` | `Int` | FK → User.id |
-| `token` | `String` | Unique 32-byte random hex token |
-| `expires_at` | `DateTime` | Token expiration (1 hour after creation) |
-| `used_at` | `DateTime?` | When the token was consumed |
-| `created_at` | `DateTime` | Creation timestamp |
+| `token` | `String` | Egyedi 32 bájtos véletlenszerű hexadecimális token |
+| `expires_at` | `DateTime` | Token lejárata (létrehozás után 1 óra) |
+| `used_at` | `DateTime?` | Mikor lett felhasználva a token |
+| `created_at` | `DateTime` | Létrehozás időbélyege |
 
-#### DenylistedToken
+#### DenylistedToken (Tiltólistázott token)
 
-Stores invalidated JWT token identifiers (from logout).
+Érvénytelenített JWT token azonosítókat tárol (kijelentkezésből).
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `ObjectId` | Auto-generated |
-| `jti` | `String` | Unique JWT ID (from the token's `jti` claim) |
-| `expires_at` | `DateTime` | When the original token would have expired |
-| `created_at` | `DateTime` | When it was denylisted |
+| Mező | Típus | Leírás |
+|------|-------|--------|
+| `id` | `ObjectId` | Automatikusan generált |
+| `jti` | `String` | Egyedi JWT azonosító (a token `jti` mezőjéből) |
+| `expires_at` | `DateTime` | Mikor járt volna le az eredeti token |
+| `created_at` | `DateTime` | Mikor lett tiltólistázva |
 
 ---
 
-## Utility Libraries
+## Segédkönyvtárak
 
-### `lib/auth.ts` — Authentication Helpers
+### `lib/auth.ts` — Hitelesítési segédfüggvények
 
-This module centralizes all JWT and authentication logic.
+Ez a modul központosítja az összes JWT és hitelesítési logikát.
 
-| Function | Signature | Description |
-|----------|-----------|-------------|
-| `signToken` | `(user: {id, username, role}) → string` | Creates a signed JWT with `sub`, `username`, `role`, `jti` (random UUID). Expires in 1 day. |
-| `verifyToken` | `(token: string) → JwtPayload \| null` | Verifies and decodes a JWT. Returns `null` on any error (expired, invalid signature, etc.). |
-| `isTokenDenylisted` | `(jti: string) → Promise<boolean>` | Checks if a JTI exists in the `DenylistedToken` collection. |
-| `denylistToken` | `(jti: string, expiresAt: Date) → Promise<void>` | Adds a JTI to the denylist with its original expiry. |
-| `extractBearerToken` | `(authHeader: string \| null) → string \| null` | Extracts the token string from a `"Bearer <token>"` header. Returns `null` if missing/malformed. |
-| `authenticateRequest` | `(request: Request) → Promise<JwtPayload \| {error, status}>` | Full authentication pipeline: extract token → verify → check denylist. Returns the payload on success or an error object. |
-| `requireAdmin` | `(request: Request) → Promise<JwtPayload \| {error, status}>` | Same as `authenticateRequest` but additionally checks `role === "admin"`. Returns 403 if not admin. |
-| `optionalAuth` | `(request: Request) → Promise<JwtPayload \| null>` | Attempts auth but returns `null` instead of an error if no token / invalid token. Used for endpoints that behave differently for logged-in users. |
+| Függvény | Szignatúra | Leírás |
+|----------|------------|--------|
+| `signToken` | `(user: {id, username, role}) → string` | Aláírt JWT-t hoz létre `sub`, `username`, `role`, `jti` (véletlenszerű UUID) mezőkkel. 1 nap múlva jár le. |
+| `verifyToken` | `(token: string) → JwtPayload \| null` | JWT-t ellenőriz és dekódol. Bármilyen hiba esetén `null`-t ad vissza (lejárt, érvénytelen aláírás stb.). |
+| `isTokenDenylisted` | `(jti: string) → Promise<boolean>` | Ellenőrzi, hogy egy JTI létezik-e a `DenylistedToken` gyűjteményben. |
+| `denylistToken` | `(jti: string, expiresAt: Date) → Promise<void>` | JTI-t ad hozzá a tiltólistához az eredeti lejáratával. |
+| `extractBearerToken` | `(authHeader: string \| null) → string \| null` | Kinyeri a token sztringet egy `"Bearer <token>"` fejlécből. `null`-t ad vissza, ha hiányzik/hibás formátumú. |
+| `authenticateRequest` | `(request: Request) → Promise<JwtPayload \| {error, status}>` | Teljes hitelesítési folyamat: token kinyerés → ellenőrzés → tiltólista ellenőrzés. Sikeres esetben a payload-ot, egyébként hibaobjektumot ad vissza. |
+| `requireAdmin` | `(request: Request) → Promise<JwtPayload \| {error, status}>` | Ugyanaz, mint az `authenticateRequest`, de további `role === "admin"` ellenőrzéssel. 403-at ad vissza, ha nem admin. |
+| `optionalAuth` | `(request: Request) → Promise<JwtPayload \| null>` | Megpróbálja a hitelesítést, de hiba helyett `null`-t ad vissza, ha nincs token / érvénytelen token. Olyan végpontokhoz használatos, amelyek eltérően viselkednek bejelentkezett felhasználók számára. |
 
-### `lib/prisma.ts` — Database Client Singleton
+### `lib/prisma.ts` — Adatbázis kliens szingleton
 
-Creates a single `PrismaClient` instance and attaches it to the Node.js `global` object to prevent multiple instances during development hot-reloading. In production, a fresh client is used.
+Egyetlen `PrismaClient` példányt hoz létre és a Node.js `global` objektumhoz csatolja, hogy megelőzze a több példány létrehozását a fejlesztési hot-reloading során. Éles környezetben friss klienst használ.
 
 ```typescript
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
@@ -399,54 +399,54 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 export default prisma;
 ```
 
-### `lib/cloudinary.ts` — Image Upload/Delete
+### `lib/cloudinary.ts` — Kép feltöltés/törlés
 
-Manages image interactions with Cloudinary CDN.
+A Cloudinary CDN-nel való képinterakciókat kezeli.
 
-| Function | Signature | Description |
-|----------|-----------|-------------|
-| `uploadToCloudinary` | `(buffer: Buffer, folder: UploadFolder) → Promise<{url, public_id}>` | Uploads an image buffer to Cloudinary. Applies automatic transformations based on folder type. |
-| `deleteFromCloudinary` | `(publicIdOrUrl: string) → Promise<void>` | Deletes an image from Cloudinary. Accepts a public_id or full URL (extracts public_id automatically). Fails silently if the image doesn't exist. |
+| Függvény | Szignatúra | Leírás |
+|----------|------------|--------|
+| `uploadToCloudinary` | `(buffer: Buffer, folder: UploadFolder) → Promise<{url, public_id}>` | Képpuffert tölt fel a Cloudinary-ra. A mappa típusától függően automatikus transzformációkat alkalmaz. |
+| `deleteFromCloudinary` | `(publicIdOrUrl: string) → Promise<void>` | Képet töröl a Cloudinary-ról. public_id-t vagy teljes URL-t fogad el (automatikusan kinyeri a public_id-t). Csendben sikertelen, ha a kép nem létezik. |
 
-**Upload Folders & Transformations**:
+**Feltöltési mappák és transzformációk**:
 
-| Folder | Resize | Crop |
-|--------|--------|------|
-| `forkfeed/avatars` | 256×256 | `fill` with `gravity: "face"` |
-| `forkfeed/recipes` | 1200×800 | `limit` (no upscaling) |
+| Mappa | Átméretezés | Vágás |
+|-------|-------------|-------|
+| `forkfeed/avatars` | 256×256 | `fill` `gravity: "face"` értékkel |
+| `forkfeed/recipes` | 1200×800 | `limit` (nincs felskálázás) |
 
-Both apply `quality: "auto"` and `fetch_format: "auto"` for optimal delivery.
+Mindkettő `quality: "auto"` és `fetch_format: "auto"` beállítást alkalmaz az optimális kézbesítéshez.
 
 ---
 
-## API Endpoints
+## API végpontok
 
-### Health
+### Állapotjelző
 
 #### `GET /api/health`
 
-Health check endpoint that verifies database connectivity.
+Állapotjelző végpont, amely ellenőrzi az adatbázis-kapcsolatot.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   { "status": "ok", "db": "ok", "timestamp": "2026-01-01T00:00:00.000Z" }
   ```
-- **Response (503)**:
+- **Válasz (503)**:
   ```json
   { "status": "error", "db": "unavailable", "message": "...", "timestamp": "..." }
   ```
 
 ---
 
-### Authentication
+### Hitelesítés
 
 #### `POST /api/auth/register`
 
-Registers a new user account.
+Új felhasználói fiók regisztrálása.
 
-- **Auth**: None
-- **Request Body**:
+- **Hitelesítés**: Nincs
+- **Kérés törzs**:
   ```json
   {
     "username": "john_doe",
@@ -454,11 +454,11 @@ Registers a new user account.
     "password": "securepassword123"
   }
   ```
-- **Validation**:
-  - All three fields are required
-  - Password must be ≥ 8 characters
-  - Username and email must be unique (case-insensitive email check)
-- **Response (201)**:
+- **Validáció**:
+  - Mindhárom mező kötelező
+  - A jelszónak legalább 8 karakter hosszúnak kell lennie
+  - A felhasználónév és e-mail egyedinek kell lennie (kis-nagybetű érzéketlen e-mail ellenőrzés)
+- **Válasz (201)**:
   ```json
   {
     "token": "eyJhbGci...",
@@ -471,25 +471,25 @@ Registers a new user account.
     }
   }
   ```
-- **Errors**: `400` (missing/invalid fields), `409` (duplicate username/email)
+- **Hibák**: `400` (hiányzó/érvénytelen mezők), `409` (duplikált felhasználónév/e-mail)
 
 ---
 
 #### `POST /api/auth/login`
 
-Authenticates a user and returns a JWT token.
+Felhasználó hitelesítése és JWT token visszaadása.
 
-- **Auth**: None
-- **Request Body**:
+- **Hitelesítés**: Nincs
+- **Kérés törzs**:
   ```json
   {
     "login": "john_doe",
     "password": "securepassword123"
   }
   ```
-  The `login` field accepts either a **username** or **email**. Alternatively, you can use `email` or `username` fields explicitly.
-- **Behavior**: Updates the user's `last_login` timestamp on success.
-- **Response (200)**:
+  A `login` mező **felhasználónevet** vagy **e-mailt** is elfogad. Alternatívaként használhatók az `email` vagy `username` mezők explicit módon.
+- **Viselkedés**: Sikeres bejelentkezéskor frissíti a felhasználó `last_login` időbélyegét.
+- **Válasz (200)**:
   ```json
   {
     "token": "eyJhbGci...",
@@ -501,30 +501,30 @@ Authenticates a user and returns a JWT token.
     }
   }
   ```
-- **Errors**: `400` (missing fields), `401` (invalid credentials), `403` (account deactivated)
+- **Hibák**: `400` (hiányzó mezők), `401` (érvénytelen hitelesítő adatok), `403` (deaktivált fiók)
 
 ---
 
 #### `POST /api/auth/logout`
 
-Invalidates the current JWT by adding its JTI to the denylist.
+Az aktuális JWT érvénytelenítése a JTI tiltólistához adásával.
 
-- **Auth**: Bearer token (required)
-- **Request Body**: None
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**: Nincs
+- **Válasz (200)**:
   ```json
   { "message": "Successfully logged out." }
   ```
-- **Errors**: `401` (missing/invalid/already-invalidated token)
+- **Hibák**: `401` (hiányzó/érvénytelen/már érvénytelenített token)
 
 ---
 
 #### `GET /api/auth/me`
 
-Returns the authenticated user's profile.
+A hitelesített felhasználó profiljának visszaadása.
 
-- **Auth**: Bearer token (required)
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (200)**:
   ```json
   {
     "user": {
@@ -540,102 +540,102 @@ Returns the authenticated user's profile.
     }
   }
   ```
-- **Errors**: `401` (not authenticated), `404` (user not found/deactivated)
+- **Hibák**: `401` (nem hitelesített), `404` (felhasználó nem található/deaktivált)
 
 ---
 
 #### `POST /api/auth/change-password`
 
-Changes the authenticated user's password.
+A hitelesített felhasználó jelszavának megváltoztatása.
 
-- **Auth**: Bearer token (required)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**:
   ```json
   {
     "old_password": "currentpassword123",
     "new_password": "newsecurepassword456"
   }
   ```
-- **Validation**:
-  - Both fields required
-  - New password ≥ 8 characters
-  - New password must differ from old password
-  - Old password must match the stored hash
-- **Response (200)**:
+- **Validáció**:
+  - Mindkét mező kötelező
+  - Az új jelszónak legalább 8 karakter hosszúnak kell lennie
+  - Az új jelszónak különböznie kell a régitől
+  - A régi jelszónak egyeznie kell a tárolt hash-sel
+- **Válasz (200)**:
   ```json
   { "message": "Password changed successfully." }
   ```
-- **Errors**: `400` (missing fields, too short, same password, wrong old password), `401` (not authenticated), `404` (user not found)
+- **Hibák**: `400` (hiányzó mezők, túl rövid, azonos jelszó, hibás régi jelszó), `401` (nem hitelesített), `404` (felhasználó nem található)
 
 ---
 
 #### `POST /api/auth/forgot-password`
 
-Initiates the password reset flow by sending a reset email.
+Jelszó-visszaállítási folyamat indítása visszaállító e-mail küldésével.
 
-- **Auth**: None
-- **Request Body**:
+- **Hitelesítés**: Nincs
+- **Kérés törzs**:
   ```json
   { "email": "john@example.com" }
   ```
-- **Behavior**:
-  - Finds user by email
-  - Invalidates any existing unused reset tokens for this user
-  - Creates a new token (32-byte random hex, 1-hour TTL)
-  - Sends an email with a reset link: `{APP_URL}/pages/reset-password?token=<token>`
-  - **Always returns 200** to prevent email enumeration attacks
-- **Response (200)**:
+- **Viselkedés**:
+  - Felhasználót keres e-mail alapján
+  - Érvényteleníti a felhasználó meglévő, nem használt visszaállító tokenjeit
+  - Új tokent hoz létre (32 bájtos véletlenszerű hex, 1 órás élettartam)
+  - E-mailt küld visszaállítási linkkel: `{APP_URL}/pages/reset-password?token=<token>`
+  - **Mindig 200-at ad vissza** az e-mail felsorolási támadások megelőzése érdekében
+- **Válasz (200)**:
   ```json
   { "message": "Ha ez az e-mail cím regisztrálva van, küldtünk egy jelszó-visszaállító linket." }
   ```
-- **SMTP Configuration**: Uses Nodemailer with configurable SMTP settings (host, port, secure, user, pass). Defaults to Gmail SMTP.
+- **SMTP konfiguráció**: Nodemailer-t használ konfigurálható SMTP beállításokkal (host, port, secure, user, pass). Alapértelmezetten Gmail SMTP-t használ.
 
 ---
 
 #### `POST /api/auth/reset-password`
 
-Completes the password reset using the token from the email.
+Jelszó-visszaállítás befejezése az e-mailben kapott token segítségével.
 
-- **Auth**: None
-- **Request Body**:
+- **Hitelesítés**: Nincs
+- **Kérés törzs**:
   ```json
   {
     "token": "a1b2c3d4e5f6...",
     "new_password": "newsecurepassword456"
   }
   ```
-- **Validation**:
-  - Token must exist, not be used, and not be expired
-  - New password ≥ 8 characters
-- **Behavior**: Updates the password and marks the token as used in a **database transaction**.
-- **Response (200)**:
+- **Validáció**:
+  - A tokennek léteznie kell, nem használtnak és nem lejártnak kell lennie
+  - Az új jelszónak legalább 8 karakter hosszúnak kell lennie
+- **Viselkedés**: Frissíti a jelszót és felhasználtnak jelöli a tokent egy **adatbázis tranzakcióban**.
+- **Válasz (200)**:
   ```json
   { "message": "Password has been reset successfully." }
   ```
-- **Errors**: `400` (missing fields, invalid/used/expired token, password too short)
+- **Hibák**: `400` (hiányzó mezők, érvénytelen/használt/lejárt token, túl rövid jelszó)
 
 ---
 
-### Recipes
+### Receptek
 
 #### `GET /api/recipes`
 
-Lists recipes with filtering, sorting, and pagination.
+Receptek listázása szűréssel, rendezéssel és lapozással.
 
-- **Auth**: Optional (adds `is_favorite` and `my_rating` fields if authenticated)
-- **Query Parameters**:
+- **Hitelesítés**: Opcionális (hitelesített felhasználónak `is_favorite` és `my_rating` mezőket ad hozzá)
+- **Lekérdezési paraméterek**:
 
-  | Parameter | Type | Default | Description |
-  |-----------|------|---------|-------------|
-  | `page` | `int` | `1` | Page number |
-  | `limit` | `int` | `20` | Items per page (max varies) |
-  | `query` | `string` | — | Search by title (case-insensitive contains) |
-  | `difficulty` | `string` | — | Filter: `easy`, `medium`, or `hard` |
-  | `category_ids` | `string` | — | Comma-separated category IDs to filter by |
-  | `sort` | `string` | `created_at` | Sort field: `created_at`, `average_rating`, `preparation_time`, `rating_count` |
-  | `order` | `string` | `desc` | Sort direction: `asc` or `desc` |
+  | Paraméter | Típus | Alapértelmezett | Leírás |
+  |-----------|-------|-----------------|--------|
+  | `page` | `int` | `1` | Oldalszám |
+  | `limit` | `int` | `20` | Elemek oldalanként (max változó) |
+  | `query` | `string` | — | Keresés cím alapján (kis-nagybetű érzéketlen tartalmazza) |
+  | `difficulty` | `string` | — | Szűrő: `easy`, `medium` vagy `hard` |
+  | `category_ids` | `string` | — | Vesszővel elválasztott kategória azonosítók szűréshez |
+  | `sort` | `string` | `created_at` | Rendezési mező: `created_at`, `average_rating`, `preparation_time`, `rating_count` |
+  | `order` | `string` | `desc` | Rendezési irány: `asc` vagy `desc` |
 
-- **Response (200)**:
+- **Válasz (200)**:
   ```json
   {
     "recipes": [
@@ -664,10 +664,10 @@ Lists recipes with filtering, sorting, and pagination.
 
 #### `POST /api/recipes`
 
-Creates a new recipe.
+Új recept létrehozása.
 
-- **Auth**: Bearer token (required)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**:
   ```json
   {
     "title": "Chocolate Cake",
@@ -687,21 +687,21 @@ Creates a new recipe.
     "tag_ids": [2, 5]
   }
   ```
-- **Validation**:
-  - `title` and `preparation_time` are required
-  - `difficulty` must be one of: `easy`, `medium`, `hard`
-  - `preparation_time` must be > 0
-- **Response (201)**: The full created recipe with all nested relations.
-- **Errors**: `400` (validation), `401` (not authenticated)
+- **Validáció**:
+  - A `title` és `preparation_time` kötelező
+  - A `difficulty` értéke az alábbiak egyike kell legyen: `easy`, `medium`, `hard`
+  - A `preparation_time` > 0 kell legyen
+- **Válasz (201)**: A teljes létrehozott recept az összes beágyazott kapcsolattal.
+- **Hibák**: `400` (validáció), `401` (nem hitelesített)
 
 ---
 
 #### `GET /api/recipes/:recipeId`
 
-Gets a single recipe with all details.
+Egy recept lekérése az összes részlettel.
 
-- **Auth**: Optional (adds `is_favorite` and `my_rating`)
-- **Response (200)**:
+- **Hitelesítés**: Opcionális (`is_favorite` és `my_rating` hozzáadásával)
+- **Válasz (200)**:
   ```json
   {
     "recipe": {
@@ -726,16 +726,16 @@ Gets a single recipe with all details.
     }
   }
   ```
-- **Errors**: `404` (not found or soft-deleted)
+- **Hibák**: `404` (nem található vagy lágy törölve)
 
 ---
 
 #### `PATCH /api/recipes/:recipeId`
 
-Updates a recipe. Supports partial updates.
+Recept frissítése. Részleges frissítéseket támogat.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body** (all fields optional):
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs** (minden mező opcionális):
   ```json
   {
     "title": "Updated Title",
@@ -749,38 +749,38 @@ Updates a recipe. Supports partial updates.
     "tag_ids": [3]
   }
   ```
-- **Behavior**:
-  - When `ingredients` is provided: deletes all existing ingredients, creates new ones
-  - When `steps` is provided: deletes all existing steps, creates new ones
-  - When `category_ids` is provided: replaces all category associations
-  - When `tag_ids` is provided: replaces all tag associations
-  - Sets `updated_at` to current timestamp
-- **Response (200)**: The full updated recipe.
-- **Errors**: `400` (validation), `401` (not authenticated), `403` (not owner/admin), `404` (not found)
+- **Viselkedés**:
+  - Ha `ingredients` meg van adva: törli az összes meglévő hozzávalót, újakat hoz létre
+  - Ha `steps` meg van adva: törli az összes meglévő lépést, újakat hoz létre
+  - Ha `category_ids` meg van adva: lecseréli az összes kategória társítást
+  - Ha `tag_ids` meg van adva: lecseréli az összes címke társítást
+  - Az `updated_at` értékét az aktuális időbélyegre állítja
+- **Válasz (200)**: A teljes frissített recept.
+- **Hibák**: `400` (validáció), `401` (nem hitelesített), `403` (nem tulajdonos/admin), `404` (nem található)
 
 ---
 
 #### `DELETE /api/recipes/:recipeId`
 
-Soft-deletes a recipe (sets `is_deleted: true`).
+Recept lágy törlése (`is_deleted: true` beállítása).
 
-- **Auth**: Bearer token (owner or admin)
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Válasz (200)**:
   ```json
   { "message": "Recipe deleted successfully." }
   ```
-- **Errors**: `401`, `403`, `404`
+- **Hibák**: `401`, `403`, `404`
 
 ---
 
-### Recipe Sub-Resources
+### Recept al-erőforrások
 
 #### `GET /api/recipes/:recipeId/summary`
 
-Returns a lightweight summary of a recipe.
+Recept könnyű súlyú összefoglalójának visszaadása.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   {
     "summary": {
@@ -796,15 +796,15 @@ Returns a lightweight summary of a recipe.
 
 ---
 
-#### Ratings
+#### Értékelések
 
 ##### `GET /api/recipes/:recipeId/ratings`
 
-Lists all ratings for a recipe with pagination.
+Egy recept összes értékelésének listázása lapozással.
 
-- **Auth**: None
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**:
   ```json
   {
     "ratings": [
@@ -817,27 +817,27 @@ Lists all ratings for a recipe with pagination.
 
 ##### `GET /api/recipes/:recipeId/ratings/me`
 
-Returns the authenticated user's rating for this recipe.
+A hitelesített felhasználó értékelésének visszaadása ehhez a recepthez.
 
-- **Auth**: Bearer token (required)
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (200)**:
   ```json
   { "rating": { "id": 1, "rating": 5, "created_at": "..." } }
   ```
-  or `{ "rating": null }` if not rated.
+  vagy `{ "rating": null }`, ha nem értékelt.
 
 ##### `PUT /api/recipes/:recipeId/ratings/me`
 
-Creates or updates the user's rating for this recipe.
+A felhasználó értékelésének létrehozása vagy frissítése ehhez a recepthez.
 
-- **Auth**: Bearer token (required)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**:
   ```json
   { "rating": 5 }
   ```
-- **Validation**: Rating must be an integer between 1 and 5 inclusive.
-- **Behavior**: Creates a new rating or updates existing (upsert). Recalculates the recipe's `average_rating` and `rating_count` using an aggregation query.
-- **Response (200)**:
+- **Validáció**: Az értékelésnek 1 és 5 közötti egész számnak kell lennie.
+- **Viselkedés**: Új értékelést hoz létre vagy meglévőt frissít (upsert). Újraszámolja a recept `average_rating` és `rating_count` értékeit aggregációs lekérdezéssel.
+- **Válasz (200)**:
   ```json
   {
     "rating": { "id": 1, "rating": 5, "created_at": "..." },
@@ -847,11 +847,11 @@ Creates or updates the user's rating for this recipe.
 
 ##### `DELETE /api/recipes/:recipeId/ratings/me`
 
-Removes the user's rating from this recipe.
+A felhasználó értékelésének eltávolítása erről a receptről.
 
-- **Auth**: Bearer token (required)
-- **Behavior**: Deletes the rating and recalculates recipe stats.
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Viselkedés**: Törli az értékelést és újraszámolja a recept statisztikáit.
+- **Válasz (200)**:
   ```json
   {
     "message": "Rating removed.",
@@ -861,15 +861,15 @@ Removes the user's rating from this recipe.
 
 ---
 
-#### Comments
+#### Hozzászólások
 
 ##### `GET /api/recipes/:recipeId/comments`
 
-Lists non-deleted comments for a recipe with pagination.
+Nem törölt hozzászólások listázása egy recepthez lapozással.
 
-- **Auth**: None
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**:
   ```json
   {
     "comments": [
@@ -887,26 +887,26 @@ Lists non-deleted comments for a recipe with pagination.
 
 ##### `POST /api/recipes/:recipeId/comments`
 
-Creates a new comment on a recipe.
+Új hozzászólás létrehozása egy recepthez.
 
-- **Auth**: Bearer token (required)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**:
   ```json
   { "content": "This looks delicious!" }
   ```
-- **Validation**: `content` is required and must be a non-empty string.
-- **Response (201)**: The created comment with user info.
+- **Validáció**: A `content` kötelező és nem üres sztringnek kell lennie.
+- **Válasz (201)**: A létrehozott hozzászólás felhasználói adatokkal.
 
 ---
 
-#### Steps
+#### Lépések
 
 ##### `GET /api/recipes/:recipeId/steps`
 
-Lists all steps for a recipe, ordered by `step_number`.
+Egy recept összes lépésének listázása `step_number` szerinti sorrendben.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   {
     "steps": [
@@ -918,57 +918,57 @@ Lists all steps for a recipe, ordered by `step_number`.
 
 ##### `POST /api/recipes/:recipeId/steps`
 
-Adds a new step to a recipe.
+Új lépés hozzáadása egy recepthez.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs**:
   ```json
   { "description": "Add eggs and mix well", "step_number": 3 }
   ```
-  `step_number` is optional — auto-assigned as max + 1 if omitted.
-- **Response (201)**: The created step.
+  A `step_number` opcionális — ha nincs megadva, automatikusan max + 1 értéket kap.
+- **Válasz (201)**: A létrehozott lépés.
 
 ##### `PUT /api/recipes/:recipeId/steps/reorder`
 
-Reorders all steps of a recipe.
+Egy recept összes lépésének átrendezése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs**:
   ```json
   { "order": [3, 1, 2] }
   ```
-  The `order` array contains step IDs in the desired order. All step IDs must belong to the recipe.
-- **Behavior**: Renumbers steps sequentially (1, 2, 3, ...) based on the provided order.
-- **Response (200)**: The reordered steps array.
+  Az `order` tömb a lépés azonosítókat tartalmazza a kívánt sorrendben. Minden lépés azonosítónak a recepthez kell tartoznia.
+- **Viselkedés**: A megadott sorrend alapján szekvenciálisan újraszámozza a lépéseket (1, 2, 3, ...).
+- **Válasz (200)**: Az átrendezett lépések tömbje.
 
 ##### `PATCH /api/recipes/:recipeId/steps/:stepId`
 
-Updates a specific step's description or step_number.
+Egy adott lépés leírásának vagy lépésszámának frissítése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body** (partial):
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs** (részleges):
   ```json
   { "description": "Updated instruction", "step_number": 2 }
   ```
-- **Response (200)**: The updated step.
+- **Válasz (200)**: A frissített lépés.
 
 ##### `DELETE /api/recipes/:recipeId/steps/:stepId`
 
-Deletes a specific step.
+Egy adott lépés törlése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Response (200)**: `{ "message": "Step deleted." }`
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Válasz (200)**: `{ "message": "Step deleted." }`
 
 ---
 
-#### Ingredients
+#### Hozzávalók
 
 ##### `GET /api/recipes/:recipeId/ingredients`
 
-Lists all ingredients for a recipe.
+Egy recept összes hozzávalójának listázása.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   {
     "ingredients": [
@@ -980,139 +980,139 @@ Lists all ingredients for a recipe.
 
 ##### `POST /api/recipes/:recipeId/ingredients`
 
-Adds an ingredient to a recipe.
+Hozzávaló hozzáadása egy recepthez.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs**:
   ```json
   { "name": "Butter", "quantity": 100, "unit": "g" }
   ```
-  `quantity` and `unit` are optional.
-- **Response (201)**: The created ingredient.
+  A `quantity` és `unit` opcionális.
+- **Válasz (201)**: A létrehozott hozzávaló.
 
 ##### `PATCH /api/recipes/:recipeId/ingredients/:ingredientId`
 
-Updates a specific ingredient.
+Egy adott hozzávaló frissítése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body** (partial):
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs** (részleges):
   ```json
   { "name": "Unsalted Butter", "quantity": 120 }
   ```
-- **Response (200)**: The updated ingredient.
+- **Válasz (200)**: A frissített hozzávaló.
 
 ##### `DELETE /api/recipes/:recipeId/ingredients/:ingredientId`
 
-Deletes a specific ingredient.
+Egy adott hozzávaló törlése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Response (200)**: `{ "message": "Ingredient deleted." }`
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Válasz (200)**: `{ "message": "Ingredient deleted." }`
 
 ---
 
-#### Categories (Recipe-Level)
+#### Kategóriák (Recept szintű)
 
 ##### `PUT /api/recipes/:recipeId/categories`
 
-Replaces all category associations for a recipe.
+Egy recept összes kategória társításának lecserélése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs**:
   ```json
   { "categoryIds": [1, 3, 5] }
   ```
-- **Behavior**: Validates all category IDs exist, deletes all existing `RecipeCategory` links for this recipe, creates new ones.
-- **Response (200)**: Updated categories list.
+- **Viselkedés**: Ellenőrzi, hogy az összes kategória azonosító létezik, törli a recept összes meglévő `RecipeCategory` kapcsolatát, és újakat hoz létre.
+- **Válasz (200)**: Frissített kategóriák listája.
 
 ---
 
-#### Tags (Recipe-Level)
+#### Címkék (Recept szintű)
 
 ##### `PUT /api/recipes/:recipeId/tags`
 
-Replaces all tag associations for a recipe.
+Egy recept összes címke társításának lecserélése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs**:
   ```json
   { "tagIds": [2, 4] }
   ```
-- **Behavior**: Same pattern as categories — validate, delete old, create new.
-- **Response (200)**: Updated tags list.
+- **Viselkedés**: Ugyanaz a minta, mint a kategóriáknál — validálás, régi törlése, új létrehozása.
+- **Válasz (200)**: Frissített címkék listája.
 
 ---
 
-#### Favorites
+#### Kedvencek
 
 ##### `GET /api/recipes/:recipeId/favorite`
 
-Checks if the authenticated user has favorited this recipe.
+Ellenőrzi, hogy a hitelesített felhasználó kedvencnek jelölte-e ezt a receptet.
 
-- **Auth**: Bearer token (required)
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (200)**:
   ```json
   { "is_favorite": true }
   ```
 
 ##### `POST /api/recipes/:recipeId/favorite`
 
-Adds the recipe to the user's favorites.
+A recept hozzáadása a felhasználó kedvenceihez.
 
-- **Auth**: Bearer token (required)
-- **Response (201)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (201)**:
   ```json
   { "message": "Recipe added to favorites.", "favorite": { "id": 1, "created_at": "..." } }
   ```
-- **Errors**: `409` (already favorited)
+- **Hibák**: `409` (már kedvencnek jelölve)
 
 ##### `DELETE /api/recipes/:recipeId/favorite`
 
-Removes the recipe from the user's favorites.
+A recept eltávolítása a felhasználó kedvenceiből.
 
-- **Auth**: Bearer token (required)
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (200)**:
   ```json
   { "message": "Recipe removed from favorites." }
   ```
 
 ---
 
-#### Recipe Image
+#### Recept kép
 
 ##### `POST /api/recipes/:recipeId/image`
 
-Uploads or updates the recipe's image.
+Recept képének feltöltése vagy frissítése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Content Types**:
-  - `multipart/form-data` — Upload a file (field name: `file`)
-    - Max size: **5 MB**
-    - Allowed types: `image/jpeg`, `image/png`, `image/webp`
-    - Uploaded to Cloudinary folder `forkfeed/recipes` with auto-resize (1200×800 limit)
-  - `application/json` — Provide a direct URL
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Tartalom típusok**:
+  - `multipart/form-data` — Fájl feltöltése (mezőnév: `file`)
+    - Maximális méret: **5 MB**
+    - Engedélyezett típusok: `image/jpeg`, `image/png`, `image/webp`
+    - Cloudinary `forkfeed/recipes` mappába feltöltve automatikus átméretezéssel (1200×800 limit)
+  - `application/json` — Közvetlen URL megadása
     ```json
     { "image_url": "https://example.com/image.jpg" }
     ```
-- **Behavior**: If the recipe already has an image on Cloudinary, the old image is deleted.
-- **Response (200)**:
+- **Viselkedés**: Ha a receptnek már van Cloudinary-n tárolt képe, a régi kép törlődik.
+- **Válasz (200)**:
   ```json
   { "image_url": "https://res.cloudinary.com/..." }
   ```
 
 ---
 
-### Categories
+### Kategóriák
 
 #### `GET /api/categories`
 
-Lists all categories.
+Összes kategória listázása.
 
-- **Auth**: None
-- **Query Parameters**:
-  | Parameter | Description |
-  |-----------|-------------|
-  | `query` | Filter by name or description (case-insensitive contains) |
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**:
+  | Paraméter | Leírás |
+  |-----------|--------|
+  | `query` | Szűrés név vagy leírás alapján (kis-nagybetű érzéketlen tartalmazza) |
+- **Válasz (200)**:
   ```json
   {
     "categories": [
@@ -1123,22 +1123,22 @@ Lists all categories.
 
 #### `POST /api/categories`
 
-Creates a new category.
+Új kategória létrehozása.
 
-- **Auth**: Admin only
-- **Request Body**:
+- **Hitelesítés**: Csak admin
+- **Kérés törzs**:
   ```json
   { "name": "Appetizer", "description": "Small dishes served before the main course" }
   ```
-- **Response (201)**: The created category.
-- **Errors**: `409` (duplicate name)
+- **Válasz (201)**: A létrehozott kategória.
+- **Hibák**: `409` (duplikált név)
 
 #### `GET /api/categories/:categoryId`
 
-Gets a single category with its recipe count.
+Egy kategória lekérése a hozzá tartozó receptek számával.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   {
     "category": { "id": 1, "name": "Dessert", "description": "...", "created_at": "..." },
@@ -1148,104 +1148,104 @@ Gets a single category with its recipe count.
 
 #### `PATCH /api/categories/:categoryId`
 
-Updates a category's name and/or description.
+Egy kategória nevének és/vagy leírásának frissítése.
 
-- **Auth**: Admin only
-- **Request Body** (partial):
+- **Hitelesítés**: Csak admin
+- **Kérés törzs** (részleges):
   ```json
   { "name": "Desserts & Sweets" }
   ```
-- **Response (200)**: The updated category.
-- **Errors**: `409` (duplicate name)
+- **Válasz (200)**: A frissített kategória.
+- **Hibák**: `409` (duplikált név)
 
 #### `DELETE /api/categories/:categoryId`
 
-Deletes a category and all associated `RecipeCategory` links.
+Egy kategória és az összes hozzátartozó `RecipeCategory` kapcsolat törlése.
 
-- **Auth**: Admin only
-- **Response (200)**: `{ "message": "Category deleted." }`
+- **Hitelesítés**: Csak admin
+- **Válasz (200)**: `{ "message": "Category deleted." }`
 
 ---
 
-### Tags
+### Címkék
 
 #### `GET /api/tags`
 
-Lists all tags.
+Összes címke listázása.
 
-- **Auth**: None
-- **Query Parameters**: `query` (filter by name)
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `query` (szűrés név alapján)
+- **Válasz (200)**:
   ```json
   { "tags": [{ "id": 1, "name": "vegan", "created_at": "..." }] }
   ```
 
 #### `POST /api/tags`
 
-Creates a new tag.
+Új címke létrehozása.
 
-- **Auth**: Admin only
-- **Request Body**: `{ "name": "gluten-free" }`
-- **Response (201)**: The created tag.
-- **Errors**: `409` (duplicate name)
+- **Hitelesítés**: Csak admin
+- **Kérés törzs**: `{ "name": "gluten-free" }`
+- **Válasz (201)**: A létrehozott címke.
+- **Hibák**: `409` (duplikált név)
 
 #### `GET /api/tags/:tagId`
 
-Gets a single tag with its recipe count.
+Egy címke lekérése a hozzá tartozó receptek számával.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   { "tag": { "id": 1, "name": "vegan", "created_at": "..." }, "recipe_count": 8 }
   ```
 
 #### `PATCH /api/tags/:tagId`
 
-Renames a tag.
+Címke átnevezése.
 
-- **Auth**: Admin only
-- **Request Body**: `{ "name": "plant-based" }`
-- **Response (200)**: The updated tag.
-- **Errors**: `409` (duplicate name)
+- **Hitelesítés**: Csak admin
+- **Kérés törzs**: `{ "name": "plant-based" }`
+- **Válasz (200)**: A frissített címke.
+- **Hibák**: `409` (duplikált név)
 
 #### `DELETE /api/tags/:tagId`
 
-Deletes a tag and all associated `RecipeTag` links.
+Egy címke és az összes hozzátartozó `RecipeTag` kapcsolat törlése.
 
-- **Auth**: Admin only
-- **Response (200)**: `{ "message": "Tag deleted." }`
+- **Hitelesítés**: Csak admin
+- **Válasz (200)**: `{ "message": "Tag deleted." }`
 
 ---
 
-### Comments
+### Hozzászólások
 
 #### `PATCH /api/comments/:commentId`
 
-Edits a comment's content.
+Hozzászólás tartalmának szerkesztése.
 
-- **Auth**: Bearer token (comment owner or admin)
-- **Request Body**: `{ "content": "Updated comment text" }`
-- **Behavior**: Sets `updated_at` to current timestamp.
-- **Response (200)**: The updated comment.
-- **Errors**: `403` (not owner/admin), `404` (not found or already deleted)
+- **Hitelesítés**: Bearer token (hozzászólás tulajdonosa vagy admin)
+- **Kérés törzs**: `{ "content": "Updated comment text" }`
+- **Viselkedés**: Az `updated_at` értékét az aktuális időbélyegre állítja.
+- **Válasz (200)**: A frissített hozzászólás.
+- **Hibák**: `403` (nem tulajdonos/admin), `404` (nem található vagy már törölve)
 
 #### `DELETE /api/comments/:commentId`
 
-Soft-deletes a comment (sets `is_deleted: true`).
+Hozzászólás lágy törlése (`is_deleted: true` beállítása).
 
-- **Auth**: Bearer token (comment owner or admin)
-- **Response (200)**: `{ "message": "Comment deleted." }`
+- **Hitelesítés**: Bearer token (hozzászólás tulajdonosa vagy admin)
+- **Válasz (200)**: `{ "message": "Comment deleted." }`
 
 ---
 
-### Users (Public)
+### Felhasználók (nyilvános)
 
 #### `GET /api/users/:userId`
 
-Returns a public user profile.
+Nyilvános felhasználói profil visszaadása.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   {
     "user": {
@@ -1257,14 +1257,14 @@ Returns a public user profile.
     }
   }
   ```
-- **Errors**: `404` (user not found or inactive)
+- **Hibák**: `404` (felhasználó nem található vagy inaktív)
 
 #### `GET /api/users/:userId/stats`
 
-Returns public statistics for a user.
+Felhasználó nyilvános statisztikáinak visszaadása.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   {
     "stats": {
@@ -1274,57 +1274,57 @@ Returns public statistics for a user.
     }
   }
   ```
-  Note: `recipe_books_count` only counts **public** books.
+  Megjegyzés: A `recipe_books_count` csak a **nyilvános** könyveket számolja.
 
 #### `GET /api/users/:userId/recipes`
 
-Lists recipes authored by the user. Paginated.
+A felhasználó által szerzett receptek listázása. Lapozható.
 
-- **Auth**: None
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**: `{ "recipes": [...], "pagination": {...} }`
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**: `{ "recipes": [...], "pagination": {...} }`
 
 #### `GET /api/users/:userId/recipe-books`
 
-Lists public recipe books owned by the user. Paginated. Includes `recipe_count` per book.
+A felhasználó nyilvános receptkönyveinek listázása. Lapozható. Minden könyvhöz tartalmazza a `recipe_count` értéket.
 
-- **Auth**: None
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**: `{ "recipe_books": [...], "pagination": {...} }`
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**: `{ "recipe_books": [...], "pagination": {...} }`
 
 #### `GET /api/users/:userId/ratings`
 
-Lists recipes the user has rated, with each recipe including the user's `my_rating`. Paginated.
+A felhasználó által értékelt receptek listázása, minden receptnél a felhasználó `my_rating` értékével. Lapozható.
 
-- **Auth**: None
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**: `{ "recipes": [...], "pagination": {...} }`
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**: `{ "recipes": [...], "pagination": {...} }`
 
 #### `GET /api/users/:userId/comments`
 
-Lists distinct recipes the user has commented on (non-deleted comments only). Paginated.
+Azok a receptek listázása, amelyekhez a felhasználó hozzászólt (csak nem törölt hozzászólások). Lapozható.
 
-- **Auth**: None
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**: `{ "recipes": [...], "pagination": {...} }`
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**: `{ "recipes": [...], "pagination": {...} }`
 
 ---
 
-### Users (Authenticated — /me)
+### Felhasználók (hitelesített — /me)
 
 #### `GET /api/users/me`
 
-Returns the authenticated user's full profile. Identical to `GET /api/auth/me`.
+A hitelesített felhasználó teljes profiljának visszaadása. Azonos a `GET /api/auth/me` végponttal.
 
-- **Auth**: Bearer token (required)
-- **Response (200)**: `{ "user": { ... } }`
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (200)**: `{ "user": { ... } }`
 
 #### `PATCH /api/users/me`
 
-Updates the authenticated user's profile.
+A hitelesített felhasználó profiljának frissítése.
 
-- **Auth**: Bearer token (required)
-- **Request Body** (all optional):
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs** (minden mező opcionális):
   ```json
   {
     "username": "new_username",
@@ -1332,16 +1332,16 @@ Updates the authenticated user's profile.
     "bio": "Updated bio"
   }
   ```
-- **Validation**: New username must be unique.
-- **Response (200)**: The updated user object.
-- **Errors**: `409` (username taken)
+- **Validáció**: Az új felhasználónévnek egyedinek kell lennie.
+- **Válasz (200)**: A frissített felhasználói objektum.
+- **Hibák**: `409` (felhasználónév foglalt)
 
 #### `GET /api/users/me/stats`
 
-Returns the authenticated user's detailed statistics.
+A hitelesített felhasználó részletes statisztikáinak visszaadása.
 
-- **Auth**: Bearer token (required)
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Válasz (200)**:
   ```json
   {
     "stats": {
@@ -1357,46 +1357,46 @@ Returns the authenticated user's detailed statistics.
 
 #### `GET /api/users/me/favorites`
 
-Lists the authenticated user's favorited recipes. Paginated.
+A hitelesített felhasználó kedvenc receptjeinek listázása. Lapozható.
 
-- **Auth**: Bearer token (required)
-- **Query Parameters**: `page`, `limit`, `expanded` (`true` for full recipe details, otherwise just IDs)
-- **Response (200)**: `{ "favorites": [...], "pagination": {...} }`
+- **Hitelesítés**: Bearer token (kötelező)
+- **Lekérdezési paraméterek**: `page`, `limit`, `expanded` (`true` a teljes recept részletekhez, egyébként csak azonosítók)
+- **Válasz (200)**: `{ "favorites": [...], "pagination": {...} }`
 
 #### `PATCH /api/users/me/deactivate`
 
-Deactivates the authenticated user's account.
+A hitelesített felhasználó fiókjának deaktiválása.
 
-- **Auth**: Bearer token (required)
-- **Behavior**: Sets `is_active: false`. The user can no longer log in.
-- **Response (200)**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Viselkedés**: `is_active: false` beállítása. A felhasználó többé nem tud bejelentkezni.
+- **Válasz (200)**:
   ```json
   { "message": "Account deactivated." }
   ```
 
 ---
 
-### Recipe Books
+### Receptkönyvek
 
 #### `GET /api/recipe-books`
 
-Lists recipe books based on scope.
+Receptkönyvek listázása hatókör alapján.
 
-- **Auth**: Optional
-- **Query Parameters**:
-  | Parameter | Description |
-  |-----------|-------------|
-  | `scope` | `"mine"` (own books, auth required), `"public"` (all public), `"all"` (own + public, default) |
-  | `page` | Page number |
-  | `limit` | Items per page |
-- **Response (200)**: `{ "recipe_books": [...], "pagination": {...} }`
+- **Hitelesítés**: Opcionális
+- **Lekérdezési paraméterek**:
+  | Paraméter | Leírás |
+  |-----------|--------|
+  | `scope` | `"mine"` (saját könyvek, hitelesítés szükséges), `"public"` (összes nyilvános), `"all"` (saját + nyilvános, alapértelmezett) |
+  | `page` | Oldalszám |
+  | `limit` | Elemek oldalanként |
+- **Válasz (200)**: `{ "recipe_books": [...], "pagination": {...} }`
 
 #### `POST /api/recipe-books`
 
-Creates a new recipe book.
+Új receptkönyv létrehozása.
 
-- **Auth**: Bearer token (required)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**:
   ```json
   {
     "name": "My Italian Favorites",
@@ -1404,89 +1404,89 @@ Creates a new recipe book.
     "is_public": false
   }
   ```
-  `is_public` defaults to `false`.
-- **Response (201)**: The created recipe book.
+  Az `is_public` alapértelmezetten `false`.
+- **Válasz (201)**: A létrehozott receptkönyv.
 
 #### `GET /api/recipe-books/:bookId`
 
-Gets a single recipe book with details.
+Egy receptkönyv lekérése részletekkel.
 
-- **Auth**: Optional (private books visible only to owner/admin)
-- **Response (200)**: `{ "recipe_book": { ... } }`
-- **Errors**: `403` (private book, not owner/admin), `404` (not found)
+- **Hitelesítés**: Opcionális (privát könyvek csak a tulajdonos/admin számára láthatók)
+- **Válasz (200)**: `{ "recipe_book": { ... } }`
+- **Hibák**: `403` (privát könyv, nem tulajdonos/admin), `404` (nem található)
 
 #### `PATCH /api/recipe-books/:bookId`
 
-Updates a recipe book's name, description, or visibility.
+Receptkönyv nevének, leírásának vagy láthatóságának frissítése.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body** (partial):
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs** (részleges):
   ```json
   { "name": "Updated Name", "is_public": true }
   ```
-- **Response (200)**: The updated recipe book.
+- **Válasz (200)**: A frissített receptkönyv.
 
 #### `DELETE /api/recipe-books/:bookId`
 
-**Hard-deletes** a recipe book and all its recipe entries.
+Receptkönyv és összes receptbejegyzésének **végleges törlése**.
 
-- **Auth**: Bearer token (owner or admin)
-- **Response (200)**: `{ "message": "Recipe book deleted." }`
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Válasz (200)**: `{ "message": "Recipe book deleted." }`
 
 #### `POST /api/recipe-books/:bookId/clone`
 
-Clones a public recipe book to the authenticated user's collection.
+Nyilvános receptkönyv klónozása a hitelesített felhasználó gyűjteményébe.
 
-- **Auth**: Bearer token (required)
-- **Behavior**:
-  - Creates a copy of the book with `"(copy)"` appended to the name
-  - Sets `is_public: false`
-  - Copies all recipe entries
-  - Cannot clone your own book
-- **Response (201)**: The cloned recipe book.
-- **Errors**: `400` (own book), `403`/`404` (not public/not found)
+- **Hitelesítés**: Bearer token (kötelező)
+- **Viselkedés**:
+  - A könyv másolatát hozza létre `"(copy)"` utótaggal a névben
+  - `is_public: false` beállítással
+  - Az összes receptbejegyzést másolja
+  - Saját könyvet nem lehet klónozni
+- **Válasz (201)**: A klónozott receptkönyv.
+- **Hibák**: `400` (saját könyv), `403`/`404` (nem nyilvános/nem található)
 
 #### `GET /api/recipe-books/:bookId/recipes`
 
-Lists recipes in a recipe book. Paginated.
+Receptek listázása egy receptkönyvben. Lapozható.
 
-- **Auth**: Optional (private books require owner/admin)
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**: `{ "recipes": [...], "pagination": {...} }`
+- **Hitelesítés**: Opcionális (privát könyvekhez tulajdonos/admin szükséges)
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**: `{ "recipes": [...], "pagination": {...} }`
 
 #### `POST /api/recipe-books/:bookId/recipes`
 
-Adds recipe(s) to a recipe book.
+Recept(ek) hozzáadása egy receptkönyvhöz.
 
-- **Auth**: Bearer token (owner or admin)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Kérés törzs**:
   ```json
   { "recipeId": 5 }
   ```
-  or:
+  vagy:
   ```json
   { "recipeIds": [5, 8, 12] }
   ```
-- **Behavior**: Skips already-existing entries gracefully (no error on duplicates).
-- **Response (200/201)**: Confirmation with count of added recipes.
+- **Viselkedés**: A már meglévő bejegyzéseket elegánsan kihagyja (duplikátumoknál nincs hiba).
+- **Válasz (200/201)**: Megerősítés a hozzáadott receptek számával.
 
 #### `DELETE /api/recipe-books/:bookId/recipes/:recipeId`
 
-Removes a specific recipe from a recipe book.
+Egy adott recept eltávolítása egy receptkönyvből.
 
-- **Auth**: Bearer token (owner or admin)
-- **Response (200)**: `{ "message": "Recipe removed from book." }`
+- **Hitelesítés**: Bearer token (tulajdonos vagy admin)
+- **Válasz (200)**: `{ "message": "Recipe removed from book." }`
 
 ---
 
-### Reports
+### Jelentések
 
 #### `POST /api/reports`
 
-Files a report against a recipe or comment.
+Jelentés beadása egy recept vagy hozzászólás ellen.
 
-- **Auth**: Bearer token (required)
-- **Request Body**:
+- **Hitelesítés**: Bearer token (kötelező)
+- **Kérés törzs**:
   ```json
   {
     "target_type": "recipe",
@@ -1494,72 +1494,72 @@ Files a report against a recipe or comment.
     "reason": "Contains inappropriate content"
   }
   ```
-- **Validation**:
-  - `target_type` must be `"recipe"` or `"comment"`
-  - `target_id` must reference an existing, non-deleted recipe or comment
-  - `reason` is required
-- **Response (201)**: The created report.
+- **Validáció**:
+  - A `target_type` értéke `"recipe"` vagy `"comment"` kell legyen
+  - A `target_id`-nak egy létező, nem törölt receptre vagy hozzászólásra kell hivatkoznia
+  - A `reason` kötelező
+- **Válasz (201)**: A létrehozott jelentés.
 
 #### `GET /api/reports`
 
-Lists the authenticated user's own reports with pagination.
+A hitelesített felhasználó saját jelentéseinek listázása lapozással.
 
-- **Auth**: Bearer token (required)
-- **Query Parameters**: `page`, `limit`
-- **Response (200)**: `{ "reports": [...], "pagination": {...} }`
+- **Hitelesítés**: Bearer token (kötelező)
+- **Lekérdezési paraméterek**: `page`, `limit`
+- **Válasz (200)**: `{ "reports": [...], "pagination": {...} }`
 
 ---
 
 ### Admin
 
-All admin endpoints require `role: "admin"`. Non-admin users receive `403 Forbidden`.
+Minden admin végpont `role: "admin"` jogosultságot igényel. Nem admin felhasználók `403 Forbidden` választ kapnak.
 
 #### `GET /api/admin/users`
 
-Lists all users with filtering and pagination.
+Összes felhasználó listázása szűréssel és lapozással.
 
-- **Auth**: Admin only
-- **Query Parameters**:
-  | Parameter | Description |
-  |-----------|-------------|
-  | `query` | Filter by username or email (case-insensitive) |
-  | `role` | Filter by role: `"user"` or `"admin"` |
-  | `is_active` | Filter by status: `"true"` or `"false"` |
-  | `page` | Page number |
-  | `limit` | Items per page |
-- **Response (200)**: `{ "users": [...], "pagination": {...} }`
+- **Hitelesítés**: Csak admin
+- **Lekérdezési paraméterek**:
+  | Paraméter | Leírás |
+  |-----------|--------|
+  | `query` | Szűrés felhasználónév vagy e-mail alapján (kis-nagybetű érzéketlen) |
+  | `role` | Szűrés szerep alapján: `"user"` vagy `"admin"` |
+  | `is_active` | Szűrés státusz alapján: `"true"` vagy `"false"` |
+  | `page` | Oldalszám |
+  | `limit` | Elemek oldalanként |
+- **Válasz (200)**: `{ "users": [...], "pagination": {...} }`
 
 #### `PATCH /api/admin/users/:userId`
 
-Updates a user's role and/or active status.
+Felhasználó szerepkörének és/vagy aktív státuszának frissítése.
 
-- **Auth**: Admin only
-- **Request Body** (partial):
+- **Hitelesítés**: Csak admin
+- **Kérés törzs** (részleges):
   ```json
   { "role": "admin", "is_active": true }
   ```
-- **Validation**:
-  - `role` must be `"user"` or `"admin"` (if provided)
-  - Cannot deactivate your own admin account
-- **Response (200)**: The updated user.
-- **Errors**: `400` (self-deactivation, invalid role)
+- **Validáció**:
+  - A `role` értéke `"user"` vagy `"admin"` kell legyen (ha meg van adva)
+  - Saját admin fiókot nem lehet deaktiválni
+- **Válasz (200)**: A frissített felhasználó.
+- **Hibák**: `400` (saját deaktiválás, érvénytelen szerepkör)
 
 ---
 
 #### `GET /api/admin/reports`
 
-Lists all reports with filtering and pagination.
+Összes jelentés listázása szűréssel és lapozással.
 
-- **Auth**: Admin only
-- **Query Parameters**:
-  | Parameter | Description |
-  |-----------|-------------|
-  | `status` | `"pending"`, `"accepted"`, or `"rejected"` |
-  | `target_type` | `"recipe"` or `"comment"` |
-  | `reported_by` | Filter by reporter's user ID |
-  | `page` | Page number |
-  | `limit` | Items per page |
-- **Response (200)**:
+- **Hitelesítés**: Csak admin
+- **Lekérdezési paraméterek**:
+  | Paraméter | Leírás |
+  |-----------|--------|
+  | `status` | `"pending"`, `"accepted"` vagy `"rejected"` |
+  | `target_type` | `"recipe"` vagy `"comment"` |
+  | `reported_by` | Szűrés a bejelentő felhasználó azonosítója alapján |
+  | `page` | Oldalszám |
+  | `limit` | Elemek oldalanként |
+- **Válasz (200)**:
   ```json
   {
     "reports": [
@@ -1581,103 +1581,103 @@ Lists all reports with filtering and pagination.
 
 #### `GET /api/admin/reports/:reportId`
 
-Gets a single report with full details.
+Egy jelentés lekérése teljes részletekkel.
 
-- **Auth**: Admin only
-- **Response (200)**: `{ "report": { ... } }` including reporter and reviewer info.
+- **Hitelesítés**: Csak admin
+- **Válasz (200)**: `{ "report": { ... } }` a bejelentő és elbíráló adataival.
 
 #### `PATCH /api/admin/reports/:reportId`
 
-Updates a report's status.
+Egy jelentés státuszának frissítése.
 
-- **Auth**: Admin only
-- **Request Body**:
+- **Hitelesítés**: Csak admin
+- **Kérés törzs**:
   ```json
   { "status": "accepted" }
   ```
-  Valid statuses: `"pending"`, `"accepted"`, `"rejected"`.
-- **Behavior**: Sets `reviewed_by` to the admin's user ID and `reviewed_at` to current timestamp.
-- **Response (200)**: The updated report.
+  Érvényes státuszok: `"pending"`, `"accepted"`, `"rejected"`.
+- **Viselkedés**: A `reviewed_by` mezőt az admin felhasználó azonosítójára, a `reviewed_at` mezőt az aktuális időbélyegre állítja.
+- **Válasz (200)**: A frissített jelentés.
 
 #### `POST /api/admin/reports/:reportId/actions`
 
-Executes an administrative action based on a report.
+Adminisztrációs művelet végrehajtása egy jelentés alapján.
 
-- **Auth**: Admin only
-- **Request Body**:
+- **Hitelesítés**: Csak admin
+- **Kérés törzs**:
   ```json
   { "action": "delete_target" }
   ```
-  Available actions:
-  | Action | Effect |
-  |--------|--------|
-  | `delete_target` | Soft-deletes the reported recipe or comment (sets `is_deleted: true`) |
-  | `warn_user` | Placeholder — logs the action but takes no destructive action |
+  Elérhető műveletek:
+  | Művelet | Hatás |
+  |---------|-------|
+  | `delete_target` | A bejelentett recept vagy hozzászólás lágy törlése (`is_deleted: true` beállítása) |
+  | `warn_user` | Helyőrző — naplózza a műveletet, de nem hajt végre pusztító műveletet |
 
-- **Behavior**: Also auto-sets the report status to `"accepted"`.
-- **Response (200)**: Confirmation with the action taken.
+- **Viselkedés**: A jelentés státuszát automatikusan `"accepted"` értékre állítja.
+- **Válasz (200)**: Megerősítés a végrehajtott művelettel.
 
 ---
 
 #### `DELETE /api/admin/comments/:commentId/hard`
 
-Permanently hard-deletes a comment from the database.
+Hozzászólás végleges törlése az adatbázisból.
 
-- **Auth**: Admin only
-- **Response (200)**:
+- **Hitelesítés**: Csak admin
+- **Válasz (200)**:
   ```json
   { "message": "Comment permanently deleted." }
   ```
-- **Note**: This is the only endpoint that permanently removes data. Use with care.
+- **Megjegyzés**: Ez az egyetlen végpont, amely véglegesen eltávolít adatot. Óvatosan használandó.
 
 ---
 
-### Uploads
+### Feltöltések
 
 #### `POST /api/uploads`
 
-Generic image upload to Cloudinary.
+Általános képfeltöltés a Cloudinary-ra.
 
-- **Auth**: Bearer token (required)
+- **Hitelesítés**: Bearer token (kötelező)
 - **Content-Type**: `multipart/form-data`
-- **Form Fields**:
-  | Field | Type | Required | Description |
-  |-------|------|----------|-------------|
-  | `file` | `File` | Yes | Image file to upload |
-  | `type` | `string` | No | `"recipe"` (default) or `"avatar"` |
-- **Constraints**:
-  - Max file size: **5 MB**
-  - Allowed MIME types: `image/jpeg`, `image/png`, `image/webp`
-- **Response (200)**:
+- **Űrlap mezők**:
+  | Mező | Típus | Kötelező | Leírás |
+  |------|-------|----------|--------|
+  | `file` | `File` | Igen | Feltöltendő képfájl |
+  | `type` | `string` | Nem | `"recipe"` (alapértelmezett) vagy `"avatar"` |
+- **Korlátozások**:
+  - Maximális fájlméret: **5 MB**
+  - Engedélyezett MIME típusok: `image/jpeg`, `image/png`, `image/webp`
+- **Válasz (200)**:
   ```json
   {
     "url": "https://res.cloudinary.com/your-cloud/image/upload/v.../forkfeed/recipes/abc123.webp",
     "public_id": "forkfeed/recipes/abc123"
   }
   ```
-- **Errors**: `400` (missing file, wrong type, too large)
+- **Hibák**: `400` (hiányzó fájl, hibás típus, túl nagy)
 
 ---
 
-### Search
+### Keresés
 
 #### `GET /api/search/suggestions`
 
-Returns autocomplete suggestions for a search query.
+Automatikus kiegészítési javaslatok visszaadása egy keresési lekérdezéshez.
 
-- **Auth**: None
-- **Query Parameters**:
-  | Parameter | Description |
-  |-----------|-------------|
-  | `q` | Search query string |
-- **Behavior**:
-  - Returns empty arrays if `q` is empty or < 1 character
-  - Searches up to **5 results per type** (recipes, categories, tags)
-  - Recipe matches: by `title` (case-insensitive contains), excludes soft-deleted
-  - Category matches: by `name`
-  - Tag matches: by `name`
-  - All three queries run in parallel (`Promise.all`)
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Lekérdezési paraméterek**:
+  | Paraméter | Leírás |
+  |-----------|--------|
+  | `q` | Keresési lekérdezés sztring |
+- **Viselkedés**:
+  - Üres tömböket ad vissza, ha a `q` üres vagy < 1 karakter
+  - Típusonként legfeljebb **5 eredményt** keres (receptek, kategóriák, címkék)
+  - Recept találatok: `title` alapján (kis-nagybetű érzéketlen tartalmazza), kizárja a lágy törölteket
+  - Kategória találatok: `name` alapján
+  - Címke találatok: `name` alapján
+  - Mindhárom lekérdezés párhuzamosan fut (`Promise.all`)
+- **Válasz (200)**:
   ```json
   {
     "recipes": [
@@ -1699,61 +1699,61 @@ Returns autocomplete suggestions for a search query.
 
 #### `GET /api/meta/difficulties`
 
-Returns the list of valid difficulty levels.
+Az érvényes nehézségi szintek listájának visszaadása.
 
-- **Auth**: None
-- **Response (200)**:
+- **Hitelesítés**: Nincs
+- **Válasz (200)**:
   ```json
   { "difficulties": ["easy", "medium", "hard"] }
   ```
 
 #### `GET /api/meta/roles`
 
-Returns the list of user roles.
+A felhasználói szerepkörök listájának visszaadása.
 
-- **Auth**: Admin only
-- **Response (200)**:
+- **Hitelesítés**: Csak admin
+- **Válasz (200)**:
   ```json
   { "roles": ["user", "admin"] }
   ```
 
 ---
 
-## Error Handling
+## Hibakezelés
 
-### Standard Error Format
+### Szabványos hibaformátum
 
-All error responses follow this format:
+Minden hibaválasz ezt a formátumot követi:
 
 ```json
-{ "error": "Human-readable error message." }
+{ "error": "Ember által olvasható hibaüzenet." }
 ```
 
-### HTTP Status Codes Used
+### Használt HTTP státuszkódok
 
-| Code | Meaning | Used When |
-|------|---------|-----------|
-| `200` | OK | Successful GET, PATCH, DELETE, or confirmed action |
-| `201` | Created | Successful POST (resource created) |
-| `400` | Bad Request | Invalid JSON, missing required fields, validation failure |
-| `401` | Unauthorized | Missing/invalid/expired/denylisted token |
-| `403` | Forbidden | Authenticated but insufficient permissions (not owner/admin) |
-| `404` | Not Found | Resource doesn't exist or is soft-deleted |
-| `409` | Conflict | Duplicate resource (username, email, category name, already favorited) |
-| `500` | Internal Server Error | Unexpected server-side failure (caught by try/catch blocks) |
-| `503` | Service Unavailable | Database unreachable (health check) |
+| Kód | Jelentés | Mikor használatos |
+|-----|----------|-------------------|
+| `200` | OK | Sikeres GET, PATCH, DELETE vagy megerősített művelet |
+| `201` | Létrehozva | Sikeres POST (erőforrás létrehozva) |
+| `400` | Hibás kérés | Érvénytelen JSON, hiányzó kötelező mezők, validációs hiba |
+| `401` | Jogosulatlan | Hiányzó/érvénytelen/lejárt/tiltólistázott token |
+| `403` | Tiltott | Hitelesített, de elégtelen jogosultság (nem tulajdonos/admin) |
+| `404` | Nem található | Az erőforrás nem létezik vagy lágy törölve van |
+| `409` | Ütközés | Duplikált erőforrás (felhasználónév, e-mail, kategórianév, már kedvencelt) |
+| `500` | Belső szerverhiba | Váratlan szerveroldali hiba (try/catch blokkok által elkapva) |
+| `503` | Szolgáltatás nem elérhető | Adatbázis nem elérhető (állapotjelző ellenőrzés) |
 
-### JSON Parse Errors
+### JSON feldolgozási hibák
 
-All POST/PATCH/PUT endpoints wrap `request.json()` in a try/catch to return a clean `400` error if the request body is not valid JSON:
+Minden POST/PATCH/PUT végpont a `request.json()` hívást try/catch blokkba csomagolja, hogy tiszta `400` hibát adjon vissza, ha a kérés törzse nem érvényes JSON:
 
 ```json
 { "error": "Invalid JSON payload." }
 ```
 
-### Pagination Object
+### Lapozási objektum
 
-All paginated responses include:
+Minden lapozott válasz tartalmazza:
 
 ```json
 {
@@ -1768,87 +1768,87 @@ All paginated responses include:
 
 ---
 
-## Endpoint Summary Table
+## Végpont összefoglaló táblázat
 
-| # | Method | Endpoint | Auth | Description |
-|---|--------|----------|------|-------------|
-| 1 | `POST` | `/api/auth/register` | None | Register new user |
-| 2 | `POST` | `/api/auth/login` | None | Log in |
-| 3 | `POST` | `/api/auth/logout` | Bearer | Log out (denylist token) |
-| 4 | `GET` | `/api/auth/me` | Bearer | Get own profile |
-| 5 | `POST` | `/api/auth/change-password` | Bearer | Change password |
-| 6 | `POST` | `/api/auth/forgot-password` | None | Request password reset email |
-| 7 | `POST` | `/api/auth/reset-password` | None | Reset password with token |
-| 8 | `GET` | `/api/recipes` | Optional | List recipes (filter, sort, paginate) |
-| 9 | `POST` | `/api/recipes` | Bearer | Create recipe |
-| 10 | `GET` | `/api/recipes/:id` | Optional | Get recipe details |
-| 11 | `PATCH` | `/api/recipes/:id` | Owner/Admin | Update recipe |
-| 12 | `DELETE` | `/api/recipes/:id` | Owner/Admin | Soft-delete recipe |
-| 13 | `GET` | `/api/recipes/:id/summary` | None | Get recipe summary |
-| 14 | `GET` | `/api/recipes/:id/ratings` | None | List recipe ratings |
-| 15 | `GET` | `/api/recipes/:id/ratings/me` | Bearer | Get my rating |
-| 16 | `PUT` | `/api/recipes/:id/ratings/me` | Bearer | Create/update my rating |
-| 17 | `DELETE` | `/api/recipes/:id/ratings/me` | Bearer | Remove my rating |
-| 18 | `GET` | `/api/recipes/:id/comments` | None | List recipe comments |
-| 19 | `POST` | `/api/recipes/:id/comments` | Bearer | Add comment |
-| 20 | `GET` | `/api/recipes/:id/steps` | None | List recipe steps |
-| 21 | `POST` | `/api/recipes/:id/steps` | Owner/Admin | Add step |
-| 22 | `PUT` | `/api/recipes/:id/steps/reorder` | Owner/Admin | Reorder steps |
-| 23 | `PATCH` | `/api/recipes/:id/steps/:stepId` | Owner/Admin | Update step |
-| 24 | `DELETE` | `/api/recipes/:id/steps/:stepId` | Owner/Admin | Delete step |
-| 25 | `GET` | `/api/recipes/:id/ingredients` | None | List ingredients |
-| 26 | `POST` | `/api/recipes/:id/ingredients` | Owner/Admin | Add ingredient |
-| 27 | `PATCH` | `/api/recipes/:id/ingredients/:iid` | Owner/Admin | Update ingredient |
-| 28 | `DELETE` | `/api/recipes/:id/ingredients/:iid` | Owner/Admin | Delete ingredient |
-| 29 | `PUT` | `/api/recipes/:id/categories` | Owner/Admin | Replace recipe categories |
-| 30 | `PUT` | `/api/recipes/:id/tags` | Owner/Admin | Replace recipe tags |
-| 31 | `GET` | `/api/recipes/:id/favorite` | Bearer | Check if favorited |
-| 32 | `POST` | `/api/recipes/:id/favorite` | Bearer | Add to favorites |
-| 33 | `DELETE` | `/api/recipes/:id/favorite` | Bearer | Remove from favorites |
-| 34 | `POST` | `/api/recipes/:id/image` | Owner/Admin | Upload recipe image |
-| 35 | `GET` | `/api/categories` | None | List categories |
-| 36 | `POST` | `/api/categories` | Admin | Create category |
-| 37 | `GET` | `/api/categories/:id` | None | Get category |
-| 38 | `PATCH` | `/api/categories/:id` | Admin | Update category |
-| 39 | `DELETE` | `/api/categories/:id` | Admin | Delete category |
-| 40 | `GET` | `/api/tags` | None | List tags |
-| 41 | `POST` | `/api/tags` | Admin | Create tag |
-| 42 | `GET` | `/api/tags/:id` | None | Get tag |
-| 43 | `PATCH` | `/api/tags/:id` | Admin | Update tag |
-| 44 | `DELETE` | `/api/tags/:id` | Admin | Delete tag |
-| 45 | `PATCH` | `/api/comments/:id` | Owner/Admin | Edit comment |
-| 46 | `DELETE` | `/api/comments/:id` | Owner/Admin | Soft-delete comment |
-| 47 | `GET` | `/api/users/:id` | None | Get public profile |
-| 48 | `GET` | `/api/users/:id/stats` | None | Get user stats |
-| 49 | `GET` | `/api/users/:id/recipes` | None | List user's recipes |
-| 50 | `GET` | `/api/users/:id/recipe-books` | None | List user's public books |
-| 51 | `GET` | `/api/users/:id/ratings` | None | List user's ratings |
-| 52 | `GET` | `/api/users/:id/comments` | None | List user's commented recipes |
-| 53 | `GET` | `/api/users/me` | Bearer | Get own profile |
-| 54 | `PATCH` | `/api/users/me` | Bearer | Update own profile |
-| 55 | `GET` | `/api/users/me/stats` | Bearer | Get own stats (detailed) |
-| 56 | `GET` | `/api/users/me/favorites` | Bearer | List own favorites |
-| 57 | `PATCH` | `/api/users/me/deactivate` | Bearer | Deactivate own account |
-| 58 | `GET` | `/api/recipe-books` | Optional | List recipe books |
-| 59 | `POST` | `/api/recipe-books` | Bearer | Create recipe book |
-| 60 | `GET` | `/api/recipe-books/:id` | Optional | Get recipe book |
-| 61 | `PATCH` | `/api/recipe-books/:id` | Owner/Admin | Update recipe book |
-| 62 | `DELETE` | `/api/recipe-books/:id` | Owner/Admin | Delete recipe book |
-| 63 | `POST` | `/api/recipe-books/:id/clone` | Bearer | Clone a public book |
-| 64 | `GET` | `/api/recipe-books/:id/recipes` | Optional | List book's recipes |
-| 65 | `POST` | `/api/recipe-books/:id/recipes` | Owner/Admin | Add recipe(s) to book |
-| 66 | `DELETE` | `/api/recipe-books/:id/recipes/:rid` | Owner/Admin | Remove recipe from book |
-| 67 | `POST` | `/api/reports` | Bearer | File a report |
-| 68 | `GET` | `/api/reports` | Bearer | List own reports |
-| 69 | `GET` | `/api/admin/users` | Admin | List all users |
-| 70 | `PATCH` | `/api/admin/users/:id` | Admin | Update user role/status |
-| 71 | `GET` | `/api/admin/reports` | Admin | List all reports |
-| 72 | `GET` | `/api/admin/reports/:id` | Admin | Get report details |
-| 73 | `PATCH` | `/api/admin/reports/:id` | Admin | Update report status |
-| 74 | `POST` | `/api/admin/reports/:id/actions` | Admin | Execute moderation action |
-| 75 | `DELETE` | `/api/admin/comments/:id/hard` | Admin | Hard-delete comment |
-| 76 | `POST` | `/api/uploads` | Bearer | Upload image to Cloudinary |
-| 77 | `GET` | `/api/health` | None | Health check |
-| 78 | `GET` | `/api/meta/difficulties` | None | List difficulty levels |
-| 79 | `GET` | `/api/meta/roles` | Admin | List user roles |
-| 80 | `GET` | `/api/search/suggestions` | None | Autocomplete suggestions |
+| # | Metódus | Végpont | Hitelesítés | Leírás |
+|---|---------|---------|-------------|--------|
+| 1 | `POST` | `/api/auth/register` | Nincs | Új felhasználó regisztrálása |
+| 2 | `POST` | `/api/auth/login` | Nincs | Bejelentkezés |
+| 3 | `POST` | `/api/auth/logout` | Bearer | Kijelentkezés (token tiltólistázás) |
+| 4 | `GET` | `/api/auth/me` | Bearer | Saját profil lekérése |
+| 5 | `POST` | `/api/auth/change-password` | Bearer | Jelszó megváltoztatása |
+| 6 | `POST` | `/api/auth/forgot-password` | Nincs | Jelszó-visszaállító e-mail kérése |
+| 7 | `POST` | `/api/auth/reset-password` | Nincs | Jelszó visszaállítása tokennel |
+| 8 | `GET` | `/api/recipes` | Opcionális | Receptek listázása (szűrés, rendezés, lapozás) |
+| 9 | `POST` | `/api/recipes` | Bearer | Recept létrehozása |
+| 10 | `GET` | `/api/recipes/:id` | Opcionális | Recept részleteinek lekérése |
+| 11 | `PATCH` | `/api/recipes/:id` | Tulajdonos/Admin | Recept frissítése |
+| 12 | `DELETE` | `/api/recipes/:id` | Tulajdonos/Admin | Recept lágy törlése |
+| 13 | `GET` | `/api/recipes/:id/summary` | Nincs | Recept összefoglaló lekérése |
+| 14 | `GET` | `/api/recipes/:id/ratings` | Nincs | Recept értékeléseinek listázása |
+| 15 | `GET` | `/api/recipes/:id/ratings/me` | Bearer | Saját értékelés lekérése |
+| 16 | `PUT` | `/api/recipes/:id/ratings/me` | Bearer | Saját értékelés létrehozása/frissítése |
+| 17 | `DELETE` | `/api/recipes/:id/ratings/me` | Bearer | Saját értékelés eltávolítása |
+| 18 | `GET` | `/api/recipes/:id/comments` | Nincs | Recept hozzászólásainak listázása |
+| 19 | `POST` | `/api/recipes/:id/comments` | Bearer | Hozzászólás hozzáadása |
+| 20 | `GET` | `/api/recipes/:id/steps` | Nincs | Recept lépéseinek listázása |
+| 21 | `POST` | `/api/recipes/:id/steps` | Tulajdonos/Admin | Lépés hozzáadása |
+| 22 | `PUT` | `/api/recipes/:id/steps/reorder` | Tulajdonos/Admin | Lépések átrendezése |
+| 23 | `PATCH` | `/api/recipes/:id/steps/:stepId` | Tulajdonos/Admin | Lépés frissítése |
+| 24 | `DELETE` | `/api/recipes/:id/steps/:stepId` | Tulajdonos/Admin | Lépés törlése |
+| 25 | `GET` | `/api/recipes/:id/ingredients` | Nincs | Hozzávalók listázása |
+| 26 | `POST` | `/api/recipes/:id/ingredients` | Tulajdonos/Admin | Hozzávaló hozzáadása |
+| 27 | `PATCH` | `/api/recipes/:id/ingredients/:iid` | Tulajdonos/Admin | Hozzávaló frissítése |
+| 28 | `DELETE` | `/api/recipes/:id/ingredients/:iid` | Tulajdonos/Admin | Hozzávaló törlése |
+| 29 | `PUT` | `/api/recipes/:id/categories` | Tulajdonos/Admin | Recept kategóriák lecserélése |
+| 30 | `PUT` | `/api/recipes/:id/tags` | Tulajdonos/Admin | Recept címkék lecserélése |
+| 31 | `GET` | `/api/recipes/:id/favorite` | Bearer | Kedvenc ellenőrzése |
+| 32 | `POST` | `/api/recipes/:id/favorite` | Bearer | Kedvencekhez adás |
+| 33 | `DELETE` | `/api/recipes/:id/favorite` | Bearer | Kedvencekből eltávolítás |
+| 34 | `POST` | `/api/recipes/:id/image` | Tulajdonos/Admin | Recept kép feltöltése |
+| 35 | `GET` | `/api/categories` | Nincs | Kategóriák listázása |
+| 36 | `POST` | `/api/categories` | Admin | Kategória létrehozása |
+| 37 | `GET` | `/api/categories/:id` | Nincs | Kategória lekérése |
+| 38 | `PATCH` | `/api/categories/:id` | Admin | Kategória frissítése |
+| 39 | `DELETE` | `/api/categories/:id` | Admin | Kategória törlése |
+| 40 | `GET` | `/api/tags` | Nincs | Címkék listázása |
+| 41 | `POST` | `/api/tags` | Admin | Címke létrehozása |
+| 42 | `GET` | `/api/tags/:id` | Nincs | Címke lekérése |
+| 43 | `PATCH` | `/api/tags/:id` | Admin | Címke frissítése |
+| 44 | `DELETE` | `/api/tags/:id` | Admin | Címke törlése |
+| 45 | `PATCH` | `/api/comments/:id` | Tulajdonos/Admin | Hozzászólás szerkesztése |
+| 46 | `DELETE` | `/api/comments/:id` | Tulajdonos/Admin | Hozzászólás lágy törlése |
+| 47 | `GET` | `/api/users/:id` | Nincs | Nyilvános profil lekérése |
+| 48 | `GET` | `/api/users/:id/stats` | Nincs | Felhasználói statisztikák lekérése |
+| 49 | `GET` | `/api/users/:id/recipes` | Nincs | Felhasználó receptjeinek listázása |
+| 50 | `GET` | `/api/users/:id/recipe-books` | Nincs | Felhasználó nyilvános könyveinek listázása |
+| 51 | `GET` | `/api/users/:id/ratings` | Nincs | Felhasználó értékeléseinek listázása |
+| 52 | `GET` | `/api/users/:id/comments` | Nincs | Felhasználó hozzászólásainak listázása |
+| 53 | `GET` | `/api/users/me` | Bearer | Saját profil lekérése |
+| 54 | `PATCH` | `/api/users/me` | Bearer | Saját profil frissítése |
+| 55 | `GET` | `/api/users/me/stats` | Bearer | Saját statisztikák lekérése (részletes) |
+| 56 | `GET` | `/api/users/me/favorites` | Bearer | Saját kedvencek listázása |
+| 57 | `PATCH` | `/api/users/me/deactivate` | Bearer | Saját fiók deaktiválása |
+| 58 | `GET` | `/api/recipe-books` | Opcionális | Receptkönyvek listázása |
+| 59 | `POST` | `/api/recipe-books` | Bearer | Receptkönyv létrehozása |
+| 60 | `GET` | `/api/recipe-books/:id` | Opcionális | Receptkönyv lekérése |
+| 61 | `PATCH` | `/api/recipe-books/:id` | Tulajdonos/Admin | Receptkönyv frissítése |
+| 62 | `DELETE` | `/api/recipe-books/:id` | Tulajdonos/Admin | Receptkönyv törlése |
+| 63 | `POST` | `/api/recipe-books/:id/clone` | Bearer | Nyilvános könyv klónozása |
+| 64 | `GET` | `/api/recipe-books/:id/recipes` | Opcionális | Könyv receptjeinek listázása |
+| 65 | `POST` | `/api/recipe-books/:id/recipes` | Tulajdonos/Admin | Recept(ek) hozzáadása könyvhöz |
+| 66 | `DELETE` | `/api/recipe-books/:id/recipes/:rid` | Tulajdonos/Admin | Recept eltávolítása könyvből |
+| 67 | `POST` | `/api/reports` | Bearer | Jelentés beadása |
+| 68 | `GET` | `/api/reports` | Bearer | Saját jelentések listázása |
+| 69 | `GET` | `/api/admin/users` | Admin | Összes felhasználó listázása |
+| 70 | `PATCH` | `/api/admin/users/:id` | Admin | Felhasználó szerep/státusz frissítése |
+| 71 | `GET` | `/api/admin/reports` | Admin | Összes jelentés listázása |
+| 72 | `GET` | `/api/admin/reports/:id` | Admin | Jelentés részleteinek lekérése |
+| 73 | `PATCH` | `/api/admin/reports/:id` | Admin | Jelentés státuszának frissítése |
+| 74 | `POST` | `/api/admin/reports/:id/actions` | Admin | Moderációs művelet végrehajtása |
+| 75 | `DELETE` | `/api/admin/comments/:id/hard` | Admin | Hozzászólás végleges törlése |
+| 76 | `POST` | `/api/uploads` | Bearer | Kép feltöltése Cloudinary-ra |
+| 77 | `GET` | `/api/health` | Nincs | Állapotjelző ellenőrzés |
+| 78 | `GET` | `/api/meta/difficulties` | Nincs | Nehézségi szintek listázása |
+| 79 | `GET` | `/api/meta/roles` | Admin | Felhasználói szerepkörök listázása |
+| 80 | `GET` | `/api/search/suggestions` | Nincs | Automatikus kiegészítési javaslatok |
