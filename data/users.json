@@ -5,7 +5,7 @@
     "email": "admin@forkfeed.com",
     "password_hash": "scrypt$0d7a01200a68f94d2f0012cca90481c0$c61b9786499f1a8cdf6e8f2515be5ea2523365d0529f14d873b660aec58f0fd6c5ddef86094eb7cd294cca344b0c94cc259fee503251749c860cb8347b6b4c4f",
     "role": "admin",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/people/kitchen-bar.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1774882949/forkfeed/avatars/s8pxbvcgj3oyuhxqdxwh.jpg",
     "bio": "A ForkFeed adminisztrátora.",
     "is_active": true,
     "created_at": {
@@ -80,7 +80,7 @@
     "email": "szabolcsi.peter@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707552/6_y68ofy.webp",
     "bio": "Pék tanfolyamot végzett házi kenyérimádó.",
     "is_active": true,
     "created_at": {
@@ -95,7 +95,7 @@
     "email": "judit.kis@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/people/kitchen-bar.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707552/7_clfwaf.jpg",
     "bio": "Egészséges ételek szerelmese.",
     "is_active": true,
     "created_at": {
@@ -110,7 +110,7 @@
     "email": "robert.grill@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912492/cld-sample.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707552/8_rwoyqj.jpg",
     "bio": "Vasárnapi grillek királya.",
     "is_active": true,
     "created_at": {
@@ -125,7 +125,7 @@
     "email": "dora.suti@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912486/samples/man-portrait.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707553/9_pw2qwa.jpg",
     "bio": "Otthoni cukrász, torta dekorálás a hobbim.",
     "is_active": true,
     "created_at": {
@@ -140,7 +140,7 @@
     "email": "viki.vegan@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/outdoor-woman.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707553/10_dxvbyw.jpg",
     "bio": "Növényi alapú konyha mindennap.",
     "is_active": true,
     "created_at": {
@@ -155,7 +155,7 @@
     "email": "bela.balaton@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/smile.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707553/11_x9lc56.webp",
     "bio": "Halételek és balatoni hangulatúzés.",
     "is_active": true,
     "created_at": {
@@ -170,7 +170,7 @@
     "email": "csaba.csabi@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707554/12_okbxpn.jpg",
     "bio": "Hentesmester a konyhában.",
     "is_active": true,
     "created_at": {
@@ -185,7 +185,7 @@
     "email": "paleopapa@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/people/kitchen-bar.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707554/13_z3ryyh.jpg",
     "bio": "Paleo életmód, sport és főzés.",
     "is_active": true,
     "created_at": {
@@ -200,7 +200,7 @@
     "email": "krisztina.kezi@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912492/cld-sample.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707554/14_yrl8h3.jpg",
     "bio": "Kézműves tészták és szószok.",
     "is_active": true,
     "created_at": {
@@ -215,7 +215,7 @@
     "email": "borsod.gazda@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912486/samples/man-portrait.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707554/15_kxqkgs.jpg",
     "bio": "Saját kertből az asztalra.",
     "is_active": true,
     "created_at": {
@@ -230,7 +230,7 @@
     "email": "szilvi.pest@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/outdoor-woman.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707554/16_nqtyoi.jpg",
     "bio": "Brunch és kávérajongó.",
     "is_active": true,
     "created_at": {
@@ -245,7 +245,7 @@
     "email": "feri.erdo@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/smile.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707553/17_uqkibw.jpg",
     "bio": "Vadételek és gombák specialistája.",
     "is_active": true,
     "created_at": {
@@ -260,7 +260,7 @@
     "email": "fanni.fit@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": null,
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707552/18_xxea7o.png",
     "bio": "Magas fehérje, alacsony szénhidrát receptek.",
     "is_active": true,
     "created_at": {
@@ -275,7 +275,7 @@
     "email": "tunde.szak@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912464/samples/people/kitchen-bar.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707553/19_r7ljyw.jpg",
     "bio": "Tradicionális magyar konyha megőrzője.",
     "is_active": true,
     "created_at": {
@@ -290,7 +290,7 @@
     "email": "brat.esz@example.com",
     "password_hash": "scrypt$386902a8b2fe14d802a41699dc1a31f1$e5c14e71d6b94fc9da93a1943b3ea82f68cc5012e6a084cba7410260ab10452022252237b745d1f4b12835b6a17cd8bca9d867d3d0ab5494f5572caafb1a8c15",
     "role": "user",
-    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1773912492/cld-sample.jpg",
+    "profile_image_url": "https://res.cloudinary.com/dux9rb8u6/image/upload/v1776707553/20_rxmyrp.jpg",
     "bio": "Kenyér és péksütemény imádó.",
     "is_active": true,
     "created_at": {

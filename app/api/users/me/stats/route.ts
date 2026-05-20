@@ -19,7 +19,7 @@ export async function GET(request: Request) {
       prisma.favorite.count({ where: { user_id: auth.sub } }),
       prisma.recipeBook.count({ where: { owner_id: auth.sub } }),
       prisma.recipe.aggregate({
-        where: { author_id: auth.sub, is_deleted: false },
+        where: { author_id: auth.sub, is_deleted: false, rating_count: { gt: 0 } },
         _avg: { average_rating: true },
       }),
     ]);
