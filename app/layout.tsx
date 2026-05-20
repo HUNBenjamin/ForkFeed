@@ -1,17 +1,18 @@
-import React from 'react'
-import './globals.css'
+import React from "react";
+import "./globals.css";
 
 export const metadata = {
-  title: 'ForkFeed',
-  description: 'Receptmegosztó közösség',
-}
+  title: "ForkFeed",
+  description: "Receptmegosztó közösség",
+  icons: {
+    icon: "/favicon.svg",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="hu">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  )
+  );
 }
